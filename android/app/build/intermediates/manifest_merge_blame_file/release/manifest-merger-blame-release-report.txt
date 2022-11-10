@@ -1,0 +1,224 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.dating_app"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="21"
+8-->D:\React Native Project\Datingclone\DatingApp\android\app\src\main\AndroidManifest.xml
+9        android:targetSdkVersion="32" />
+9-->D:\React Native Project\Datingclone\DatingApp\android\app\src\main\AndroidManifest.xml
+10
+11    <uses-permission android:name="android.permission.INTERNET" />
+11-->D:\React Native Project\Datingclone\DatingApp\android\app\src\main\AndroidManifest.xml:4:5-67
+11-->D:\React Native Project\Datingclone\DatingApp\android\app\src\main\AndroidManifest.xml:4:22-64
+12    <uses-permission android:name="android.permission.USE_FINGERPRINT" />
+12-->D:\React Native Project\Datingclone\DatingApp\android\app\src\main\AndroidManifest.xml:5:1-70
+12-->D:\React Native Project\Datingclone\DatingApp\android\app\src\main\AndroidManifest.xml:5:18-67
+13    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+13-->D:\React Native Project\Datingclone\DatingApp\android\app\src\main\AndroidManifest.xml:6:1-75
+13-->D:\React Native Project\Datingclone\DatingApp\android\app\src\main\AndroidManifest.xml:6:18-73
+14    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+14-->D:\React Native Project\Datingclone\DatingApp\android\app\src\main\AndroidManifest.xml:7:1-77
+14-->D:\React Native Project\Datingclone\DatingApp\android\app\src\main\AndroidManifest.xml:7:18-74
+15    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+15-->D:\React Native Project\Datingclone\DatingApp\android\app\src\main\AndroidManifest.xml:8:1-75
+15-->D:\React Native Project\Datingclone\DatingApp\android\app\src\main\AndroidManifest.xml:8:18-72
+16    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+16-->D:\React Native Project\Datingclone\DatingApp\android\app\src\main\AndroidManifest.xml:9:1-77
+16-->D:\React Native Project\Datingclone\DatingApp\android\app\src\main\AndroidManifest.xml:9:18-74
+17    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+17-->[:react-native-community_netinfo] D:\React Native Project\Datingclone\DatingApp\node_modules\@react-native-community\netinfo\android\build\intermediates\merged_manifest\release\AndroidManifest.xml:9:5-79
+17-->[:react-native-community_netinfo] D:\React Native Project\Datingclone\DatingApp\node_modules\@react-native-community\netinfo\android\build\intermediates\merged_manifest\release\AndroidManifest.xml:9:22-76
+18    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+18-->[:react-native-community_netinfo] D:\React Native Project\Datingclone\DatingApp\node_modules\@react-native-community\netinfo\android\build\intermediates\merged_manifest\release\AndroidManifest.xml:10:5-76
+18-->[:react-native-community_netinfo] D:\React Native Project\Datingclone\DatingApp\node_modules\@react-native-community\netinfo\android\build\intermediates\merged_manifest\release\AndroidManifest.xml:10:22-73
+19
+20    <queries>
+20-->[:react-native-image-crop-picker] D:\React Native Project\Datingclone\DatingApp\node_modules\react-native-image-crop-picker\android\build\intermediates\merged_manifest\release\AndroidManifest.xml:9:5-13:15
+21        <intent>
+21-->[:react-native-image-crop-picker] D:\React Native Project\Datingclone\DatingApp\node_modules\react-native-image-crop-picker\android\build\intermediates\merged_manifest\release\AndroidManifest.xml:10:9-12:18
+22            <action android:name="android.media.action.IMAGE_CAPTURE" />
+22-->[:react-native-image-crop-picker] D:\React Native Project\Datingclone\DatingApp\node_modules\react-native-image-crop-picker\android\build\intermediates\merged_manifest\release\AndroidManifest.xml:11:13-73
+22-->[:react-native-image-crop-picker] D:\React Native Project\Datingclone\DatingApp\node_modules\react-native-image-crop-picker\android\build\intermediates\merged_manifest\release\AndroidManifest.xml:11:21-70
+23        </intent>
+24    </queries> <!-- Required to access Google Play Licensing -->
+25    <uses-permission android:name="com.android.vending.CHECK_LICENSE" />
+25-->[:rn-fetch-blob] D:\React Native Project\Datingclone\DatingApp\node_modules\rn-fetch-blob\android\build\intermediates\merged_manifest\release\AndroidManifest.xml:10:5-73
+25-->[:rn-fetch-blob] D:\React Native Project\Datingclone\DatingApp\node_modules\rn-fetch-blob\android\build\intermediates\merged_manifest\release\AndroidManifest.xml:10:22-70
+26    <!--
+27         Required to keep CPU alive while downloading files
+28        (NOT to keep screen awake)
+29    -->
+30    <uses-permission android:name="android.permission.WAKE_LOCK" /> <!-- <uses-permission android:name="android.permission.CAMERA"/> -->
+30-->[:rn-fetch-blob] D:\React Native Project\Datingclone\DatingApp\node_modules\rn-fetch-blob\android\build\intermediates\merged_manifest\release\AndroidManifest.xml:19:5-68
+30-->[:rn-fetch-blob] D:\React Native Project\Datingclone\DatingApp\node_modules\rn-fetch-blob\android\build\intermediates\merged_manifest\release\AndroidManifest.xml:19:22-65
+31    <application
+31-->D:\React Native Project\Datingclone\DatingApp\android\app\src\main\AndroidManifest.xml:12:5-32:19
+32        android:name="com.dating_app.MainApplication"
+32-->D:\React Native Project\Datingclone\DatingApp\android\app\src\main\AndroidManifest.xml:13:7-38
+33        android:allowBackup="false"
+33-->D:\React Native Project\Datingclone\DatingApp\android\app\src\main\AndroidManifest.xml:17:7-34
+34        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+34-->[androidx.core:core:1.7.0] C:\Users\HP\.gradle\caches\transforms-3\196d184bf9f0bc6245870b083bf879d1\transformed\core-1.7.0\AndroidManifest.xml:24:18-86
+35        android:icon="@mipmap/ic_launcher"
+35-->D:\React Native Project\Datingclone\DatingApp\android\app\src\main\AndroidManifest.xml:15:7-41
+36        android:label="@string/app_name"
+36-->D:\React Native Project\Datingclone\DatingApp\android\app\src\main\AndroidManifest.xml:14:7-39
+37        android:roundIcon="@mipmap/ic_launcher_round"
+37-->D:\React Native Project\Datingclone\DatingApp\android\app\src\main\AndroidManifest.xml:16:7-52
+38        android:theme="@style/AppTheme" >
+38-->D:\React Native Project\Datingclone\DatingApp\android\app\src\main\AndroidManifest.xml:18:7-38
+39        <activity
+39-->D:\React Native Project\Datingclone\DatingApp\android\app\src\main\AndroidManifest.xml:19:7-31:18
+40            android:name="com.dating_app.MainActivity"
+40-->D:\React Native Project\Datingclone\DatingApp\android\app\src\main\AndroidManifest.xml:20:9-37
+41            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize|uiMode"
+41-->D:\React Native Project\Datingclone\DatingApp\android\app\src\main\AndroidManifest.xml:23:9-118
+42            android:exported="true"
+42-->D:\React Native Project\Datingclone\DatingApp\android\app\src\main\AndroidManifest.xml:26:9-32
+43            android:label="@string/app_name"
+43-->D:\React Native Project\Datingclone\DatingApp\android\app\src\main\AndroidManifest.xml:21:9-41
+44            android:launchMode="singleTask"
+44-->D:\React Native Project\Datingclone\DatingApp\android\app\src\main\AndroidManifest.xml:24:9-40
+45            android:screenOrientation="portrait"
+45-->D:\React Native Project\Datingclone\DatingApp\android\app\src\main\AndroidManifest.xml:22:11-47
+46            android:windowSoftInputMode="adjustResize" >
+46-->D:\React Native Project\Datingclone\DatingApp\android\app\src\main\AndroidManifest.xml:25:9-51
+47            <intent-filter>
+47-->D:\React Native Project\Datingclone\DatingApp\android\app\src\main\AndroidManifest.xml:27:9-30:25
+48                <action android:name="android.intent.action.MAIN" />
+48-->D:\React Native Project\Datingclone\DatingApp\android\app\src\main\AndroidManifest.xml:28:13-65
+48-->D:\React Native Project\Datingclone\DatingApp\android\app\src\main\AndroidManifest.xml:28:21-62
+49
+50                <category android:name="android.intent.category.LAUNCHER" />
+50-->D:\React Native Project\Datingclone\DatingApp\android\app\src\main\AndroidManifest.xml:29:13-73
+50-->D:\React Native Project\Datingclone\DatingApp\android\app\src\main\AndroidManifest.xml:29:23-70
+51            </intent-filter>
+52        </activity>
+53
+54        <provider
+54-->[:react-native-image-crop-picker] D:\React Native Project\Datingclone\DatingApp\node_modules\react-native-image-crop-picker\android\build\intermediates\merged_manifest\release\AndroidManifest.xml:18:9-26:20
+55            android:name="com.reactnative.ivpusic.imagepicker.IvpusicImagePickerFileProvider"
+55-->[:react-native-image-crop-picker] D:\React Native Project\Datingclone\DatingApp\node_modules\react-native-image-crop-picker\android\build\intermediates\merged_manifest\release\AndroidManifest.xml:19:13-94
+56            android:authorities="com.dating_app.provider"
+56-->[:react-native-image-crop-picker] D:\React Native Project\Datingclone\DatingApp\node_modules\react-native-image-crop-picker\android\build\intermediates\merged_manifest\release\AndroidManifest.xml:20:13-60
+57            android:exported="false"
+57-->[:react-native-image-crop-picker] D:\React Native Project\Datingclone\DatingApp\node_modules\react-native-image-crop-picker\android\build\intermediates\merged_manifest\release\AndroidManifest.xml:21:13-37
+58            android:grantUriPermissions="true" >
+58-->[:react-native-image-crop-picker] D:\React Native Project\Datingclone\DatingApp\node_modules\react-native-image-crop-picker\android\build\intermediates\merged_manifest\release\AndroidManifest.xml:22:13-47
+59            <meta-data
+59-->[:react-native-image-crop-picker] D:\React Native Project\Datingclone\DatingApp\node_modules\react-native-image-crop-picker\android\build\intermediates\merged_manifest\release\AndroidManifest.xml:23:13-25:78
+60                android:name="android.support.FILE_PROVIDER_PATHS"
+60-->[:react-native-image-crop-picker] D:\React Native Project\Datingclone\DatingApp\node_modules\react-native-image-crop-picker\android\build\intermediates\merged_manifest\release\AndroidManifest.xml:24:17-67
+61                android:resource="@xml/ivpusic_imagepicker_provider_paths" />
+61-->[:react-native-image-crop-picker] D:\React Native Project\Datingclone\DatingApp\node_modules\react-native-image-crop-picker\android\build\intermediates\merged_manifest\release\AndroidManifest.xml:25:17-75
+62        </provider>
+63
+64        <activity
+64-->[:react-native-image-crop-picker] D:\React Native Project\Datingclone\DatingApp\node_modules\react-native-image-crop-picker\android\build\intermediates\merged_manifest\release\AndroidManifest.xml:28:9-30:72
+65            android:name="com.yalantis.ucrop.UCropActivity"
+65-->[:react-native-image-crop-picker] D:\React Native Project\Datingclone\DatingApp\node_modules\react-native-image-crop-picker\android\build\intermediates\merged_manifest\release\AndroidManifest.xml:29:13-60
+66            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+66-->[:react-native-image-crop-picker] D:\React Native Project\Datingclone\DatingApp\node_modules\react-native-image-crop-picker\android\build\intermediates\merged_manifest\release\AndroidManifest.xml:30:13-69
+67
+68        <provider
+68-->[:react-native-image-picker] D:\React Native Project\Datingclone\DatingApp\node_modules\react-native-image-picker\android\build\intermediates\merged_manifest\release\AndroidManifest.xml:10:9-18:20
+69            android:name="com.imagepicker.ImagePickerProvider"
+69-->[:react-native-image-picker] D:\React Native Project\Datingclone\DatingApp\node_modules\react-native-image-picker\android\build\intermediates\merged_manifest\release\AndroidManifest.xml:11:13-63
+70            android:authorities="com.dating_app.imagepickerprovider"
+70-->[:react-native-image-picker] D:\React Native Project\Datingclone\DatingApp\node_modules\react-native-image-picker\android\build\intermediates\merged_manifest\release\AndroidManifest.xml:12:13-71
+71            android:exported="false"
+71-->[:react-native-image-picker] D:\React Native Project\Datingclone\DatingApp\node_modules\react-native-image-picker\android\build\intermediates\merged_manifest\release\AndroidManifest.xml:13:13-37
+72            android:grantUriPermissions="true" >
+72-->[:react-native-image-picker] D:\React Native Project\Datingclone\DatingApp\node_modules\react-native-image-picker\android\build\intermediates\merged_manifest\release\AndroidManifest.xml:14:13-47
+73            <meta-data
+73-->[:react-native-image-crop-picker] D:\React Native Project\Datingclone\DatingApp\node_modules\react-native-image-crop-picker\android\build\intermediates\merged_manifest\release\AndroidManifest.xml:23:13-25:78
+74                android:name="android.support.FILE_PROVIDER_PATHS"
+74-->[:react-native-image-crop-picker] D:\React Native Project\Datingclone\DatingApp\node_modules\react-native-image-crop-picker\android\build\intermediates\merged_manifest\release\AndroidManifest.xml:24:17-67
+75                android:resource="@xml/imagepicker_provider_paths" />
+75-->[:react-native-image-crop-picker] D:\React Native Project\Datingclone\DatingApp\node_modules\react-native-image-crop-picker\android\build\intermediates\merged_manifest\release\AndroidManifest.xml:25:17-75
+76        </provider>
+77        <provider
+77-->[:react-native-webview] D:\React Native Project\Datingclone\DatingApp\node_modules\react-native-webview\android\build\intermediates\merged_manifest\release\AndroidManifest.xml:10:9-18:20
+78            android:name="com.reactnativecommunity.webview.RNCWebViewFileProvider"
+78-->[:react-native-webview] D:\React Native Project\Datingclone\DatingApp\node_modules\react-native-webview\android\build\intermediates\merged_manifest\release\AndroidManifest.xml:11:13-83
+79            android:authorities="com.dating_app.fileprovider"
+79-->[:react-native-webview] D:\React Native Project\Datingclone\DatingApp\node_modules\react-native-webview\android\build\intermediates\merged_manifest\release\AndroidManifest.xml:12:13-64
+80            android:exported="false"
+80-->[:react-native-webview] D:\React Native Project\Datingclone\DatingApp\node_modules\react-native-webview\android\build\intermediates\merged_manifest\release\AndroidManifest.xml:13:13-37
+81            android:grantUriPermissions="true" >
+81-->[:react-native-webview] D:\React Native Project\Datingclone\DatingApp\node_modules\react-native-webview\android\build\intermediates\merged_manifest\release\AndroidManifest.xml:14:13-47
+82            <meta-data
+82-->[:react-native-image-crop-picker] D:\React Native Project\Datingclone\DatingApp\node_modules\react-native-image-crop-picker\android\build\intermediates\merged_manifest\release\AndroidManifest.xml:23:13-25:78
+83                android:name="android.support.FILE_PROVIDER_PATHS"
+83-->[:react-native-image-crop-picker] D:\React Native Project\Datingclone\DatingApp\node_modules\react-native-image-crop-picker\android\build\intermediates\merged_manifest\release\AndroidManifest.xml:24:17-67
+84                android:resource="@xml/file_provider_paths" />
+84-->[:react-native-image-crop-picker] D:\React Native Project\Datingclone\DatingApp\node_modules\react-native-image-crop-picker\android\build\intermediates\merged_manifest\release\AndroidManifest.xml:25:17-75
+85        </provider>
+86        <provider
+86-->[:rn-fetch-blob] D:\React Native Project\Datingclone\DatingApp\node_modules\rn-fetch-blob\android\build\intermediates\merged_manifest\release\AndroidManifest.xml:34:9-42:20
+87            android:name="com.RNFetchBlob.Utils.FileProvider"
+87-->[:rn-fetch-blob] D:\React Native Project\Datingclone\DatingApp\node_modules\rn-fetch-blob\android\build\intermediates\merged_manifest\release\AndroidManifest.xml:35:13-62
+88            android:authorities="com.dating_app.provider"
+88-->[:rn-fetch-blob] D:\React Native Project\Datingclone\DatingApp\node_modules\rn-fetch-blob\android\build\intermediates\merged_manifest\release\AndroidManifest.xml:36:13-60
+89            android:exported="false"
+89-->[:rn-fetch-blob] D:\React Native Project\Datingclone\DatingApp\node_modules\rn-fetch-blob\android\build\intermediates\merged_manifest\release\AndroidManifest.xml:37:13-37
+90            android:grantUriPermissions="true" >
+90-->[:rn-fetch-blob] D:\React Native Project\Datingclone\DatingApp\node_modules\rn-fetch-blob\android\build\intermediates\merged_manifest\release\AndroidManifest.xml:38:13-47
+91            <meta-data
+91-->[:react-native-image-crop-picker] D:\React Native Project\Datingclone\DatingApp\node_modules\react-native-image-crop-picker\android\build\intermediates\merged_manifest\release\AndroidManifest.xml:23:13-25:78
+92                android:name="android.support.FILE_PROVIDER_PATHS"
+92-->[:react-native-image-crop-picker] D:\React Native Project\Datingclone\DatingApp\node_modules\react-native-image-crop-picker\android\build\intermediates\merged_manifest\release\AndroidManifest.xml:24:17-67
+93                android:resource="@xml/provider_paths" />
+93-->[:react-native-image-crop-picker] D:\React Native Project\Datingclone\DatingApp\node_modules\react-native-image-crop-picker\android\build\intermediates\merged_manifest\release\AndroidManifest.xml:25:17-75
+94        </provider>
+95
+96        <meta-data
+96-->[com.github.bumptech.glide:okhttp3-integration:4.12.0] C:\Users\HP\.gradle\caches\transforms-3\df097860d84d9efd64a61721fcbc1033\transformed\jetified-okhttp3-integration-4.12.0\AndroidManifest.xml:11:9-13:43
+97            android:name="com.bumptech.glide.integration.okhttp3.OkHttpGlideModule"
+97-->[com.github.bumptech.glide:okhttp3-integration:4.12.0] C:\Users\HP\.gradle\caches\transforms-3\df097860d84d9efd64a61721fcbc1033\transformed\jetified-okhttp3-integration-4.12.0\AndroidManifest.xml:12:13-84
+98            android:value="GlideModule" />
+98-->[com.github.bumptech.glide:okhttp3-integration:4.12.0] C:\Users\HP\.gradle\caches\transforms-3\df097860d84d9efd64a61721fcbc1033\transformed\jetified-okhttp3-integration-4.12.0\AndroidManifest.xml:13:13-40
+99
+100        <activity
+100-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\HP\.gradle\caches\transforms-3\dbcf835c33885d2a5f82551d00fbca30\transformed\jetified-play-services-base-17.0.0\AndroidManifest.xml:23:9-26:75
+101            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+101-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\HP\.gradle\caches\transforms-3\dbcf835c33885d2a5f82551d00fbca30\transformed\jetified-play-services-base-17.0.0\AndroidManifest.xml:24:13-79
+102            android:exported="false"
+102-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\HP\.gradle\caches\transforms-3\dbcf835c33885d2a5f82551d00fbca30\transformed\jetified-play-services-base-17.0.0\AndroidManifest.xml:25:13-37
+103            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+103-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\HP\.gradle\caches\transforms-3\dbcf835c33885d2a5f82551d00fbca30\transformed\jetified-play-services-base-17.0.0\AndroidManifest.xml:26:13-72
+104
+105        <meta-data
+105-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\HP\.gradle\caches\transforms-3\b60d8448c4366de2dd18293058305534\transformed\jetified-play-services-basement-17.0.0\AndroidManifest.xml:23:9-25:69
+106            android:name="com.google.android.gms.version"
+106-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\HP\.gradle\caches\transforms-3\b60d8448c4366de2dd18293058305534\transformed\jetified-play-services-basement-17.0.0\AndroidManifest.xml:24:13-58
+107            android:value="@integer/google_play_services_version" />
+107-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\HP\.gradle\caches\transforms-3\b60d8448c4366de2dd18293058305534\transformed\jetified-play-services-basement-17.0.0\AndroidManifest.xml:25:13-66
+108
+109        <provider
+109-->[androidx.emoji2:emoji2:1.0.0] C:\Users\HP\.gradle\caches\transforms-3\4baa5585be2b1eae9b579067dbf6c69e\transformed\jetified-emoji2-1.0.0\AndroidManifest.xml:26:9-34:20
+110            android:name="androidx.startup.InitializationProvider"
+110-->[androidx.emoji2:emoji2:1.0.0] C:\Users\HP\.gradle\caches\transforms-3\4baa5585be2b1eae9b579067dbf6c69e\transformed\jetified-emoji2-1.0.0\AndroidManifest.xml:27:13-67
+111            android:authorities="com.dating_app.androidx-startup"
+111-->[androidx.emoji2:emoji2:1.0.0] C:\Users\HP\.gradle\caches\transforms-3\4baa5585be2b1eae9b579067dbf6c69e\transformed\jetified-emoji2-1.0.0\AndroidManifest.xml:28:13-68
+112            android:exported="false" >
+112-->[androidx.emoji2:emoji2:1.0.0] C:\Users\HP\.gradle\caches\transforms-3\4baa5585be2b1eae9b579067dbf6c69e\transformed\jetified-emoji2-1.0.0\AndroidManifest.xml:29:13-37
+113            <meta-data
+113-->[androidx.emoji2:emoji2:1.0.0] C:\Users\HP\.gradle\caches\transforms-3\4baa5585be2b1eae9b579067dbf6c69e\transformed\jetified-emoji2-1.0.0\AndroidManifest.xml:31:13-33:52
+114                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+114-->[androidx.emoji2:emoji2:1.0.0] C:\Users\HP\.gradle\caches\transforms-3\4baa5585be2b1eae9b579067dbf6c69e\transformed\jetified-emoji2-1.0.0\AndroidManifest.xml:32:17-75
+115                android:value="androidx.startup" />
+115-->[androidx.emoji2:emoji2:1.0.0] C:\Users\HP\.gradle\caches\transforms-3\4baa5585be2b1eae9b579067dbf6c69e\transformed\jetified-emoji2-1.0.0\AndroidManifest.xml:33:17-49
+116            <meta-data
+116-->[androidx.lifecycle:lifecycle-process:2.4.0] C:\Users\HP\.gradle\caches\transforms-3\151bac0ea0012255cb89da9c60b86c67\transformed\jetified-lifecycle-process-2.4.0\AndroidManifest.xml:31:13-33:52
+117                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+117-->[androidx.lifecycle:lifecycle-process:2.4.0] C:\Users\HP\.gradle\caches\transforms-3\151bac0ea0012255cb89da9c60b86c67\transformed\jetified-lifecycle-process-2.4.0\AndroidManifest.xml:32:17-78
+118                android:value="androidx.startup" />
+118-->[androidx.lifecycle:lifecycle-process:2.4.0] C:\Users\HP\.gradle\caches\transforms-3\151bac0ea0012255cb89da9c60b86c67\transformed\jetified-lifecycle-process-2.4.0\AndroidManifest.xml:33:17-49
+119        </provider>
+120    </application>
+121
+122</manifest>

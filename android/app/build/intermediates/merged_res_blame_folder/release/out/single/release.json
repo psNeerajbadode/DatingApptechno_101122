@@ -1,0 +1,1402 @@
+[
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_man.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_man.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_colorimages_yellow_check_yellow.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_colorimages_yellow_check_yellow.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_pin_chat.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_pin_chat.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_dankort.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_dankort.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_edit_dark.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_edit_dark.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_colorimages_purplle_c_plus_purple.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_colorimages_purplle_c_plus_purple.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_gift.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_gift.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_colorimages_blue_bg3_blue.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_colorimages_blue_bg3_blue.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_fingerprint_2.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_fingerprint_2.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_darkk.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_darkk.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_rocket.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_rocket.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_diy.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_diy.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-hdpi_node_modules_reactnativecalendars_src_img_up.png.flat",
+        "source": "com.dating_app-react-30:/drawable-hdpi/node_modules_reactnativecalendars_src_img_up.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_category.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_category.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/mipmap-xxxhdpi_ic_launcher.png.flat",
+        "source": "com.dating_app-main-36:/mipmap-xxxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_colorimages_green_viewplanbg_green.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_colorimages_green_viewplanbg_green.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-xxhdpi_node_modules_reactnativevideocontrols_assets_img_play.png.flat",
+        "source": "com.dating_app-react-30:/drawable-xxhdpi/node_modules_reactnativevideocontrols_assets_img_play.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/mipmap-xxhdpi_ic_launcher_round.png.flat",
+        "source": "com.dating_app-main-36:/mipmap-xxhdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-xxhdpi_node_modules_reactnativecalendars_src_img_up.png.flat",
+        "source": "com.dating_app-react-30:/drawable-xxhdpi/node_modules_reactnativecalendars_src_img_up.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_images_card_light.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_images_card_light.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_images_gallery.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_images_gallery.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_blue_diactive.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_blue_diactive.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_node_modules_reactnativevideocontrols_assets_img_shrink.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/node_modules_reactnativevideocontrols_assets_img_shrink.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/mipmap-xxhdpi_ic_launcher.png.flat",
+        "source": "com.dating_app-main-36:/mipmap-xxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/mipmap-xhdpi_ic_launcher_round.png.flat",
+        "source": "com.dating_app-main-36:/mipmap-xhdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_colorimages_green_c_plus_green.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_colorimages_green_c_plus_green.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_node_modules_reactnativevideocontrols_assets_img_volume.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/node_modules_reactnativevideocontrols_assets_img_volume.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_settings.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_settings.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-xxhdpi_node_modules_reactnativecalendars_src_img_down.png.flat",
+        "source": "com.dating_app-react-30:/drawable-xxhdpi/node_modules_reactnativecalendars_src_img_down.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_alert_ico.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_alert_ico.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_images_image.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_images_image.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_increase.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_increase.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_unionpay.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_unionpay.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_images_group.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_images_group.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_colorimages_purplle_viewplanbg_purple.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_colorimages_purplle_viewplanbg_purple.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_colorimages_green_search_green.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_colorimages_green_search_green.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_images_pro_plan.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_images_pro_plan.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_prev_dark.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_prev_dark.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_send_arrow.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_send_arrow.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_matches_light.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_matches_light.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_wine_glass.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_wine_glass.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_beer.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_beer.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_images_planbg_1.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_images_planbg_1.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_download_dark.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_download_dark.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_youtube.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_youtube.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_headphones.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_headphones.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-xhdpi_node_modules_reactnativevideocontrols_assets_img_play.png.flat",
+        "source": "com.dating_app-react-30:/drawable-xhdpi/node_modules_reactnativevideocontrols_assets_img_play.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_walking.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_walking.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_colorimages_yellow_on_switchs_yellow.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_colorimages_yellow_on_switchs_yellow.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_colorimages_purplle_search_purple.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_colorimages_purplle_search_purple.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_node_modules_reactnativevideocontrols_assets_img_back.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/node_modules_reactnativevideocontrols_assets_img_back.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_colorimages_purplle_gift_purple.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_colorimages_purplle_gift_purple.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-hdpi_node_modules_reactnativecalendars_src_calendar_img_next.png.flat",
+        "source": "com.dating_app-react-30:/drawable-hdpi/node_modules_reactnativecalendars_src_calendar_img_next.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_node_modules_reactnativecalendars_src_img_up.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/node_modules_reactnativecalendars_src_img_up.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_cocktail.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_cocktail.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_lectern.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_lectern.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/raw_src_assets_images_big_buck_bunny_720p_1mb.mp4.flat",
+        "source": "com.dating_app-react-30:/raw/src_assets_images_big_buck_bunny_720p_1mb.mp4"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_colorimages_green_bg2_green.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_colorimages_green_bg2_green.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_colorimages_purplle_bg1_purple.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_colorimages_purplle_bg1_purple.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_images_rectangle1.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_images_rectangle1.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_like_dark2.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_like_dark2.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/mipmap-mdpi_ic_launcher.png.flat",
+        "source": "com.dating_app-main-36:/mipmap-mdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_node_modules_reactnativevideocontrols_assets_img_bottomvignette.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/node_modules_reactnativevideocontrols_assets_img_bottomvignette.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_node_modules_reactnavigation_elements_src_assets_backicon.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/node_modules_reactnavigation_elements_src_assets_backicon.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_green_diactive.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_green_diactive.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_picnic_basket.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_picnic_basket.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_colorimages_blue_bg2_blue.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_colorimages_blue_bg2_blue.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_colorimages_green_check_green.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_colorimages_green_check_green.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_colorimages_yellow_search_yellow.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_colorimages_yellow_search_yellow.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-xxxhdpi_node_modules_reactnativecalendars_src_calendar_img_previous.png.flat",
+        "source": "com.dating_app-react-30:/drawable-xxxhdpi/node_modules_reactnativecalendars_src_calendar_img_previous.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_close_dark.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_close_dark.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-xxxhdpi_node_modules_reactnavigation_elements_src_assets_backicon.png.flat",
+        "source": "com.dating_app-react-30:/drawable-xxxhdpi/node_modules_reactnavigation_elements_src_assets_backicon.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/mipmap-hdpi_ic_launcher_round.png.flat",
+        "source": "com.dating_app-main-36:/mipmap-hdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_love.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_love.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_home_icons_gallery.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_home_icons_gallery.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-xxhdpi_node_modules_reactnativevideocontrols_assets_img_pause.png.flat",
+        "source": "com.dating_app-react-30:/drawable-xxhdpi/node_modules_reactnativevideocontrols_assets_img_pause.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_home_icons_video_marketing.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_home_icons_video_marketing.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_images_notes.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_images_notes.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-xxxhdpi_node_modules_reactnativecalendars_src_calendar_img_next.png.flat",
+        "source": "com.dating_app-react-30:/drawable-xxxhdpi/node_modules_reactnativecalendars_src_calendar_img_next.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_trash.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_trash.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-xxhdpi_node_modules_reactnavigation_elements_src_assets_backicon.png.flat",
+        "source": "com.dating_app-react-30:/drawable-xxhdpi/node_modules_reactnavigation_elements_src_assets_backicon.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_back_dark.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_back_dark.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_other_gen.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_other_gen.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-xxhdpi_node_modules_reactnativecalendars_src_calendar_img_next.png.flat",
+        "source": "com.dating_app-react-30:/drawable-xxhdpi/node_modules_reactnativecalendars_src_calendar_img_next.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_colorimages_yellow_card_yellow.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_colorimages_yellow_card_yellow.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_teddy_bear.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_teddy_bear.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_lightt.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_lightt.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-xxxhdpi_node_modules_reactnativecalendars_src_img_up.png.flat",
+        "source": "com.dating_app-react-30:/drawable-xxxhdpi/node_modules_reactnativecalendars_src_img_up.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_red_diactive.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_red_diactive.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_add_media.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_add_media.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_home_icons_home.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_home_icons_home.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_colorimages_yellow_chat_yellow.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_colorimages_yellow_chat_yellow.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_clapperboard.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_clapperboard.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_beach_chair.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_beach_chair.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_home_icons_edit.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_home_icons_edit.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_book.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_book.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_colorimages_blue_on_switchs_blue.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_colorimages_blue_on_switchs_blue.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_colorimages_purplle_chat_purple1.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_colorimages_purplle_chat_purple1.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_images_splesh_new.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_images_splesh_new.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_colorimages_purplle_on_switchs_purple.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_colorimages_purplle_on_switchs_purple.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_polo.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_polo.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_brightness.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_brightness.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-xxhdpi_node_modules_reactnativevideocontrols_assets_img_shrink.png.flat",
+        "source": "com.dating_app-react-30:/drawable-xxhdpi/node_modules_reactnativevideocontrols_assets_img_shrink.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_colorimages_yellow_off_switchs_yellow.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_colorimages_yellow_off_switchs_yellow.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_cropico.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_cropico.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/mipmap-mdpi_ic_launcher_round.png.flat",
+        "source": "com.dating_app-main-36:/mipmap-mdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_location.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_location.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_google.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_google.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_man_1.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_man_1.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_send_light2.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_send_light2.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-xhdpi_node_modules_reactnativevideocontrols_assets_img_shrink.png.flat",
+        "source": "com.dating_app-react-30:/drawable-xhdpi/node_modules_reactnativevideocontrols_assets_img_shrink.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_settings_dark.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_settings_dark.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_matche_dark.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_matche_dark.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-xxhdpi_node_modules_reactnativevideocontrols_assets_img_bottomvignette.png.flat",
+        "source": "com.dating_app-react-30:/drawable-xxhdpi/node_modules_reactnativevideocontrols_assets_img_bottomvignette.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_maps.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_maps.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_men_dark.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_men_dark.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_instagram.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_instagram.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_equality.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_equality.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_check.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_check.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_colorimages_purplle_check_purple.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_colorimages_purplle_check_purple.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_colorimages_green_sliderimage_green.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_colorimages_green_sliderimage_green.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-xxhdpi_node_modules_reactnativecalendars_src_calendar_img_previous.png.flat",
+        "source": "com.dating_app-react-30:/drawable-xxhdpi/node_modules_reactnativecalendars_src_calendar_img_previous.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_send_darkk.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_send_darkk.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_n_sidebar.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_n_sidebar.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_herbal_tea.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_herbal_tea.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_search_3.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_search_3.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_notifyy.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_notifyy.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_sliderimage.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_sliderimage.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-xhdpi_node_modules_reactnativecalendars_src_img_up.png.flat",
+        "source": "com.dating_app-react-30:/drawable-xhdpi/node_modules_reactnativecalendars_src_img_up.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_images_unsplash_1.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_images_unsplash_1.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_node_modules_reactnativevideocontrols_assets_img_play.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/node_modules_reactnativevideocontrols_assets_img_play.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_node_modules_reactnativevideocontrols_assets_img_pause.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/node_modules_reactnativevideocontrols_assets_img_pause.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_colorimages_blue_addpic_blue.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_colorimages_blue_addpic_blue.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_twitter.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_twitter.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_chattype1.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_chattype1.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_check_red.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_check_red.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_link.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_link.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_books.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_books.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_f_switchs_off.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_f_switchs_off.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_images_profile.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_images_profile.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_colorimages_green_bg3_green.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_colorimages_green_bg3_green.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_colorimages_green_gift_green.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_colorimages_green_gift_green.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_clock.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_clock.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_menus.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_menus.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_red_active.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_red_active.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_t_bttn.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_t_bttn.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_images_bg_dark1.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_images_bg_dark1.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_images_card_1.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_images_card_1.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_home_icons_profile.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_home_icons_profile.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_dice.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_dice.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_images_unsplash_2.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_images_unsplash_2.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_images_plan.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_images_plan.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_photography.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_photography.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_colorimages_yellow_planbg_yellow.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_colorimages_yellow_planbg_yellow.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_colorimages_blue_viewplanbg_blue.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_colorimages_blue_viewplanbg_blue.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_m_user_light.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_m_user_light.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_credit_card.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_credit_card.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_colorimages_yellow_bg3_yellow.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_colorimages_yellow_bg3_yellow.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-hdpi_node_modules_reactnativecalendars_src_img_down.png.flat",
+        "source": "com.dating_app-react-30:/drawable-hdpi/node_modules_reactnativecalendars_src_img_down.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_edit_cio.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_edit_cio.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_like_match.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_like_match.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_apple.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_apple.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_fingerprint_1.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_fingerprint_1.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_nature.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_nature.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_pizza.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_pizza.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_f_switchs.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_f_switchs.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-xhdpi_node_modules_reactnavigation_elements_src_assets_backicon.png.flat",
+        "source": "com.dating_app-react-30:/drawable-xhdpi/node_modules_reactnavigation_elements_src_assets_backicon.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_colorimages_blue_card_blue.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_colorimages_blue_card_blue.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_user_outline.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_user_outline.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_alert.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_alert.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-hdpi_node_modules_reactnavigation_elements_src_assets_backicon.png.flat",
+        "source": "com.dating_app-react-30:/drawable-hdpi/node_modules_reactnavigation_elements_src_assets_backicon.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_eyeshow.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_eyeshow.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_flower.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_flower.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_colorimages_green_addpic_green.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_colorimages_green_addpic_green.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_images_tab_bg1.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_images_tab_bg1.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_theater.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_theater.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_yellow_active.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_yellow_active.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_images_insta_bg.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_images_insta_bg.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_images_pro_plan_dark.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_images_pro_plan_dark.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_colorimages_purplle_bg3_purple.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_colorimages_purplle_bg3_purple.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_node_modules_reactnativepaper_src_assets_backchevron.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/node_modules_reactnativepaper_src_assets_backchevron.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-xhdpi_node_modules_reactnativecalendars_src_calendar_img_next.png.flat",
+        "source": "com.dating_app-react-30:/drawable-xhdpi/node_modules_reactnativecalendars_src_calendar_img_next.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_colorimages_green_card_green.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_colorimages_green_card_green.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_node_modules_reactnativeelementdropdown_src_assets_down.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/node_modules_reactnativeelementdropdown_src_assets_down.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_united_kingdom.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_united_kingdom.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_m_more.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_m_more.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-xhdpi_node_modules_reactnativevideocontrols_assets_img_back.png.flat",
+        "source": "com.dating_app-react-30:/drawable-xhdpi/node_modules_reactnativevideocontrols_assets_img_back.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_rumba.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_rumba.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_search.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_search.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_home_icons_focus.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_home_icons_focus.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_art_and_design.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_art_and_design.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_translation.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_translation.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_woman.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_woman.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_images_group12.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_images_group12.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_images_fb_bg.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_images_fb_bg.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_manuscript.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_manuscript.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_images_unsplash_3.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_images_unsplash_3.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_colorimages_yellow_viewplanbg_yellow.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_colorimages_yellow_viewplanbg_yellow.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_images_twitter_bg.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_images_twitter_bg.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_jcb.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_jcb.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_colorimages_green_bg1_green.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_colorimages_green_bg1_green.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_mirror_ball.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_mirror_ball.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_purple_diactive.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_purple_diactive.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_relationshiptype1.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_relationshiptype1.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_plan_flower1.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_plan_flower1.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_colorimages_blue_search_blue.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_colorimages_blue_search_blue.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_images_card_darkk.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_images_card_darkk.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_console.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_console.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-xhdpi_node_modules_reactnativevideocontrols_assets_img_bottomvignette.png.flat",
+        "source": "com.dating_app-react-30:/drawable-xhdpi/node_modules_reactnativevideocontrols_assets_img_bottomvignette.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-xxhdpi_node_modules_reactnativevideocontrols_assets_img_topvignette.png.flat",
+        "source": "com.dating_app-react-30:/drawable-xxhdpi/node_modules_reactnativevideocontrols_assets_img_topvignette.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_colorimages_blue_chat_blue1.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_colorimages_blue_chat_blue1.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-xxhdpi_node_modules_reactnativevideocontrols_assets_img_loadericon.png.flat",
+        "source": "com.dating_app-react-30:/drawable-xxhdpi/node_modules_reactnativevideocontrols_assets_img_loadericon.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_colorimages_green_chat_green1.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_colorimages_green_chat_green1.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_colorimages_yellow_sliderimage_yellow.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_colorimages_yellow_sliderimage_yellow.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_pina_colada.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_pina_colada.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_download_light.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_download_light.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_sports.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_sports.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_colorimages_blue_check_blue.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_colorimages_blue_check_blue.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_delete_icon.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_delete_icon.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_colorimages_purplle_chat_purple.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_colorimages_purplle_chat_purple.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_hot_coffee.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_hot_coffee.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_br_theme.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_br_theme.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_saturationico.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_saturationico.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-xhdpi_node_modules_reactnativecalendars_src_calendar_img_previous.png.flat",
+        "source": "com.dating_app-react-30:/drawable-xhdpi/node_modules_reactnativecalendars_src_calendar_img_previous.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-xhdpi_node_modules_reactnativecalendars_src_img_down.png.flat",
+        "source": "com.dating_app-react-30:/drawable-xhdpi/node_modules_reactnativecalendars_src_img_down.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_c_plus.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_c_plus.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_images_unsplash_4.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_images_unsplash_4.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_ecology.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_ecology.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_matches.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_matches.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_table.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_table.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_micro.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_micro.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_circle.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_circle.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_search_2.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_search_2.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_node_modules_reactnavigation_elements_src_assets_backiconmask.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/node_modules_reactnavigation_elements_src_assets_backiconmask.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_museum.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_museum.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/mipmap-xxxhdpi_ic_launcher_round.png.flat",
+        "source": "com.dating_app-main-36:/mipmap-xxxhdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_images_addpic.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_images_addpic.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_colorimages_purplle_bg2_purple.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_colorimages_purplle_bg2_purple.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_images_viewplanbg.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_images_viewplanbg.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-xhdpi_node_modules_reactnativevideocontrols_assets_img_loadericon.png.flat",
+        "source": "com.dating_app-react-30:/drawable-xhdpi/node_modules_reactnativevideocontrols_assets_img_loadericon.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_woman_1.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_woman_1.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_contrast.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_contrast.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_colorimages_blue_gift_blue.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_colorimages_blue_gift_blue.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_architecture.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_architecture.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_baby_carriage.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_baby_carriage.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_like.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_like.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_matches_dark.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_matches_dark.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_zoo.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_zoo.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_check456.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_check456.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_visa_inc_logo.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_visa_inc_logo.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_colorimages_yellow_bg1_yellow.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_colorimages_yellow_bg1_yellow.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_images_card_2.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_images_card_2.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-xhdpi_node_modules_reactnativevideocontrols_assets_img_expand.png.flat",
+        "source": "com.dating_app-react-30:/drawable-xhdpi/node_modules_reactnativevideocontrols_assets_img_expand.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_colorimages_yellow_addpic_yellow.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_colorimages_yellow_addpic_yellow.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_images_bg_dark2.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_images_bg_dark2.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_favourites.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_favourites.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_images_unsplash_6.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_images_unsplash_6.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_diners.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_diners.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_colormssg.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_colormssg.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_typed.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_typed.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_colorimages_purplle_sliderimage_purple.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_colorimages_purplle_sliderimage_purple.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-xxhdpi_node_modules_reactnativevideocontrols_assets_img_back.png.flat",
+        "source": "com.dating_app-react-30:/drawable-xxhdpi/node_modules_reactnativevideocontrols_assets_img_back.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-xhdpi_node_modules_reactnativevideocontrols_assets_img_erroricon.png.flat",
+        "source": "com.dating_app-react-30:/drawable-xhdpi/node_modules_reactnativevideocontrols_assets_img_erroricon.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_colorimages_yellow_chat_yellow1.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_colorimages_yellow_chat_yellow1.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-xxhdpi_node_modules_reactnativevideocontrols_assets_img_volume.png.flat",
+        "source": "com.dating_app-react-30:/drawable-xxhdpi/node_modules_reactnativevideocontrols_assets_img_volume.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_colorimages_purplle_addpic_purple.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_colorimages_purplle_addpic_purple.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_information.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_information.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_node_modules_reactnativevideocontrols_assets_img_loadericon.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/node_modules_reactnativevideocontrols_assets_img_loadericon.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-xxhdpi_node_modules_reactnativevideocontrols_assets_img_erroricon.png.flat",
+        "source": "com.dating_app-react-30:/drawable-xxhdpi/node_modules_reactnativevideocontrols_assets_img_erroricon.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_account.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_account.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_calendar.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_calendar.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_colorimages_blue_planbg_blue.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_colorimages_blue_planbg_blue.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_dog.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_dog.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_colorimages_blue_sliderimage_bluer.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_colorimages_blue_sliderimage_bluer.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_node_modules_reactnativecalendars_src_img_down.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/node_modules_reactnativecalendars_src_img_down.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_next_dark.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_next_dark.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_mastercard.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_mastercard.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_edit_pen.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_edit_pen.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_colorimages_purplle_card_purple.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_colorimages_purplle_card_purple.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_facebook_1.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_facebook_1.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_node_modules_reactnativevideocontrols_assets_img_expand.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/node_modules_reactnativevideocontrols_assets_img_expand.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-xhdpi_node_modules_reactnativevideocontrols_assets_img_pause.png.flat",
+        "source": "com.dating_app-react-30:/drawable-xhdpi/node_modules_reactnativevideocontrols_assets_img_pause.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_cooking.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_cooking.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_like_dark.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_like_dark.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_discover.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_discover.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_images_profile2.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_images_profile2.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_eyehide.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_eyehide.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_colorimages_green_off_switchs_green.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_colorimages_green_off_switchs_green.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable_rn_edit_text_material.xml.flat",
+        "source": "com.dating_app-main-36:/drawable/rn_edit_text_material.xml"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_cigarrete.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_cigarrete.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_netinfo23.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_netinfo23.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_link_red.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_link_red.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_edit_white.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_edit_white.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_play_video.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_play_video.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_node_modules_reactnativevideocontrols_assets_img_topvignette.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/node_modules_reactnativevideocontrols_assets_img_topvignette.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_checked.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_checked.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_colorimages_blue_off_switchs_blue.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_colorimages_blue_off_switchs_blue.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_images_planbg.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_images_planbg.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_colorimages_purplle_off_switchs_purple.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_colorimages_purplle_off_switchs_purple.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_sheet_arrow.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_sheet_arrow.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_interpayment.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_interpayment.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_close_immg.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_close_immg.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_colorimages_blue_bg1_blue.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_colorimages_blue_bg1_blue.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_aeroplane.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_aeroplane.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_p_sidebar.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_p_sidebar.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_colorimages_blue_c_plus_blue.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_colorimages_blue_c_plus_blue.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_colorimages_blue_chat_blue.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_colorimages_blue_chat_blue.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_m_chats.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_m_chats.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_match_u_dark.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_match_u_dark.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_paypal.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_paypal.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_facebook.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_facebook.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_shopping_bags.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_shopping_bags.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_images_bg_dark3.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_images_bg_dark3.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_green_active.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_green_active.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_images_dar_home.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_images_dar_home.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_icecream.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_icecream.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_colorimages_green_planbg_green.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_colorimages_green_planbg_green.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_chat_popuv.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_chat_popuv.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_images_viewplanbg_dark.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_images_viewplanbg_dark.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/mipmap-hdpi_ic_launcher.png.flat",
+        "source": "com.dating_app-main-36:/mipmap-hdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_maestro.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_maestro.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_close.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_close.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_yellow_diactive.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_yellow_diactive.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_images_unsplash_5.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_images_unsplash_5.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-xhdpi_node_modules_reactnativevideocontrols_assets_img_topvignette.png.flat",
+        "source": "com.dating_app-react-30:/drawable-xhdpi/node_modules_reactnativevideocontrols_assets_img_topvignette.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_purple_active.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_purple_active.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_colorimages_green_chat_green.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_colorimages_green_chat_green.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_colorimages_yellow_bg2_yellow.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_colorimages_yellow_bg2_yellow.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_colorimages_purplle_planbg_purple.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_colorimages_purplle_planbg_purple.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_chevron_down_ico.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_chevron_down_ico.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_colorimages_green_on_switchs_green.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_colorimages_green_on_switchs_green.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/mipmap-xhdpi_ic_launcher.png.flat",
+        "source": "com.dating_app-main-36:/mipmap-xhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-xxxhdpi_node_modules_reactnativecalendars_src_img_down.png.flat",
+        "source": "com.dating_app-react-30:/drawable-xxxhdpi/node_modules_reactnativecalendars_src_img_down.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_china.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_china.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_plan_flower2.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_plan_flower2.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_akar.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_akar.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_electron.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_electron.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-hdpi_node_modules_reactnativecalendars_src_calendar_img_previous.png.flat",
+        "source": "com.dating_app-react-30:/drawable-hdpi/node_modules_reactnativecalendars_src_calendar_img_previous.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_node_modules_reactnativevideocontrols_assets_img_erroricon.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/node_modules_reactnativevideocontrols_assets_img_erroricon.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_camera.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_camera.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_blue_active.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_blue_active.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-xhdpi_node_modules_reactnativevideocontrols_assets_img_volume.png.flat",
+        "source": "com.dating_app-react-30:/drawable-xhdpi/node_modules_reactnativevideocontrols_assets_img_volume.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_colorimages_yellow_c_plus_yellow.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_colorimages_yellow_c_plus_yellow.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-xxhdpi_node_modules_reactnativevideocontrols_assets_img_expand.png.flat",
+        "source": "com.dating_app-react-30:/drawable-xxhdpi/node_modules_reactnativevideocontrols_assets_img_expand.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_home_icons_love.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_home_icons_love.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_amax.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_amax.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_node_modules_reactnativeelementdropdown_src_assets_close.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/node_modules_reactnativeelementdropdown_src_assets_close.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_colorimages_yellow_gift_yellow.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_colorimages_yellow_gift_yellow.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_home_icons_messages.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_home_icons_messages.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-35:/drawable-mdpi_src_assets_icons_back.png.flat",
+        "source": "com.dating_app-react-30:/drawable-mdpi/src_assets_icons_back.png"
+    }
+]
