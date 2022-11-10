@@ -3,7 +3,7 @@ import React from 'react';
 import TextFormatted from './TextFormatted';
 import {useNavigation} from '@react-navigation/native';
 import {useSelector} from 'react-redux';
-const Header = ({title, left, marginTop, onPress, right}) => {
+const Header = ({title, left, marginTop, onPress, right,}) => {
   const navigation = useNavigation();
   const ThemeMode = useSelector(state => state.Theme);
   return (
@@ -34,7 +34,7 @@ const Header = ({title, left, marginTop, onPress, right}) => {
           color: '#fff',
           flex: 1,
           textAlign: 'center',
-          marginRight: left ? 0 : 40,
+        //  marginRight: T_marginRight || (left ? 0 : 40),
         }}>
         {title}
       </TextFormatted>

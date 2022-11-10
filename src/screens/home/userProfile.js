@@ -22,6 +22,7 @@ import {useRoute} from '@react-navigation/native';
 import ActivityLoader from '../../components/ActivityLoader';
 import axios from 'axios';
 import Netinforsheet from '../../components/Netinforsheet';
+import FastImage from 'react-native-fast-image';
 const UserProfile = ({navigation}) => {
   const ThemeMode = useSelector(state => state.Theme);
   const Staps = useSelector(state => state.Stap);
@@ -193,8 +194,8 @@ const UserProfile = ({navigation}) => {
                   textAlign: 'center',
                   marginTop: 3,
                 }}>
-                {calculate_age(Userdata?.dob)}
-                years old
+                {calculate_age(Userdata?.dob)} 
+                  years old
               </TextFormatted>
             </HeaderImage>
             <TouchableOpacity
@@ -367,6 +368,7 @@ const UserProfile = ({navigation}) => {
                                 (i != 0 && i != 2) || (
                                   <TouchableOpacity
                                     style={{
+                                 
                                       marginTop: 20,
                                       marginHorizontal: 10,
                                       alignSelf: 'flex-end',
@@ -377,15 +379,22 @@ const UserProfile = ({navigation}) => {
                                         Userphoto: Userpost,
                                       })
                                     }>
-                                    <Image
-                                      source={{uri: v.image}}
-                                      style={{
-                                        width: (dimension.width - 50) / 2,
-                                        height: i == 0 ? 230 : 337,
-                                        resizeMode: 'cover',
-                                        borderRadius: 20,
-                                      }}
-                                    />
+
+                             <FastImage
+                              
+                                source={{
+                                  uri: v?.image,
+                                  priority: FastImage.priority.normal,
+                                }}
+                                resizeMode={FastImage.resizeMode.cover}
+                                style={{
+                                 
+                                  width: (dimension.width - 50) / 2,
+                                  height: i == 0 ? 230 : 337,                             
+                                  borderRadius: 20,
+                                }}
+                              />
+                                  
                                   </TouchableOpacity>
                                 ),
                             )}
@@ -398,6 +407,7 @@ const UserProfile = ({navigation}) => {
                                     style={{
                                       marginTop: 20,
                                       marginHorizontal: 10,
+                                 
                                     }}
                                     onPress={() =>
                                       navigation.navigate('viewImage', {
@@ -405,16 +415,23 @@ const UserProfile = ({navigation}) => {
                                         Userphoto: Userpost,
                                       })
                                     }>
-                                    <Image
-                                      source={{uri: v.image}}
-                                      style={{
-                                        width: (dimension.width - 50) / 2,
-                                        height:
-                                          i == 1 ? 166 : i == 3 ? 238 : 143,
-                                        resizeMode: 'cover',
-                                        borderRadius: 20,
-                                      }}
-                                    />
+                                
+
+<FastImage
+                              
+                              source={{
+                                uri: v?.image,
+                                priority: FastImage.priority.normal,
+                              }}
+                              resizeMode={FastImage.resizeMode.cover}
+                              style={{
+                                width: (dimension.width - 50) / 2,
+                                height:
+                                  i == 1 ? 166 : i == 3 ? 238 : 143,
+                               
+                                borderRadius: 20,
+                              }}
+                            />
                                   </TouchableOpacity>
                                 ),
                             )}
@@ -422,7 +439,7 @@ const UserProfile = ({navigation}) => {
                         </View>
                         {Userpost?.map(
                           (v, i) =>
-                            i != 5 || (
+                            i >= 5 || (
                               <TouchableOpacity
                                 style={{marginTop: 20, alignSelf: 'center'}}
                                 onPress={() =>
@@ -431,15 +448,20 @@ const UserProfile = ({navigation}) => {
                                     Userphoto: Userpost,
                                   })
                                 }>
-                                <Image
-                                  source={{uri: v.image}}
-                                  style={{
-                                    width: dimension.width - 40,
-                                    height: 143,
-                                    resizeMode: 'cover',
-                                    borderRadius: 20,
-                                  }}
-                                />
+                              
+
+                            <FastImage                              
+                              source={{
+                                uri: v?.image,
+                                priority: FastImage.priority.normal,
+                              }}
+                              resizeMode={FastImage.resizeMode.cover}
+                              style={{
+                                width: dimension.width - 40,
+                                    height: 143,                               
+                                borderRadius: 20,
+                              }}
+                            />
                               </TouchableOpacity>
                             ),
                         )}
@@ -461,26 +483,35 @@ const UserProfile = ({navigation}) => {
                       ? theme.colors.primaryBlack
                       : theme.colors.primary,
                     marginLeft: 40,
+                    marginBottom:10
                   }}>
                   Passions
                 </TextFormatted>
                 <FlatList
                   data={Userdata?.category}
                   horizontal
-                  style={{paddingHorizontal: 10}}
+                  style={{paddingHorizontal: 10,marginRight:10}}
                   showsHorizontalScrollIndicator={false}
                   renderItem={({item}) => (
                     <View
-                      style={{
-                        height: 100,
-                        width: 100,
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                      }}>
-                      <Image
-                        source={{uri: item?.image}}
-                        style={{height: 50, width: 50, resizeMode: 'contain'}}
-                      />
+                    style={{
+                      // height: 100,
+                      // width: 100,
+                      justifyContent: 'center',
+                      alignItems: 'center',
+                marginLeft:20,
+                   
+                    }}>
+                    
+                      <FastImage
+                              
+                              source={{
+                                uri: item?.image,
+                                priority: FastImage.priority.normal,
+                              }}
+                              resizeMode={FastImage.resizeMode.contain}
+                              style={{height: 50, width: 50, }}
+                            />
                       <TextFormatted
                         style={{
                           fontSize: 16,

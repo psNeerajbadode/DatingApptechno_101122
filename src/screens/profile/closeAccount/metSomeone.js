@@ -26,8 +26,7 @@ const MetSomeone = ({refRBSheet}) => {
       'https://technorizen.com/Dating/webservice/delete_account?user_id=' +
         Staps.id +
         '&' +
-        'reason=' +
-        'I need a break',
+        'reason=I need a break',
         {  method: 'post',   headers: {
           'content-type': 'multipart/form-data',
         }},

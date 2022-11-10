@@ -21,6 +21,7 @@ const HeaderImage_1 = ({children, height, marginBottom, source}) => {
         width: '100%',
         paddingTop: 30,
         marginBottom: marginBottom || 15,
+    
       }}
       source={
         source || ThemeMode.themecolr == 'Red'

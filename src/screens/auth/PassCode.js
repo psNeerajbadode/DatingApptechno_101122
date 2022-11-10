@@ -29,6 +29,7 @@ const PassCode = () => {
     const Val_array = [...passcode];
     Val_array.pop();
     setPasscode(Val_array);
+    console.log('Val_array',Val_array);
   };
   function App_passcode() {
     if (Staps.app_dashboard_pass == passcode.join('')) {
@@ -156,9 +157,9 @@ const PassCode = () => {
             .fill('')
             .map((_, i) => (
               <TouchableOpacity
-                disabled={passcode.length == 4 ? true : false}
+                disabled={passcode.length == 4  ? true : false}
                 onPress={() =>
-                  setPasscode(prevState => [...prevState, i == 10 ? 0 : i + 1])
+                  setPasscode(prevState => [...prevState,  i == 10 ? 0 : (i != 9 && i + 1)])
                 }
                 style={{width: 40, marginHorizontal: 30, marginVertical: 10}}>
                 <TextFormatted
@@ -171,7 +172,7 @@ const PassCode = () => {
                     fontWeight: '400',
                   }}>
                   {i == 9 ? (
-                    <TouchableOpacity onPress={() => Removeval()}>
+                    <TouchableOpacity  onPress={() => Removeval()}>
                       <Image
                         resizeMode="contain"
                         source={require('../../assets/icons/sheet_arrow.png')}
@@ -185,13 +186,13 @@ const PassCode = () => {
                   ) : i == 10 ? (
                     0
                   ) : (
-                    i + 1
+                    i + 1 
                   )}
                 </TextFormatted>
               </TouchableOpacity>
             ))}
 
-          <TouchableOpacity
+         {/*  <TouchableOpacity
             style={{marginLeft: 24}}
             onPress={() => navigation.replace('FingerPrint')}>
             <Image
@@ -203,7 +204,7 @@ const PassCode = () => {
                 tintColor: '#000',
               }}
             />
-          </TouchableOpacity>
+          </TouchableOpacity> */}
           {/* )} */}
         </View>
       </ScrollView>

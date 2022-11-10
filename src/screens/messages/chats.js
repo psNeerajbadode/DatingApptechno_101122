@@ -162,9 +162,6 @@ const Chats = () => {
   };
 
   useEffect(() => {
-    /*  setTimeout(() => {
-      
-    }, timeout); */
     setInterval(() => {
       Getchat_api();
     }, 5000);
@@ -179,14 +176,14 @@ const Chats = () => {
     if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
       age_now--;
     }
-    // console.log(age_now);
+
     return age_now;
   };
-  console.log('params', params.SenderId);
+ 
   return (
     <View style={{flex: 1, backgroundColor: '#fff'}}>
       <HeaderImage_1 height={150} marginBottom={1}>
-        <Header
+        <Header 
           marginTop={18}
           title={Staps.user_name + ', ' + calculate_age()}
           right={

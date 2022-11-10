@@ -113,7 +113,7 @@ const ChatList = () => {
   useEffect(() => {
     ChatUser();
   }, []);
-  console.log('Chatuser', Chatuser);
+  console.log('Chatuserbxcbcb==========>',Chatuser == null);
   return (
     <View
       style={{
@@ -199,17 +199,18 @@ const ChatList = () => {
         <View style={{flex: 1, justifyContent: 'center'}}>
           <ActivityLoader />
         </View>
-      ) : Chatuser == '' ? (
+      ) : Chatuser == null ? (
         <View>
           <TextFormatted
             style={{
-              fontSize: 14,
+              fontSize: 18,
               fontWeight: '700',
               color: ThemeMode.selectedTheme
                 ? theme.colors.primaryBlack
                 : theme.colors.primary,
               marginHorizontal: 20,
-              marginTop: 20,
+              marginTop: 30,
+              alignSelf:'center'
             }}>
             There are no Recent Data
           </TextFormatted>
@@ -217,7 +218,7 @@ const ChatList = () => {
       ) : (
         <FlatList
           contentContainerStyle={{paddingBottom: 60}}
-          data={Chatuser.filter(item => {
+          data={Chatuser?.filter(item => {
             return item.user_name.toLowerCase().includes(search.toLowerCase());
           })}
           showsVerticalScrollIndicator={false}
@@ -247,7 +248,7 @@ const ChatList = () => {
                       navigation.navigate('userProfile', item?.id)
                     }>
                     <Image
-                      source={{uri: item.image}}
+                      source={{uri: item?.image}}
                       style={{
                         height: 70,
                         width: 70,
@@ -344,7 +345,7 @@ const ChatList = () => {
                       ? theme.colors.primaryBlack
                       : theme.colors.primary,
                   }}>
-                  {item.user_name + item.surname}
+                  {item?.user_name + item?.surname}
                 </TextFormatted>
                 <TextFormatted
                   numberOfLines={1}
@@ -354,7 +355,7 @@ const ChatList = () => {
                     color: '#8490AE',
                     marginTop: 9,
                   }}>
-                  {item.last_message}
+                  {item?.last_message}
                 </TextFormatted>
               </View>
               <TextFormatted
@@ -364,7 +365,7 @@ const ChatList = () => {
                   color: '#8490AE',
                   height: 40,
                 }}>
-                {item.time_ago}
+                {item?.time_ago}
               </TextFormatted>
             </TouchableOpacity>
           )}

@@ -31,10 +31,10 @@ const Images = () => {
   const dimension = useWindowDimensions();
   const ThemeMode = useSelector(state => state.Theme);
   const Staps = useSelector(state => state.Stap);
-  console.log('Staps',Staps.id);
   const [User, setUser] = useState();
   const [Loading, setLoading] = useState(false);
   const [uri, setUri] = useState();
+  const refRBSheet = useRef();
   const photos = [
     {img: require('../../../assets/images/unsplash_1.png')},
     {img: require('../../../assets/images/unsplash_2.png')},
@@ -44,7 +44,7 @@ const Images = () => {
     {img: require('../../../assets/images/unsplash_6.png')},
   ];
   
-  const refRBSheet = useRef();
+
   const pickImage = () => {
     launchImageLibrary({quality: 0.9}, response => {
       if (!response.didCancel) {       
@@ -56,10 +56,8 @@ const Images = () => {
   const picCamera = () => {
     launchCamera({}, response => {
       if (!response.didCancel) {
-        setUri(response.assets);
-    
-          AddImage_api(response.assets)
-        
+        setUri(response.assets);    
+          AddImage_api(response.assets)        
       }
     });
   };
@@ -78,58 +76,36 @@ const Images = () => {
     });
   };
 
-  const delete_account_api = () => {
-    setLoading(true);
-    fetch(
-      'https://technorizen.com/Dating/webservice/add_image_post?' +
-        Staps.id +
-        '&' +
-        'image=',
-
-      {method: 'post',   headers: {
-        'content-type': 'multipart/form-data',
-      }},
-    )
-      .then(response => response.json())
-      .then(response => {
-        console.log("response=>",response);
-        if (response.status == 1) {
-          navigation.replace('authNavigation');
-          dispatch({type: LOGOUT, payload: null});
-          setLoading(false);
-        } else {
-          setLoading(false);
-        }
-      });
-  };
-
-
+ 
+console.log('User=========>',User);
   
 
   const AddImage_api = (data) => {
+   
     try {
       setLoading(true);
       const body = new FormData();
       body.append('user_id', Staps.id);
       body.append('image', {
-        name: data.fileName,          
-        type: data.type,
-        uri: data.uri
+        name: data[0].fileName,          
+        type: data[0].type,
+        uri: data[0].uri
       });
 
       axios({
         url: 'https://technorizen.com/Dating/webservice/add_image_post',
         method: 'POST',
-        data: body,
+       
         headers: {
           'content-type': 'multipart/form-data',
         },
+        data: body,
       })
         .then(function (response) {
-          console.log('image Api', response);
+          console.log('image Api', response.data.result);
           if (response.status == 1) {
-            setLoading(false);
-            getUserData();     
+            getUserData();   
+            setLoading(false);            
             ShowToast('Images add successfully')
           } else {
             setLoading(false);
@@ -239,6 +215,7 @@ const Images = () => {
                           marginTop: 20,
                           marginHorizontal: 10,
                           alignSelf: 'flex-end',
+                         
                         }}
                         onPress={() =>
                           navigation.navigate('viewSelfMedia', {
@@ -258,6 +235,7 @@ const Images = () => {
                                   width: (dimension.width - 50) / 2,
                                   height: 253,                                
                                   borderRadius: 20,
+                                  
                                 }}
                               />
                       

@@ -7,16 +7,19 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import React from 'react';
+import React,{useState,useEffect} from 'react';
 import RBSheet from 'react-native-raw-bottom-sheet';
 import TextFormatted from '../../components/TextFormatted';
 import {theme} from '../../utils/Constants';
 import {useSelector} from 'react-redux';
 import {useNavigation} from '@react-navigation/native';
+import axios from 'axios';
 
-const Notification = ({refRBSheet, Notification}) => {
+const Notification = ({refRBSheet}) => {
   const ThemeMode = useSelector(state => state.Theme);
+  const Staps = useSelector(state => state.Stap);
   const navigation = useNavigation();
+  const [notification, setNotification] = useState([]);
   const data = [
     {
       img: require('../../assets/images/profile.png'),
@@ -91,6 +94,21 @@ const Notification = ({refRBSheet, Notification}) => {
       timing: 'Yesterday',
     },
   ];
+  const Getnotification = () => {
+    axios({
+      method: 'post',
+      url:
+        'https://technorizen.com/Dating/webservice/get_notification?user_id=' +
+        Staps.id,
+    }).then(response => {    
+      setNotification(response.data.result);
+    });
+  };
+useEffect(() => {
+  Getnotification();
+}, [])
+
+  console.log('Notification',notification == '');
   return (
     <RBSheet
       ref={refRBSheet}
@@ -130,10 +148,22 @@ const Notification = ({refRBSheet, Notification}) => {
           }}
         />
       </TouchableOpacity>
+      
 
-
-      <FlatList
-        data={Notification}
+{notification == '' ?   <TextFormatted
+              style={{
+                fontSize: 16,
+                fontWeight: '700',
+                color: ThemeMode.selectedTheme
+                ? theme.colors.primaryBlack
+                : theme.colors.primary,
+                 marginTop: 20,
+                textAlign:'center'
+              }}>
+             There are no Notification
+            </TextFormatted> :
+              <FlatList
+        data={notification}
         renderItem={({item, index}) => (
         
           <TouchableOpacity
@@ -235,7 +265,8 @@ const Notification = ({refRBSheet, Notification}) => {
             </TextFormatted>
           </TouchableOpacity>
         )}
-      />
+      />}
+     
     </RBSheet>
   );
 };

@@ -201,10 +201,7 @@ const Step7 = ({navigation}) => {
                   onPress={() => {
                     if (i == 9) remove_arr();
                     else
-                      setPasscode(prevState => [
-                        ...prevState,
-                        i == 10 ? 0 : i + 1,
-                      ]);
+                    setPasscode(prevState => [...prevState,  i == 10 ? 0 : (i!=9 && i + 1)])
                   }}
                   disabled={p_length == 4 && i != 9 ? true : false}
                   style={{width: 50, marginHorizontal: 25, marginVertical: 5}}>

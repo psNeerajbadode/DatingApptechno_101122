@@ -12,6 +12,7 @@ import {useSelector} from 'react-redux';
 import {Platform} from 'react-native';
 import RNFetchBlob from 'rn-fetch-blob';
 import Netinforsheet from '../../components/Netinforsheet';
+import FastImage from 'react-native-fast-image';
 const ViewSelfMedia = () => {
   const navigation = useNavigation();
   const {params = {}} = useRoute();
@@ -101,19 +102,27 @@ const ViewSelfMedia = () => {
           />
         }>
         {params?.Signup_User == null
-          ? params?.User?.map((it, i) => (
-              /* params?.imgIndex == i && */ <Image
-                source={{uri: it.image}}
-                resizeMode="cover"
-                style={{height: '100%', width: '100%'}}
-              />
+          ? params?.User?.map((it, i) => (             
+
+              <FastImage                            
+              source={{
+             uri:it?.image,
+                priority: FastImage.priority.normal,
+              }}
+              resizeMode={FastImage.resizeMode.cover}
+              style={{height: '100%', width: '100%'}}
+            />
             ))
           : params?.Signup_User?.map((it, i) => (
-              /* params?.imgIndex == i && */ <Image
-                source={{uri: it.uri}}
-                resizeMode="cover"
-                style={{height: '100%', width: '100%'}}
-              />
+             
+              <FastImage                            
+              source={{
+             uri: it?.uri,
+                priority: FastImage.priority.normal,
+              }}
+              resizeMode={FastImage.resizeMode.cover}
+              style={{height: '100%', width: '100%'}}
+            />
             ))}
       </Swiper>
       <View

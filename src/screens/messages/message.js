@@ -35,6 +35,8 @@ const Message = ({navigation}) => {
   const [search, setSearch] = useState('');
   const dimension = useWindowDimensions();
   const refRBSheet = useRef();
+  const refRBSheet_N = useRef();
+
   const homeTab = [
     {
       icon: require('../../assets/home_icons/home.png'),
@@ -103,7 +105,7 @@ const Message = ({navigation}) => {
                   justifyContent: 'center',
                   borderRadius: 10,
                 }}
-                onPress={() => refRBSheet.current.open()}>
+                onPress={() => refRBSheet_N.current.open()}>
                 <LinearGradient
                   colors={
                     ThemeMode.themecolr == 'Red'
@@ -346,7 +348,7 @@ const Message = ({navigation}) => {
           bottom: 0,
         }}></View>
 
-      <Notification refRBSheet={refRBSheet} />
+      <Notification refRBSheet={refRBSheet_N} />
       <MoreOptions refRBSheet={refRBSheet} />
       <Netinforsheet />
     </View>

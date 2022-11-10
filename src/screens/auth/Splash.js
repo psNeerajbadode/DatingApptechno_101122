@@ -14,7 +14,7 @@ import {useSelector} from 'react-redux';
 const Splash = ({navigation}) => {
   const dimension = useWindowDimensions();
   const Staps = useSelector(state => state.Stap);
-  console.log('Staps.Leng', Staps);
+  console.log('Staps.Leng', Staps.Leng);
 
   return (
     <ImageBackground

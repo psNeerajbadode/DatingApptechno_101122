@@ -39,29 +39,36 @@ const SubmitFeedback = ({refRBSheet}) => {
     'There is no one to swipe on',
     'I have had a poor experience on',
   ];
-  const delete_account_api = () => {
-    setLoading(true);   
-      axios({
-        method: 'post',   headers: {
-          'content-type': 'multipart/form-data',
-        },
-        url:
-          'https://technorizen.com/Dating/webservice/delete_account?user_id=' +
+ 
+
+    const delete_account_api = () => {
+      setLoading(true);
+      fetch(
+        'https://technorizen.com/Dating/webservice/delete_account?user_id=' +
           Staps.id +
+          '&' +
           'reason=' +
           resion,
-      }).then(response => {
-        if (response.status == 1) {
-          navigation.replace('authNavigation');
-          dispatch({type: LOGOUT, payload: null});
-          setLoading(false);
-        } else {
-          setLoading(false);
-        }
-      });
+        {  method: 'post',   headers: {
+            'content-type': 'multipart/form-data',
+          }},
+      )
+        .then(response => response.json())
+        .then(response => {
+          console.log(response);
+          if (response.status == 1) {
+            navigation.replace('authNavigation');
+            dispatch({type: LOGOUT, payload: null});
+            setLoading(false);
+          } else {
+            setLoading(false);
+          }
+        })
+        .catch(() => {
+          console.log('ERROR GETTING DATA FROM API');
+        });
     };
-
-
+  
 
 
   return (

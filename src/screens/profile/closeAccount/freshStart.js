@@ -37,6 +37,9 @@ const FreshStart = ({refRBSheet}) => {
     'I want to reset my matches',
   ];
 
+  
+ 
+
   const delete_account_api = () => {
     setLoading(true);
     fetch(

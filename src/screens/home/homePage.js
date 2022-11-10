@@ -42,7 +42,7 @@ const HomePage = () => {
   const [plu_button, setplu_button] = useState(false);
   const [Loading, setLoading] = useState(false);
   const [Userpost, setUserpost] = useState();
-  const [notification, setNotification] = useState();
+
   const [Uindex, setUindex] = useState();
   const [ChangeIndex, setChangeIndex] = useState();
   const [appStatus, setappStatus] = useState(AppState.currentState);
@@ -180,16 +180,7 @@ const HomePage = () => {
     });
   };
 
-  const Getnotification = () => {
-    axios({
-      method: 'post',
-      url:
-        'https://technorizen.com/Dating/webservice/get_notification?user_id=' +
-        Staps.id,
-    }).then(response => {
-      setNotification(response.data.result);
-    });
-  };
+
 
   const likeApi = () => {
     try {
@@ -336,7 +327,7 @@ const HomePage = () => {
   };
 
   useEffect(() => {
-    Getnotification();
+   
     getUserPost();
     getPlanData();
     getUserProfile();
@@ -401,6 +392,7 @@ const HomePage = () => {
                     style={{
                       flex: 1,
                       height: dimension.height,
+                    
                     }}>
                     <Swiper
                       loop={false}
@@ -440,6 +432,7 @@ const HomePage = () => {
                           v.type == 'Image' && (
                             <View
                               style={{
+                           
                                 height:
                                   dimension.height /*  + StatusBar.currentHeight */,
                                 width: dimension.width,
@@ -543,6 +536,7 @@ const HomePage = () => {
                             top: 5,
                             right: 10,
                             zIndex: 1,
+                           /*  opacity:0 */
                           }}
                         />
                         <Image
@@ -689,7 +683,7 @@ const HomePage = () => {
           bottom: 0,
         }}></View>
 
-      <Notification Notification={notification} refRBSheet={refRBSheet1} />
+      <Notification  refRBSheet={refRBSheet1} />
       <MoreOptions
         Block_onPress={() => block_user_Api()}
         refRBSheet2={refRBSheetB}

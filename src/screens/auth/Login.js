@@ -36,12 +36,11 @@ const Login = ({navigation}) => {
   const dispatch = useDispatch();
   const ThemeMode = useSelector(state => state.Theme);
   const Staps = useSelector(state => state.Stap);
-  const [email, setEmail] = useState('demo@gmail.com');
-  const [password, setPassword] = useState('Dd123456');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [show, setShow] = useState(false);
   const [loading, setLoading] = useState(false);
-  const Loginapi = () => {
-    
+  const Loginapi = () => {    
     try {
       setLoading(true);
       const body = new FormData();

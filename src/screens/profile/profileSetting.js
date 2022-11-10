@@ -22,6 +22,7 @@ import {
 } from '../../utils/CustomImages';
 import Netinforsheet from '../../components/Netinforsheet';
 import {LOGOUT, STAP} from '../../redux/actions/ActionType';
+import { ShowToast } from '../../utils/Baseurl';
 const ProfileSetting = () => {
   const dispatch = useDispatch();
   const ThemeMode = useSelector(state => state.Theme);
@@ -114,8 +115,10 @@ const ProfileSetting = () => {
         />
         <ButtonRow
           onPress={() => {
+            ShowToast('Logout Successfully');
             navigation.replace('authNavigation');
             dispatch({type: LOGOUT, payload: null});
+            dispatch({type: STAP,  payload: {Leng: Staps.Leng}});
           }}
           title={'Logout'}
         />
