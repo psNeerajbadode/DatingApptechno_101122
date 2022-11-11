@@ -20,7 +20,7 @@ const App = () => {
             <Stack.Navigator screenOptions={{headerShown: false}}>
               <Stack.Screen component={AppNavigation} name="AppNavigation" />
             </Stack.Navigator>
-          </NavigationContainer>
+          </NavigationContainer>          
           <Toast
             visibilityTime={1500}
             autoHide={true}

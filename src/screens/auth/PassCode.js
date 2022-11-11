@@ -16,6 +16,7 @@ import {useNavigation} from '@react-navigation/native';
 import {useDispatch, useSelector} from 'react-redux';
 import {ShowToast} from '../../utils/Baseurl';
 import Netinforsheet from '../../components/Netinforsheet';
+import TouchID from 'react-native-touch-id';
 
 const PassCode = () => {
   const ThemeMode = useSelector(state => state.Theme);
@@ -23,7 +24,6 @@ const PassCode = () => {
   const navigation = useNavigation();
   const dimension = useWindowDimensions();
   const dispatch = useDispatch();
-
   const [passcode, setPasscode] = useState([]);
   const Removeval = () => {
     const Val_array = [...passcode];
@@ -41,7 +41,23 @@ const PassCode = () => {
       }
     }
   }
-
+  function TouchID_support() {
+    TouchID.isSupported()
+      .then(biometryType => {
+        // Success code
+        if (biometryType === 'FaceID') {   
+          ShowToast("Your device doesn't have a fingerprint"); 
+          console.log('FaceID is supported.');
+        } else { 
+          navigation.replace('FingerPrint');
+          console.log('TouchID is supported.');
+         
+        }
+      })
+      .catch(error => {
+        console.log('error Fingur', error);
+      });
+  }
   useEffect(() => {}, [App_passcode()]);
 
   return (
@@ -192,9 +208,9 @@ const PassCode = () => {
               </TouchableOpacity>
             ))}
 
-         {/*  <TouchableOpacity
+     <TouchableOpacity
             style={{marginLeft: 24}}
-            onPress={() => navigation.replace('FingerPrint')}>
+            onPress={() => {TouchID_support();}}>
             <Image
               source={require('../../assets/icons/fingerprint_1.png')}
               style={{
@@ -204,7 +220,7 @@ const PassCode = () => {
                 tintColor: '#000',
               }}
             />
-          </TouchableOpacity> */}
+          </TouchableOpacity> 
           {/* )} */}
         </View>
       </ScrollView>

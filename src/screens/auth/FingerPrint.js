@@ -5,17 +5,20 @@ import {
   View,
   TouchableOpacity,
 } from 'react-native';
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {theme} from '../../utils/Constants';
 import HeaderImageShadow from '../../components/HeaderImageShadow';
 import Header from '../../components/Header';
 import TextFormatted from '../../components/TextFormatted';
 import TouchID from 'react-native-touch-id';
-import {useSelector} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import Netinforsheet from '../../components/Netinforsheet';
 import {STAP} from '../../redux/actions/ActionType';
+import { useNavigation } from '@react-navigation/native';
 
-const FingerPrint = ({navigation}) => {
+const FingerPrint = () => {
+  const navigation = useNavigation();
+  const dispatch = useDispatch();
   const ThemeMode = useSelector(state => state.Theme);
   const Staps = useSelector(state => state.Stap);
   const [touch, setTouch] = useState(false);
@@ -143,7 +146,7 @@ const FingerPrint = ({navigation}) => {
           Use passcode instead
         </TextFormatted>
       </ScrollView>
-      <Netinforsheet refRBSheet={Netsheet} onPress={() => Netconnet()} />
+      <Netinforsheet  />
     </View>
   );
 };

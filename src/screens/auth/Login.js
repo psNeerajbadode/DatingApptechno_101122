@@ -19,7 +19,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import axios from 'axios';
 import Toast from 'react-native-toast-message';
 import Netinforsheet from '../../components/Netinforsheet';
-import { ShowToast } from '../../utils/Baseurl';
+import {ShowToast} from '../../utils/Baseurl';
 
 
 const validateEmail = email => {
@@ -36,8 +36,8 @@ const Login = ({navigation}) => {
   const dispatch = useDispatch();
   const ThemeMode = useSelector(state => state.Theme);
   const Staps = useSelector(state => state.Stap);
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
   const [show, setShow] = useState(false);
   const [loading, setLoading] = useState(false);
   const Loginapi = () => {    
@@ -73,15 +73,16 @@ const Login = ({navigation}) => {
                 ? 'step5'
                 : response.data.result.step == 6
                 ? 'step5'
-                : response.data.result.step == 8
-                ? Staps.fingerPrint
+                : (response.data.result.step == 8
+                ? (Staps.fingerPrint
                   ? 'FingerPrint'
-                  : 'PassCode'
-                : 'step7',
+                  : 'PassCode')
+                : 'step7'),
             );
-          } else {         
-            ShowToast('Enter wrong email and password');
-            setLoading(false);
+          } else {  
+            setLoading(false);       
+            ShowToast("account doesn't exist");
+            //console.log('invalid account');
           }
         })
         .catch(function (error) {         
@@ -100,7 +101,7 @@ const Login = ({navigation}) => {
           ? theme.colors.primary
           : theme.colors.primaryBlack,
       }}>
-      <Toast />
+  
       <HeaderImage>
         <Header title={'Sign in'} onPress={() => navigation.goBack()} />
         <View style={{height: 15}} />
@@ -195,7 +196,7 @@ const Login = ({navigation}) => {
         </TextFormatted>
         <Button
           opacity={validateEmail(email) && validPass(password) ? 1 : 0.5}
-          onPress={() => Loginapi()}
+          onPress={() =>  {Loginapi();}}
           buttonName={'Login'}
           Loading={loading}
           disabled={validateEmail(email) && validPass(password) ? false : true}

@@ -27,6 +27,7 @@ import {
 } from '../../../utils/CustomImages';
 import VideoPlayer from 'react-native-video-player';
 
+
 const Videos = () => {
   const ThemeMode = useSelector(state => state.Theme);
   const Staps = useSelector(state => state.Stap);
@@ -94,7 +95,7 @@ const Videos = () => {
   }, []);
 console.log('User',User);
   return (
-    <ScrollView>
+    <ScrollView >
       {/* {Loading ? (
         <View style={{marginTop: dimension.width * 0.15}}>
           <ActivityLoader />
@@ -171,6 +172,9 @@ console.log('User',User);
             </TextFormatted>
           </TouchableOpacity>
         </View>
+        
+
+     
         {/* <View style={{width: dimension.width / 2}}>
           <TouchableOpacity
             style={{
@@ -214,7 +218,79 @@ console.log('User',User);
           toggleResizeModeOnFullscreen={true}
         /> */}
       </View>
+      {User?.map(
+          (it, i) =>
+           
+              <TouchableOpacity 
+              style={{width:dimension.width-40,alignSelf:'center',marginTop:20}}
+                onPress={() =>{ 
+                  navigation.navigate('playVideo', {data: it?.uri})
+                }}>
+                     {/* <TouchableOpacity
+                        onPress={() => {
+                          remove_photos(i);
+                          setRefresh(true);
+                        }}
+                        style={{
+                          position: 'absolute',
+                          top: 30,
+                          right: 30,
+                          zIndex: 1,
+                          padding: 5,
+                          borderRadius: 10,
+                          backgroundColor:
+                            ThemeMode.themecolr == 'Red'
+                              ? theme.colors.red
+                              : ThemeMode.themecolr == 'Blue'
+                              ? theme.colors.Blue
+                              : ThemeMode.themecolr == 'Green'
+                              ? theme.colors.Green
+                              : ThemeMode.themecolr == 'Purple'
+                              ? theme.colors.Purple
+                              : ThemeMode.themecolr == 'Yellow'
+                              ? theme.colors.Yellow
+                              : theme.colors.red,
+                        }}>
+                        <Image
+                          source={require('../../../assets/icons/delete_icon.png')}
+                          style={{
+                            width: 18,
+                            height: 18,
+                            tintColor: ThemeMode.selectedTheme
+                              ? theme.colors.primary
+                              : theme.colors.primaryBlack,
+                          }}
+                        />
+                      </TouchableOpacity> */}
+                      <Image
+                      source={require('../../../assets/icons/play_video.png')}
+                      style={{
+                        height: 64,
+                        width: 64,
+                        resizeMode: 'contain',
+                        position: 'absolute',
+                        alignSelf: 'center',
+                        top: dimension.height * 0.11,
+                        zIndex:1
+                      }}
+                    />
+                 
+                      <VideoPlayer  
+                      style={{zIndex:0,alignSelf:'center',borderRadius:20,overflow:'hidden'}}
+                thumbnail={{ uri: it?.uri }}
+                pause={true}
+                video={{ uri: it?.uri }}
+                videoWidth={dimension.width -40 }
+                videoHeight={223}
+                resizeMode={'cover'}
+                playIcon={false}
 
+/>         
+              </TouchableOpacity>
+            
+        )}
+
+        <View style={{marginBottom:100}} />
       <Option
         refRBSheet={refRBSheet}
         onPress={() => {

@@ -172,7 +172,7 @@ const Step1 = ({navigation}) => {
           <View
             style={{
               position: 'absolute',
-              bottom: '10%',
+              bottom: '18%',
               alignSelf: 'center',
             }}>
             {uri == '' ? (
@@ -650,7 +650,7 @@ const Step1 = ({navigation}) => {
           width: dimension.width,
           alignSelf: 'center',
           height: Dimensions.get('screen').height * 0.35,
-          top: '49.8%',
+          top: '48%',
         }}>
         <TextInputFormat
           label={'Name'}

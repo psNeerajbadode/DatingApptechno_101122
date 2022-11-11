@@ -14,7 +14,7 @@ import TextInputFormat from '../../components/TextInputFormat';
 import TextFormatted from '../../components/TextFormatted';
 import Button from '../../components/Button';
 import {useDispatch, useSelector} from 'react-redux';
-import {Baseurl} from '../../utils/Baseurl';
+import {Baseurl, ShowToast} from '../../utils/Baseurl';
 import {STAP} from '../../redux/actions/ActionType';
 import {
   BluelightImage,
@@ -71,7 +71,7 @@ const Signup = ({navigation}) => {
         console.log(rslt.status);
       } else {
         setLoading(false);
-
+        ShowToast("Email already exist");
         console.log(rslt.message);
       }
     } catch (e) {

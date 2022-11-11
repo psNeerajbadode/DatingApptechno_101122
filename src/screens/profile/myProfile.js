@@ -76,6 +76,7 @@ const MyProfile = () => {
     // console.log(age_now);
     return age_now;
   };
+  console.log('id',Staps.id);
   return (
     <View
       style={{

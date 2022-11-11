@@ -10,7 +10,7 @@ const HeaderImageShadow = ({ children, source, height }) => {
   return (
     <View>
       <ImageBackground
-        style={{ height: height || Dimensions.get('screen').height * 0.46, width: '100%', paddingTop: 30 }}
+        style={{ height: height || Dimensions.get('screen').height * 0.44, width: '100%', paddingTop: 30 }}
         source={
           source || ThemeMode.themecolr == 'Red'
             ? ThemeMode.selectedTheme
