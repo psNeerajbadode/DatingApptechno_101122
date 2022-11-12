@@ -26,6 +26,7 @@ import {
 } from '../../../utils/CustomImages';
 import {STAP} from '../../../redux/actions/ActionType';
 import Netinforsheet from '../../../components/Netinforsheet';
+import { ShowToast } from '../../../utils/Baseurl';
 
 const Step5 = ({navigation}) => {
   const dispatch = useDispatch();
@@ -60,9 +61,12 @@ const Step5 = ({navigation}) => {
     }
   }
   const Loactionset = () => {
+   
     const hasLocationPermission = requestLocationPermission();
     if (hasLocationPermission) {
+      ShowToast('Please wait a while while we are checking your current location');
       Geolocation.getCurrentPosition(
+        
         position => {
           setToggle(true);
           setLetu(position.coords.latitude);

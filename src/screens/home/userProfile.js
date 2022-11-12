@@ -18,12 +18,14 @@ import {useRef} from 'react';
 import MoreOptions from './moreOptions';
 import {useSelector} from 'react-redux';
 import {theme} from '../../utils/Constants';
-import {useRoute} from '@react-navigation/native';
+import {useNavigation, useRoute} from '@react-navigation/native';
 import ActivityLoader from '../../components/ActivityLoader';
 import axios from 'axios';
 import Netinforsheet from '../../components/Netinforsheet';
 import FastImage from 'react-native-fast-image';
-const UserProfile = ({navigation}) => {
+import VideoPlayer from 'react-native-video-player';
+const UserProfile = () => {
+  const navigation = useNavigation();
   const ThemeMode = useSelector(state => state.Theme);
   const Staps = useSelector(state => state.Stap);
   const userprofile = require('../../assets/images/profile.png');
@@ -36,6 +38,7 @@ const UserProfile = ({navigation}) => {
   const [disLike, setDisLike] = useState(false);
   const [Loading, setLoading] = useState(false);
   const [Userdata, setUserdata] = useState();
+  const [videodata, setVideodata] = useState();
   const [Userpost, setUserpost] = useState();
   const dimension = useWindowDimensions();
   const getUser = () => {
@@ -62,10 +65,19 @@ const UserProfile = ({navigation}) => {
       setUserpost(response.data.result);
     });
   };
-  useEffect(() => {
-    getUser();
-    getUserData();
-  }, []);
+  const getUserVideo = () => {
+    axios({
+      method: 'get',
+      url:
+        'https://technorizen.com/Dating/webservice/getUserPostData?user_id=' +
+        params +
+        '&&' +
+        'type=Video',
+    }).then(response => {
+      setVideodata(response.data.result);
+      console.log('response.data.result',response.data.result);
+    });
+  };
   const calculate_age = dob1 => {
     var today = new Date();
     var birthDate = new Date(dob1); // create a date object directly from `dob1` argument
@@ -77,6 +89,13 @@ const UserProfile = ({navigation}) => {
     // console.log(age_now);
     return age_now;
   };
+  useEffect(() => {    
+    getUser();
+    getUserData();
+    getUserVideo();
+  }, []);
+ 
+  console.log('videodata',videodata);
   return (
     <View
       style={{
@@ -361,11 +380,11 @@ const UserProfile = ({navigation}) => {
                       </View>
                     ) : (
                       <View>
-                        <View style={{flexDirection: 'row'}}>
+                        <View style={{flexDirection: 'row',flexWrap:'wrap'}}>
                           <View style={{width: dimension.width / 2}}>
                             {Userpost?.map(
                               (v, i) =>
-                                (i != 0 && i != 2) || (
+                                ( i == 1) && (
                                   <TouchableOpacity
                                     style={{
                                  
@@ -390,7 +409,7 @@ const UserProfile = ({navigation}) => {
                                 style={{
                                  
                                   width: (dimension.width - 50) / 2,
-                                  height: i == 0 ? 230 : 337,                             
+                                  height: 230 ,                             
                                   borderRadius: 20,
                                 }}
                               />
@@ -402,7 +421,7 @@ const UserProfile = ({navigation}) => {
                           <View style={{width: dimension.width / 2}}>
                             {Userpost?.map(
                               (v, i) =>
-                                (i != 1 && i != 3 && i != 4) || (
+                                (i == 0 ) && (
                                   <TouchableOpacity
                                     style={{
                                       marginTop: 20,
@@ -414,11 +433,8 @@ const UserProfile = ({navigation}) => {
                                         imgIndex: i,
                                         Userphoto: Userpost,
                                       })
-                                    }>
-                                
-
-<FastImage
-                              
+                                    }>  
+                                    <FastImage                              
                               source={{
                                 uri: v?.image,
                                 priority: FastImage.priority.normal,
@@ -426,9 +442,77 @@ const UserProfile = ({navigation}) => {
                               resizeMode={FastImage.resizeMode.cover}
                               style={{
                                 width: (dimension.width - 50) / 2,
-                                height:
-                                  i == 1 ? 166 : i == 3 ? 238 : 143,
-                               
+                                height: 166 ,                               
+                                borderRadius: 20,
+                              }}
+                            />
+                                  </TouchableOpacity>
+                                ),
+                            )}
+                          </View>   
+                          <View style={{width: dimension.width / 2}}>
+                            {Userpost?.map(
+                              (v, i) =>
+                                ( i ==2) && (
+                                  <TouchableOpacity
+                                    style={{
+                                 
+                                      marginTop: 20,
+                                      marginHorizontal: 10,
+                                      alignSelf: 'flex-end',
+                                    }}
+                                    onPress={() =>
+                                      navigation.navigate('viewImage', {
+                                        imgIndex: i,
+                                        Userphoto: Userpost,
+                                      })
+                                    }>
+
+                             <FastImage
+                              
+                                source={{
+                                  uri: v?.image,
+                                  priority: FastImage.priority.normal,
+                                }}
+                                resizeMode={FastImage.resizeMode.cover}
+                                style={{
+                                 
+                                  width: (dimension.width - 50) / 2,
+                                  height: 337,                             
+                                  borderRadius: 20,
+                                }}
+                              />
+                                  
+                                  </TouchableOpacity>
+                                ),
+                            )}
+                          </View>
+                          <View style={{marginTop:-62}}>
+                          <View style={{width: dimension.width / 2}}>
+                            {Userpost?.map(
+                              (v, i) =>
+                                (i == 3 ) && (
+                                  <TouchableOpacity
+                                    style={{
+                                      marginTop: 20,
+                                      marginHorizontal: 10,
+                                 
+                                    }}
+                                    onPress={() =>
+                                      navigation.navigate('viewImage', {
+                                        imgIndex: i,
+                                        Userphoto: Userpost,
+                                      })
+                                    }>  
+                                    <FastImage                              
+                              source={{
+                                uri: v?.image,
+                                priority: FastImage.priority.normal,
+                              }}
+                              resizeMode={FastImage.resizeMode.cover}
+                              style={{
+                                width: (dimension.width - 50) / 2,
+                                height:166 ,                               
                                 borderRadius: 20,
                               }}
                             />
@@ -436,10 +520,76 @@ const UserProfile = ({navigation}) => {
                                 ),
                             )}
                           </View>
-                        </View>
+                          <View style={{width: dimension.width / 2}}>
+                            {Userpost?.map(
+                              (v, i) =>
+                                (i == 4 ) && (
+                                  <TouchableOpacity
+                                    style={{
+                                      marginTop: 20,
+                                      marginHorizontal: 10,
+                                 
+                                    }}
+                                    onPress={() =>
+                                      navigation.navigate('viewImage', {
+                                        imgIndex: i,
+                                        Userphoto: Userpost,
+                                      })
+                                    }>  
+                                    <FastImage                              
+                              source={{
+                                uri: v?.image,
+                                priority: FastImage.priority.normal,
+                              }}
+                              resizeMode={FastImage.resizeMode.cover}
+                              style={{
+                                width: (dimension.width - 50) / 2,
+                                height:210 ,                               
+                                borderRadius: 20,
+                              }}
+                            />
+                                  </TouchableOpacity>
+                                ),
+                            )}
+                          </View>
+                          </View>             
+                        </View>    
+
+                           {videodata?.map(
+          (it, i) =>
+           
+              <TouchableOpacity 
+              style={{width:dimension.width-30,alignSelf:'center',marginTop:20}}
+                onPress={() =>{ 
+                  navigation.navigate('playVideo', {data: it?.video})
+                }}>  
+                <Image
+                      source={require('../../assets/icons/play_video.png')}
+                      style={{
+                        height: 64,
+                        width: 64,
+                        resizeMode: 'contain',
+                        position: 'absolute',
+                        alignSelf: 'center',
+                        top: 75,
+                        zIndex:1
+                      }}
+                    />                 
+                      <VideoPlayer  
+                      style={{zIndex:0,alignSelf:'center',borderRadius:20,overflow:'hidden',height:213}}
+                thumbnail={{ uri: it?.Video }}
+                pause={true}
+                video={{ uri: it?.Video }}
+                resizeMode={'cover'}
+                playIcon={false}
+
+/>         
+              </TouchableOpacity>
+            
+        )}                 
                         {Userpost?.map(
                           (v, i) =>
-                            i >= 5 || (
+                            (i != 0 && i != 1 && i != 2 && i != 3 && i != 4) && (
                               <TouchableOpacity
                                 style={{marginTop: 20, alignSelf: 'center'}}
                                 onPress={() =>
@@ -458,7 +608,7 @@ const UserProfile = ({navigation}) => {
                               resizeMode={FastImage.resizeMode.cover}
                               style={{
                                 width: dimension.width - 40,
-                                    height: 143,                               
+                                    height: 213,                               
                                 borderRadius: 20,
                               }}
                             />

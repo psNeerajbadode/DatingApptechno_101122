@@ -172,96 +172,16 @@ console.log('User',User);
             </TextFormatted>
           </TouchableOpacity>
         </View>
-        
-
-     
-        {/* <View style={{width: dimension.width / 2}}>
-          <TouchableOpacity
-            style={{
-              marginTop: 20,
-              marginHorizontal: 20,
-              alignSelf: 'flex-end',
-            }}
-            onPress={() => navigation.navigate('playVideo', {data: User})}>
-            <ImageBackground
-              source={{uri: thumb}}
-              style={{
-                width: (dimension.width - 50) / 2,
-                height: 253,
-                justifyContent: 'center',
-                alignItems: 'center',
-                backgroundColor: '#f00',
-              }}
-              resizeMode="cover"
-              imageStyle={{borderRadius: 20}}>
-              <Image
-                source={require('../../../assets/icons/play_video.png')}
-                style={{
-                  height: 60,
-                  width: 60,
-                  resizeMode: 'contain',
-                  position: 'absolute',
-                }}
-              />
-            </ImageBackground>
-          </TouchableOpacity>
-        </View> */}
-{/* 
-        <VideoPlayer          
-          disableFullscreen={false}
-          disableSeekbar={false}
-          disableBack={true}
-          disableVolume={true}   
-          source={{uri: User[0].video}}
-          onShowControls={true}
-          seekColor={'#F27380'}
-          toggleResizeModeOnFullscreen={true}
-        /> */}
-      </View>
-      {User?.map(
+        {User?.map(
           (it, i) =>
+          i ==0 &&
            
               <TouchableOpacity 
-              style={{width:dimension.width-40,alignSelf:'center',marginTop:20}}
+              style={{width:dimension.width / 2-10,alignSelf:'center',marginTop:20,}}
                 onPress={() =>{ 
-                  navigation.navigate('playVideo', {data: it?.uri})
+                  navigation.navigate('playVideo', {data: it?.video})
                 }}>
-                     {/* <TouchableOpacity
-                        onPress={() => {
-                          remove_photos(i);
-                          setRefresh(true);
-                        }}
-                        style={{
-                          position: 'absolute',
-                          top: 30,
-                          right: 30,
-                          zIndex: 1,
-                          padding: 5,
-                          borderRadius: 10,
-                          backgroundColor:
-                            ThemeMode.themecolr == 'Red'
-                              ? theme.colors.red
-                              : ThemeMode.themecolr == 'Blue'
-                              ? theme.colors.Blue
-                              : ThemeMode.themecolr == 'Green'
-                              ? theme.colors.Green
-                              : ThemeMode.themecolr == 'Purple'
-                              ? theme.colors.Purple
-                              : ThemeMode.themecolr == 'Yellow'
-                              ? theme.colors.Yellow
-                              : theme.colors.red,
-                        }}>
-                        <Image
-                          source={require('../../../assets/icons/delete_icon.png')}
-                          style={{
-                            width: 18,
-                            height: 18,
-                            tintColor: ThemeMode.selectedTheme
-                              ? theme.colors.primary
-                              : theme.colors.primaryBlack,
-                          }}
-                        />
-                      </TouchableOpacity> */}
+                 
                       <Image
                       source={require('../../../assets/icons/play_video.png')}
                       style={{
@@ -270,26 +190,125 @@ console.log('User',User);
                         resizeMode: 'contain',
                         position: 'absolute',
                         alignSelf: 'center',
-                        top: dimension.height * 0.11,
+                        top: 70,
                         zIndex:1
                       }}
                     />
                  
                       <VideoPlayer  
-                      style={{zIndex:0,alignSelf:'center',borderRadius:20,overflow:'hidden'}}
-                thumbnail={{ uri: it?.uri }}
-                pause={true}
-                video={{ uri: it?.uri }}
-                videoWidth={dimension.width -40 }
-                videoHeight={223}
-                resizeMode={'cover'}
-                playIcon={false}
-
-/>         
-              </TouchableOpacity>
+                      style={{zIndex:0,alignSelf:'center',borderRadius:20,overflow:'hidden',height:202}}
+                      thumbnail={{ uri: it?.video }}
+                      pause={true}
+                      video={{ uri: it?.video }}
+                    
+                      resizeMode={'cover'}
+                      playIcon={false}/>         
+                    </TouchableOpacity>
             
-        )}
+          )}    
+      </View>
+      {User?.map(
+          (it, i) =>
+          i ==1 &&
+           
+              <TouchableOpacity 
+              style={{width:dimension.width / 2-10,alignSelf:'center',marginTop:20,}}
+                onPress={() =>{ 
+                  navigation.navigate('playVideo', {data: it?.video})
+                }}>
+                 
+                      <Image
+                      source={require('../../../assets/icons/play_video.png')}
+                      style={{
+                        height: 64,
+                        width: 64,
+                        resizeMode: 'contain',
+                        position: 'absolute',
+                        alignSelf: 'center',
+                        top: 70,
+                        zIndex:1
+                      }}
+                    />
+                 
+                      <VideoPlayer  
+                      style={{zIndex:0,alignSelf:'center',borderRadius:20,overflow:'hidden',height:202}}
+                      thumbnail={{ uri: it?.video }}
+                      pause={true}
+                      video={{ uri: it?.video }}
+                    
+                      resizeMode={'cover'}
+                      playIcon={false}/>         
+                    </TouchableOpacity>
+            
+          )}   
+          {User?.map(
+          (it, i) =>
+          i ==2 &&
+           
+              <TouchableOpacity 
+              style={{width:dimension.width / 2-10,alignSelf:'center',marginTop:20,}}
+                onPress={() =>{ 
+                  navigation.navigate('playVideo', {data: it?.video})
+                }}>
+                 
+                      <Image
+                      source={require('../../../assets/icons/play_video.png')}
+                      style={{
+                        height: 64,
+                        width: 64,
+                        resizeMode: 'contain',
+                        position: 'absolute',
+                        alignSelf: 'center',
+                        top: 70,
+                        zIndex:1
+                      }}
+                    />
+                 
+                      <VideoPlayer  
+                      style={{zIndex:0,alignSelf:'center',borderRadius:20,overflow:'hidden',height:202}}
+                      thumbnail={{ uri: it?.video }}
+                      pause={true}
+                      video={{ uri: it?.video }}
+                    
+                      resizeMode={'cover'}
+                      playIcon={false}/>         
+                    </TouchableOpacity>
+            
+          )}   
 
+          {User?.map(
+          (it, i) =>
+          i >=3    &&
+           
+              <TouchableOpacity 
+              style={{width:dimension.width -40,alignSelf:'center',marginTop:20,}}
+                onPress={() =>{ 
+                  navigation.navigate('playVideo', {data: it?.video})
+                }}>
+                 
+                      <Image
+                      source={require('../../../assets/icons/play_video.png')}
+                      style={{
+                        height: 64,
+                        width: 64,
+                        resizeMode: 'contain',
+                        position: 'absolute',
+                        alignSelf: 'center',
+                        top: 80,
+                        zIndex:1
+                      }}
+                    />
+                 
+                      <VideoPlayer  
+                      style={{zIndex:0,alignSelf:'center',borderRadius:20,overflow:'hidden',height:223}}
+                      thumbnail={{ uri: it?.video }}
+                      pause={true}
+                      video={{ uri: it?.video }}                    
+                      resizeMode={'cover'}
+                      playIcon={false}/>         
+                    </TouchableOpacity>
+            
+          )}      
         <View style={{marginBottom:100}} />
       <Option
         refRBSheet={refRBSheet}
@@ -307,7 +326,6 @@ console.log('User',User);
 };
 
 const Option = ({refRBSheet, onPress, onPress1}) => {
-  const dispatch = useDispatch();
   const ThemeMode = useSelector(state => state.Theme);
   return (
     <BottomSheet refRBSheet={refRBSheet} height={200}>

@@ -20,6 +20,7 @@ import {useNavigation} from '@react-navigation/native';
 import {useSelector} from 'react-redux';
 import * as Animatable from 'react-native-animatable';
 import Netinforsheet from '../../components/Netinforsheet';
+import axios from 'axios';
 
 const MyProfile = () => {
   const navigation = useNavigation();
@@ -29,12 +30,9 @@ const MyProfile = () => {
   const [media, setMedia] = useState(0);
   const [User, setUser] = useState();
   const [load, setLoad] = useState();
+  const [Loading, setLoading] = useState(false);
 
-  const data = [
-    {title: 'Matches', count: '237'},
-    {title: 'Likes', count: '10k'},
-    {title: 'Dislikes', count: '1k'},
-  ];
+ 
   const mediadata = [
     {title: 'Images', img: require('../../assets/home_icons/gallery.png')},
     {
@@ -65,6 +63,18 @@ const MyProfile = () => {
       link: 'myProfile',
     },
   ];
+  const getUser = () => {
+    setLoading(true);
+    axios({
+      method: 'get',
+      url:
+        'https://technorizen.com/Dating/webservice/get_profile?user_id=' +
+        Staps.id,
+    }).then(response => {
+      setLoading(false);
+      setUser(response.data.result);
+    });
+  };
   const calculate_age = dob1 => {
     var today = new Date();
     var birthDate = new Date(Staps.dob); // create a date object directly from `dob1` argument
@@ -76,7 +86,10 @@ const MyProfile = () => {
     // console.log(age_now);
     return age_now;
   };
-  console.log('id',Staps.id);
+useEffect(() => {
+  getUser();
+}, [])
+
   return (
     <View
       style={{
@@ -85,6 +98,7 @@ const MyProfile = () => {
           ? theme.colors.primary
           : theme.colors.primaryBlack,
       }}>
+        
       <View>
         <HeaderImage height={240} marginBottom={40}>
           <Header
@@ -174,7 +188,7 @@ const MyProfile = () => {
       </View>
       <ScrollView>
         <View style={{flexDirection: 'row', alignSelf: 'center'}}>
-          {data.map(v => (
+        
             <View
               style={{
                 width: (dimension.width - 62) / 3,
@@ -183,7 +197,7 @@ const MyProfile = () => {
               }}>
               <TextFormatted
                 style={{fontSize: 14, fontWeight: '400', color: '#8490AE'}}>
-                {v.title}
+                Matches
               </TextFormatted>
               <TextFormatted
                 style={{
@@ -194,10 +208,54 @@ const MyProfile = () => {
                     : theme.colors.primary,
                   marginTop: 5,
                 }}>
-                {v.count}
+              {User?.matches_count}
               </TextFormatted>
             </View>
-          ))}
+              <View
+              style={{
+                width: (dimension.width - 62) / 3,
+                alignItems: 'center',
+                marginVertical: 15,
+              }}>
+              <TextFormatted
+                style={{fontSize: 14, fontWeight: '400', color: '#8490AE'}}>
+               Likes
+              </TextFormatted>
+              <TextFormatted
+                style={{
+                  fontSize: 20,
+                  fontWeight: '700',
+                  color: ThemeMode.selectedTheme
+                    ? theme.colors.primaryBlack
+                    : theme.colors.primary,
+                  marginTop: 5,
+                }}>
+               {User?.like_unlike_count}
+              </TextFormatted>
+            </View>
+              <View
+              style={{
+                width: (dimension.width - 62) / 3,
+                alignItems: 'center',
+                marginVertical: 15,
+              }}>
+              <TextFormatted
+                style={{fontSize: 14, fontWeight: '400', color: '#8490AE'}}>
+              Dislikes
+              </TextFormatted>
+              <TextFormatted
+                style={{
+                  fontSize: 20,
+                  fontWeight: '700',
+                  color: ThemeMode.selectedTheme
+                    ? theme.colors.primaryBlack
+                    : theme.colors.primary,
+                  marginTop: 5,
+                }}>
+             0
+              </TextFormatted>
+            </View>
+         
         </View>
         <View>
           <View

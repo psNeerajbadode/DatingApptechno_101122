@@ -108,7 +108,7 @@ useEffect(() => {
   Getnotification();
 }, [])
 
-  console.log('Notification',notification == '');
+
   return (
     <RBSheet
       ref={refRBSheet}
@@ -160,7 +160,7 @@ useEffect(() => {
                  marginTop: 20,
                 textAlign:'center'
               }}>
-             There are no Notification
+             There are no notification
             </TextFormatted> :
               <FlatList
         data={notification}

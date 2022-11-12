@@ -27,6 +27,9 @@ import FastImage from 'react-native-fast-image';
 import {ShowToast} from '../../utils/Baseurl';
 import Statusbar from '../../components/Statusbar';
 import Netinforsheet from '../../components/Netinforsheet';
+// import VideoPlayer from 'react-native-video-controls';
+import Video from 'react-native-video';
+import VideoPlayer from 'react-native-video-player';
 const HomePage = () => {
   const ThemeMode = useSelector(state => state.Theme);
   const Staps = useSelector(state => state.Stap);
@@ -40,6 +43,7 @@ const HomePage = () => {
   const refRBSheetB = useRef();
   const dimension = useWindowDimensions();
   const [plu_button, setplu_button] = useState(false);
+  const [Videoplay, setVideoplay] = useState(false);
   const [Loading, setLoading] = useState(false);
   const [Userpost, setUserpost] = useState();
 
@@ -149,23 +153,22 @@ const HomePage = () => {
       ],
     },
   ];
-
   function UserScroll() {
     if (Userpost.length == ChangeIndex + 1) {
       setplu_button(false);
       ShowToast('User List End');
     } else {
       setplu_button(true);
-      // setTimeout(() => {
+      setTimeout(() => {
       setChangeIndex(ChangeIndex + 1);
       userRef.current.scrollToIndex({index: ChangeIndex + 1});
-      // }, 100);
+       }, 800);
     }
   }
   const onViewableItemsChanged = React.useRef(item => {
     //console.log('item.viewableItems', item.viewableItems[0]);
-    setChangeIndex(item?.viewableItems[0].index);
-    setUindex(item?.viewableItems[0].key);
+    setChangeIndex(item?.viewableItems[0]?.index);
+    setUindex(item?.viewableItems[0]?.key);
   }, []);
 
   const getUserPost = () => {
@@ -179,8 +182,6 @@ const HomePage = () => {
       //  console.log(response.data.result[0]);
     });
   };
-
-
 
   const likeApi = () => {
     try {
@@ -244,7 +245,7 @@ const HomePage = () => {
 
   const calculate_age = dob1 => {
     var today = new Date();
-    var birthDate = new Date(Staps.dob); // create a date object directly from `dob1` argument
+    var birthDate = new Date(dob1); // create a date object directly from `dob1` argument
     var age_now = today.getFullYear() - birthDate.getFullYear();
     var m = today.getMonth() - birthDate.getMonth();
     if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
@@ -355,7 +356,7 @@ const HomePage = () => {
           translucent={true}
           backgroundColor="transparent"
           barStyle={'light-content'}
-          //hidden={true}
+          hidden={true}
         />
       </SafeAreaView>
 
@@ -429,14 +430,15 @@ const HomePage = () => {
                       }>
                       {item.details?.map(
                         (v, i) =>
-                          v.type == 'Image' && (
+                          v.type == 'Image' ? (
                             <View
-                              style={{
+                              // style={{
                            
-                                height:
-                                  dimension.height /*  + StatusBar.currentHeight */,
-                                width: dimension.width,
-                              }}>
+                              //   height:
+                              //     dimension.height /*  + StatusBar.currentHeight */,
+                              //   width: dimension.width,
+                              // }}
+                              >
                               <FastImage
                                 onProgress={() => <ActivityLoader />}
                                 source={{
@@ -445,12 +447,42 @@ const HomePage = () => {
                                 }}
                                 resizeMode={FastImage.resizeMode.cover}
                                 style={{
-                                  height:
-                                    dimension.height /*  + StatusBar.currentHeight */,
+                                  height: dimension.height /*  + StatusBar.currentHeight */,
                                   width: dimension.width,
                                 }}
                               />
                             </View>
+                          ): (
+                            v.type == 'Video'  &&
+                          //   <VideoPlayer   
+                          //   onPlay={()=> setVideoplay(true)}           
+                                      
+                          //   disableFullscreen={false}                            
+                          //   disableBack={true}
+                          //   disableVolume={true}
+                          //   tapAnywhereToPause={true}
+                          //    disableSeekbar={true}
+                          //   source={{uri: v?.image}}
+                          //   onShowControls={true}
+                          //   disableTimer={true}
+                          //   disablePlayPause={true}
+                          
+                          
+                          // />
+                          <VideoPlayer
+                          video={{ uri: v?.image }}
+                          pause={true}               
+                          resizeMode={'cover'}
+                          thumbnail={{ uri: v?.image}}
+                          style={{ height: dimension.height ,
+                          width: dimension.width,}}
+                          disableSeek={true}
+                          bufferConfig={{minBufferMs:1000,maxBufferMs:2000}}
+                          pauseOnPress
+
+                      />
+
+                          
                           ),
                       )}
                     </Swiper>
@@ -464,7 +496,7 @@ const HomePage = () => {
                       }}>
                       <TouchableOpacity
                         onPress={() =>
-                          navigation.navigate('userProfile', item.id)
+                          navigation.navigate('userProfile', item?.id)
                         }>
                         <Image
                           source={{

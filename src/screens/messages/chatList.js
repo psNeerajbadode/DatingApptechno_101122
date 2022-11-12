@@ -98,7 +98,7 @@ const ChatList = () => {
     )
       .then(response => response.json())
       .then(response => {
-        if (response.status == 1) {
+        if (response.status == 1) {         
           setChatuser(response.result);
           setLoading(false);
         } else {
@@ -113,7 +113,7 @@ const ChatList = () => {
   useEffect(() => {
     ChatUser();
   }, []);
-  console.log('Chatuserbxcbcb==========>',Chatuser == null);
+
   return (
     <View
       style={{
@@ -199,7 +199,7 @@ const ChatList = () => {
         <View style={{flex: 1, justifyContent: 'center'}}>
           <ActivityLoader />
         </View>
-      ) : Chatuser == null ? (
+      ) : !Chatuser ? (
         <View>
           <TextFormatted
             style={{
@@ -212,7 +212,7 @@ const ChatList = () => {
               marginTop: 30,
               alignSelf:'center'
             }}>
-            There are no Recent Data
+            There are no recent data
           </TextFormatted>
         </View>
       ) : (

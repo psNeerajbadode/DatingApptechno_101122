@@ -53,7 +53,7 @@ const Splash = ({navigation}) => {
           navigation.replace(
             Staps.Leng == null ? 'LanguageSelection' : 'Login',
           );
-          // navigation.replace('step4');
+          // navigation.replace('step1');
           // navigation.replace('HomePage');
         }}
         renderCap={({center}) => (

@@ -14,7 +14,7 @@ import Header from '../../components/Header';
 import SearchBar from '../../components/SearchBar';
 import TextFormatted from '../../components/TextFormatted';
 import Notification from '../home/notification';
-import {useDispatch, useSelector} from 'react-redux';
+import { useSelector} from 'react-redux';
 import {
   BluelightImage,
   GreenlightImage,
@@ -25,18 +25,35 @@ import {
 import LinearGradient from 'react-native-linear-gradient';
 import MoreOptions from '../home/moreOptions';
 import Netinforsheet from '../../components/Netinforsheet';
+import { useNavigation } from '@react-navigation/native';
+import ActivityLoader from '../../components/ActivityLoader';
+import { ShowToast } from '../../utils/Baseurl';
+import axios from 'axios';
 
-import {STAP} from '../../redux/actions/ActionType';
 
-const Message = ({navigation}) => {
+const Message = () => {
   const ThemeMode = useSelector(state => state.Theme);
   const Staps = useSelector(state => state.Stap);
-
+const navigation =useNavigation();
   const [search, setSearch] = useState('');
+  const [matchuser, setMatchuser] = useState([]);
   const dimension = useWindowDimensions();
+  const [Loading, setLoading] = useState(false);
+  const [other_user_id, setother_user_id] = useState();
   const refRBSheet = useRef();
   const refRBSheet_N = useRef();
-
+  const refRBSheetB = useRef();
+  const calculate_age = dob1 => {
+    var today = new Date();
+    var birthDate = new Date(dob1); // create a date object directly from `dob1` argument
+    var age_now = today.getFullYear() - birthDate.getFullYear();
+    var m = today.getMonth() - birthDate.getMonth();
+    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+      age_now--;
+    }
+    // console.log(age_now);
+    return age_now;
+  };
   const homeTab = [
     {
       icon: require('../../assets/home_icons/home.png'),
@@ -68,6 +85,57 @@ const Message = ({navigation}) => {
     {img: require('../../assets/images/unsplash_1.png'), name: 'Emma Hatchan'},
   ];
 
+  const MatchUser = () => {
+    setLoading(true);
+    fetch(
+      'https://technorizen.com/Dating/webservice/get_conversation?receiver_id=' +
+        Staps.id,
+    )
+      .then(response => response.json())
+      .then(response => {
+        if (response.status == 1) {
+          setMatchuser(response.result);
+          setLoading(false);
+        } else {
+          setLoading(false);
+        }
+      })
+      .catch(() => {
+        console.log('ERROR GETTING DATA FROM API');
+      });
+  }
+  const block_user_Api = () => {
+    setLoading(true);
+    try {
+      axios({
+        url:
+          'https://technorizen.com/Dating/webservice/add_block_user?user_id=' +
+          /*   'https://technorizen.com/Dating/webservice/unblock_user?user_id=' + */
+          Staps.id +
+          '&&' +
+          'block_id=' +
+          other_user_id,
+        method: 'POST',
+      })
+        .then(function (response) {
+         // console.log('Block API=>', JSON.stringify(response.data.message));
+          if (response.data.status == 1) {          
+            refRBSheet.current.close();           
+            ShowToast(response.data.message);           
+            setLoading(false);
+          }
+        })
+        .catch(function (error) {
+          console.log('catch', error);
+        });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+useEffect(()=>{
+  MatchUser();
+},[])
   return (
     <View
       style={{
@@ -150,10 +218,31 @@ const Message = ({navigation}) => {
       </View>
       <View style={{marginVertical: 10}} />
 
+      {Loading ? (
+        <View style={{flex: 1, justifyContent: 'center'}}>
+          <ActivityLoader />
+        </View>
+      ) : !matchuser ? (
+        <View>
+          <TextFormatted
+            style={{
+              fontSize: 18,
+              fontWeight: '700',
+              color: ThemeMode.selectedTheme
+                ? theme.colors.primaryBlack
+                : theme.colors.primary,
+              marginHorizontal: 20,
+              marginTop: 30,
+              alignSelf:'center'
+            }}>
+            There are no matche data
+          </TextFormatted>
+        </View>
+      ) : (
       <FlatList
         contentContainerStyle={{paddingBottom: 75, paddingTop: 10}}
-        data={matchesData.filter(item => {
-          return item.name.toLowerCase().includes(search.toLowerCase());
+        data={matchuser.filter(item => {
+          return item.user_name.toLowerCase().includes(search.toLowerCase());
         })}
         renderItem={({item}) => (
           <TouchableOpacity
@@ -173,7 +262,7 @@ const Message = ({navigation}) => {
                 bottom: 25,
                 left: -15,
               }}
-              source={item.img}
+              source={{uri: item?.image}}
               resizeMode="cover"
             />
             <ImageBackground
@@ -206,7 +295,7 @@ const Message = ({navigation}) => {
                         ? theme.colors.primaryBlack
                         : theme.colors.primary,
                     }}>
-                    {item.name}
+                    {item?.user_name + ' ' + item?.surname}
                   </TextFormatted>
                   <TextFormatted
                     style={{
@@ -216,13 +305,13 @@ const Message = ({navigation}) => {
                         ? theme.colors.darkGrey
                         : theme.colors.primary,
                     }}>
-                    22 years old
+                    {calculate_age(item?.dob)} years old
                   </TextFormatted>
                 </View>
 
                 <View style={{flexDirection: 'row'}}>
                   <TouchableOpacity
-                    onPress={() => navigation.navigate('userProfile')}>
+                    onPress={() => navigation.navigate('userProfile',item?.id)}>
                     <Image
                       source={
                         ThemeMode.selectedTheme
@@ -245,7 +334,8 @@ const Message = ({navigation}) => {
                       justifyContent: 'center',
                     }}
                     onPress={() =>
-                      navigation.navigate('chats', {params: null})
+                      navigation.navigate('chats', { params: null,
+                      SenderId: item?.id})
                     }>
                     <Image
                       source={
@@ -281,7 +371,7 @@ const Message = ({navigation}) => {
                   marginRight: 10,
                   marginTop: 20,
                 }}
-                onPress={() => refRBSheet.current.open()}>
+                onPress={() => {refRBSheet.current.open();setother_user_id(item?.id)}}>
                 <Image
                   source={require('../../assets/icons/m_more.png')}
                   style={{
@@ -295,7 +385,7 @@ const Message = ({navigation}) => {
             </ImageBackground>
           </TouchableOpacity>
         )}
-      />
+      />)}
 
       <ImageBackground
         resizeMode="contain"
@@ -348,8 +438,15 @@ const Message = ({navigation}) => {
           bottom: 0,
         }}></View>
 
-      <Notification refRBSheet={refRBSheet_N} />
-      <MoreOptions refRBSheet={refRBSheet} />
+      <Notification refRBSheet={refRBSheet_N} />    
+      <MoreOptions
+        Block_onPress={() => block_user_Api()}
+        refRBSheet2={refRBSheetB}
+        BlockID={other_user_id}
+        UserID={Staps.id}
+        refRBSheet={refRBSheet}
+        Block_Loading={Loading}
+      />
       <Netinforsheet />
     </View>
   );

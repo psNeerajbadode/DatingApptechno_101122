@@ -162,7 +162,7 @@ const Step1 = ({navigation}) => {
           : theme.colors.primaryBlack,
       }}>
       <View style={{zIndex: 0}}>
-        <HeaderImageShadow>
+        <HeaderImageShadow height={340}>
           <Pagination
             title={'Create account'}
             subTitle={'Personal detail'}
@@ -172,7 +172,7 @@ const Step1 = ({navigation}) => {
           <View
             style={{
               position: 'absolute',
-              bottom: '18%',
+              bottom: '16%',
               alignSelf: 'center',
             }}>
             {uri == '' ? (
@@ -650,7 +650,7 @@ const Step1 = ({navigation}) => {
           width: dimension.width,
           alignSelf: 'center',
           height: Dimensions.get('screen').height * 0.35,
-          top: '48%',
+          top: '51%',
         }}>
         <TextInputFormat
           label={'Name'}

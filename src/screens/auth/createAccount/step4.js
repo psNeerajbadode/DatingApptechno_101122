@@ -591,8 +591,8 @@ console.log("pause",paush);
                         }}
                         style={{
                           position: 'absolute',
-                          top: 30,
-                          right: 30,
+                          top: 10,
+                          right: 10,
                           zIndex: 1,
                           padding: 5,
                           borderRadius: 10,
@@ -628,18 +628,16 @@ console.log("pause",paush);
                         resizeMode: 'contain',
                         position: 'absolute',
                         alignSelf: 'center',
-                        top: dimension.height * 0.11,
+                        top: 80,
                         zIndex:1
                       }}
                     />
                  
                       <VideoPlayer  
-                      style={{zIndex:0,alignSelf:'center',borderRadius:20,overflow:'hidden'}}
+                      style={{zIndex:0,alignSelf:'center',borderRadius:20,overflow:'hidden',height:223}}
                 thumbnail={{ uri: it?.uri }}
                 pause={true}
                 video={{ uri: it?.uri }}
-                videoWidth={dimension.width -40 }
-                videoHeight={223}
                 resizeMode={'cover'}
                 playIcon={false}
 
