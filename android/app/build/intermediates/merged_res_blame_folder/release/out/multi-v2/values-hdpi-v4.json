@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.dating_app-mergeReleaseResources-33:/values-hdpi-v4/values-hdpi-v4.xml",
+            "outputFile": "com.dating_app-mergeReleaseResources-39:/values-hdpi-v4/values-hdpi-v4.xml",
             "map": [
                 {
                     "source": "C:\\Users\\HP\\.gradle\\caches\\transforms-3\\28fad7ba1009b9a90d750a642518ad0f\\transformed\\appcompat-1.4.1\\res\\values-hdpi-v4\\values-hdpi-v4.xml",

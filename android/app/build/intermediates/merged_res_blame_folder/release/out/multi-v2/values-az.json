@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.dating_app-mergeReleaseResources-33:/values-az/values-az.xml",
+            "outputFile": "com.dating_app-mergeReleaseResources-39:/values-az/values-az.xml",
             "map": [
                 {
                     "source": "C:\\Users\\HP\\.gradle\\caches\\transforms-3\\dbcf835c33885d2a5f82551d00fbca30\\transformed\\jetified-play-services-base-17.0.0\\res\\values-az\\values.xml",
