@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.dating_app-mergeDebugResources-34:/values-zh/values-zh.xml",
+            "outputFile": "com.dating_app-mergeDebugResources-40:/values-zh/values-zh.xml",
             "map": [
                 {
                     "source": "C:\\Users\\HP\\.gradle\\caches\\transforms-3\\04e221b0df790970e8473d2f1abfee40\\transformed\\jetified-ucrop-2.2.6-native\\res\\values-zh\\values-zh.xml",

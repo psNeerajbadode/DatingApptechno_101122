@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">dating_app</string>
+    <string name="facebook_app_id">847748412907868</string>
+    <string name="facebook_client_token">9d95bfe06255b4b40da5fd44bed01a0d</string>
+
 </resources>

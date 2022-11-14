@@ -465,9 +465,7 @@ const HomePage = () => {
                           //   source={{uri: v?.image}}
                           //   onShowControls={true}
                           //   disableTimer={true}
-                          //   disablePlayPause={true}
-                          
-                          
+                          //   disablePlayPause={true}                        
                           // />
                           <VideoPlayer
                           video={{ uri: v?.image }}

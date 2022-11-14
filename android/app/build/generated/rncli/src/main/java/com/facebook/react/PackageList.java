@@ -29,6 +29,8 @@ import com.reactlibrary.createthumbnail.CreateThumbnailPackage;
 import com.reactnativedocumentpicker.DocumentPickerPackage;
 // react-native-fast-image
 import com.dylanvann.fastimage.FastImageViewPackage;
+// react-native-fbsdk-next
+import com.facebook.reactnative.androidsdk.FBSDKPackage;
 // react-native-fs
 import com.rnfs.RNFSPackage;
 // react-native-geolocation-service
@@ -113,6 +115,7 @@ public class PackageList {
       new CreateThumbnailPackage(),
       new DocumentPickerPackage(),
       new FastImageViewPackage(),
+      new FBSDKPackage(),
       new RNFSPackage(),
       new RNFusedLocationPackage(),
       new PickerPackage(),

@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.dating_app-mergeDebugResources-34:/values-v24/values-v24.xml",
+            "outputFile": "com.dating_app-mergeDebugResources-40:/values-v24/values-v24.xml",
             "map": [
                 {
                     "source": "C:\\Users\\HP\\.gradle\\caches\\transforms-3\\28fad7ba1009b9a90d750a642518ad0f\\transformed\\appcompat-1.4.1\\res\\values-v24\\values-v24.xml",
@@ -11,6 +11,23 @@
                         "startOffsets": "55,212",
                         "endColumns": "156,134",
                         "endOffsets": "207,342"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\HP\\.gradle\\caches\\transforms-3\\5fa509be224cf51e1826d16d50e96d3f\\transformed\\media-1.0.0\\res\\values-v24\\values-v24.xml",
+                    "from": {
+                        "startLines": "2,3,4,5",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "55,121,182,248",
+                        "endColumns": "65,60,65,66",
+                        "endOffsets": "116,177,243,310"
+                    },
+                    "to": {
+                        "startLines": "4,5,6,7",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "347,413,474,540",
+                        "endColumns": "65,60,65,66",
+                        "endOffsets": "408,469,535,602"
                     }
                 }
             ]

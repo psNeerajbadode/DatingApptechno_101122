@@ -20,6 +20,7 @@ import axios from 'axios';
 import Toast from 'react-native-toast-message';
 import Netinforsheet from '../../components/Netinforsheet';
 import {ShowToast} from '../../utils/Baseurl';
+import { AccessToken, AuthenticationToken, LoginButton, LoginManager } from 'react-native-fbsdk-next';
 
 
 const validateEmail = email => {
@@ -95,6 +96,46 @@ const Login = ({navigation}) => {
       console.log(error);
     }
   };
+  async function onFacebookButtonPress() {
+    const result = await LoginManager.logInWithPermissions(['public_profile', 'email', 'user_friends']);
+    console.log(JSON.stringify(result));
+    if (result.isCancelled) {
+      console.log('User cancelled the login process');
+    }
+    const data = await AccessToken.getCurrentAccessToken();
+    console.log(JSON.stringify(data));
+    if (!data) {
+      console.log('Something went wrong obtaining access token');
+    }
+    fetch('https://graph.facebook.com/v2.5/me?fields=email,name,friends&access_token=' + data.accessToken)
+      .then(response => response.json())
+      .then(json => {
+        // Some user object has been set up somewhere, build that user here
+        console.log('initialuser', json);
+      })
+      .catch(() => {
+        reject('ERROR GETTING DATA FROM FACEBOOK');
+      });
+    // const facebookCredential = auth.FacebookAuthProvider.credential(data.accessToken);
+
+    // const profileData = await Profile.getCurrentProfile();
+    // console.log(profileData);
+    /**
+     *
+     * email- mailto:open_ocfmvtv_user@tfbnw.net
+     * password - 123qwe,./
+      {
+        "firstName": "Open",
+        "imageURL": "https://graph.facebook.com/v15.0/101615426086763/picture?height=100&width=100&migration_overrides=%7Boctober_2012%3Atrue%7D&access_token=EAALeyN9ANDMBADvC1IAZB32kAucp8qTW7WEU0OBPYIcoqjaMQoALTb09eidfbZAGeclAFsETzwFdsTxcS63EBdydqKWmH45FZACmOBANIcJL4CChG1bScMbYoeZBXlBqGK66VdU58vxnczbTpXhB7SfqJOo49rgpjrWrwNjM6JI3b6dEgWZCyUfrzLK17pyfjslx3crp7ZC4e1O8uYKuulPVCZB5e8eM0fXHwSnWDLA2XDJlk0wVmZA6iPlEWWSCHD8ZD",
+        "lastName": "User",
+        "linkURL": "",
+        "middleName": "Graph Test",
+        "name": "Open Graph Test User",
+        "userID": "101615426086763"
+      }
+
+     */
+  }
   return (
     <View
       style={{
@@ -196,6 +237,7 @@ const Login = ({navigation}) => {
           }}>
           Forgot password?
         </TextFormatted>
+        
         <Button
           opacity={validateEmail(email) && validPass(password) ? 1 : 0.5}
           onPress={() =>  {Loginapi();}}
@@ -238,7 +280,7 @@ const Login = ({navigation}) => {
             />
           </TouchableOpacity>
           <View style={{width: 30}} />
-          <TouchableOpacity
+          <TouchableOpacity onPress={()=>onFacebookButtonPress()}
             style={{
               ...styles.socialbg,
               backgroundColor: ThemeMode.selectedTheme

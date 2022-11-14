@@ -1,7 +1,7 @@
 apply plugin: "com.android.application"
 apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"
-import com.android.build.OutputFile
-import org.apache.tools.ant.taskdefs.condition.Os
+// import com.android.build.OutputFile
+// import org.apache.tools.ant.taskdefs.condition.Os
 // apply plugin: 'ly.img.android.sdk'
 // apply plugin: 'kotlin-android'
 
@@ -113,10 +113,12 @@ buildscript {
     repositories {
         mavenCentral()
         maven { url "https://artifactory.img.ly/artifactory/imgly" }
+        
     }
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.32"
         classpath 'ly.img.android.sdk:plugin:10.1.1'
+        
     }
 }
 
@@ -311,7 +313,7 @@ dependencies {
     implementation "com.facebook.react:react-native:+"  // From node_modules
 
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
-
+implementation 'com.facebook.android:facebook-android-sdk:latest.release'
     debugImplementation("com.facebook.flipper:flipper:${FLIPPER_VERSION}") {
         exclude group:'com.facebook.fbjni'
     }
