@@ -55,7 +55,7 @@ const SelectYourType = () => {
     },
     {name: 'Friends', img: require('../../assets/icons/typeD.png')},
   ];
-
+console.log('showMe',showMe);
   return (
     <View
       style={{
@@ -170,8 +170,8 @@ const SelectYourType = () => {
               onPress={() => setShowMe('other_gen')}>
               <Image
                 source={
-                  showMe == 'Other_gen'
-                    ? require('../../assets/icons/Other_gen.png')
+                  showMe == 'other_gen'
+                    ? require('../../assets/icons/Other_gen_color.png')
                     : require('../../assets/icons/Other_gen.png')
                 }
                 style={{height: 90, width: 90, resizeMode: 'contain'}}

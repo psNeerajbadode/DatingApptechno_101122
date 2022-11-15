@@ -5,7 +5,7 @@ import {
   TouchableOpacity,
   useWindowDimensions,
   View,
-  ImageBackground,
+  ImageBackground,Modal
 } from 'react-native';
 import React, {useEffect, useRef, useState} from 'react';
 import {theme} from '../../utils/Constants';
@@ -16,21 +16,27 @@ import TextFormatted from '../../components/TextFormatted';
 import LinearGradient from 'react-native-linear-gradient';
 import {useNavigation} from '@react-navigation/native';
 import Notification from '../home/notification';
-import {useDispatch, useSelector} from 'react-redux';
+import { useSelector} from 'react-redux';
 import * as Animatable from 'react-native-animatable';
 import Netinforsheet from '../../components/Netinforsheet';
 import ActivityLoader from '../../components/ActivityLoader';
+import axios from 'axios';
+import { ShowToast } from '../../utils/Baseurl';
+import Button from '../../components/Button';
+import { style } from 'deprecated-react-native-prop-types/DeprecatedImagePropType';
+
 
 const ChatList = () => {
-  const dispatch = useDispatch();
   const ThemeMode = useSelector(state => state.Theme);
   const Staps = useSelector(state => state.Stap);
+  const navigation = useNavigation();
+  const refRBSheet = useRef();
   const [search, setSearch] = useState('');
   const [Chatuser, setChatuser] = useState([]);
   const [Loading, setLoading] = useState(false);
-  const dimension = useWindowDimensions();
-  const navigation = useNavigation();
-  const refRBSheet = useRef();
+  const [modalVisible, setModalVisible] = useState(false);
+  const [unblock_id, setUnblock_id] = useState();
+ 
 
   const recentData = [
     {img: require('../../assets/images/unsplash_1.png')},
@@ -108,6 +114,43 @@ const ChatList = () => {
       .catch(() => {
         console.log('ERROR GETTING DATA FROM API');
       });
+  };
+ 
+  const Unblock_user_Api = (U_id) => {  
+    setLoading(true);
+    try {
+      axios({
+        url:
+            'https://technorizen.com/Dating/webservice/unblock_user?user_id=' + 
+          Staps.id +
+          '&&' +
+          'block_id=' +
+          U_id,
+          method: 'POST',
+          headers: {
+            'content-type': 'multipart/form-data',
+          },
+      })
+        .then(function (response) {    
+          if (response.data.status == 1) {
+            console.log('Unblock API=>', (response.data));
+            setModalVisible(false);
+            ChatUser();
+            ShowToast('Unblock user successfully'); 
+           
+          }else{
+            ChatUser();
+            setModalVisible(false);
+            ShowToast('User already Unblock'); 
+            setLoading(false);
+          }
+        })
+        .catch(function (error) {
+          console.log('catch', error);
+        });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   useEffect(() => {
@@ -275,55 +318,25 @@ const ChatList = () => {
             </View>
           }
           renderItem={({item, index}) => (
+          <View style={{
+            marginHorizontal: 20,       
+            marginVertical: 10, 
+            opacity:item?.status_block == 'unblock' ? 1 : 0.5
+          }}> 
             <TouchableOpacity
-              style={{
-                marginHorizontal: 20,
+              style={{           
                 flexDirection: 'row',
-                alignItems: 'center',
-                marginVertical: 10,
-              }}
+                alignItems: 'center',              
+              }} 
+              // disabled={item?.status_block === 'block' ? true : false} 
               onPress={() =>
-                navigation.navigate('chats', {
+               { item?.status_block == 'unblock' ?   navigation.navigate('chats', {
                   params: null,
                   SenderId: item?.sender_id,
                 })
-              }>
+               : setModalVisible(true),setUnblock_id(item?.sender_id)    }      }>
               <View>
-                {/* {index <= 1 && (
-                  <LinearGradient
-                    colors={
-                      ThemeMode.themecolr == 'Red'
-                        ? theme.colors.primaryOn
-                        : ThemeMode.themecolr == 'Blue'
-                        ? theme.colors.primaryBlue
-                        : ThemeMode.themecolr == 'Green'
-                        ? theme.colors.primaryGreen
-                        : ThemeMode.themecolr == 'Purple'
-                        ? theme.colors.primaryPurple
-                        : ThemeMode.themecolr == 'Yellow'
-                        ? theme.colors.primaryYellow
-                        : theme.colors.primaryOn
-                    }
-                    style={{
-                      width: 21,
-                      justifyContent: 'center',
-                      alignItems: 'center',
-                      height: 21,
-                      borderRadius: 5,
-                      position: 'absolute',
-                      zIndex: 1,
-                      right: 0,
-                    }}>
-                    <TextFormatted
-                      style={{
-                        color: theme.colors.primary,
-                        fontSize: 13,
-                        fontWeight: '400',
-                      }}>
-                      {index + 1}
-                    </TextFormatted>
-                  </LinearGradient>
-                )} */}
+                
                 <Image
                   source={{uri: item?.image}}
                   style={{
@@ -345,18 +358,21 @@ const ChatList = () => {
                       ? theme.colors.primaryBlack
                       : theme.colors.primary,
                   }}>
-                  {item?.user_name + item?.surname}
+                  {item?.user_name + item?.surname} 
                 </TextFormatted>
-                <TextFormatted
+               
+        <TextFormatted
                   numberOfLines={1}
                   style={{
                     fontSize: 14,
                     fontWeight: '400',
                     color: '#8490AE',
-                    marginTop: 9,
+                    marginTop: 5,
                   }}>
                   {item?.last_message}
                 </TextFormatted>
+           
+            
               </View>
               <TextFormatted
                 style={{
@@ -365,9 +381,21 @@ const ChatList = () => {
                   color: '#8490AE',
                   height: 40,
                 }}>
-                {item?.time_ago}
+                {item?.time_ago }
               </TextFormatted>
             </TouchableOpacity>
+            {  item?.status_block != 'unblock' &&  <TextFormatted
+             style={{
+              fontSize: 12,
+              fontWeight: '400',
+              color: '#8490AE',
+              marginTop: -10,
+              alignSelf:'flex-end',
+              marginRight:0,
+             }}>
+             You blocked this user. Tap to unblock
+           </TextFormatted> }
+           </View>
           )}
         />
       )}
@@ -424,7 +452,52 @@ const ChatList = () => {
           position: 'absolute',
           bottom: 0,
         }}></View>
-      <Notification refRBSheet={refRBSheet} />
+        
+        <Modal
+        animationType="slide"
+        transparent={true}   
+        onRequestClose={()=>setModalVisible(false)}
+        visible={modalVisible} 
+      >       
+        <View style={{...styles.modelview,  backgroundColor: ThemeMode.selectedTheme
+      ? theme.colors.primary
+      : theme.colors.primaryBlack,}}   >
+        <View style={{flexDirection:'row',alignItems:'center',justifyContent:'space-between',}}>
+       
+        <TextFormatted  style={{
+                  fontSize: 15,
+                  fontWeight: '600',
+                  color: ThemeMode.selectedTheme
+                  ? theme.colors.primaryBlack
+                  : theme.colors.primary,
+                  height: 40,width:'80%',
+                }}>Are you sure you want to unblock the user</TextFormatted>
+                 <TouchableOpacity
+        style={{
+         alignSelf:'flex-end',
+          width:'20%',
+          marginBottom: 15,        
+        }}
+        onPress={() => setModalVisible(false)}>
+        <Image
+          resizeMode="contain"
+          source={require('../../assets/icons/close_immg.png')}
+          style={{
+            alignSelf:'flex-end',
+            height: 15,
+            width: 15,
+            tintColor: ThemeMode.selectedTheme
+              ? theme.colors.primaryBlack
+              : theme.colors.primary,
+          }}
+        />
+      </TouchableOpacity>
+      </View>
+      <Button width={120} fontSize={16} buttonName={'Unblock'} onPress={()=> Unblock_user_Api(unblock_id)} />  
+        </View>
+        
+      </Modal>
+      <Notification refRBSheet={refRBSheet} />    
       <Netinforsheet />
     </View>
   );
@@ -497,4 +570,18 @@ const Tab = ({disabled, onPress, source, currentTab, style}) => {
 };
 export default ChatList;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  modelview:{
+    paddingHorizontal:20,
+    paddingTop:20,paddingBottom:25,
+    shadowColor: '#8490ae85',
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.22,
+    shadowRadius: 2.22,
+    elevation: 10,
+  alignSelf:'center',marginHorizontal:20,justifyContent:'flex-end',position:'absolute',top:'40%',borderRadius:10
+  }
+});

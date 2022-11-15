@@ -28,7 +28,6 @@ import {
   YellowlightImage,
 } from '../../utils/CustomImages';
 import Netinforsheet from '../../components/Netinforsheet';
-import {STAP} from '../../redux/actions/ActionType';
 import axios from 'axios';
 const ViewPlan = ({navigation}) => {
   const ThemeMode = useSelector(state => state.Theme);

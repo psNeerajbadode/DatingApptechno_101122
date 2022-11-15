@@ -477,7 +477,6 @@ const HomePage = () => {
                           disableSeek={true}
                           bufferConfig={{minBufferMs:1000,maxBufferMs:2000}}
                           pauseOnPress
-
                       />
 
                           

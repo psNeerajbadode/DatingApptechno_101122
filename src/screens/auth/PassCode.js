@@ -138,8 +138,8 @@ const PassCode = () => {
                   height: 25,
                   width: 25,
                   backgroundColor: ThemeMode.selectedTheme
-                    ? 'FAFAFA'
-                    : theme.colors.darkGrey,
+                    ? '#FAFAFA'
+                    : '#FAFAFA25',
                   borderRadius: 20,
                   margin: 12.5,
                 }}>

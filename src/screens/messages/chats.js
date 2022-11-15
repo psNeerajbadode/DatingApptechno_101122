@@ -17,17 +17,21 @@ import LinearGradient from 'react-native-linear-gradient';
 import MoreOptions from '../home/moreOptions';
 import {useDispatch, useSelector} from 'react-redux';
 import DocumentPicker from 'react-native-document-picker';
-import {useRoute} from '@react-navigation/native';
+import {useNavigation, useRoute} from '@react-navigation/native';
 import axios from 'axios';
 import Netinforsheet from '../../components/Netinforsheet';
 import ActivityLoader from '../../components/ActivityLoader';
+import { ShowToast } from '../../utils/Baseurl';
 
 const Chats = () => {
   const dispatch = useDispatch();
+  const navigation = useNavigation();
   const ThemeMode = useSelector(state => state.Theme);
   const Staps = useSelector(state => state.Stap);
   const [multipleFile, setMultipleFile] = useState([]);
   const refRBSheet = useRef();
+  const refRBSheetB = useRef();
+  const refRBSheet2 = useRef();
   const [passion, setpassion] = useState([]);
   const {params} = useRoute();
   const [mess, setMess] = useState('');
@@ -160,7 +164,37 @@ const Chats = () => {
       setpassion(response.data.result);
     });
   };
-
+  const block_user_Api = () => {
+    setLoading(true);
+    try {
+      axios({
+        url:
+          'https://technorizen.com/Dating/webservice/add_block_user?user_id=' +
+          /*   'https://technorizen.com/Dating/webservice/unblock_user?user_id=' + */
+          Staps.id +
+          '&&' +
+          'block_id=' +
+          params.SenderId,
+        method: 'POST',
+      })
+        .then(function (response) {
+         // console.log('Block API=>', JSON.stringify(response.data.message));
+          if (response.data.status == 1) {
+            ShowToast(response.data.message);   
+            refRBSheet2.current.close();
+            refRBSheet.current.close();  
+            refRBSheetB.current.close();
+            navigation.navigate('chatList');   
+            setLoading(false);
+          }
+        })
+        .catch(function (error) {
+          console.log('catch', error);
+        });
+    } catch (error) {
+      console.log(error);
+    }
+  };
   useEffect(() => {
     setInterval(() => {
       Getchat_api();
@@ -184,7 +218,7 @@ const Chats = () => {
     <View style={{flex: 1, backgroundColor: '#fff'}}>
       <HeaderImage_1 height={150} marginBottom={1}>
         <Header 
-          marginTop={18}
+          marginTop={18} T_marginRight={'1%'}
           title={Staps.user_name + ', ' + calculate_age()}
           right={
             <TouchableOpacity
@@ -503,7 +537,13 @@ const Chats = () => {
           </LinearGradient>
         </TouchableOpacity>
       </View>
-      <MoreOptions refRBSheet={refRBSheet} />
+      <MoreOptions 
+         Block_onPress={() => block_user_Api()}
+         refRBSheet2={refRBSheetB}
+         BlockID={params.SenderId}
+         UserID={Staps.id}
+        Block_Loading={Loading}
+        refRBSheet={refRBSheet} />
       <Netinforsheet />
     </View>
   );

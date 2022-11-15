@@ -66,7 +66,7 @@ const Button = ({
             {Icon}
             <TextFormatted
               style={{
-                fontSize: 18 || fontSize,
+                fontSize: fontSize || 18,
                 fontWeight: '700',
                 color: color || theme.colors.primary,
                 zIndex: 30,

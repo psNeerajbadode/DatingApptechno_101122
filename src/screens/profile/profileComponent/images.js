@@ -183,14 +183,14 @@ console.log('User=========>',User);
                     style={{
                       position: 'absolute',
                       zIndex: 1,
-                      top: '15%',
-                      right: '22%',
+                      top: '12%',
+                      right: '18%',
                       height: 29,
                       width: 29,
                     }}
                   />
                   <Image
-                    source={require('../../../assets/icons/add_media.png')}
+                    source={require('../../../assets/icons/camera.png')}
                     style={{width: '50%', height: '50%', resizeMode: 'contain'}}
                   />
 
