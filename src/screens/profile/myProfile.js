@@ -89,7 +89,7 @@ const MyProfile = () => {
 useEffect(() => {
   getUser();
 }, [])
-
+// console.log('User?.matches_count',!User?.matches_count);
   return (
     <View
       style={{
@@ -208,7 +208,7 @@ useEffect(() => {
                     : theme.colors.primary,
                   marginTop: 5,
                 }}>
-              {User?.matches_count}
+              {!User?.matches_count ? 0:User?.matches_count}
               </TextFormatted>
             </View>
               <View
@@ -233,7 +233,7 @@ useEffect(() => {
                {User?.like_unlike_count}
               </TextFormatted>
             </View>
-              <View
+              {/* <View
               style={{
                 width: (dimension.width - 62) / 3,
                 alignItems: 'center',
@@ -254,7 +254,7 @@ useEffect(() => {
                 }}>
              0
               </TextFormatted>
-            </View>
+            </View> */}
          
         </View>
         <View>

@@ -233,7 +233,7 @@ console.log('User=========>',User);
                                 resizeMode={FastImage.resizeMode.contain}
                                 style={{
                                   width: (dimension.width - 50) / 2,
-                                  height: 253,                                
+                                  height:202,                            
                                   borderRadius: 20,
                                   
                                 }}
@@ -266,7 +266,7 @@ console.log('User=========>',User);
                                 resizeMode={FastImage.resizeMode.cover}
                                 style={{
                                   width: (dimension.width - 50) / 2,
-                                  height: 281,                          
+                                  height:202,                    
                                   borderRadius: 20,
                                 }}
                               />

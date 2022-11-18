@@ -1813,6 +1813,7 @@ drawable src_assets_icons_netinfo23
 drawable src_assets_icons_next_dark
 drawable src_assets_icons_notifyy
 drawable src_assets_icons_other_gen
+drawable src_assets_icons_other_gen_color
 drawable src_assets_icons_p_sidebar
 drawable src_assets_icons_paypal
 drawable src_assets_icons_photography

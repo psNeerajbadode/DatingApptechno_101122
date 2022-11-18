@@ -556,6 +556,10 @@
         "source": "com.dating_app-react-36:/drawable-mdpi/src_assets_icons_trash.png"
     },
     {
+        "merged": "com.dating_app-merged_res-41:/drawable-mdpi_src_assets_icons_other_gen_color.png.flat",
+        "source": "com.dating_app-react-36:/drawable-mdpi/src_assets_icons_other_gen_color.png"
+    },
+    {
         "merged": "com.dating_app-merged_res-41:/drawable-xhdpi_node_modules_reactnativevideocontrols_assets_img_topvignette.png.flat",
         "source": "com.dating_app-react-36:/drawable-xhdpi/node_modules_reactnativevideocontrols_assets_img_topvignette.png"
     },

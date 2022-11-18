@@ -29,12 +29,14 @@ import {
 } from '../../utils/CustomImages';
 import Netinforsheet from '../../components/Netinforsheet';
 import axios from 'axios';
+import ActivityLoader from '../../components/ActivityLoader';
 const ViewPlan = ({navigation}) => {
   const ThemeMode = useSelector(state => state.Theme);
   const Staps = useSelector(state => state.Stap);
-  const [plandata, setPlandata] = useState();
+  const [plandata, setPlandata] = useState([]);
   const {params = {}} = useRoute();
   const [slide, setSlide] = useState(params.currentIndex);
+  const [Loading, setLoading] = useState(false);
   const refRBSheet = useRef();
   const refRBSheet1 = useRef();
 
@@ -55,10 +57,12 @@ const ViewPlan = ({navigation}) => {
   ];
 
   const getPlanData = () => {
+    setLoading(true);
     axios({
       method: 'get',
       url: `https://technorizen.com/Dating/webservice/get_plans`,
     }).then(response => {
+      setLoading(false);
       console.log('setPlandata=>', response.data.result[0].name);
       setPlandata(response.data.result);
     });
@@ -67,211 +71,145 @@ const ViewPlan = ({navigation}) => {
   useEffect(() => {
     getPlanData();
   }, []);
-
+console.log('afsd',plandata);
   return (
-    <View style={{flex: 1}}>
-      <Swiper
-        showsButtons={true}
-        loop={false}
-        index={params.currentIndex}
-        onIndexChanged={index => setSlide(index)}
-        buttonWrapperStyle={{paddingHorizontal: 0}}
-        nextButton={
-          <Image
-            source={
-              ThemeMode.selectedTheme
-                ? require('../../assets/icons/P_sidebar.png')
-                : require('../../assets/icons/next_dark.png')
-            }
-            style={{height: 145, width: 25, resizeMode: 'contain'}}
-          />
-        }
-        prevButton={
-          <Image
-            source={
-              ThemeMode.selectedTheme
-                ? require('../../assets/icons/N_sidebar.png')
-                : require('../../assets/icons/prev_dark.png')
-            }
-            style={{height: 145, width: 25, resizeMode: 'contain'}}
-          />
-        }
-        activeDotStyle={{
-          height: 10,
-          width: 25,
-          backgroundColor: '#fff',
-          borderRadius: 30,
-        }}
-        dotStyle={{
-          height: 10,
-          width: 10,
-          backgroundColor: '#fff',
-          borderRadius: 20,
-          opacity: 0.3,
-        }}
-        paginationStyle={{marginBottom: 80}}>
-        <ImageBackground
-          source={
-            ThemeMode.themecolr == 'Red'
-              ? ThemeMode.selectedTheme
-                ? RedlightImage.ViewPlanBg
-                : ReddarkImage.ViewPlanBg
-              : ThemeMode.themecolr == 'Blue'
-              ? ThemeMode.selectedTheme
-                ? BluelightImage.ViewPlanBg_blue
-                : BluelightImage.ViewPlanBg_blue
-              : ThemeMode.themecolr == 'Green'
-              ? ThemeMode.selectedTheme
-                ? GreenlightImage.ViewPlanBg_green
-                : GreenlightImage.ViewPlanBg_green
-              : ThemeMode.themecolr == 'Purple'
-              ? ThemeMode.selectedTheme
-                ? PurplelightImage.ViewPlanBg_purple
-                : PurplelightImage.ViewPlanBg_purple
-              : ThemeMode.themecolr == 'Yellow'
-              ? ThemeMode.selectedTheme
-                ? YellowlightImage.ViewPlanBg_yellow
-                : YellowlightImage.ViewPlanBg_yellow
-              : ThemeMode.selectedTheme
-              ? RedlightImage.ViewPlanBg
-              : ReddarkImage.ViewPlanBg
-          }
-          style={{flex: 1}}
-          resizeMode="cover">
-          <View style={{height: 100}} />
-          <TextFormatted
-            style={{
-              fontSize: 32,
-              fontWeight: '700',
-              color: theme.colors.primary,
-              textAlign: 'center',
-            }}>
-            {plandata[0]?.name}
-          </TextFormatted>
-          <View
-            style={{
-              marginVertical: 30,
-              position: 'absolute',
-              top: '25%',
-              alignSelf: 'center',
-            }}>
-            <Container
-              source={require('../../assets/icons/like.png')}
-              title={plandata[0]?.like + ' ' + 'Like'}
-              subtitle={'per month'}
-            />
-            <Container
-              source={require('../../assets/icons/flower.png')}
-              title={plandata[0]?.flower + ' ' + 'Flowers'}
-              subtitle={'per month'}
-            />
+    <View  style={{
+      flex: 1,
+      backgroundColor: ThemeMode.selectedTheme
+        ? theme.colors.primary
+        : theme.colors.primaryBlack,
+    }}>
+    {Loading ? (
+      <View style={{flex: 1,
+        backgroundColor: ThemeMode.selectedTheme
+          ? theme.colors.primary
+          : theme.colors.primaryBlack,justifyContent:'center'}}>
+        <ActivityLoader />
+      </View>
+    ) : ( 
+  
+    
 
-            <Container
-              source={require('../../assets/icons/camera.png')}
-              title={plandata[0]?.image + ' ' + 'Photo'}
-            />
-            <Container
-              source={require('../../assets/icons/youtube.png')}
-              title={plandata[0]?.video + ' ' + 'Video'}
-            />
-          </View>
-        </ImageBackground>
-        <ImageBackground
-          source={
-            ThemeMode.selectedTheme
-              ? require('../../assets/images/pro_plan.png')
-              : require('../../assets/images/pro_plan_dark.png')
-          }
-          style={{flex: 1}}
-          resizeMode="cover">
-          <View style={{height: 100}} />
-          <TextFormatted
-            style={{
-              fontSize: 32,
-              fontWeight: '700',
-              color: theme.colors.primary,
-              textAlign: 'center',
-            }}>
-            {plandata[1]?.name}
-          </TextFormatted>
+ <Swiper
+  showsButtons={true}
+  loop={false}
+  index={params.currentIndex}
+  onIndexChanged={index => setSlide(index)}
+  buttonWrapperStyle={{paddingHorizontal: 0}}
+  nextButton={
+    <Image
+      source={
+        ThemeMode.selectedTheme
+          ? require('../../assets/icons/P_sidebar.png')
+          : require('../../assets/icons/next_dark.png')
+      }
+      style={{height: 145, width: 25, resizeMode: 'contain'}}
+    />
+  }
+  prevButton={
+    <Image
+      source={
+        ThemeMode.selectedTheme
+          ? require('../../assets/icons/N_sidebar.png')
+          : require('../../assets/icons/prev_dark.png')
+      }
+      style={{height: 145, width: 25, resizeMode: 'contain'}}
+    />
+  }
+  activeDotStyle={{
+    height: 10,
+    width: 25,
+    backgroundColor: '#fff',
+    borderRadius: 30,
+  }}
+  dotStyle={{
+    height: 10,
+    width: 10,
+    backgroundColor: '#fff',
+    borderRadius: 20,
+    opacity: 0.3,
+  }}
+  paginationStyle={{marginBottom: 80}}>
 
-          <View
-            style={{
-              marginVertical: 30,
-              position: 'absolute',
-              top: '25%',
-              alignSelf: 'center',
-            }}>
-            <Container
-              source={require('../../assets/icons/like.png')}
-              title={plandata[1]?.like + ' ' + 'Like'}
-              subtitle={'per month'}
-            />
-            <Container
-              source={require('../../assets/icons/flower.png')}
-              title={plandata[1]?.flower + ' ' + 'Flowers'}
-              subtitle={'per month'}
-            />
+{plandata.map((v,i)=>
+<ImageBackground
+source={ i==0 ?
+  (ThemeMode.themecolr == 'Red'
+    ? ThemeMode.selectedTheme
+      ? RedlightImage.ViewPlanBg
+      : ReddarkImage.ViewPlanBg
+    : ThemeMode.themecolr == 'Blue'
+    ? ThemeMode.selectedTheme
+      ? BluelightImage.ViewPlanBg_blue
+      : BluelightImage.ViewPlanBg_blue
+    : ThemeMode.themecolr == 'Green'
+    ? ThemeMode.selectedTheme
+      ? GreenlightImage.ViewPlanBg_green
+      : GreenlightImage.ViewPlanBg_green
+    : ThemeMode.themecolr == 'Purple'
+    ? ThemeMode.selectedTheme
+      ? PurplelightImage.ViewPlanBg_purple
+      : PurplelightImage.ViewPlanBg_purple
+    : ThemeMode.themecolr == 'Yellow'
+    ? ThemeMode.selectedTheme
+      ? YellowlightImage.ViewPlanBg_yellow
+      : YellowlightImage.ViewPlanBg_yellow
+    : ThemeMode.selectedTheme
+    ? RedlightImage.ViewPlanBg
+    : ReddarkImage.ViewPlanBg) :(ThemeMode.selectedTheme
+      ? require('../../assets/images/pro_plan.png')
+      : require('../../assets/images/pro_plan_dark.png'))}
 
-            <Container
-              source={require('../../assets/icons/camera.png')}
-              title={plandata[1]?.image + ' ' + 'Photo'}
-            />
-            <Container
-              source={require('../../assets/icons/youtube.png')}
-              title={plandata[1]?.video + ' ' + 'Video'}
-            />
-          </View>
-        </ImageBackground>
-        <ImageBackground
-          source={
-            ThemeMode.selectedTheme
-              ? require('../../assets/images/pro_plan.png')
-              : require('../../assets/images/pro_plan_dark.png')
-          }
-          style={{flex: 1}}
-          resizeMode="cover">
-          <View style={{height: 100}} />
-          <TextFormatted
-            style={{
-              fontSize: 32,
-              fontWeight: '700',
-              color: theme.colors.primary,
-              textAlign: 'center',
-            }}>
-            {plandata[2]?.name}
-          </TextFormatted>
-          <View
-            style={{
-              marginVertical: 30,
-              position: 'absolute',
-              top: '25%',
-              alignSelf: 'center',
-            }}>
-            <Container
-              source={require('../../assets/icons/like.png')}
-              title={plandata[2]?.like + ' ' + 'Like'}
-              subtitle={'per month'}
-            />
-            <Container
-              source={require('../../assets/icons/flower.png')}
-              title={plandata[2]?.flower + ' ' + 'Flowers'}
-              subtitle={'per month'}
-            />
+style={{flex: 1}}
+resizeMode="cover">
+<View style={{height: 100}} />
+<TextFormatted
+  style={{
+    fontSize: 32,
+    fontWeight: '700',
+    color: theme.colors.primary,
+    textAlign: 'center',
+  }}>
+  {v?.name}
+</TextFormatted>
+<View
+  style={{
+    marginVertical: 30,
+    position: 'absolute',
+    top: '25%',
+    alignSelf: 'center',
+  }}>
+  <Container
+    source={require('../../assets/icons/like.png')}
+    title={v?.like + ' ' + 'Like'}
+    subtitle={'per month'}
+  />
+  <Container
+    source={require('../../assets/icons/flower.png')}
+    title={v?.flower + ' ' + 'Flowers'}
+    subtitle={'per month'}
+  />
 
-            <Container
-              source={require('../../assets/icons/camera.png')}
-              title={plandata[2]?.image + ' ' + 'Photo'}
-            />
-            <Container
-              source={require('../../assets/icons/youtube.png')}
-              title={plandata[2]?.video + ' ' + 'Video'}
-            />
-          </View>
-        </ImageBackground>
-      </Swiper>
+  <Container
+    source={require('../../assets/icons/camera.png')}
+    title={v?.image + ' ' + 'Photo'}
+  />
+  <Container
+    source={require('../../assets/icons/youtube.png')}
+    title={v?.video + ' ' + 'Video'}
+  />
+</View>
+</ImageBackground>)
+}
+  
 
-      <View
+</Swiper>  
+    
+
+ 
+     
+   )}
+    <View
         style={{
           flexDirection: 'row',
           alignItems: 'center',
@@ -345,11 +283,11 @@ const ViewPlan = ({navigation}) => {
           onPress={() => (slide > 0 ? refRBSheet1.current.open() : '')}>
           {slide == 0 ? 'Current Plan' : 'Upgrade Plan'}
         </TextFormatted>
-      </View>
+      </View> 
       <PlanCompaire refRBSheet={refRBSheet} />
       <UpgradePlan refRBSheet={refRBSheet1} />
       <Netinforsheet />
-    </View>
+      </View>
   );
 };
 

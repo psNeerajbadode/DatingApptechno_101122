@@ -5,7 +5,7 @@ import {
   TouchableOpacity,
   useWindowDimensions,
   View,
-  ImageBackground,Modal
+  ImageBackground,
 } from 'react-native';
 import React, {useEffect, useRef, useState} from 'react';
 import {theme} from '../../utils/Constants';
@@ -23,7 +23,8 @@ import ActivityLoader from '../../components/ActivityLoader';
 import axios from 'axios';
 import { ShowToast } from '../../utils/Baseurl';
 import Button from '../../components/Button';
-import { style } from 'deprecated-react-native-prop-types/DeprecatedImagePropType';
+import Modal from 'react-native-modal';
+
 
 
 const ChatList = () => {
@@ -390,8 +391,9 @@ const ChatList = () => {
               fontWeight: '400',
               color: '#8490AE',
               marginTop: -10,
-              alignSelf:'flex-end',
-              marginRight:0,
+              alignSelf:'center',
+             width:'70%',
+             marginLeft:'20%'
              }}>
              You blocked this user. Tap to unblock
            </TextFormatted> }
@@ -453,11 +455,7 @@ const ChatList = () => {
           bottom: 0,
         }}></View>
         
-        <Modal
-        animationType="slide"
-        transparent={true}   
-        onRequestClose={()=>setModalVisible(false)}
-        visible={modalVisible} 
+        <Modal  onBackdropPress={()=>setModalVisible(!modalVisible)}  isVisible={modalVisible} 
       >       
         <View style={{...styles.modelview,  backgroundColor: ThemeMode.selectedTheme
       ? theme.colors.primary

@@ -30,13 +30,16 @@ import {
 } from '../../utils/CustomImages';
 import Sheetbutton from '../../components/Sheetbutton';
 import Netinforsheet from '../../components/Netinforsheet';
-import {STAP} from '../../redux/actions/ActionType';
+import axios from 'axios';
+import ActivityLoader from '../../components/ActivityLoader';
 const Settings = () => {
   const ThemeMode = useSelector(state => state.Theme);
   const Staps = useSelector(state => state.Stap);
   const navigation = useNavigation();
   const dimension = useWindowDimensions();
   const [active, setActive] = useState(0);
+  const [plandatas, setPlandatas] = useState();
+  const [Loading, setLoading] = useState(false);
   const Gift_img =
     ThemeMode.themecolr == 'Red'
       ? RedlightImage.Gift
@@ -49,41 +52,7 @@ const Settings = () => {
       : ThemeMode.themecolr == 'Yellow'
       ? YellowlightImage.Gift_yellow
       : RedlightImage.Gift;
-  const planData = [
-    {
-      id: 1,
-      title: 'Basic',
-      price: 'Free',
-      data: [
-        {img: require('../../assets/icons/like.png'), no: 300},
-        {img: require('../../assets/icons/flower.png'), no: 30},
-        {img: require('../../assets/icons/camera.png'), no: 5},
-        {img: require('../../assets/icons/youtube.png'), no: 1},
-      ],
-    },
-    {
-      id: 2,
-      title: 'Pro',
-      price: '0,50€',
-      data: [
-        {img: require('../../assets/icons/like.png'), no: 1000},
-        {img: require('../../assets/icons/flower.png'), no: 100},
-        {img: require('../../assets/icons/camera.png'), no: 10},
-        {img: require('../../assets/icons/youtube.png'), no: 3},
-      ],
-    },
-    {
-      id: 3,
-      title: 'Elite',
-      price: '0,99€',
-      data: [
-        {img: require('../../assets/icons/like.png'), no: 5000},
-        {img: require('../../assets/icons/flower.png'), no: 150},
-        {img: require('../../assets/icons/camera.png'), no: 15},
-        {img: require('../../assets/icons/youtube.png'), no: 5},
-      ],
-    },
-  ];
+
   const refRBSheet = useRef();
   const refRBSheet1 = useRef();
   const refRBSheet2 = useRef();
@@ -107,6 +76,21 @@ const Settings = () => {
     },
   ];
 
+  const getPlans = () => {
+    setLoading(true);
+    axios({
+      method: 'get',
+      url:'https://technorizen.com/Dating/webservice/get_plans',
+    }).then(response => {
+      setLoading(false);
+      setPlandatas(response.data.result);    
+    });
+  };
+ // console.log('plandatas',plandatas);
+useEffect(() => {
+  getPlans();
+}, [])
+
   return (
     <View
       style={{
@@ -115,7 +99,7 @@ const Settings = () => {
           ? theme.colors.primary
           : theme.colors.primaryBlack,
       }}>
-      <HeaderImage_1 height={130} marginBottom={1}>
+           <HeaderImage_1 height={130} marginBottom={1}>
         <Header
           left
           title={'Settings'}
@@ -133,6 +117,21 @@ const Settings = () => {
           }
         />
       </HeaderImage_1>
+
+        {Loading ? 
+         <View
+         style={{
+           flex: 1,
+           backgroundColor: ThemeMode.selectedTheme
+             ? theme.colors.primary
+             : theme.colors.primaryBlack,
+             justifyContent:'center'
+         }}>
+         <ActivityLoader />
+         </View>
+         :
+        <View>
+             
       <ScrollView>
         <TextFormatted
           style={{
@@ -149,7 +148,7 @@ const Settings = () => {
         <FlatList
           horizontal
           showsHorizontalScrollIndicator={false}
-          data={planData}
+          data={plandatas}
           renderItem={({item, index}) => (
             <TouchableOpacity
               onPress={() =>
@@ -201,7 +200,7 @@ const Settings = () => {
                       color: theme.colors.primary,
                       margin: 20,
                     }}>
-                    {item.title}
+                    {item.name}
                   </TextFormatted>
                   <View
                     style={{
@@ -210,7 +209,7 @@ const Settings = () => {
                       justifyContent: 'center',
                       alignItems: 'center',
                     }}>
-                    {item.data?.map(v => (
+                
                       <View
                         style={{
                           alignItems: 'center',
@@ -218,7 +217,7 @@ const Settings = () => {
                           marginHorizontal: 22,
                         }}>
                         <Image
-                          source={v.img}
+                          source={{uri:item.like_image}}
                           style={{height: 34, width: 34, resizeMode: 'contain'}}
                         />
                         <TextFormatted
@@ -228,10 +227,73 @@ const Settings = () => {
                             color: theme.colors.primary,
                             marginTop: 10,
                           }}>
-                          {v.no}
+                          {item.like}
                         </TextFormatted>
                       </View>
-                    ))}
+
+                      <View
+                        style={{
+                          alignItems: 'center',
+                          marginTop: 10,
+                          marginHorizontal: 22,
+                        }}>
+                        <Image
+                           source={{uri:item.flower_image}}
+                          style={{height: 34, width: 34, resizeMode: 'contain'}}
+                        />
+                        <TextFormatted
+                          style={{
+                            fontSize: 16,
+                            fontWeight: '600',
+                            color: theme.colors.primary,
+                            marginTop: 10,
+                          }}>
+                         {item.flower}
+                        </TextFormatted>
+                      </View>
+
+                      <View
+                        style={{
+                          alignItems: 'center',
+                          marginTop: 10,
+                          marginHorizontal: 22,
+                        }}>
+                        <Image
+                          source={{uri:item.picture_image}}
+                          style={{height: 34, width: 34, resizeMode: 'contain'}}
+                        />
+                        <TextFormatted
+                          style={{
+                            fontSize: 16,
+                            fontWeight: '600',
+                            color: theme.colors.primary,
+                            marginTop: 10,
+                          }}>
+                          {item.image}
+                        </TextFormatted>
+                      </View>
+
+                      <View
+                        style={{
+                          alignItems: 'center',
+                          marginTop: 10,
+                          marginHorizontal: 22,
+                        }}>
+                        <Image
+                          source={{uri:item.video_image}}
+                          style={{height: 34, width: 34, resizeMode: 'contain'}}
+                        />
+                        <TextFormatted
+                          style={{
+                            fontSize: 16,
+                            fontWeight: '600',
+                            color: theme.colors.primary,
+                            marginTop: 10,
+                          }}>
+                         {item.video}
+                        </TextFormatted>
+                      </View>
+            
                   </View>
                 </ImageBackground>
                 <ImageBackground
@@ -249,9 +311,9 @@ const Settings = () => {
                     style={{
                       fontSize: 12,
                       fontWeight: '300',
-                      color: ThemeMode.selectedTheme
-                        ? theme.colors.primaryBlack
-                        : theme.colors.primary,
+                      color: /* ThemeMode.selectedTheme ? */
+                         theme.colors.primaryBlack,
+                   /*      : theme.colors.primary, */
                       textAlign: 'center',
                       marginTop: 20,
                     }}>
@@ -507,6 +569,9 @@ const Settings = () => {
       <PurchaseUpgrades refRBSheet={refRBSheet1} refRBSheet2={refRBSheet2} />
       <Payment refRBSheet={refRBSheet2} isPlan={true} />
       <Netinforsheet />
+        </View>
+        }
+
     </View>
   );
 };

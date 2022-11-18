@@ -46,13 +46,22 @@ const HomePage = () => {
   const [Videoplay, setVideoplay] = useState(false);
   const [Loading, setLoading] = useState(false);
   const [Userpost, setUserpost] = useState();
-
   const [Uindex, setUindex] = useState();
   const [ChangeIndex, setChangeIndex] = useState();
   const [appStatus, setappStatus] = useState(AppState.currentState);
   const [plandata, setPlandata] = useState();
   const [profile, setProfile] = useState();
   const focus = useIsFocused();
+  const [swiperIndex, setSwiperIndex] = useState();
+
+  const videoRef = useRef(null);
+  const onBuffer = (e)=>{
+console.log("onBuffer",e);
+  }
+
+  const onError = (e)=>{
+    console.log("onError",e);
+      }
   const Userimage = [
     {
       img: require('../../assets/images/unsplash_1.png'),
@@ -327,6 +336,7 @@ const HomePage = () => {
     }
   };
 
+
   useEffect(() => {
    
     getUserPost();
@@ -379,237 +389,255 @@ const HomePage = () => {
               ? theme.colors.primary
               : theme.colors.primaryBlack,
           }}>
-          <FlatList
-            data={Userpost}
-            initialScrollIndex={ChangeIndex}
-            onScroll={() => setplu_button(false)}
-            onViewableItemsChanged={onViewableItemsChanged.current}
-            pagingEnabled={true}
-            ref={userRef}
-            renderItem={({item, i}) => (
-              <View>
-                {item.block_user == 'unblock' && (
-                  <View
-                    style={{
-                      flex: 1,
-                      height: dimension.height,
-                    
-                    }}>
-                    <Swiper
-                      loop={false}
-                      showsButtons={true}
-                      showsPagination={false}
-                      buttonWrapperStyle={{paddingHorizontal: 0}}
-                      nextButton={
-                        <Image
-                          source={
-                            ThemeMode.selectedTheme
-                              ? require('../../assets/icons/P_sidebar.png')
-                              : require('../../assets/icons/next_dark.png')
+            <View  style={{width:dimension.width,height:dimension.height}}>
+              <FlatList
+                data={Userpost} 
+                //style={{width:dimension.width,height:dimension.height}}
+                initialScrollIndex={ChangeIndex}
+                onScroll={() => setplu_button(false)}
+                onViewableItemsChanged={onViewableItemsChanged.current}
+                pagingEnabled={true}
+                ref={userRef}
+                renderItem={({item, i}) => (
+                  <View>
+                    {item.block_user == 'unblock' && (
+                      <View
+                        style={{
+                          flex: 1,
+                          height: dimension.height,
+                        
+                        }}>
+                        <Swiper
+                          loop={false}
+                          showsButtons={true}
+                          showsPagination={false}
+                          onIndexChanged={index=>setSwiperIndex(index)}
+                          buttonWrapperStyle={{paddingHorizontal: 0}}
+                          nextButton={
+                            <Image
+                              source={
+                                ThemeMode.selectedTheme
+                                  ? require('../../assets/icons/P_sidebar.png')
+                                  : require('../../assets/icons/next_dark.png')
+                              }
+                              style={{
+                                height: 145,
+                                width: 25,
+                                resizeMode: 'contain',
+                              }}
+                            />
                           }
+                          prevButton={
+                            <Image
+                              source={
+                                ThemeMode.selectedTheme
+                                  ? require('../../assets/icons/N_sidebar.png')
+                                  : require('../../assets/icons/prev_dark.png')
+                              }
+                              style={{
+                                height: 145,
+                                width: 25,
+                                resizeMode: 'contain',
+                              }}
+                            />
+                          }>
+                          {item.details?.map(
+                            (v, i) =>
+                              v.type == 'Image' ? (
+                                <View
+                                  // style={{                              
+                                  //   height:
+                                  //     dimension.height /*  + StatusBar.currentHeight */,
+                                  //   width: dimension.width,
+                                  // }}
+                                  >
+                                  <FastImage
+                                    onProgress={() => <ActivityLoader />}
+                                    source={{
+                                      uri: v?.image,
+                                      priority: FastImage.priority.normal,
+                                    }}
+                                    resizeMode={FastImage.resizeMode.cover}
+                                    style={{
+                                      height: dimension.height /*  + StatusBar.currentHeight */,
+                                      width: dimension.width,
+                                    }}
+                                  />
+                                </View>
+                              ): (
+                                v.type == 'Video'  &&
+                              //   <VideoPlayer   
+                              //   onPlay={()=> setVideoplay(true)}           
+                                          
+                              //   disableFullscreen={false}                            
+                              //   disableBack={true}
+                              //   disableVolume={true}
+                              //   tapAnywhereToPause={true}
+                              //    disableSeekbar={true}
+                              //   source={{uri: v?.image}}
+                              //   onShowControls={true}
+                              //   disableTimer={true}
+                              //   disablePlayPause={true}                        
+                              // />
+                          //     <VideoPlayer
+                          //     video={{ uri: v?.image }}
+                          //     pause={true}               
+                          //     resizeMode={'cover'}
+                          //     thumbnail={{ uri: v?.image}}
+                          //     style={{ height: dimension.height ,
+                          //     width: dimension.width,}}
+                          //     disableSeek={true}
+                          //     bufferConfig={{minBufferMs:1000,maxBufferMs:2000}}
+                          //     pauseOnPress
+                          // />
+                          <Video source={{uri: v?.image}}   
+                          playInBackground={false}                        
+                          ref={videoRef}    
+                          bufferConfig={{
+                            minBufferMs: 15000,
+                            maxBufferMs: 50000,
+                            bufferForPlaybackMs: 2500,
+                            bufferForPlaybackAfterRebufferMs: 5000
+                          }}                                 
+                          onBuffer={onBuffer}               
+                          onError={onError}    
+                          repeat
+                          
+                          paused={ /* swiperIndex == i ? false :  */true}
+                          style={{ height: dimension.height ,
+                                width: dimension.width,}}
+                          /> ),
+                          <TextFormatted style={{backgroundColor:'#f00',fontSize:30,position:'absolute',width:'100%',top:'50%'}}>{swiperIndex + " " + i}</TextFormatted>
+                          )}
+                        </Swiper>
+                        <View
                           style={{
-                            height: 145,
-                            width: 25,
-                            resizeMode: 'contain',
-                          }}
-                        />
-                      }
-                      prevButton={
-                        <Image
-                          source={
-                            ThemeMode.selectedTheme
-                              ? require('../../assets/icons/N_sidebar.png')
-                              : require('../../assets/icons/prev_dark.png')
-                          }
-                          style={{
-                            height: 145,
-                            width: 25,
-                            resizeMode: 'contain',
-                          }}
-                        />
-                      }>
-                      {item.details?.map(
-                        (v, i) =>
-                          v.type == 'Image' ? (
-                            <View
-                              // style={{
-                           
-                              //   height:
-                              //     dimension.height /*  + StatusBar.currentHeight */,
-                              //   width: dimension.width,
-                              // }}
-                              >
-                              <FastImage
-                                onProgress={() => <ActivityLoader />}
-                                source={{
-                                  uri: v?.image,
-                                  priority: FastImage.priority.normal,
-                                }}
-                                resizeMode={FastImage.resizeMode.cover}
+                            position: 'absolute',
+                            top: 44,
+                            marginHorizontal: 20,
+                            flexDirection: 'row',
+                            alignItems: 'center',
+                          }}>
+                          <TouchableOpacity
+                            onPress={() =>
+                              navigation.navigate('userProfile', item?.id)
+                            }>
+                            <Image
+                              source={{
+                                uri: item?.image,
+                              }}
+                              style={{
+                                height: 56,
+                                width: 56,
+                                resizeMode: 'cover',
+                                borderRadius: 50,
+                                borderWidth: 3,
+                                // backgroundColor: '#ff0',
+                                borderColor: theme.colors.darkGrey,
+                              }}
+                            />
+                          </TouchableOpacity>
+                          <View style={{marginLeft: 8, flex: 1}}>
+                            <TextFormatted
+                              style={{
+                                fontSize: 16,
+                                fontWeight: '700',
+                                color: '#fff',
+                              }}>
+                              {item?.user_name + ' ' + item?.surname}
+                            </TextFormatted>
+                            <TextFormatted
+                              style={{
+                                fontSize: 12,
+                                fontWeight: '400',
+                                color: '#fff',
+                              }}>
+                              {calculate_age(item.dob)} years old
+                            </TextFormatted>
+                          </View>
+                          <TouchableOpacity
+                            style={{
+                              height: 40,
+                              width: 40,
+                              backgroundColor: ThemeMode.selectedTheme
+                                ? '#FFFFFF33'
+                                : '#1A1D254D',
+                              alignItems: 'center',
+                              justifyContent: 'center',
+                              borderRadius: 10,
+                              marginRight: 10,
+                            }}
+                            onPress={() => refRBSheet1.current.open()}>
+                            <LinearGradient
+                              colors={
+                                ThemeMode.themecolr == 'Red'
+                                  ? theme.colors.primaryOn
+                                  : ThemeMode.themecolr == 'Blue'
+                                  ? theme.colors.primaryBlue
+                                  : ThemeMode.themecolr == 'Green'
+                                  ? theme.colors.primaryGreen
+                                  : ThemeMode.themecolr == 'Purple'
+                                  ? theme.colors.primaryPurple
+                                  : ThemeMode.themecolr == 'Yellow'
+                                  ? theme.colors.primaryYellow
+                                  : theme.colors.primaryOn
+                              }
+                              start={{x: 0, y: 0}}
+                              end={{x: 1, y: 1}}
+                              style={{
+                                height: 10,
+                                width: 10,
+                                borderRadius: 50,
+                                position: 'absolute',
+                                top: 5,
+                                right: 10,
+                                zIndex: 1,
+                              /*  opacity:0 */
+                              }}
+                            />
+                            <Image
+                              source={require('../../assets/icons/Notifyy.png')}
+                              style={{height: 25, width: 25, resizeMode: 'contain'}}
+                            />
+                          </TouchableOpacity>
+                          <TouchableOpacity
+                            onPress={() => refRBSheet.current.open()}
+                            style={{
+                              height: 40,
+                              width: 40,
+                              alignItems: 'center',
+                              justifyContent: 'center',
+                              borderRadius: 10,
+                            }}>
+                            {ThemeMode.selectedTheme ? (
+                              <Image
+                                source={require('../../assets/icons/menus.png')}
                                 style={{
-                                  height: dimension.height /*  + StatusBar.currentHeight */,
-                                  width: dimension.width,
+                                  height: 40,
+                                  width: 40,
+                                  resizeMode: 'contain',
+                                  marginRight: 10,
                                 }}
                               />
-                            </View>
-                          ): (
-                            v.type == 'Video'  &&
-                          //   <VideoPlayer   
-                          //   onPlay={()=> setVideoplay(true)}           
-                                      
-                          //   disableFullscreen={false}                            
-                          //   disableBack={true}
-                          //   disableVolume={true}
-                          //   tapAnywhereToPause={true}
-                          //    disableSeekbar={true}
-                          //   source={{uri: v?.image}}
-                          //   onShowControls={true}
-                          //   disableTimer={true}
-                          //   disablePlayPause={true}                        
-                          // />
-                          <VideoPlayer
-                          video={{ uri: v?.image }}
-                          pause={true}               
-                          resizeMode={'cover'}
-                          thumbnail={{ uri: v?.image}}
-                          style={{ height: dimension.height ,
-                          width: dimension.width,}}
-                          disableSeek={true}
-                          bufferConfig={{minBufferMs:1000,maxBufferMs:2000}}
-                          pauseOnPress
-                      />
-
-                          
-                          ),
-                      )}
-                    </Swiper>
-                    <View
-                      style={{
-                        position: 'absolute',
-                        top: 44,
-                        marginHorizontal: 20,
-                        flexDirection: 'row',
-                        alignItems: 'center',
-                      }}>
-                      <TouchableOpacity
-                        onPress={() =>
-                          navigation.navigate('userProfile', item?.id)
-                        }>
-                        <Image
-                          source={{
-                            uri: item?.image,
-                          }}
-                          style={{
-                            height: 56,
-                            width: 56,
-                            resizeMode: 'cover',
-                            borderRadius: 50,
-                            borderWidth: 3,
-                            // backgroundColor: '#ff0',
-                            borderColor: theme.colors.darkGrey,
-                          }}
-                        />
-                      </TouchableOpacity>
-                      <View style={{marginLeft: 8, flex: 1}}>
-                        <TextFormatted
-                          style={{
-                            fontSize: 16,
-                            fontWeight: '700',
-                            color: '#fff',
-                          }}>
-                          {item?.user_name + ' ' + item?.surname}
-                        </TextFormatted>
-                        <TextFormatted
-                          style={{
-                            fontSize: 12,
-                            fontWeight: '400',
-                            color: '#fff',
-                          }}>
-                          {calculate_age(item.dob)} years old
-                        </TextFormatted>
+                            ) : (
+                              <Image
+                                source={require('../../assets/icons/menù_dark.png')}
+                                style={{
+                                  height: 40,
+                                  width: 40,
+                                  resizeMode: 'contain',
+                                  marginRight: 10,
+                                }}
+                              />
+                            )}
+                          </TouchableOpacity>
+                        </View>
                       </View>
-                      <TouchableOpacity
-                        style={{
-                          height: 40,
-                          width: 40,
-                          backgroundColor: ThemeMode.selectedTheme
-                            ? '#FFFFFF33'
-                            : '#1A1D254D',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                          borderRadius: 10,
-                          marginRight: 10,
-                        }}
-                        onPress={() => refRBSheet1.current.open()}>
-                        <LinearGradient
-                          colors={
-                            ThemeMode.themecolr == 'Red'
-                              ? theme.colors.primaryOn
-                              : ThemeMode.themecolr == 'Blue'
-                              ? theme.colors.primaryBlue
-                              : ThemeMode.themecolr == 'Green'
-                              ? theme.colors.primaryGreen
-                              : ThemeMode.themecolr == 'Purple'
-                              ? theme.colors.primaryPurple
-                              : ThemeMode.themecolr == 'Yellow'
-                              ? theme.colors.primaryYellow
-                              : theme.colors.primaryOn
-                          }
-                          start={{x: 0, y: 0}}
-                          end={{x: 1, y: 1}}
-                          style={{
-                            height: 10,
-                            width: 10,
-                            borderRadius: 50,
-                            position: 'absolute',
-                            top: 5,
-                            right: 10,
-                            zIndex: 1,
-                           /*  opacity:0 */
-                          }}
-                        />
-                        <Image
-                          source={require('../../assets/icons/Notifyy.png')}
-                          style={{height: 25, width: 25, resizeMode: 'contain'}}
-                        />
-                      </TouchableOpacity>
-                      <TouchableOpacity
-                        onPress={() => refRBSheet.current.open()}
-                        style={{
-                          height: 40,
-                          width: 40,
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                          borderRadius: 10,
-                        }}>
-                        {ThemeMode.selectedTheme ? (
-                          <Image
-                            source={require('../../assets/icons/menus.png')}
-                            style={{
-                              height: 40,
-                              width: 40,
-                              resizeMode: 'contain',
-                              marginRight: 10,
-                            }}
-                          />
-                        ) : (
-                          <Image
-                            source={require('../../assets/icons/menù_dark.png')}
-                            style={{
-                              height: 40,
-                              width: 40,
-                              resizeMode: 'contain',
-                              marginRight: 10,
-                            }}
-                          />
-                        )}
-                      </TouchableOpacity>
-                    </View>
+                    )}
                   </View>
                 )}
-              </View>
-            )}
-          />
+              />
+            </View>
         </View>
       )}
 

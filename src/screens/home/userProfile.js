@@ -95,7 +95,7 @@ const UserProfile = () => {
     getUserVideo();
   }, []);
  
-  console.log('videodata',videodata);
+  console.log('Userdata',params);
   return (
     <View
       style={{
