@@ -19,6 +19,8 @@ import com.reactnativecommunity.asyncstorage.AsyncStoragePackage;
 import com.reactnativecommunity.blurview.BlurViewPackage;
 // @react-native-community/netinfo
 import com.reactnativecommunity.netinfo.NetInfoPackage;
+// @react-native-google-signin/google-signin
+import com.reactnativegooglesignin.RNGoogleSigninPackage;
 // @react-native-picker/picker
 import com.reactnativecommunity.picker.RNCPickerPackage;
 // react-native-color-matrix-image-filters
@@ -110,6 +112,7 @@ public class PackageList {
       new AsyncStoragePackage(),
       new BlurViewPackage(),
       new NetInfoPackage(),
+      new RNGoogleSigninPackage(),
       new RNCPickerPackage(),
       new ColorMatrixImageFiltersPackage(),
       new CreateThumbnailPackage(),

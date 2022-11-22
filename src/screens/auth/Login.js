@@ -6,7 +6,7 @@ import {
   View,
   AppState,
 } from 'react-native';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {theme} from '../../utils/Constants';
 import HeaderImage from '../../components/HeaderImage';
 import Logo from '../../components/Logo';
@@ -17,11 +17,11 @@ import Button from '../../components/Button';
 import {PASSCODE, STAP} from '../../redux/actions/ActionType';
 import {useDispatch, useSelector} from 'react-redux';
 import axios from 'axios';
-import Toast from 'react-native-toast-message';
 import Netinforsheet from '../../components/Netinforsheet';
 import {ShowToast} from '../../utils/Baseurl';
 import { AccessToken, AuthenticationToken, LoginButton, LoginManager } from 'react-native-fbsdk-next';
 import { useNavigation } from '@react-navigation/native';
+import { GoogleSignin } from '@react-native-google-signin/google-signin';
 
 
 const validateEmail = email => {
@@ -138,6 +138,31 @@ const Login = () => {
 
      */
   }
+
+  const GooglesignIn = async () => {
+    try {
+      await GoogleSignin.hasPlayServices();
+      const userInfo = await GoogleSignin.signIn();
+    console.log('userInfo',userInfo);
+    } catch (error) {
+      if (error.code === statusCodes.SIGN_IN_CANCELLED) {
+        console.log('error',error);
+        // user cancelled the login flow
+      } else if (error.code === statusCodes.IN_PROGRESS) {
+        console.log('error',error);
+        // operation (e.g. sign in) is in progress already
+      } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
+        console.log('error',error);
+        // play services not available or outdated
+      } else {
+        // some other error happened
+      }
+    }
+  };
+  useEffect(() => {
+    GoogleSignin.configure();
+  }, [])
+  
   return (
     <View
       style={{
@@ -266,7 +291,7 @@ const Login = () => {
             alignSelf: 'center',
             marginTop: 20,
           }}>
-          <TouchableOpacity
+          <TouchableOpacity onPress={()=> GooglesignIn()}
             style={{
               ...styles.socialbg,
               backgroundColor: ThemeMode.selectedTheme

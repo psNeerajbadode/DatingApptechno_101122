@@ -1,5 +1,11 @@
 apply plugin: "com.android.application"
 apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"
+
+  
+
+  // Add the Google services Gradle plugin
+  apply plugin: 'com.google.gms.google-services'
+
 // import com.android.build.OutputFile
 // import org.apache.tools.ant.taskdefs.condition.Os
 // apply plugin: 'ly.img.android.sdk'
@@ -307,6 +313,11 @@ android {
 }
 
 dependencies {
+// Import the Firebase BoM
+    implementation platform('com.google.firebase:firebase-bom:31.1.0')
+  // TODO: Add the dependencies for Firebase products you want to use
+  // When using the BoM, don't specify versions in Firebase dependencies
+    implementation 'com.google.firebase:firebase-analytics'
     implementation fileTree(dir: "libs", include: ["*.jar"])
  // implementation project(':react-native-fs')         
     //noinspection GradleDynamicVersion
