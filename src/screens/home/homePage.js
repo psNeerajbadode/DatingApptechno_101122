@@ -48,19 +48,16 @@ const HomePage = () => {
   const [Userpost, setUserpost] = useState();
   const [Uindex, setUindex] = useState();
   const [ChangeIndex, setChangeIndex] = useState();
+  const [nextvideo, setnextvideo] = useState();
   const [appStatus, setappStatus] = useState(AppState.currentState);
   const [plandata, setPlandata] = useState();
   const [profile, setProfile] = useState();
-  const focus = useIsFocused();
   const [swiperIndex, setSwiperIndex] = useState();
-
-  const videoRef = useRef(null);
+  const videoRef = useRef(null);  
   const onBuffer = (e)=>{
-console.log("onBuffer",e);
   }
 
-  const onError = (e)=>{
-    console.log("onError",e);
+  const onError = (e)=>{    
       }
   const Userimage = [
     {
@@ -411,7 +408,7 @@ console.log("onBuffer",e);
                           loop={false}
                           showsButtons={true}
                           showsPagination={false}
-                          onIndexChanged={index=>setSwiperIndex(index)}
+                          onIndexChanged={index=> setSwiperIndex(index)}                         
                           buttonWrapperStyle={{paddingHorizontal: 0}}
                           nextButton={
                             <Image
@@ -492,19 +489,16 @@ console.log("onBuffer",e);
                           // />
                           <Video source={{uri: v?.image}}   
                           playInBackground={false}                        
-                          ref={videoRef}    
-                          bufferConfig={{
-                            minBufferMs: 15000,
-                            maxBufferMs: 50000,
-                            bufferForPlaybackMs: 2500,
-                            bufferForPlaybackAfterRebufferMs: 5000
-                          }}                                 
+                          ref={videoRef}      
+                          onLoadStart={()=> setnextvideo(v?.image)}                                                      
                           onBuffer={onBuffer}               
-                          onError={onError}    
-                          repeat
-                          
-                          paused={ /* swiperIndex == i ? false :  */true}
-                          style={{ height: dimension.height ,
+                          onError={onError}     
+                          // poster={'https://technorizen.com/Dating/uploads/images/video_loader344.png'}
+                          // posterResizeMode='cover'
+                          repeat={true}
+                          resizeMode='cover'                          
+                          paused={ nextvideo == v?.image ? false : true}
+                          style={{ height: dimension.height,
                                 width: dimension.width,}}
                           /> ),
                           <TextFormatted style={{backgroundColor:'#f00',fontSize:30,position:'absolute',width:'100%',top:'50%'}}>{swiperIndex + " " + i}</TextFormatted>

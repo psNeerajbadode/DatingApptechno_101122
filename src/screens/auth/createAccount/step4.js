@@ -52,15 +52,18 @@ const Step4 = () => {
   const video = media.filter(v => v.type == 'video/mp4');
   var RNFS = require('react-native-fs');
 
+
   const selectImage = async type => {
     await (type == 'cemera'
       ? ImagePicker.launchCamera
       : ImagePicker.launchImageLibrary)(
       {
         mediaType: /* type == 'photos' ? 'photo' : */ 'mixed',
-        videoQuality: 'high',
+        videoQuality: 'medium',
         selectionLimit: 10,
         quality: 1,
+        durationLimit:10,        
+
       },
       response => {
         if (!response.didCancel) {
@@ -149,45 +152,52 @@ const Step4 = () => {
   };
 
   async function VideoApi() {
-    try {
-      setLoading(true);
-      const body = new FormData();
-      body.append('user_id', Staps.id);
-      const urlComponents = video[0]?.uri.split('/');
-      const fileNameAndExtension = urlComponents[urlComponents?.length - 1];
-      const destPath = `${RNFS?.TemporaryDirectoryPath}/${fileNameAndExtension}`;
-      await RNFS.copyFile(video[0]?.uri, destPath);
-      console.log('file://' + destPath);
-
-      body.append('image', {
-        uri: 'file://' + destPath,
-        type: video[0]?.type,
-        name: video[0]?.fileName,
-      });
-      axios({
-        url: 'https://technorizen.com/Dating/webservice/signup6',
-        method: 'POST',
-        data: body,
-        headers: {
-          'content-type': 'multipart/form-data',
-        },
-      })
-        .then(function (response) {
-          console.log('Video Api', response.data);
-          if (response.data.status == 1) {
-            setLoading(false);
-            dispatch({type: STAP, payload: response.data.result});
-            navigation.navigate('step5');
-            console.log(response.data);
-          }
-        })
-        .catch(function (error) {
-          console.log('catch', error);
-          setLoading(false);
+    if (video[0]?.duration <= 15) {
+      try {
+        setLoading(true);
+        const body = new FormData();
+        body.append('user_id', Staps.id);
+        const urlComponents = video[0]?.uri.split('/');
+        const fileNameAndExtension = urlComponents[urlComponents?.length - 1];
+        const destPath = `${RNFS?.TemporaryDirectoryPath}/${fileNameAndExtension}`;
+        await RNFS.copyFile(video[0]?.uri, destPath);
+      console.log('file://' + destPath.length);
+  
+        body.append('image', {
+          uri: 'file://' + destPath,
+          type: video[0]?.type,
+          name: video[0]?.fileName,
         });
-    } catch (error) {
-      console.log(error);
+        axios({
+          url: 'https://technorizen.com/Dating/webservice/signup6',
+          method: 'POST',
+          data: body,
+          headers: {
+            'content-type': 'multipart/form-data',
+          },
+        })
+          .then(function (response) {
+            console.log('Video Api', response.data);
+            if (response.data.status == 1) {
+              setLoading(false);
+              dispatch({type: STAP, payload: response.data.result});
+              navigation.navigate('step5');
+              console.log(response.data);
+            }
+          })
+          .catch(function (error) {
+            console.log('catch', error);
+            setLoading(false);
+          });
+      } catch (error) {
+        console.log(error);
+      } 
+      return;
     }
+    else{
+      ShowToast('Video length limit exceeded Please upload within 15 seconds');
+    }
+   
   }
 
   useEffect(() => {
@@ -196,7 +206,7 @@ const Step4 = () => {
 
 
 const [paush, setPaush] = useState(false);
-console.log("pause",paush);
+
   return (
     <View
       style={{

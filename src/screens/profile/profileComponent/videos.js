@@ -26,6 +26,7 @@ import {
   YellowlightImage,
 } from '../../../utils/CustomImages';
 import VideoPlayer from 'react-native-video-player';
+import { ShowToast } from '../../../utils/Baseurl';
 
 
 const Videos = () => {
@@ -39,20 +40,25 @@ const Videos = () => {
   const [Loading, setLoading] = useState(false);
   const [refresh, setRefresh] = useState(false);
   const refRBSheet = useRef();
+  var RNFS = require('react-native-fs');
   const videoData = [
     {vid: require('../../../assets/images/big_buck_bunny_720p_1mb.mp4')},
   ];
   const pickVideo = () => {
-    launchImageLibrary({mediaType: 'video', videoQuality: 'high'}, response => {
+    launchImageLibrary({mediaType: 'video', videoQuality: 'medium'}, response => {
       if (!response.didCancel) {
-        setUri(response.assets[0]);
+        console.log('response.assets=======>',response.assets);
+        setUri(response.assets);
+        VideoApi();
       }
     });
   };
   const picCamera = () => {
-    launchCamera({mediaType: 'video', videoQuality: 'high'}, response => {
+    launchCamera({mediaType: 'video', videoQuality: 'medium'}, response => {
       if (!response.didCancel) {
-        setUri(response.assets[0]);
+        console.log('response.assets=======>',response.assets);
+        setUri(response.assets);
+        VideoApi();
       }
     });
   };
@@ -89,24 +95,76 @@ const Videos = () => {
     }, 1000);
   }
 
+  async function VideoApi() {
+    if (uri[0]?.duration <= 15) {
+      try {
+        setLoading(true);
+        const body = new FormData();
+        body.append('user_id', Staps.id);
+        const urlComponents = uri[0]?.uri.split('/');
+        const fileNameAndExtension = urlComponents[urlComponents?.length - 1];
+        const destPath = `${RNFS?.TemporaryDirectoryPath}/${fileNameAndExtension}`;
+        await RNFS.copyFile(uri[0]?.uri, destPath);
+        console.log('file://' + destPath.length);  
+        body.append('video', {
+          uri: 'file://' + destPath,
+          type: uri[0]?.type,
+          name: uri[0]?.fileName,
+        });
+        axios({
+          url: 'https://technorizen.com/Dating/webservice/add_video_post',
+          method: 'POST',
+          data: body,
+          headers: {
+            'content-type': 'multipart/form-data',
+          },
+        })
+          .then(function (response) {
+            //console.log('Video Api', response);
+            if (response.data.status == 1) {
+              setLoading(false);         
+              getUserData();    
+              ShowToast('Video add successfully');
+              console.log(response);
+            }else {
+              setLoading(false);
+              ShowToast('Video add Unsuccessfully');
+            }
+          })
+          .catch(function (error) {
+            console.log('catch', error);
+            setLoading(false);
+          });
+      } catch (error) {
+        console.log(error);
+      } 
+      return;
+    }   
+   
+  }
+
+
+
   useEffect(() => {
     getUserData();
     generateThumbnail();
   }, []);
-console.log('User',User);
+
   return (
     <ScrollView >
-      {/* {Loading ? (
+      {Loading ? (
         <View style={{marginTop: dimension.width * 0.15}}>
           <ActivityLoader />
         </View>
-      ) : ( */}
-      <View style={{flexDirection: 'row'}}>
+      ) : (
+     <View>
+       <View style={{flexDirection: 'row'}}>
         <View style={{width: dimension.width / 2}}>
           <TouchableOpacity
             onPress={
               () => {
-                generateThumbnail();
+                refRBSheet.current.open();
+                // generateThumbnail();
               } 
             }
             style={{
@@ -209,15 +267,13 @@ console.log('User',User);
       </View>
       {User?.map(
           (it, i) =>
-          i ==1 &&
-           
+         (i == 1) &&           
               <TouchableOpacity 
               style={{width:dimension.width / 2-10,alignSelf:'center',marginTop:20,}}
                 onPress={() =>{ 
                   navigation.navigate('playVideo', {data: it?.video})
-                }}>
-                 
-                      <Image
+                }}>                 
+                     <Image
                       source={require('../../../assets/icons/play_video.png')}
                       style={{
                         height: 64,
@@ -228,8 +284,7 @@ console.log('User',User);
                         top: 70,
                         zIndex:1
                       }}
-                    />
-                 
+                    />                 
                       <VideoPlayer  
                       style={{zIndex:0,alignSelf:'center',borderRadius:20,overflow:'hidden',height:202}}
                       thumbnail={{ uri: it?.video }}
@@ -278,7 +333,7 @@ console.log('User',User);
 
           {User?.map(
           (it, i) =>
-          i >=3    &&
+        (i >=3)    &&
            
               <TouchableOpacity 
               style={{width:dimension.width -40,alignSelf:'center',marginTop:20,}}
@@ -309,7 +364,8 @@ console.log('User',User);
                     </TouchableOpacity>
             
           )}      
-        <View style={{marginBottom:100}} />
+        <View style={{marginBottom:100}} /> 
+        </View> )}
       <Option
         refRBSheet={refRBSheet}
         onPress={() => {
@@ -385,6 +441,8 @@ const Option = ({refRBSheet, onPress, onPress1}) => {
     </BottomSheet>
   );
 };
+
+
 export default Videos;
 
 const styles = StyleSheet.create({});

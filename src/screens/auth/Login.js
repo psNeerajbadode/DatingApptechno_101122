@@ -21,6 +21,7 @@ import Toast from 'react-native-toast-message';
 import Netinforsheet from '../../components/Netinforsheet';
 import {ShowToast} from '../../utils/Baseurl';
 import { AccessToken, AuthenticationToken, LoginButton, LoginManager } from 'react-native-fbsdk-next';
+import { useNavigation } from '@react-navigation/native';
 
 
 const validateEmail = email => {
@@ -33,14 +34,15 @@ const validateEmail = email => {
 const validPass = pass => {
   return String(pass).match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/);
 };
-const Login = ({navigation}) => {
+const Login = () => {
+  const navigation =useNavigation();
   const dispatch = useDispatch();
   const ThemeMode = useSelector(state => state.Theme);
   const Staps = useSelector(state => state.Stap);
   const [email, setEmail] = useState('demo@gmail.com');
   const [password, setPassword] = useState('Dd123456');
-  /* const [email, setEmail] = useState();
-  const [password, setPassword] = useState(); */
+  // const [email, setEmail] = useState();
+  // const [password, setPassword] = useState();
   const [show, setShow] = useState(false);
   const [loading, setLoading] = useState(false);
   const Loginapi = () => {    
@@ -240,7 +242,7 @@ const Login = ({navigation}) => {
         
         <Button
           opacity={validateEmail(email) && validPass(password) ? 1 : 0.5}
-          onPress={() =>  {Loginapi();}}
+          onPress={() =>   {Loginapi();}  /*  navigation.navigate('step4') */}
           buttonName={'Login'}
           Loading={loading}
           disabled={validateEmail(email) && validPass(password) ? false : true}
