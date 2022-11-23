@@ -486,34 +486,60 @@ const HomePage = () => {
                                 //     bufferConfig={{minBufferMs:1000,maxBufferMs:2000}}
                                 //     pauseOnPress
                                 // />
-                                <Video
-                                  source={{uri: v?.image}}
-                                  playInBackground={false}
-                                  ref={videoRef}
-                                  onLoadStart={() => {
-                                    setnextvideo(v?.image);
-                                    setVideoId(v?.id);
-                                    setNaviVideo(true);
+                                <TouchableOpacity
+                                  activeOpacity={1}
+                                  onPress={() => {
+                                    setNaviVideo(!naviVideo);
                                   }}
-                                  onBuffer={onBuffer}
-                                  onError={onError}
-                                  // disableFocus={true}
-                                  // poster={'https://technorizen.com/Dating/uploads/images/video_loader344.png'}
-                                  // posterResizeMode='cover'
-                                  repeat={true}
-                                  resizeMode="cover"
-                                  paused={
-                                    v?.id == videoId &&
-                                    nextvideo == v?.image &&
-                                    naviVideo
-                                      ? false
-                                      : true
-                                  }
                                   style={{
-                                    height: dimension.height,
-                                    width: dimension.width,
-                                  }}
-                                />
+                                    alignSelf: 'center',
+                                    justifyContent: 'center',
+                                  }}>
+                                  {!naviVideo && (
+                                    <Image
+                                      source={require('../../assets/icons/Video_play_d.png')}
+                                      resizeMode="contain"
+                                      style={{
+                                        width: 65,
+                                        height: 65,
+                                        position: 'absolute',
+                                        top: '50%',
+                                        alignSelf: 'center',
+                                        zIndex: 1,
+                                      }}
+                                    />
+                                  )}
+                                  <Video
+                                    source={{uri: v?.image}}
+                                    playInBackground={false}
+                                    ref={videoRef}
+                                    playWhenInactive={false}
+                                    onLoadStart={() => {
+                                      setnextvideo(v?.image);
+                                      setVideoId(v?.id);
+                                      setNaviVideo(true);
+                                    }}
+                                    onBuffer={onBuffer}
+                                    onError={onError}
+                                    // disableFocus={true}
+                                    // poster={'https://technorizen.com/Dating/uploads/images/video_loader344.png'}
+                                    // posterResizeMode='cover'
+                                    repeat={true}
+                                    resizeMode="cover"
+                                    paused={
+                                      v?.id == videoId &&
+                                      nextvideo == v?.image &&
+                                      naviVideo
+                                        ? false
+                                        : true
+                                    }
+                                    style={{
+                                      height: dimension.height,
+                                      width: dimension.width,
+                                      zIndex: 0,
+                                    }}
+                                  />
+                                </TouchableOpacity>
                               )
                             ),
                           <TextFormatted
