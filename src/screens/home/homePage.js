@@ -50,17 +50,16 @@ const HomePage = () => {
   const [Userpost, setUserpost] = useState();
   const [Uindex, setUindex] = useState();
   const [ChangeIndex, setChangeIndex] = useState();
-  const [nextvideo, setnextvideo] = useState();
+  const [nextvideo, setnextvideo] = useState(false);
+  const [videoId, setVideoId] = useState();
   const [appStatus, setappStatus] = useState(AppState.currentState);
   const [plandata, setPlandata] = useState();
   const [profile, setProfile] = useState();
   const [swiperIndex, setSwiperIndex] = useState();
-  const videoRef = useRef(null);  
-  const onBuffer = (e)=>{
-  }
+  const videoRef = useRef(null);
+  const onBuffer = e => {};
 
-  const onError = (e)=>{    
-      }
+  const onError = e => {};
   const Userimage = [
     {
       img: require('../../assets/images/unsplash_1.png'),
@@ -168,9 +167,9 @@ const HomePage = () => {
     } else {
       setplu_button(true);
       setTimeout(() => {
-      setChangeIndex(ChangeIndex + 1);
-      userRef.current.scrollToIndex({index: ChangeIndex + 1});
-       }, 800);
+        setChangeIndex(ChangeIndex + 1);
+        userRef.current.scrollToIndex({index: ChangeIndex + 1});
+      }, 800);
     }
   }
   const onViewableItemsChanged = React.useRef(item => {
@@ -214,41 +213,41 @@ const HomePage = () => {
     }
   };
 
-  async function status(status) {
-    try {
-      const url =
-        'https://technorizen.com/Dating/webservice/update_online_status';
+  // async function status(status) {
+  //   try {
+  //     const url =
+  //       'https://technorizen.com/Dating/webservice/update_online_status';
 
-      const body = new FormData();
-      body.append('user_id', Staps.id);
-      body.append('status', status);
+  //     const body = new FormData();
+  //     body.append('user_id', Staps.id);
+  //     body.append('status', status);
 
-      const res = await fetch(url, {
-        method: 'POST',
-        body: body,
-        headers: {
-          'content-type': 'multipart/form-data',
-        },
-      });
-      const rslt = await res.json();
-      if (rslt.status == 1) {
-        // console.log('status', status);
-        setappStatus(status);
-      }
+  //     const res = await fetch(url, {
+  //       method: 'POST',
+  //       body: body,
+  //       headers: {
+  //         'content-type': 'multipart/form-data',
+  //       },
+  //     });
+  //     const rslt = await res.json();
+  //     if (rslt.status == 1) {
+  //       // console.log('status', status);
+  //       setappStatus(status);
+  //     }
 
-      // alert(status);
-    } catch (e) {}
-  }
+  //     // alert(status);
+  //   } catch (e) {}
+  // }
 
-  const handlePutAppToBackground = state => {
-    status('ONLINE');
-    if (
-      (Platform.OS == 'android' && state == 'background') ||
-      (Platform.OS == 'ios' && state == 'inactive')
-    )
-      status('OFFLINE');
-    else if (state == 'active') status('ONLINE');
-  };
+  // const handlePutAppToBackground = state => {
+  //   status('ONLINE');
+  //   if (
+  //     (Platform.OS == 'android' && state == 'background') ||
+  //     (Platform.OS == 'ios' && state == 'inactive')
+  //   )
+  //     status('OFFLINE');
+  //   else if (state == 'active') status('ONLINE');
+  // };
 
   const calculate_age = dob1 => {
     var today = new Date();
@@ -317,12 +316,12 @@ const HomePage = () => {
         method: 'POST',
       })
         .then(function (response) {
-         // console.log('Block API=>', JSON.stringify(response.data.message));
+          // console.log('Block API=>', JSON.stringify(response.data.message));
           if (response.data.status == 1) {
             refRBSheet2.current.close();
-            refRBSheet.current.close();  
-            getUserPost();       
-            ShowToast(response.data.message);           
+            refRBSheet.current.close();
+            getUserPost();
+            ShowToast(response.data.message);
             setLoading(false);
           }
         })
@@ -334,14 +333,12 @@ const HomePage = () => {
     }
   };
 
-
-  useEffect(() => {  
-    navigation.addListener('focus', (route) => { setNaviVideo(false) });
-    navigation.addListener('blur', (route) => { setNaviVideo(true) });
+  useEffect(() => {
+    navigation.addListener('focus', () => setNaviVideo(true));
     getUserPost();
     getPlanData();
     getUserProfile();
-    status('ONLINE');   
+    /*  status('ONLINE');
     const appStateListener = AppState.addEventListener(
       'change',
       handlePutAppToBackground,
@@ -349,7 +346,7 @@ const HomePage = () => {
     return () => {
       appStateListener?.remove();
       return status('OFFLINE');
-    };
+    }; */
   }, []);
 
   return (
@@ -388,252 +385,281 @@ const HomePage = () => {
               ? theme.colors.primary
               : theme.colors.primaryBlack,
           }}>
-            <View  style={{width:dimension.width,height:dimension.height}}>
-              <FlatList
-                data={Userpost} 
-                //style={{width:dimension.width,height:dimension.height}}
-                initialScrollIndex={ChangeIndex}
-                onScroll={() => setplu_button(false)}
-                onViewableItemsChanged={onViewableItemsChanged.current}
-                pagingEnabled={true}
-                ref={userRef}
-                renderItem={({item, i}) => (
-                  <View>
-                    {item.block_user == 'unblock' && (
+          <View style={{width: dimension.width, height: dimension.height}}>
+            <FlatList
+              data={Userpost}
+              //style={{width:dimension.width,height:dimension.height}}
+              initialScrollIndex={ChangeIndex}
+              onScroll={() => setplu_button(false)}
+              onViewableItemsChanged={onViewableItemsChanged.current}
+              pagingEnabled={true}
+              ref={userRef}
+              renderItem={({item, i}) => (
+                <View>
+                  {item.block_user == 'unblock' && (
+                    <View
+                      style={{
+                        flex: 1,
+                        height: dimension.height,
+                      }}>
+                      <Swiper
+                        loop={false}
+                        showsButtons={true}
+                        showsPagination={false}
+                        onIndexChanged={index => setSwiperIndex(index)}
+                        buttonWrapperStyle={{paddingHorizontal: 0}}
+                        nextButton={
+                          <Image
+                            source={
+                              ThemeMode.selectedTheme
+                                ? require('../../assets/icons/P_sidebar.png')
+                                : require('../../assets/icons/next_dark.png')
+                            }
+                            style={{
+                              height: 145,
+                              width: 25,
+                              resizeMode: 'contain',
+                            }}
+                          />
+                        }
+                        prevButton={
+                          <Image
+                            source={
+                              ThemeMode.selectedTheme
+                                ? require('../../assets/icons/N_sidebar.png')
+                                : require('../../assets/icons/prev_dark.png')
+                            }
+                            style={{
+                              height: 145,
+                              width: 25,
+                              resizeMode: 'contain',
+                            }}
+                          />
+                        }>
+                        {item.details?.map(
+                          (v, i) =>
+                            v.type == 'Image' ? (
+                              <View
+                              // style={{
+                              //   height:
+                              //     dimension.height /*  + StatusBar.currentHeight */,
+                              //   width: dimension.width,
+                              // }}
+                              >
+                                <FastImage
+                                  onProgress={() => <ActivityLoader />}
+                                  source={{
+                                    uri: v?.image,
+                                    priority: FastImage.priority.normal,
+                                  }}
+                                  resizeMode={FastImage.resizeMode.cover}
+                                  style={{
+                                    height:
+                                      dimension.height /*  + StatusBar.currentHeight */,
+                                    width: dimension.width,
+                                  }}
+                                />
+                              </View>
+                            ) : (
+                              v.type == 'Video' && (
+                                //   <VideoPlayer
+                                //   onPlay={()=> setVideoplay(true)}
+
+                                //   disableFullscreen={false}
+                                //   disableBack={true}
+                                //   disableVolume={true}
+                                //   tapAnywhereToPause={true}
+                                //    disableSeekbar={true}
+                                //   source={{uri: v?.image}}
+                                //   onShowControls={true}
+                                //   disableTimer={true}
+                                //   disablePlayPause={true}
+                                // />
+                                //     <VideoPlayer
+                                //     video={{ uri: v?.image }}
+                                //     pause={true}
+                                //     resizeMode={'cover'}
+                                //     thumbnail={{ uri: v?.image}}
+                                //     style={{ height: dimension.height ,
+                                //     width: dimension.width,}}
+                                //     disableSeek={true}
+                                //     bufferConfig={{minBufferMs:1000,maxBufferMs:2000}}
+                                //     pauseOnPress
+                                // />
+                                <Video
+                                  source={{uri: v?.image}}
+                                  playInBackground={false}
+                                  ref={videoRef}
+                                  onLoadStart={() => {
+                                    setnextvideo(v?.image);
+                                    setVideoId(v?.id);
+                                    setNaviVideo(true);
+                                  }}
+                                  onBuffer={onBuffer}
+                                  onError={onError}
+                                  // disableFocus={true}
+                                  // poster={'https://technorizen.com/Dating/uploads/images/video_loader344.png'}
+                                  // posterResizeMode='cover'
+                                  repeat={true}
+                                  resizeMode="cover"
+                                  paused={
+                                    v?.id == videoId &&
+                                    nextvideo == v?.image &&
+                                    naviVideo
+                                      ? false
+                                      : true
+                                  }
+                                  style={{
+                                    height: dimension.height,
+                                    width: dimension.width,
+                                  }}
+                                />
+                              )
+                            ),
+                          <TextFormatted
+                            style={{
+                              backgroundColor: '#f00',
+                              fontSize: 30,
+                              position: 'absolute',
+                              width: '100%',
+                              top: '50%',
+                            }}>
+                            {swiperIndex + ' ' + i}
+                          </TextFormatted>,
+                        )}
+                      </Swiper>
                       <View
                         style={{
-                          flex: 1,
-                          height: dimension.height,
-                        
+                          position: 'absolute',
+                          top: 44,
+                          marginHorizontal: 20,
+                          flexDirection: 'row',
+                          alignItems: 'center',
                         }}>
-                        <Swiper
-                          loop={false}
-                          showsButtons={true}
-                          showsPagination={false}
-                          onIndexChanged={index=> setSwiperIndex(index)}                         
-                          buttonWrapperStyle={{paddingHorizontal: 0}}
-                          nextButton={
-                            <Image
-                              source={
-                                ThemeMode.selectedTheme
-                                  ? require('../../assets/icons/P_sidebar.png')
-                                  : require('../../assets/icons/next_dark.png')
-                              }
-                              style={{
-                                height: 145,
-                                width: 25,
-                                resizeMode: 'contain',
-                              }}
-                            />
-                          }
-                          prevButton={
-                            <Image
-                              source={
-                                ThemeMode.selectedTheme
-                                  ? require('../../assets/icons/N_sidebar.png')
-                                  : require('../../assets/icons/prev_dark.png')
-                              }
-                              style={{
-                                height: 145,
-                                width: 25,
-                                resizeMode: 'contain',
-                              }}
-                            />
+                        <TouchableOpacity
+                          onPress={() =>
+                            navigation.navigate('userProfile', item?.id)
                           }>
-                          {item.details?.map(
-                            (v, i) =>
-                              v.type == 'Image' ? (
-                                <View
-                                  // style={{                              
-                                  //   height:
-                                  //     dimension.height /*  + StatusBar.currentHeight */,
-                                  //   width: dimension.width,
-                                  // }}
-                                  >
-                                  <FastImage
-                                    onProgress={() => <ActivityLoader />}
-                                    source={{
-                                      uri: v?.image,
-                                      priority: FastImage.priority.normal,
-                                    }}
-                                    resizeMode={FastImage.resizeMode.cover}
-                                    style={{
-                                      height: dimension.height /*  + StatusBar.currentHeight */,
-                                      width: dimension.width,
-                                    }}
-                                  />
-                                </View>
-                              ): (
-                                v.type == 'Video'  &&
-                              //   <VideoPlayer   
-                              //   onPlay={()=> setVideoplay(true)}           
-                                          
-                              //   disableFullscreen={false}                            
-                              //   disableBack={true}
-                              //   disableVolume={true}
-                              //   tapAnywhereToPause={true}
-                              //    disableSeekbar={true}
-                              //   source={{uri: v?.image}}
-                              //   onShowControls={true}
-                              //   disableTimer={true}
-                              //   disablePlayPause={true}                        
-                              // />
-                          //     <VideoPlayer
-                          //     video={{ uri: v?.image }}
-                          //     pause={true}               
-                          //     resizeMode={'cover'}
-                          //     thumbnail={{ uri: v?.image}}
-                          //     style={{ height: dimension.height ,
-                          //     width: dimension.width,}}
-                          //     disableSeek={true}
-                          //     bufferConfig={{minBufferMs:1000,maxBufferMs:2000}}
-                          //     pauseOnPress
-                          // />
-                          <Video source={{uri: v?.image}}   
-                            playInBackground={false}                        
-                            ref={videoRef}      
-                            onLoadStart={()=> setnextvideo(v?.image)}                                                      
-                            onBuffer={onBuffer}               
-                            onError={onError}     
-                            // poster={'https://technorizen.com/Dating/uploads/images/video_loader344.png'}
-                            // posterResizeMode='cover'
-                            repeat={true}
-                            resizeMode='cover'                          
-                            paused={ (naviVideo) && (nextvideo == v?.image) ? false : true}
-                            style={{ height: dimension.height,
-                                  width: dimension.width,}}
-                          /> ),
-                          <TextFormatted style={{backgroundColor:'#f00',fontSize:30,position:'absolute',width:'100%',top:'50%'}}>{swiperIndex + " " + i}</TextFormatted>
-                          )}
-                        </Swiper>
-                        <View
-                          style={{
-                            position: 'absolute',
-                            top: 44,
-                            marginHorizontal: 20,
-                            flexDirection: 'row',
-                            alignItems: 'center',
-                          }}>
-                          <TouchableOpacity
-                            onPress={() =>
-                              navigation.navigate('userProfile', item?.id)
-                            }>
-                            <Image
-                              source={{
-                                uri: item?.image,
-                              }}
-                              style={{
-                                height: 56,
-                                width: 56,
-                                resizeMode: 'cover',
-                                borderRadius: 50,
-                                borderWidth: 3,
-                                // backgroundColor: '#ff0',
-                                borderColor: theme.colors.darkGrey,
-                              }}
-                            />
-                          </TouchableOpacity>
-                          <View style={{marginLeft: 8, flex: 1}}>
-                            <TextFormatted
-                              style={{
-                                fontSize: 16,
-                                fontWeight: '700',
-                                color: '#fff',
-                              }}>
-                              {item?.user_name + ' ' + item?.surname}
-                            </TextFormatted>
-                            <TextFormatted
-                              style={{
-                                fontSize: 12,
-                                fontWeight: '400',
-                                color: '#fff',
-                              }}>
-                              {calculate_age(item.dob)} years old
-                            </TextFormatted>
-                          </View>
-                          <TouchableOpacity
-                            style={{
-                              height: 40,
-                              width: 40,
-                              backgroundColor: ThemeMode.selectedTheme
-                                ? '#FFFFFF33'
-                                : '#1A1D254D',
-                              alignItems: 'center',
-                              justifyContent: 'center',
-                              borderRadius: 10,
-                              marginRight: 10,
+                          <Image
+                            source={{
+                              uri: item?.image,
                             }}
-                            onPress={() => refRBSheet1.current.open()}>
-                            <LinearGradient
-                              colors={
-                                ThemeMode.themecolr == 'Red'
-                                  ? theme.colors.primaryOn
-                                  : ThemeMode.themecolr == 'Blue'
-                                  ? theme.colors.primaryBlue
-                                  : ThemeMode.themecolr == 'Green'
-                                  ? theme.colors.primaryGreen
-                                  : ThemeMode.themecolr == 'Purple'
-                                  ? theme.colors.primaryPurple
-                                  : ThemeMode.themecolr == 'Yellow'
-                                  ? theme.colors.primaryYellow
-                                  : theme.colors.primaryOn
-                              }
-                              start={{x: 0, y: 0}}
-                              end={{x: 1, y: 1}}
-                              style={{
-                                height: 10,
-                                width: 10,
-                                borderRadius: 50,
-                                position: 'absolute',
-                                top: 5,
-                                right: 10,
-                                zIndex: 1,
+                            style={{
+                              height: 56,
+                              width: 56,
+                              resizeMode: 'cover',
+                              borderRadius: 50,
+                              borderWidth: 3,
+                              // backgroundColor: '#ff0',
+                              borderColor: theme.colors.darkGrey,
+                            }}
+                          />
+                        </TouchableOpacity>
+                        <View style={{marginLeft: 8, flex: 1}}>
+                          <TextFormatted
+                            style={{
+                              fontSize: 16,
+                              fontWeight: '700',
+                              color: '#fff',
+                            }}>
+                            {item?.user_name + ' ' + item?.surname}
+                          </TextFormatted>
+                          <TextFormatted
+                            style={{
+                              fontSize: 12,
+                              fontWeight: '400',
+                              color: '#fff',
+                            }}>
+                            {calculate_age(item.dob)} years old
+                          </TextFormatted>
+                        </View>
+                        <TouchableOpacity
+                          style={{
+                            height: 40,
+                            width: 40,
+                            backgroundColor: ThemeMode.selectedTheme
+                              ? '#FFFFFF33'
+                              : '#1A1D254D',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            borderRadius: 10,
+                            marginRight: 10,
+                          }}
+                          onPress={() => refRBSheet1.current.open()}>
+                          <LinearGradient
+                            colors={
+                              ThemeMode.themecolr == 'Red'
+                                ? theme.colors.primaryOn
+                                : ThemeMode.themecolr == 'Blue'
+                                ? theme.colors.primaryBlue
+                                : ThemeMode.themecolr == 'Green'
+                                ? theme.colors.primaryGreen
+                                : ThemeMode.themecolr == 'Purple'
+                                ? theme.colors.primaryPurple
+                                : ThemeMode.themecolr == 'Yellow'
+                                ? theme.colors.primaryYellow
+                                : theme.colors.primaryOn
+                            }
+                            start={{x: 0, y: 0}}
+                            end={{x: 1, y: 1}}
+                            style={{
+                              height: 10,
+                              width: 10,
+                              borderRadius: 50,
+                              position: 'absolute',
+                              top: 5,
+                              right: 10,
+                              zIndex: 1,
                               /*  opacity:0 */
+                            }}
+                          />
+                          <Image
+                            source={require('../../assets/icons/Notifyy.png')}
+                            style={{
+                              height: 25,
+                              width: 25,
+                              resizeMode: 'contain',
+                            }}
+                          />
+                        </TouchableOpacity>
+                        <TouchableOpacity
+                          onPress={() => refRBSheet.current.open()}
+                          style={{
+                            height: 40,
+                            width: 40,
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            borderRadius: 10,
+                          }}>
+                          {ThemeMode.selectedTheme ? (
+                            <Image
+                              source={require('../../assets/icons/menus.png')}
+                              style={{
+                                height: 40,
+                                width: 40,
+                                resizeMode: 'contain',
+                                marginRight: 10,
                               }}
                             />
+                          ) : (
                             <Image
-                              source={require('../../assets/icons/Notifyy.png')}
-                              style={{height: 25, width: 25, resizeMode: 'contain'}}
+                              source={require('../../assets/icons/menù_dark.png')}
+                              style={{
+                                height: 40,
+                                width: 40,
+                                resizeMode: 'contain',
+                                marginRight: 10,
+                              }}
                             />
-                          </TouchableOpacity>
-                          <TouchableOpacity
-                            onPress={() => refRBSheet.current.open()}
-                            style={{
-                              height: 40,
-                              width: 40,
-                              alignItems: 'center',
-                              justifyContent: 'center',
-                              borderRadius: 10,
-                            }}>
-                            {ThemeMode.selectedTheme ? (
-                              <Image
-                                source={require('../../assets/icons/menus.png')}
-                                style={{
-                                  height: 40,
-                                  width: 40,
-                                  resizeMode: 'contain',
-                                  marginRight: 10,
-                                }}
-                              />
-                            ) : (
-                              <Image
-                                source={require('../../assets/icons/menù_dark.png')}
-                                style={{
-                                  height: 40,
-                                  width: 40,
-                                  resizeMode: 'contain',
-                                  marginRight: 10,
-                                }}
-                              />
-                            )}
-                          </TouchableOpacity>
-                        </View>
+                          )}
+                        </TouchableOpacity>
                       </View>
-                    )}
-                  </View>
-                )}
-              />
-            </View>
+                    </View>
+                  )}
+                </View>
+              )}
+            />
+          </View>
         </View>
       )}
 
@@ -708,11 +734,17 @@ const HomePage = () => {
 
         <Tab
           source={require('../../assets/icons/colormssg.png')}
-          onPress={() => {navigation.navigate('chatList');setNaviVideo(false);}}></Tab>
+          onPress={() => {
+            navigation.navigate('chatList');
+            setNaviVideo(false);
+          }}></Tab>
 
         <Tab
           source={require('../../assets/home_icons/profile.png')}
-          onPress={() =>{ navigation.navigate('myProfile');setNaviVideo(false);}}
+          onPress={() => {
+            navigation.navigate('myProfile');
+            setNaviVideo(false);
+          }}
         />
       </ImageBackground>
       <View
@@ -736,7 +768,7 @@ const HomePage = () => {
           bottom: 0,
         }}></View>
 
-      <Notification  refRBSheet={refRBSheet1} />
+      <Notification refRBSheet={refRBSheet1} />
       <MoreOptions
         Block_onPress={() => block_user_Api()}
         refRBSheet2={refRBSheetB}

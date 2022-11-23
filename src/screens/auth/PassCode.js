@@ -1,4 +1,5 @@
 import {
+  AppState,
   Image,
   ScrollView,
   StyleSheet,
@@ -23,13 +24,14 @@ const PassCode = () => {
   const Staps = useSelector(state => state.Stap);
   const navigation = useNavigation();
   const dimension = useWindowDimensions();
+  const [appStatus, setappStatus] = useState(AppState.currentState);
   const dispatch = useDispatch();
   const [passcode, setPasscode] = useState([]);
   const Removeval = () => {
     const Val_array = [...passcode];
     Val_array.pop();
     setPasscode(Val_array);
-    console.log('Val_array',Val_array);
+    console.log('Val_array', Val_array);
   };
   function App_passcode() {
     if (Staps.app_dashboard_pass == passcode.join('')) {
@@ -45,20 +47,66 @@ const PassCode = () => {
     TouchID.isSupported()
       .then(biometryType => {
         // Success code
-        if (biometryType === 'FaceID') {   
-          ShowToast("Your device doesn't have a fingerprint"); 
+        if (biometryType === 'FaceID') {
+          ShowToast("Your device doesn't have a fingerprint");
           console.log('FaceID is supported.');
-        } else { 
+        } else {
           navigation.replace('FingerPrint');
           console.log('TouchID is supported.');
-         
         }
       })
       .catch(error => {
         console.log('error Fingur', error);
       });
   }
-  useEffect(() => {}, [App_passcode()]);
+
+  async function status(status) {
+    try {
+      const url =
+        'https://technorizen.com/Dating/webservice/update_online_status';
+
+      const body = new FormData();
+      body.append('user_id', Staps.id);
+      body.append('status', status);
+
+      const res = await fetch(url, {
+        method: 'POST',
+        body: body,
+        headers: {
+          'content-type': 'multipart/form-data',
+        },
+      });
+      const rslt = await res.json();
+      if (rslt.status == 1) {
+        // console.log('status', status);
+        setappStatus(status);
+      }
+
+      // alert(status);
+    } catch (e) {}
+  }
+
+  const handlePutAppToBackground = state => {
+    status('ONLINE');
+    if (
+      (Platform.OS == 'android' && state == 'background') ||
+      (Platform.OS == 'ios' && state == 'inactive')
+    )
+      status('OFFLINE');
+    else if (state == 'active') status('ONLINE');
+  };
+
+  useEffect(() => {
+    status('ONLINE');
+    const appStateListener = AppState.addEventListener(
+      'change',
+      handlePutAppToBackground,
+    );
+    return () => {
+      appStateListener?.remove();
+      return status('OFFLINE');
+    };
+  }, [App_passcode()]);
 
   return (
     <View
@@ -173,9 +221,12 @@ const PassCode = () => {
             .fill('')
             .map((_, i) => (
               <TouchableOpacity
-                disabled={passcode.length == 4  ? true : false}
+                disabled={passcode.length == 4 ? true : false}
                 onPress={() =>
-                  setPasscode(prevState => [...prevState,  i == 10 ? 0 : (i != 9 && i + 1)])
+                  setPasscode(prevState => [
+                    ...prevState,
+                    i == 10 ? 0 : i != 9 && i + 1,
+                  ])
                 }
                 style={{width: 40, marginHorizontal: 30, marginVertical: 10}}>
                 <TextFormatted
@@ -188,7 +239,7 @@ const PassCode = () => {
                     fontWeight: '400',
                   }}>
                   {i == 9 ? (
-                    <TouchableOpacity  onPress={() => Removeval()}>
+                    <TouchableOpacity onPress={() => Removeval()}>
                       <Image
                         resizeMode="contain"
                         source={require('../../assets/icons/sheet_arrow.png')}
@@ -202,15 +253,17 @@ const PassCode = () => {
                   ) : i == 10 ? (
                     0
                   ) : (
-                    i + 1 
+                    i + 1
                   )}
                 </TextFormatted>
               </TouchableOpacity>
             ))}
 
-     <TouchableOpacity
+          <TouchableOpacity
             style={{marginLeft: 24}}
-            onPress={() => {TouchID_support();}}>
+            onPress={() => {
+              TouchID_support();
+            }}>
             <Image
               source={require('../../assets/icons/fingerprint_1.png')}
               style={{
@@ -220,7 +273,7 @@ const PassCode = () => {
                 tintColor: '#000',
               }}
             />
-          </TouchableOpacity> 
+          </TouchableOpacity>
           {/* )} */}
         </View>
       </ScrollView>
