@@ -12,7 +12,7 @@ import {
 import React, {useEffect, useRef, useState} from 'react';
 import Swiper from 'react-native-swiper';
 import TextFormatted from '../../components/TextFormatted';
-import {useIsFocused, useNavigation} from '@react-navigation/native';
+import {useIsFocused, useNavigation, useRoute} from '@react-navigation/native';
 import Notification from './notification';
 import MoreOptions from './moreOptions';
 import SelectCategory from './selectCategory';
@@ -34,6 +34,7 @@ const HomePage = () => {
   const ThemeMode = useSelector(state => state.Theme);
   const Staps = useSelector(state => state.Stap);
   const navigation = useNavigation();
+  const {params} = useRoute();
   const refRBSheet = useRef();
   const refRBSheet1 = useRef();
   const refRBSheet2 = useRef();
@@ -44,6 +45,7 @@ const HomePage = () => {
   const dimension = useWindowDimensions();
   const [plu_button, setplu_button] = useState(false);
   const [Videoplay, setVideoplay] = useState(false);
+  const [naviVideo, setNaviVideo] = useState(true);
   const [Loading, setLoading] = useState(false);
   const [Userpost, setUserpost] = useState();
   const [Uindex, setUindex] = useState();
@@ -172,7 +174,6 @@ const HomePage = () => {
     }
   }
   const onViewableItemsChanged = React.useRef(item => {
-    //console.log('item.viewableItems', item.viewableItems[0]);
     setChangeIndex(item?.viewableItems[0]?.index);
     setUindex(item?.viewableItems[0]?.key);
   }, []);
@@ -334,12 +335,13 @@ const HomePage = () => {
   };
 
 
-  useEffect(() => {
-   
+  useEffect(() => {  
+    navigation.addListener('focus', (route) => { setNaviVideo(false) });
+    navigation.addListener('blur', (route) => { setNaviVideo(true) });
     getUserPost();
     getPlanData();
     getUserProfile();
-    status('ONLINE');
+    status('ONLINE');   
     const appStateListener = AppState.addEventListener(
       'change',
       handlePutAppToBackground,
@@ -488,18 +490,18 @@ const HomePage = () => {
                           //     pauseOnPress
                           // />
                           <Video source={{uri: v?.image}}   
-                          playInBackground={false}                        
-                          ref={videoRef}      
-                          onLoadStart={()=> setnextvideo(v?.image)}                                                      
-                          onBuffer={onBuffer}               
-                          onError={onError}     
-                          // poster={'https://technorizen.com/Dating/uploads/images/video_loader344.png'}
-                          // posterResizeMode='cover'
-                          repeat={true}
-                          resizeMode='cover'                          
-                          paused={ nextvideo == v?.image ? false : true}
-                          style={{ height: dimension.height,
-                                width: dimension.width,}}
+                            playInBackground={false}                        
+                            ref={videoRef}      
+                            onLoadStart={()=> setnextvideo(v?.image)}                                                      
+                            onBuffer={onBuffer}               
+                            onError={onError}     
+                            // poster={'https://technorizen.com/Dating/uploads/images/video_loader344.png'}
+                            // posterResizeMode='cover'
+                            repeat={true}
+                            resizeMode='cover'                          
+                            paused={ (naviVideo) && (nextvideo == v?.image) ? false : true}
+                            style={{ height: dimension.height,
+                                  width: dimension.width,}}
                           /> ),
                           <TextFormatted style={{backgroundColor:'#f00',fontSize:30,position:'absolute',width:'100%',top:'50%'}}>{swiperIndex + " " + i}</TextFormatted>
                           )}
@@ -706,11 +708,11 @@ const HomePage = () => {
 
         <Tab
           source={require('../../assets/icons/colormssg.png')}
-          onPress={() => navigation.navigate('chatList')}></Tab>
+          onPress={() => {navigation.navigate('chatList');setNaviVideo(false);}}></Tab>
 
         <Tab
           source={require('../../assets/home_icons/profile.png')}
-          onPress={() => navigation.navigate('myProfile')}
+          onPress={() =>{ navigation.navigate('myProfile');setNaviVideo(false);}}
         />
       </ImageBackground>
       <View

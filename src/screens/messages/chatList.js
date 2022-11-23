@@ -34,7 +34,7 @@ const ChatList = () => {
   const refRBSheet = useRef();
   const [search, setSearch] = useState('');
   const [Chatuser, setChatuser] = useState([]);
-  const [Loading, setLoading] = useState(false);
+  const [Loading, setLoading] = useState(false); 
   const [modalVisible, setModalVisible] = useState(false);
   const [unblock_id, setUnblock_id] = useState();
  
@@ -420,7 +420,7 @@ const ChatList = () => {
         }}>
         <Tab
           source={require('../../assets/home_icons/home.png')}
-          onPress={() => navigation.navigate('homePage')}
+          onPress={() => {navigation.navigate('homePage',{naviVideo:true});}}
         />
         <Tab source={require('../../assets/home_icons/focus.png')} />
 

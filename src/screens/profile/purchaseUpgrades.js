@@ -10,7 +10,8 @@ import {
 import React, {useState} from 'react';
 import RBSheet from 'react-native-raw-bottom-sheet';
 import LinearGradient from 'react-native-linear-gradient';
-import Carousel from 'react-native-snap-carousel';
+// import Carousel from 'react-native-snap-carousel';
+import Carousel from 'react-native-snap-carousel-v4';
 import TextFormatted from '../../components/TextFormatted';
 import {theme} from '../../utils/Constants';
 import {useSelector} from 'react-redux';

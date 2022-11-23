@@ -2245,6 +2245,13 @@
   "resolved" "https://registry.npmjs.org/@types/prop-types/-/prop-types-15.7.5.tgz"
   "version" "15.7.5"
 
+"@types/react-addons-shallow-compare@^0.14.22":
+  "integrity" "sha512-krgFRorWtbVJLzpJsJD6O27Lew3YHuemVZbL9RFvq8TF1w9DbrHjiiLuIyWIL6AjunBkUrQlErfbUv1TYKiK9w=="
+  "resolved" "https://registry.npmjs.org/@types/react-addons-shallow-compare/-/react-addons-shallow-compare-0.14.22.tgz"
+  "version" "0.14.22"
+  dependencies:
+    "@types/react" "*"
+
 "@types/react-native-vector-icons@^6.4.10":
   "integrity" "sha512-gSXtv3NMOsRwSXJ/gvGebm7CNjHbkeFKCse9h/Pvi+x2yjCLOkJR1FBfec06DhaFJpsK7Y8WRQpwOS0eLqx5Rg=="
   "resolved" "https://registry.npmjs.org/@types/react-native-vector-icons/-/react-native-vector-icons-6.4.12.tgz"
@@ -8057,7 +8064,7 @@
     "kleur" "^3.0.3"
     "sisteransi" "^1.0.5"
 
-"prop-types@*", "prop-types@^15.5.10", "prop-types@^15.6.1", "prop-types@^15.6.2", "prop-types@^15.7.2", "prop-types@^15.8.1":
+"prop-types@*", "prop-types@^15.5.10", "prop-types@^15.6.2", "prop-types@^15.7.2", "prop-types@^15.8.1":
   "integrity" "sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg=="
   "resolved" "https://registry.npmjs.org/prop-types/-/prop-types-15.8.1.tgz"
   "version" "15.8.1"
@@ -8426,12 +8433,12 @@
   "resolved" "https://registry.npmjs.org/react-native-size-matters/-/react-native-size-matters-0.4.0.tgz"
   "version" "0.4.0"
 
-"react-native-snap-carousel@^3.9.1":
-  "integrity" "sha512-xWEGusacIgK1YaDXLi7Gao2+ISLoGPVEBR8fcMf4tOOJQufutlNwkoLu0l6B8Qgsrre0nTxoVZikRgGRDWlLaQ=="
-  "resolved" "https://registry.npmjs.org/react-native-snap-carousel/-/react-native-snap-carousel-3.9.1.tgz"
-  "version" "3.9.1"
+"react-native-snap-carousel-v4@^1.0.1":
+  "integrity" "sha512-h17E4KjkNeyeNnE6LHw+4O2nbh/QZnWM+Cxm4ZJOCsBwZhQc2vR7IMox+ONvQtIbmZS9sUdAxQx0CYLMNsGN2w=="
+  "resolved" "https://registry.npmjs.org/react-native-snap-carousel-v4/-/react-native-snap-carousel-v4-1.0.1.tgz"
+  "version" "1.0.1"
   dependencies:
-    "prop-types" "^15.6.1"
+    "@types/react-addons-shallow-compare" "^0.14.22"
     "react-addons-shallow-compare" "15.6.2"
 
 "react-native-svg@^13.2.0", "react-native-svg@>=7.0.0":
@@ -8509,7 +8516,7 @@
     "escape-string-regexp" "2.0.0"
     "invariant" "2.2.4"
 
-"react-native@*", "react-native@^0.0.0-0 || 0.60 - 0.70 || 1000.0.0", "react-native@>= 0.30.0", "react-native@>= 0.53.0", "react-native@>=0.40.0", "react-native@>=0.42.0", "react-native@>=0.46.0", "react-native@>=0.50.0", "react-native@>=0.57", "react-native@>=0.59", "react-native@>=0.59.0", "react-native@>=0.60", "react-native@>=0.60.0", "react-native@>=0.63.3", "react-native@>=0.65.0", "react-native@0.70.1":
+"react-native@*", "react-native@^0.0.0-0 || 0.60 - 0.70 || 1000.0.0", "react-native@>= 0.30.0", "react-native@>= 0.53.0", "react-native@>=0.40.0", "react-native@>=0.42.0", "react-native@>=0.46.0", "react-native@>=0.50.0", "react-native@>=0.57", "react-native@>=0.58.0", "react-native@>=0.59", "react-native@>=0.59.0", "react-native@>=0.60", "react-native@>=0.60.0", "react-native@>=0.63.3", "react-native@>=0.65.0", "react-native@0.70.1":
   "integrity" "sha512-AUh4NZLFdvyjSiYWCtTROCrC7loxeeZ/TzBnkZwp3kb9XmMu7/kzvWn2c5sEMnzW7X/0JSul8jXexGVdpnCoSA=="
   "resolved" "https://registry.npmjs.org/react-native/-/react-native-0.70.1.tgz"
   "version" "0.70.1"
@@ -8581,7 +8588,7 @@
     "react-shallow-renderer" "^16.15.0"
     "scheduler" "^0.22.0"
 
-"react@*", "react@^16.0.0 || ^17.0.0 || ^18.0.0", "react@^16.8 || ^17.0 || ^18.0", "react@^16.8.0 || ^17.0.0 || ^18.0.0", "react@^17 || ^18", "react@^18.1.0", "react@>= 15.2.1", "react@>= 16.2.0", "react@>=15.0.0", "react@>=16", "react@>=16.0.0", "react@>=16.13.1", "react@>=16.3.0", "react@>=16.8", "react@>=17.0.0", "react@18.1.0":
+"react@*", "react@^16.0.0 || ^17.0.0 || ^18.0.0", "react@^16.8 || ^17.0 || ^18.0", "react@^16.8.0 || ^17.0.0 || ^18.0.0", "react@^17 || ^18", "react@^18.1.0", "react@>= 15.2.1", "react@>= 16.2.0", "react@>=16", "react@>=16.0.0", "react@>=16.13.1", "react@>=16.3.0", "react@>=16.8", "react@>=17.0.0", "react@18.1.0":
   "integrity" "sha512-4oL8ivCz5ZEPyclFQXaNksK3adutVS8l2xzZU0cqEFrE9Sb7fC0EFK5uEk74wIreL1DERyjvsU915j1pcT2uEQ=="
   "resolved" "https://registry.npmjs.org/react/-/react-18.1.0.tgz"
   "version" "18.1.0"

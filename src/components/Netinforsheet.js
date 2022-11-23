@@ -47,6 +47,14 @@ const Netinforsheet = () => {
           width: '100%',
           borderTopLeftRadius: 40,
           borderTopRightRadius: 40,
+          shadowColor: '#8490ae85',
+          shadowOffset: {
+            width: 0,
+            height: 1,
+          },
+          shadowOpacity: 0.22,
+          shadowRadius: 2.22,
+          elevation: 10,
         }}>
         <Statusbar backgroundColor={'#00000077'} />
         <LinearGradient

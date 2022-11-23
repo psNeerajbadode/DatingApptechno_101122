@@ -31,7 +31,7 @@ const MyProfile = () => {
   const [User, setUser] = useState();
   const [load, setLoad] = useState();
   const [Loading, setLoading] = useState(false);
-
+  
  
   const mediadata = [
     {title: 'Images', img: require('../../assets/home_icons/gallery.png')},
@@ -336,7 +336,7 @@ useEffect(() => {
         }}>
         <Tab
           source={require('../../assets/home_icons/home.png')}
-          onPress={() => navigation.navigate('homePage')}
+          onPress={() => {navigation.navigate('homePage',{naviVideo:true});}}
         />
         <Tab source={require('../../assets/home_icons/focus.png')} />
 

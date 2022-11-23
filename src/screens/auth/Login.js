@@ -19,10 +19,14 @@ import {useDispatch, useSelector} from 'react-redux';
 import axios from 'axios';
 import Netinforsheet from '../../components/Netinforsheet';
 import {ShowToast} from '../../utils/Baseurl';
-import { AccessToken, AuthenticationToken, LoginButton, LoginManager } from 'react-native-fbsdk-next';
-import { useNavigation } from '@react-navigation/native';
-import { GoogleSignin } from '@react-native-google-signin/google-signin';
-
+import {
+  AccessToken,
+  AuthenticationToken,
+  LoginButton,
+  LoginManager,
+} from 'react-native-fbsdk-next';
+import {useNavigation} from '@react-navigation/native';
+import {GoogleSignin} from '@react-native-google-signin/google-signin';
 
 const validateEmail = email => {
   return String(email)
@@ -35,17 +39,19 @@ const validPass = pass => {
   return String(pass).match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/);
 };
 const Login = () => {
-  const navigation =useNavigation();
+  const navigation = useNavigation();
   const dispatch = useDispatch();
   const ThemeMode = useSelector(state => state.Theme);
   const Staps = useSelector(state => state.Stap);
   const [email, setEmail] = useState('demo@gmail.com');
   const [password, setPassword] = useState('Dd123456');
+
   // const [email, setEmail] = useState();
   // const [password, setPassword] = useState();
   const [show, setShow] = useState(false);
   const [loading, setLoading] = useState(false);
-  const Loginapi = () => {    
+
+  const Loginapi = () => {
     try {
       setLoading(true);
       const body = new FormData();
@@ -59,9 +65,9 @@ const Login = () => {
           'content-type': 'multipart/form-data',
         },
       })
-        .then(function (response) {            
-          if (response.data.status == 1) {          
-            setLoading(false);          
+        .then(function (response) {
+          if (response.data.status == 1) {
+            setLoading(false);
             dispatch({type: STAP, payload: response.data.result});
             navigation.navigate(
               response.data.result.step == 0
@@ -78,19 +84,19 @@ const Login = () => {
                 ? 'step5'
                 : response.data.result.step == 6
                 ? 'step5'
-                : (response.data.result.step == 8
-                ? (Staps.fingerPrint
+                : response.data.result.step == 8
+                ? Staps.fingerPrint
                   ? 'FingerPrint'
-                  : 'PassCode')
-                : 'step7'),
+                  : 'PassCode'
+                : 'step7',
             );
-          } else {  
-            setLoading(false);       
+          } else {
+            setLoading(false);
             ShowToast("account doesn't exist");
             //console.log('invalid account');
           }
         })
-        .catch(function (error) {         
+        .catch(function (error) {
           console.log('catch', error);
           setLoading(false);
         });
@@ -99,7 +105,11 @@ const Login = () => {
     }
   };
   async function onFacebookButtonPress() {
-    const result = await LoginManager.logInWithPermissions(['public_profile', 'email', 'user_friends']);
+    const result = await LoginManager.logInWithPermissions([
+      'public_profile',
+      'email',
+      'user_friends',
+    ]);
     console.log(JSON.stringify(result));
     if (result.isCancelled) {
       console.log('User cancelled the login process');
@@ -109,60 +119,110 @@ const Login = () => {
     if (!data) {
       console.log('Something went wrong obtaining access token');
     }
-    fetch('https://graph.facebook.com/v2.5/me?fields=email,name,friends&access_token=' + data.accessToken)
+    fetch(
+      'https://graph.facebook.com/v2.5/me?fields=email,name,friends&access_token=' +
+        data.accessToken,
+    )
       .then(response => response.json())
       .then(json => {
         // Some user object has been set up somewhere, build that user here
-        console.log('initialuser', json);
+        console.log('onFacebookButtonPress user==>', json);
+        //setSocialUser(null);
+        SocialloginAPI(json.email, json.id);
       })
       .catch(() => {
         reject('ERROR GETTING DATA FROM FACEBOOK');
       });
-    // const facebookCredential = auth.FacebookAuthProvider.credential(data.accessToken);
-
-    // const profileData = await Profile.getCurrentProfile();
-    // console.log(profileData);
-    /**
-     *
-     * email- mailto:open_ocfmvtv_user@tfbnw.net
-     * password - 123qwe,./
-      {
-        "firstName": "Open",
-        "imageURL": "https://graph.facebook.com/v15.0/101615426086763/picture?height=100&width=100&migration_overrides=%7Boctober_2012%3Atrue%7D&access_token=EAALeyN9ANDMBADvC1IAZB32kAucp8qTW7WEU0OBPYIcoqjaMQoALTb09eidfbZAGeclAFsETzwFdsTxcS63EBdydqKWmH45FZACmOBANIcJL4CChG1bScMbYoeZBXlBqGK66VdU58vxnczbTpXhB7SfqJOo49rgpjrWrwNjM6JI3b6dEgWZCyUfrzLK17pyfjslx3crp7ZC4e1O8uYKuulPVCZB5e8eM0fXHwSnWDLA2XDJlk0wVmZA6iPlEWWSCHD8ZD",
-        "lastName": "User",
-        "linkURL": "",
-        "middleName": "Graph Test",
-        "name": "Open Graph Test User",
-        "userID": "101615426086763"
-      }
-
-     */
   }
+
+  const signOut = async () => {
+    try {
+      const userInfo = await GoogleSignin.signOut();
+      console.log('userInfo', userInfo);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   const GooglesignIn = async () => {
     try {
       await GoogleSignin.hasPlayServices();
       const userInfo = await GoogleSignin.signIn();
-    console.log('userInfo',userInfo);
+
+      console.log('GoogleSignin userInfo  ===>', userInfo);
+      SocialloginAPI(userInfo.user.email, userInfo.user.id);
     } catch (error) {
       if (error.code === statusCodes.SIGN_IN_CANCELLED) {
-        console.log('error',error);
+        console.log('error', error);
         // user cancelled the login flow
       } else if (error.code === statusCodes.IN_PROGRESS) {
-        console.log('error',error);
+        console.log('error', error);
         // operation (e.g. sign in) is in progress already
       } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
-        console.log('error',error);
-        // play services not available or outdated
+        console.log('error', error);
+        // play services not available or outdateds
       } else {
         // some other error happened
       }
     }
   };
+
+  const SocialloginAPI = (email, id) => {
+    try {
+      const body = new FormData();
+      body.append('email', email);
+      body.append('social_id', id);
+      axios({
+        url: 'https://technorizen.com/Dating/webservice/social_login',
+        method: 'POST',
+        data: body,
+        headers: {
+          'content-type': 'multipart/form-data',
+        },
+      })
+        .then(function (response) {
+          if (response.data.status == 1) {
+            ShowToast('successfull');
+            dispatch({type: STAP, payload: response.data.result});
+            navigation.navigate(
+              response.data.result.step == 0
+                ? 'step1'
+                : response.data.result.step == 1
+                ? 'step1'
+                : response.data.result.step == 2
+                ? 'step2'
+                : response.data.result.step == 3
+                ? 'step3'
+                : response.data.result.step == 4
+                ? 'step4'
+                : response.data.result.step == 5
+                ? 'step5'
+                : response.data.result.step == 6
+                ? 'step5'
+                : response.data.result.step == 8
+                ? Staps.fingerPrint
+                  ? 'FingerPrint'
+                  : 'PassCode'
+                : 'step7',
+            );
+          } else {
+            ShowToast("account doesn't exist");
+            //console.log('invalid account');
+          }
+        })
+        .catch(function (error) {
+          console.log('catch', error);
+          setLoading(false);
+        });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
     GoogleSignin.configure();
-  }, [])
-  
+  }, []);
+
   return (
     <View
       style={{
@@ -171,7 +231,6 @@ const Login = () => {
           ? theme.colors.primary
           : theme.colors.primaryBlack,
       }}>
-  
       <HeaderImage>
         <Header title={'Sign in'} onPress={() => navigation.goBack()} />
         <View style={{height: 15}} />
@@ -264,10 +323,14 @@ const Login = () => {
           }}>
           Forgot password?
         </TextFormatted>
-        
+
         <Button
           opacity={validateEmail(email) && validPass(password) ? 1 : 0.5}
-          onPress={() =>   {Loginapi();}  /*  navigation.navigate('step4') */}
+          onPress={
+            () => {
+              Loginapi();
+            } /*  navigation.navigate('step1') */
+          }
           buttonName={'Login'}
           Loading={loading}
           disabled={validateEmail(email) && validPass(password) ? false : true}
@@ -291,7 +354,8 @@ const Login = () => {
             alignSelf: 'center',
             marginTop: 20,
           }}>
-          <TouchableOpacity onPress={()=> GooglesignIn()}
+          <TouchableOpacity
+            onPress={() => /* signOut() */ GooglesignIn()}
             style={{
               ...styles.socialbg,
               backgroundColor: ThemeMode.selectedTheme
@@ -307,7 +371,8 @@ const Login = () => {
             />
           </TouchableOpacity>
           <View style={{width: 30}} />
-          <TouchableOpacity onPress={()=>onFacebookButtonPress()}
+          <TouchableOpacity
+            onPress={() => onFacebookButtonPress()}
             style={{
               ...styles.socialbg,
               backgroundColor: ThemeMode.selectedTheme

@@ -40,6 +40,7 @@ const navigation =useNavigation();
   const dimension = useWindowDimensions();
   const [Loading, setLoading] = useState(false);
   const [other_user_id, setother_user_id] = useState();
+
   const refRBSheet = useRef();
   const refRBSheet_N = useRef();
   const refRBSheetB = useRef();
@@ -403,7 +404,7 @@ useEffect(()=>{
         }}>
         <Tab
           source={require('../../assets/home_icons/home.png')}
-          onPress={() => navigation.navigate('homePage')}
+          onPress={() => {navigation.navigate('homePage',{naviVideo:true});}}
         />
         <Tab source={require('../../assets/home_icons/focus.png')} />
 
