@@ -1,7 +1,7 @@
-#Mon Nov 21 19:29:44 IST 2022
-base.1=D\:\\React Native Project\\Datingclone\\DatingApp\\android\\app\\build\\intermediates\\dex\\release\\mergeDexRelease\\classes2.dex
+#Wed Nov 23 19:29:10 IST 2022
+base.1=D\:\\Datingclone\\Datingclone\\DatingApp\\android\\app\\build\\intermediates\\dex\\release\\mergeDexRelease\\classes2.dex
 path.1=classes2.dex
-base.0=D\:\\React Native Project\\Datingclone\\DatingApp\\android\\app\\build\\intermediates\\dex\\release\\mergeDexRelease\\classes.dex
+base.0=D\:\\Datingclone\\Datingclone\\DatingApp\\android\\app\\build\\intermediates\\dex\\release\\mergeDexRelease\\classes.dex
 renamed.1=classes2.dex
 renamed.0=classes.dex
 path.0=classes.dex

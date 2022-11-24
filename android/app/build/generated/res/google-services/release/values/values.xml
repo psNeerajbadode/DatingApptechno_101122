@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="default_web_client_id" translatable="false">188479915187-pqiqiuvehv2iuq769rasa6dha1vophqv.apps.googleusercontent.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">188479915187</string>
+    <string name="google_api_key" translatable="false">AIzaSyDre-ELRk44OWIy9F-j4MlH24rFxRZ4dAs</string>
+    <string name="google_app_id" translatable="false">1:188479915187:android:99b038f8968a88424c5cc6</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyDre-ELRk44OWIy9F-j4MlH24rFxRZ4dAs</string>
+    <string name="google_storage_bucket" translatable="false">datingappproject-52379.appspot.com</string>
+    <string name="project_id" translatable="false">datingappproject-52379</string>
+</resources>
