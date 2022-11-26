@@ -321,7 +321,7 @@ const Login = () => {
           opacity={validateEmail(email) && validPass(password) ? 1 : 0.5}
           onPress={() => {
             Loginapi();
-            /* navigation.navigate('step2'); */
+            // navigation.navigate('step4');
           }}
           buttonName={'Login'}
           Loading={loading}

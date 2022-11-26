@@ -960,6 +960,10 @@
         "source": "com.dating_app-react-39:/drawable-mdpi/src_assets_icons_zoo.png"
     },
     {
+        "merged": "com.dating_app-merged_res-44:/drawable-mdpi_src_assets_icons_logo.png.flat",
+        "source": "com.dating_app-react-39:/drawable-mdpi/src_assets_icons_logo.png"
+    },
+    {
         "merged": "com.dating_app-merged_res-44:/drawable-mdpi_src_assets_colorimages_purplle_bg2_purple.png.flat",
         "source": "com.dating_app-react-39:/drawable-mdpi/src_assets_colorimages_purplle_bg2_purple.png"
     },

@@ -48,7 +48,6 @@ const HomePage = () => {
   const [videof, setVideof] = useState(false);
   const [vtime, setVtime] = useState(0);
   const [curenttime, setCurenttime] = useState(0);
-  console.log('vtime===========>', vtime, curenttime);
   const [Loading, setLoading] = useState(false);
   const [Userpost, setUserpost] = useState();
   const [Uindex, setUindex] = useState();
@@ -748,26 +747,7 @@ const HomePage = () => {
           }}
         />
       </ImageBackground>
-      {/* <View
-        style={{
-          borderRadius: 50,
-          borderBottomWidth: 2,
-          borderBottomColor:
-            ThemeMode.themecolr == 'Red'
-              ? theme.colors.red
-              : ThemeMode.themecolr == 'Blue'
-              ? theme.colors.Blue
-              : ThemeMode.themecolr == 'Green'
-              ? theme.colors.Green
-              : ThemeMode.themecolr == 'Purple'
-              ? theme.colors.Purple
-              : ThemeMode.themecolr == 'Yellow'
-              ? theme.colors.Yellow
-              : theme.colors.red,
-          width: '34%',
-          position: 'absolute',
-          bottom: 0,
-        }}></View> */}
+
       <ProgressBar
         progress={curenttime * 0.1}
         style={{
@@ -792,6 +772,7 @@ const HomePage = () => {
             : theme.colors.red
         }
       />
+
       <Notification refRBSheet={refRBSheet1} />
       <MoreOptions
         Block_onPress={() => block_user_Api()}

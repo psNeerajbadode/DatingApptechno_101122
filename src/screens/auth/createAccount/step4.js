@@ -34,8 +34,6 @@ import Netinforsheet from '../../../components/Netinforsheet';
 import Video from 'react-native-video';
 import VideoPlayer from 'react-native-video-player';
 
-
-
 const Step4 = () => {
   const navigation = useNavigation();
   const dispatch = useDispatch();
@@ -52,7 +50,6 @@ const Step4 = () => {
   const video = media.filter(v => v.type == 'video/mp4');
   var RNFS = require('react-native-fs');
 
-
   const selectImage = async type => {
     await (type == 'cemera'
       ? ImagePicker.launchCamera
@@ -62,8 +59,7 @@ const Step4 = () => {
         videoQuality: 'medium',
         selectionLimit: 10,
         quality: 1,
-        durationLimit:10,        
-
+        durationLimit: 10,
       },
       response => {
         if (!response.didCancel) {
@@ -161,8 +157,6 @@ const Step4 = () => {
         const fileNameAndExtension = urlComponents[urlComponents?.length - 1];
         const destPath = `${RNFS?.TemporaryDirectoryPath}/${fileNameAndExtension}`;
         await RNFS.copyFile(video[0]?.uri, destPath);
-      console.log('file://' + destPath.length);
-  
         body.append('image', {
           uri: 'file://' + destPath,
           type: video[0]?.type,
@@ -191,21 +185,18 @@ const Step4 = () => {
           });
       } catch (error) {
         console.log(error);
-      } 
+      }
       return;
-    }
-    else{
+    } else {
       ShowToast('Video length limit exceeded Please upload within 15 seconds');
     }
-   
   }
 
   useEffect(() => {
     /* navigation.addListener('focus', () => generateThumbnail()); */
   }, []);
 
-
-const [paush, setPaush] = useState(false);
+  const [paush, setPaush] = useState(false);
 
   return (
     <View
@@ -227,7 +218,7 @@ const [paush, setPaush] = useState(false);
         refreshControl={
           <RefreshControl
             refreshing={refresh}
-          /*   onRefresh={() => /* generateThumbnail() */
+            /*   onRefresh={() => /* generateThumbnail() */
           />
         }>
         <View
@@ -586,75 +577,81 @@ const [paush, setPaush] = useState(false);
             </View>
           </View>
         </View>
-        {video?.map(
-          (it, i) =>
-           
-              <TouchableOpacity 
-              style={{width:dimension.width-40,alignSelf:'center',marginTop:20}}
-                onPress={() =>{ 
-                  navigation.navigate('playVideo', {data: it?.uri})
-                }}>
-                     <TouchableOpacity
-                        onPress={() => {
-                          remove_photos(i);
-                          setRefresh(true);
-                        }}
-                        style={{
-                          position: 'absolute',
-                          top: 10,
-                          right: 10,
-                          zIndex: 1,
-                          padding: 5,
-                          borderRadius: 10,
-                          backgroundColor:
-                            ThemeMode.themecolr == 'Red'
-                              ? theme.colors.red
-                              : ThemeMode.themecolr == 'Blue'
-                              ? theme.colors.Blue
-                              : ThemeMode.themecolr == 'Green'
-                              ? theme.colors.Green
-                              : ThemeMode.themecolr == 'Purple'
-                              ? theme.colors.Purple
-                              : ThemeMode.themecolr == 'Yellow'
-                              ? theme.colors.Yellow
-                              : theme.colors.red,
-                        }}>
-                        <Image
-                          source={require('../../../assets/icons/delete_icon.png')}
-                          style={{
-                            width: 18,
-                            height: 18,
-                            tintColor: ThemeMode.selectedTheme
-                              ? theme.colors.primary
-                              : theme.colors.primaryBlack,
-                          }}
-                        />
-                      </TouchableOpacity>
-                      <Image
-                      source={require('../../../assets/icons/play_video.png')}
-                      style={{
-                        height: 64,
-                        width: 64,
-                        resizeMode: 'contain',
-                        position: 'absolute',
-                        alignSelf: 'center',
-                        top: 80,
-                        zIndex:1
-                      }}
-                    />
-                 
-                      <VideoPlayer  
-                      style={{zIndex:0,alignSelf:'center',borderRadius:20,overflow:'hidden',height:223}}
-                thumbnail={{ uri: it?.uri }}
-                pause={true}
-                video={{ uri: it?.uri }}
-                resizeMode={'cover'}
-                playIcon={false}
+        {video?.map((it, i) => (
+          <TouchableOpacity
+            style={{
+              width: dimension.width - 40,
+              alignSelf: 'center',
+              marginTop: 20,
+            }}
+            onPress={() => {
+              navigation.navigate('playVideo', {data: it?.uri});
+            }}>
+            <TouchableOpacity
+              onPress={() => {
+                remove_photos(i);
+                setRefresh(true);
+              }}
+              style={{
+                position: 'absolute',
+                top: 10,
+                right: 10,
+                zIndex: 1,
+                padding: 5,
+                borderRadius: 10,
+                backgroundColor:
+                  ThemeMode.themecolr == 'Red'
+                    ? theme.colors.red
+                    : ThemeMode.themecolr == 'Blue'
+                    ? theme.colors.Blue
+                    : ThemeMode.themecolr == 'Green'
+                    ? theme.colors.Green
+                    : ThemeMode.themecolr == 'Purple'
+                    ? theme.colors.Purple
+                    : ThemeMode.themecolr == 'Yellow'
+                    ? theme.colors.Yellow
+                    : theme.colors.red,
+              }}>
+              <Image
+                source={require('../../../assets/icons/delete_icon.png')}
+                style={{
+                  width: 18,
+                  height: 18,
+                  tintColor: ThemeMode.selectedTheme
+                    ? theme.colors.primary
+                    : theme.colors.primaryBlack,
+                }}
+              />
+            </TouchableOpacity>
+            <Image
+              source={require('../../../assets/icons/play_video.png')}
+              style={{
+                height: 64,
+                width: 64,
+                resizeMode: 'contain',
+                position: 'absolute',
+                alignSelf: 'center',
+                top: 80,
+                zIndex: 1,
+              }}
+            />
 
-/>         
-              </TouchableOpacity>
-            
-        )}
+            <VideoPlayer
+              style={{
+                zIndex: 0,
+                alignSelf: 'center',
+                borderRadius: 20,
+                overflow: 'hidden',
+                height: 223,
+              }}
+              thumbnail={{uri: it?.uri}}
+              pause={true}
+              video={{uri: it?.uri}}
+              resizeMode={'cover'}
+              playIcon={false}
+            />
+          </TouchableOpacity>
+        ))}
         {media?.map(
           (it, i) =>
             it.type != 'video/mp4' &&

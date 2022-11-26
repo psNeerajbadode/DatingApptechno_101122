@@ -1777,6 +1777,7 @@ drawable src_assets_icons_like_match
 drawable src_assets_icons_link
 drawable src_assets_icons_link_red
 drawable src_assets_icons_location
+drawable src_assets_icons_logo
 drawable src_assets_icons_love
 drawable src_assets_icons_m_chats
 drawable src_assets_icons_m_more
