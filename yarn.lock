@@ -8206,6 +8206,11 @@
   dependencies:
     "prop-types" "^15.7.2"
 
+"react-native-animated-progress@^1.0.2":
+  "integrity" "sha512-8EQSHTjT7QQY+u/Gknc1X4FxlV/8gRevi2wAlMIUQBf3fq13z++8WIGPPwwKvjsVcQJMm4cadTwn3Ptn5fiUJw=="
+  "resolved" "https://registry.npmjs.org/react-native-animated-progress/-/react-native-animated-progress-1.0.2.tgz"
+  "version" "1.0.2"
+
 "react-native-calendars@^1.1289.0":
   "integrity" "sha512-qaqRliQxM+05kCPd04d7xryRxpFC/XHgxyOThSeZRdEXP29AQLrWDHZNhUUXALe2pVWNTJIzt6jnWsgs2gAmYg=="
   "resolved" "https://registry.npmjs.org/react-native-calendars/-/react-native-calendars-1.1289.0.tgz"

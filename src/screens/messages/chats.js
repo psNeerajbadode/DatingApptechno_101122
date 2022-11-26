@@ -4,7 +4,6 @@ import {
   TouchableOpacity,
   View,
   TextInput,
-  ScrollView,
   useWindowDimensions,
   FlatList,
 } from 'react-native';
@@ -21,10 +20,9 @@ import {useNavigation, useRoute} from '@react-navigation/native';
 import axios from 'axios';
 import Netinforsheet from '../../components/Netinforsheet';
 import ActivityLoader from '../../components/ActivityLoader';
-import { ShowToast } from '../../utils/Baseurl';
+import {ShowToast} from '../../utils/Baseurl';
 
 const Chats = () => {
-  const dispatch = useDispatch();
   const navigation = useNavigation();
   const ThemeMode = useSelector(state => state.Theme);
   const Staps = useSelector(state => state.Stap);
@@ -35,50 +33,10 @@ const Chats = () => {
   const [passion, setpassion] = useState([]);
   const {params} = useRoute();
   const [mess, setMess] = useState('');
-  const [show, setShow] = useState(false);
   const [getmsg, setGetmsg] = useState([]);
   const [Loading, setLoading] = useState(true);
   const dimension = useWindowDimensions();
 
-  const chatData = [
-    {
-      reciverId: 1,
-      img: require('../../assets/images/unsplash_1.png'),
-      msg1: 'Alex, let’s meet this weekend. I’ll check with Dave too 😎',
-      time: '8:27 PM',
-    },
-    {
-      sernderId: 0,
-      img: require('../../assets/images/unsplash_1.png'),
-      msg1: 'Sure. Let’s aim for saturday',
-      msg2: 'I’m visiting mom this sunday 👻',
-      time: '8:56 PM',
-    },
-    {
-      reciverId: 1,
-      img: require('../../assets/images/unsplash_1.png'),
-      msg1: 'Alrighty! Will give you a call shortly 🤗',
-      time: '9:01 PM',
-    },
-    {
-      sernderId: 0,
-      img: require('../../assets/images/unsplash_1.png'),
-      msg1: '❤️',
-      time: '9:04 PM',
-    },
-    {
-      reciverId: 1,
-      img: require('../../assets/images/unsplash_1.png'),
-      msg1: 'Hey you! Are you there?',
-      time: '11:53 AM',
-    },
-    {
-      sernderId: 0,
-      img: require('../../assets/images/unsplash_1.png'),
-      msg1: '👋 Hi Jess! What’s up?',
-      time: '12:14 PM',
-    },
-  ];
   const selectMultipleFile = async () => {
     try {
       const results = await DocumentPicker.pickMultiple({
@@ -178,13 +136,13 @@ const Chats = () => {
         method: 'POST',
       })
         .then(function (response) {
-         // console.log('Block API=>', JSON.stringify(response.data.message));
+          // console.log('Block API=>', JSON.stringify(response.data.message));
           if (response.data.status == 1) {
-            ShowToast(response.data.message);   
+            ShowToast(response.data.message);
             refRBSheet2.current.close();
-            refRBSheet.current.close();  
+            refRBSheet.current.close();
             refRBSheetB.current.close();
-            navigation.navigate('chatList');   
+            navigation.navigate('chatList');
             setLoading(false);
           }
         })
@@ -213,12 +171,19 @@ const Chats = () => {
 
     return age_now;
   };
- 
+
   return (
-    <View style={{flex: 1, backgroundColor: '#fff'}}>
+    <View
+      style={{
+        flex: 1,
+        backgroundColor: ThemeMode.selectedTheme
+          ? theme.colors.primary
+          : theme.colors.primaryBlack,
+      }}>
       <HeaderImage_1 height={150} marginBottom={1}>
-        <Header 
-          marginTop={18} T_marginRight={'1%'}
+        <Header
+          marginTop={18}
+          T_marginRight={'1%'}
           title={Staps.user_name + ', ' + calculate_age()}
           right={
             <TouchableOpacity
@@ -360,6 +325,7 @@ const Chats = () => {
                           width: 64,
                           resizeMode: 'cover',
                           borderRadius: 50,
+                          marginRight: 10,
                         }}
                       />
                     )}
@@ -537,13 +503,14 @@ const Chats = () => {
           </LinearGradient>
         </TouchableOpacity>
       </View>
-      <MoreOptions 
-         Block_onPress={() => block_user_Api()}
-         refRBSheet2={refRBSheetB}
-         BlockID={params.SenderId}
-         UserID={Staps.id}
+      <MoreOptions
+        Block_onPress={() => block_user_Api()}
+        refRBSheet2={refRBSheetB}
+        BlockID={params.SenderId}
+        UserID={Staps.id}
         Block_Loading={Loading}
-        refRBSheet={refRBSheet} />
+        refRBSheet={refRBSheet}
+      />
       <Netinforsheet />
     </View>
   );

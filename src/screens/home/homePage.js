@@ -27,9 +27,8 @@ import FastImage from 'react-native-fast-image';
 import {ShowToast} from '../../utils/Baseurl';
 import Statusbar from '../../components/Statusbar';
 import Netinforsheet from '../../components/Netinforsheet';
-// import VideoPlayer from 'react-native-video-controls';
 import Video from 'react-native-video';
-import VideoPlayer from 'react-native-video-player';
+import {ProgressBar} from 'react-native-paper';
 const HomePage = () => {
   const ThemeMode = useSelector(state => state.Theme);
   const Staps = useSelector(state => state.Stap);
@@ -45,7 +44,11 @@ const HomePage = () => {
   const dimension = useWindowDimensions();
   const [plu_button, setplu_button] = useState(false);
   const [Videoplay, setVideoplay] = useState(false);
-  const [naviVideo, setNaviVideo] = useState(true);
+  const [naviVideo, setNaviVideo] = useState(false);
+  const [videof, setVideof] = useState(false);
+  const [vtime, setVtime] = useState(0);
+  const [curenttime, setCurenttime] = useState(0);
+  console.log('vtime===========>', vtime, curenttime);
   const [Loading, setLoading] = useState(false);
   const [Userpost, setUserpost] = useState();
   const [Uindex, setUindex] = useState();
@@ -277,7 +280,6 @@ const HomePage = () => {
         `https://technorizen.com/Dating/webservice/get_profile?user_id=` +
         Staps.id,
     }).then(response => {
-      console.log('setProfile=>', response.data.result);
       setProfile(response.data.result);
     });
   };
@@ -333,6 +335,10 @@ const HomePage = () => {
     }
   };
 
+  function progress(e) {
+    setCurenttime(parseInt(e.currentTime));
+    //console.log(parseInt(e.currentTime));
+  }
   useEffect(() => {
     navigation.addListener('focus', () => setNaviVideo(true));
     getUserPost();
@@ -447,6 +453,9 @@ const HomePage = () => {
                               // }}
                               >
                                 <FastImage
+                                  onLoadStart={() => {
+                                    setVideof(false);
+                                  }}
                                   onProgress={() => <ActivityLoader />}
                                   source={{
                                     uri: v?.image,
@@ -462,74 +471,40 @@ const HomePage = () => {
                               </View>
                             ) : (
                               v.type == 'Video' && (
-                                //   <VideoPlayer
-                                //   onPlay={()=> setVideoplay(true)}
-
-                                //   disableFullscreen={false}
-                                //   disableBack={true}
-                                //   disableVolume={true}
-                                //   tapAnywhereToPause={true}
-                                //    disableSeekbar={true}
-                                //   source={{uri: v?.image}}
-                                //   onShowControls={true}
-                                //   disableTimer={true}
-                                //   disablePlayPause={true}
-                                // />
-                                //     <VideoPlayer
-                                //     video={{ uri: v?.image }}
-                                //     pause={true}
-                                //     resizeMode={'cover'}
-                                //     thumbnail={{ uri: v?.image}}
-                                //     style={{ height: dimension.height ,
-                                //     width: dimension.width,}}
-                                //     disableSeek={true}
-                                //     bufferConfig={{minBufferMs:1000,maxBufferMs:2000}}
-                                //     pauseOnPress
-                                // />
                                 <TouchableOpacity
                                   activeOpacity={1}
                                   onPress={() => {
-                                    setNaviVideo(!naviVideo);
+                                    navigation.navigate(
+                                      'userProfile',
+                                      item?.id,
+                                    );
                                   }}
                                   style={{
                                     alignSelf: 'center',
                                     justifyContent: 'center',
                                   }}>
-                                  {!naviVideo && (
-                                    <Image
-                                      source={require('../../assets/icons/Video_play_d.png')}
-                                      resizeMode="contain"
-                                      style={{
-                                        width: 65,
-                                        height: 65,
-                                        position: 'absolute',
-                                        top: '50%',
-                                        alignSelf: 'center',
-                                        zIndex: 1,
-                                      }}
-                                    />
-                                  )}
                                   <Video
                                     source={{uri: v?.image}}
+                                    onLoad={v => setVtime(v.duration)}
                                     playInBackground={false}
                                     ref={videoRef}
                                     playWhenInactive={false}
+                                    onProgress={e => progress(e)}
                                     onLoadStart={() => {
                                       setnextvideo(v?.image);
                                       setVideoId(v?.id);
                                       setNaviVideo(true);
+                                      setVideof(true);
                                     }}
                                     onBuffer={onBuffer}
                                     onError={onError}
-                                    // disableFocus={true}
-                                    // poster={'https://technorizen.com/Dating/uploads/images/video_loader344.png'}
-                                    // posterResizeMode='cover'
-                                    repeat={true}
+                                    repeat={false}
                                     resizeMode="cover"
                                     paused={
                                       v?.id == videoId &&
                                       nextvideo == v?.image &&
-                                      naviVideo
+                                      naviVideo &&
+                                      videof
                                         ? false
                                         : true
                                     }
@@ -773,7 +748,7 @@ const HomePage = () => {
           }}
         />
       </ImageBackground>
-      <View
+      {/* <View
         style={{
           borderRadius: 50,
           borderBottomWidth: 2,
@@ -792,8 +767,31 @@ const HomePage = () => {
           width: '34%',
           position: 'absolute',
           bottom: 0,
-        }}></View>
-
+        }}></View> */}
+      <ProgressBar
+        progress={curenttime * 0.1}
+        style={{
+          borderRadius: 50,
+          borderBottomWidth: 2,
+          borderBottomColor: theme.colors.primary,
+          position: 'absolute',
+          bottom: 0,
+          backgroundColor: theme.colors.primary,
+        }}
+        color={
+          ThemeMode.themecolr == 'Red'
+            ? theme.colors.red
+            : ThemeMode.themecolr == 'Blue'
+            ? theme.colors.Blue
+            : ThemeMode.themecolr == 'Green'
+            ? theme.colors.Green
+            : ThemeMode.themecolr == 'Purple'
+            ? theme.colors.Purple
+            : ThemeMode.themecolr == 'Yellow'
+            ? theme.colors.Yellow
+            : theme.colors.red
+        }
+      />
       <Notification refRBSheet={refRBSheet1} />
       <MoreOptions
         Block_onPress={() => block_user_Api()}

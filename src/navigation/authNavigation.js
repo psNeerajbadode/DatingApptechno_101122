@@ -28,14 +28,11 @@ import HomePage from '../screens/home/homePage';
 import PlayVideo from '../screens/profile/profileComponent/playVideo';
 import ViewSelfMedia from '../screens/profile/viewSelfmedia';
 
-
 const Stack = createNativeStackNavigator();
 const AuthNavigation = () => {
-
-
   return (
     <Stack.Navigator
-      initialRouteName={ "Splash" }
+      initialRouteName={'Splash'}
       screenOptions={{headerShown: false}}>
       <Stack.Screen component={Splash} name="Splash" />
       <Stack.Screen component={LanguageSelection} name="LanguageSelection" />

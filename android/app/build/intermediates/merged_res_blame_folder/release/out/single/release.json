@@ -16,10 +16,6 @@
         "source": "com.dating_app-react-39:/drawable-hdpi/node_modules_reactnavigation_elements_src_assets_backicon.png"
     },
     {
-        "merged": "com.dating_app-merged_res-44:/drawable-xxhdpi_node_modules_reactnativevideocontrols_assets_img_bottomvignette.png.flat",
-        "source": "com.dating_app-react-39:/drawable-xxhdpi/node_modules_reactnativevideocontrols_assets_img_bottomvignette.png"
-    },
-    {
         "merged": "com.dating_app-merged_res-44:/drawable-mdpi_src_assets_icons_facebook_1.png.flat",
         "source": "com.dating_app-react-39:/drawable-mdpi/src_assets_icons_facebook_1.png"
     },
@@ -58,10 +54,6 @@
     {
         "merged": "com.dating_app-merged_res-44:/drawable-mdpi_src_assets_colorimages_blue_gift_blue.png.flat",
         "source": "com.dating_app-react-39:/drawable-mdpi/src_assets_colorimages_blue_gift_blue.png"
-    },
-    {
-        "merged": "com.dating_app-merged_res-44:/drawable-xhdpi_node_modules_reactnativevideocontrols_assets_img_play.png.flat",
-        "source": "com.dating_app-react-39:/drawable-xhdpi/node_modules_reactnativevideocontrols_assets_img_play.png"
     },
     {
         "merged": "com.dating_app-merged_res-44:/mipmap-hdpi_ic_launcher_round.png.flat",
@@ -178,10 +170,6 @@
     {
         "merged": "com.dating_app-merged_res-44:/drawable-mdpi_src_assets_icons_beach_chair.png.flat",
         "source": "com.dating_app-react-39:/drawable-mdpi/src_assets_icons_beach_chair.png"
-    },
-    {
-        "merged": "com.dating_app-merged_res-44:/drawable-mdpi_node_modules_reactnativevideocontrols_assets_img_bottomvignette.png.flat",
-        "source": "com.dating_app-react-39:/drawable-mdpi/node_modules_reactnativevideocontrols_assets_img_bottomvignette.png"
     },
     {
         "merged": "com.dating_app-merged_res-44:/drawable-xhdpi_node_modules_reactnavigation_elements_src_assets_backicon.png.flat",
@@ -322,14 +310,6 @@
     {
         "merged": "com.dating_app-merged_res-44:/drawable-hdpi_node_modules_reactnativecalendars_src_calendar_img_previous.png.flat",
         "source": "com.dating_app-react-39:/drawable-hdpi/node_modules_reactnativecalendars_src_calendar_img_previous.png"
-    },
-    {
-        "merged": "com.dating_app-merged_res-44:/drawable-xxhdpi_node_modules_reactnativevideocontrols_assets_img_volume.png.flat",
-        "source": "com.dating_app-react-39:/drawable-xxhdpi/node_modules_reactnativevideocontrols_assets_img_volume.png"
-    },
-    {
-        "merged": "com.dating_app-merged_res-44:/drawable-xxhdpi_node_modules_reactnativevideocontrols_assets_img_pause.png.flat",
-        "source": "com.dating_app-react-39:/drawable-xxhdpi/node_modules_reactnativevideocontrols_assets_img_pause.png"
     },
     {
         "merged": "com.dating_app-merged_res-44:/drawable-mdpi_src_assets_icons_like_dark2.png.flat",
@@ -476,10 +456,6 @@
         "source": "com.dating_app-react-39:/drawable-mdpi/src_assets_images_planbg_1.png"
     },
     {
-        "merged": "com.dating_app-merged_res-44:/drawable-mdpi_node_modules_reactnativevideocontrols_assets_img_expand.png.flat",
-        "source": "com.dating_app-react-39:/drawable-mdpi/node_modules_reactnativevideocontrols_assets_img_expand.png"
-    },
-    {
         "merged": "com.dating_app-merged_res-44:/drawable-mdpi_src_assets_images_profile.png.flat",
         "source": "com.dating_app-react-39:/drawable-mdpi/src_assets_images_profile.png"
     },
@@ -568,24 +544,8 @@
         "source": "com.dating_app-react-39:/drawable-mdpi/src_assets_icons_matche_dark.png"
     },
     {
-        "merged": "com.dating_app-merged_res-44:/drawable-xhdpi_node_modules_reactnativevideocontrols_assets_img_topvignette.png.flat",
-        "source": "com.dating_app-react-39:/drawable-xhdpi/node_modules_reactnativevideocontrols_assets_img_topvignette.png"
-    },
-    {
-        "merged": "com.dating_app-merged_res-44:/drawable-xhdpi_node_modules_reactnativevideocontrols_assets_img_volume.png.flat",
-        "source": "com.dating_app-react-39:/drawable-xhdpi/node_modules_reactnativevideocontrols_assets_img_volume.png"
-    },
-    {
         "merged": "com.dating_app-merged_res-44:/drawable-mdpi_src_assets_icons_dice.png.flat",
         "source": "com.dating_app-react-39:/drawable-mdpi/src_assets_icons_dice.png"
-    },
-    {
-        "merged": "com.dating_app-merged_res-44:/drawable-xxhdpi_node_modules_reactnativevideocontrols_assets_img_back.png.flat",
-        "source": "com.dating_app-react-39:/drawable-xxhdpi/node_modules_reactnativevideocontrols_assets_img_back.png"
-    },
-    {
-        "merged": "com.dating_app-merged_res-44:/drawable-mdpi_node_modules_reactnativevideocontrols_assets_img_erroricon.png.flat",
-        "source": "com.dating_app-react-39:/drawable-mdpi/node_modules_reactnativevideocontrols_assets_img_erroricon.png"
     },
     {
         "merged": "com.dating_app-merged_res-44:/drawable-mdpi_src_assets_icons_send_darkk.png.flat",
@@ -624,10 +584,6 @@
         "source": "com.dating_app-react-39:/drawable-mdpi/src_assets_icons_link_red.png"
     },
     {
-        "merged": "com.dating_app-merged_res-44:/drawable-mdpi_node_modules_reactnativevideocontrols_assets_img_back.png.flat",
-        "source": "com.dating_app-react-39:/drawable-mdpi/node_modules_reactnativevideocontrols_assets_img_back.png"
-    },
-    {
         "merged": "com.dating_app-merged_res-44:/drawable-mdpi_src_assets_icons_jcb.png.flat",
         "source": "com.dating_app-react-39:/drawable-mdpi/src_assets_icons_jcb.png"
     },
@@ -638,10 +594,6 @@
     {
         "merged": "com.dating_app-merged_res-44:/drawable-mdpi_src_assets_images_unsplash_6.png.flat",
         "source": "com.dating_app-react-39:/drawable-mdpi/src_assets_images_unsplash_6.png"
-    },
-    {
-        "merged": "com.dating_app-merged_res-44:/drawable-xxhdpi_node_modules_reactnativevideocontrols_assets_img_expand.png.flat",
-        "source": "com.dating_app-react-39:/drawable-xxhdpi/node_modules_reactnativevideocontrols_assets_img_expand.png"
     },
     {
         "merged": "com.dating_app-merged_res-44:/drawable-mdpi_src_assets_colorimages_blue_sliderimage_bluer.png.flat",
@@ -716,10 +668,6 @@
         "source": "com.dating_app-react-39:/drawable-mdpi/src_assets_icons_yellow_diactive.png"
     },
     {
-        "merged": "com.dating_app-merged_res-44:/drawable-xhdpi_node_modules_reactnativevideocontrols_assets_img_erroricon.png.flat",
-        "source": "com.dating_app-react-39:/drawable-xhdpi/node_modules_reactnativevideocontrols_assets_img_erroricon.png"
-    },
-    {
         "merged": "com.dating_app-merged_res-44:/drawable-mdpi_src_assets_icons_teddy_bear.png.flat",
         "source": "com.dating_app-react-39:/drawable-mdpi/src_assets_icons_teddy_bear.png"
     },
@@ -764,10 +712,6 @@
         "source": "com.dating_app-react-39:/drawable-mdpi/src_assets_icons_icecream.png"
     },
     {
-        "merged": "com.dating_app-merged_res-44:/drawable-mdpi_node_modules_reactnativevideocontrols_assets_img_play.png.flat",
-        "source": "com.dating_app-react-39:/drawable-mdpi/node_modules_reactnativevideocontrols_assets_img_play.png"
-    },
-    {
         "merged": "com.dating_app-merged_res-44:/drawable-mdpi_src_assets_icons_f_switchs.png.flat",
         "source": "com.dating_app-react-39:/drawable-mdpi/src_assets_icons_f_switchs.png"
     },
@@ -800,14 +744,6 @@
         "source": "com.dating_app-react-39:/drawable-mdpi/src_assets_icons_interpayment.png"
     },
     {
-        "merged": "com.dating_app-merged_res-44:/drawable-xhdpi_node_modules_reactnativevideocontrols_assets_img_back.png.flat",
-        "source": "com.dating_app-react-39:/drawable-xhdpi/node_modules_reactnativevideocontrols_assets_img_back.png"
-    },
-    {
-        "merged": "com.dating_app-merged_res-44:/drawable-xxhdpi_node_modules_reactnativevideocontrols_assets_img_play.png.flat",
-        "source": "com.dating_app-react-39:/drawable-xxhdpi/node_modules_reactnativevideocontrols_assets_img_play.png"
-    },
-    {
         "merged": "com.dating_app-merged_res-44:/drawable-mdpi_src_assets_colorimages_purplle_chat_purple1.png.flat",
         "source": "com.dating_app-react-39:/drawable-mdpi/src_assets_colorimages_purplle_chat_purple1.png"
     },
@@ -828,10 +764,6 @@
         "source": "com.dating_app-react-39:/drawable-mdpi/src_assets_icons_fingerprint_2.png"
     },
     {
-        "merged": "com.dating_app-merged_res-44:/drawable-xhdpi_node_modules_reactnativevideocontrols_assets_img_loadericon.png.flat",
-        "source": "com.dating_app-react-39:/drawable-xhdpi/node_modules_reactnativevideocontrols_assets_img_loadericon.png"
-    },
-    {
         "merged": "com.dating_app-merged_res-44:/drawable-mdpi_src_assets_images_unsplash_1.png.flat",
         "source": "com.dating_app-react-39:/drawable-mdpi/src_assets_images_unsplash_1.png"
     },
@@ -842,10 +774,6 @@
     {
         "merged": "com.dating_app-merged_res-44:/drawable-mdpi_src_assets_colorimages_purplle_addpic_purple.png.flat",
         "source": "com.dating_app-react-39:/drawable-mdpi/src_assets_colorimages_purplle_addpic_purple.png"
-    },
-    {
-        "merged": "com.dating_app-merged_res-44:/drawable-mdpi_node_modules_reactnativevideocontrols_assets_img_volume.png.flat",
-        "source": "com.dating_app-react-39:/drawable-mdpi/node_modules_reactnativevideocontrols_assets_img_volume.png"
     },
     {
         "merged": "com.dating_app-merged_res-44:/drawable-mdpi_src_assets_icons_chattype1.png.flat",
@@ -868,16 +796,8 @@
         "source": "com.dating_app-react-39:/drawable-mdpi/src_assets_icons_m_more.png"
     },
     {
-        "merged": "com.dating_app-merged_res-44:/drawable-xhdpi_node_modules_reactnativevideocontrols_assets_img_expand.png.flat",
-        "source": "com.dating_app-react-39:/drawable-xhdpi/node_modules_reactnativevideocontrols_assets_img_expand.png"
-    },
-    {
         "merged": "com.dating_app-merged_res-44:/drawable-mdpi_src_assets_icons_ecology.png.flat",
         "source": "com.dating_app-react-39:/drawable-mdpi/src_assets_icons_ecology.png"
-    },
-    {
-        "merged": "com.dating_app-merged_res-44:/drawable-xhdpi_node_modules_reactnativevideocontrols_assets_img_bottomvignette.png.flat",
-        "source": "com.dating_app-react-39:/drawable-xhdpi/node_modules_reactnativevideocontrols_assets_img_bottomvignette.png"
     },
     {
         "merged": "com.dating_app-merged_res-44:/drawable-mdpi_src_assets_icons_diy.png.flat",
@@ -1012,10 +932,6 @@
         "source": "com.dating_app-react-39:/drawable-mdpi/src_assets_colorimages_purplle_c_plus_purple.png"
     },
     {
-        "merged": "com.dating_app-merged_res-44:/drawable-mdpi_node_modules_reactnativevideocontrols_assets_img_pause.png.flat",
-        "source": "com.dating_app-react-39:/drawable-mdpi/node_modules_reactnativevideocontrols_assets_img_pause.png"
-    },
-    {
         "merged": "com.dating_app-merged_res-44:/drawable-mdpi_src_assets_icons_search_2.png.flat",
         "source": "com.dating_app-react-39:/drawable-mdpi/src_assets_icons_search_2.png"
     },
@@ -1064,10 +980,6 @@
         "source": "com.dating_app-react-39:/drawable-mdpi/src_assets_icons_matches_dark.png"
     },
     {
-        "merged": "com.dating_app-merged_res-44:/drawable-xhdpi_node_modules_reactnativevideocontrols_assets_img_pause.png.flat",
-        "source": "com.dating_app-react-39:/drawable-xhdpi/node_modules_reactnativevideocontrols_assets_img_pause.png"
-    },
-    {
         "merged": "com.dating_app-merged_res-44:/drawable-mdpi_src_assets_icons_shopping_bags.png.flat",
         "source": "com.dating_app-react-39:/drawable-mdpi/src_assets_icons_shopping_bags.png"
     },
@@ -1114,10 +1026,6 @@
     {
         "merged": "com.dating_app-merged_res-44:/drawable-mdpi_src_assets_icons_twitter.png.flat",
         "source": "com.dating_app-react-39:/drawable-mdpi/src_assets_icons_twitter.png"
-    },
-    {
-        "merged": "com.dating_app-merged_res-44:/drawable-mdpi_node_modules_reactnativevideocontrols_assets_img_topvignette.png.flat",
-        "source": "com.dating_app-react-39:/drawable-mdpi/node_modules_reactnativevideocontrols_assets_img_topvignette.png"
     },
     {
         "merged": "com.dating_app-merged_res-44:/drawable-mdpi_src_assets_icons_china.png.flat",
@@ -1192,10 +1100,6 @@
         "source": "com.dating_app-react-39:/drawable-mdpi/src_assets_colorimages_blue_chat_blue1.png"
     },
     {
-        "merged": "com.dating_app-merged_res-44:/drawable-xhdpi_node_modules_reactnativevideocontrols_assets_img_shrink.png.flat",
-        "source": "com.dating_app-react-39:/drawable-xhdpi/node_modules_reactnativevideocontrols_assets_img_shrink.png"
-    },
-    {
         "merged": "com.dating_app-merged_res-44:/drawable-mdpi_src_assets_colorimages_green_c_plus_green.png.flat",
         "source": "com.dating_app-react-39:/drawable-mdpi/src_assets_colorimages_green_c_plus_green.png"
     },
@@ -1204,24 +1108,12 @@
         "source": "com.dating_app-react-39:/drawable-mdpi/src_assets_home_icons_profile.png"
     },
     {
-        "merged": "com.dating_app-merged_res-44:/drawable-mdpi_node_modules_reactnativevideocontrols_assets_img_shrink.png.flat",
-        "source": "com.dating_app-react-39:/drawable-mdpi/node_modules_reactnativevideocontrols_assets_img_shrink.png"
-    },
-    {
         "merged": "com.dating_app-merged_res-44:/drawable-mdpi_src_assets_images_group12.png.flat",
         "source": "com.dating_app-react-39:/drawable-mdpi/src_assets_images_group12.png"
     },
     {
-        "merged": "com.dating_app-merged_res-44:/drawable-mdpi_node_modules_reactnativevideocontrols_assets_img_loadericon.png.flat",
-        "source": "com.dating_app-react-39:/drawable-mdpi/node_modules_reactnativevideocontrols_assets_img_loadericon.png"
-    },
-    {
         "merged": "com.dating_app-merged_res-44:/drawable-mdpi_src_assets_icons_pin_chat.png.flat",
         "source": "com.dating_app-react-39:/drawable-mdpi/src_assets_icons_pin_chat.png"
-    },
-    {
-        "merged": "com.dating_app-merged_res-44:/drawable-xxhdpi_node_modules_reactnativevideocontrols_assets_img_erroricon.png.flat",
-        "source": "com.dating_app-react-39:/drawable-xxhdpi/node_modules_reactnativevideocontrols_assets_img_erroricon.png"
     },
     {
         "merged": "com.dating_app-merged_res-44:/drawable-mdpi_src_assets_colorimages_green_bg3_green.png.flat",
@@ -1296,10 +1188,6 @@
         "source": "com.dating_app-react-39:/drawable-mdpi/src_assets_images_profile2.png"
     },
     {
-        "merged": "com.dating_app-merged_res-44:/drawable-xxhdpi_node_modules_reactnativevideocontrols_assets_img_topvignette.png.flat",
-        "source": "com.dating_app-react-39:/drawable-xxhdpi/node_modules_reactnativevideocontrols_assets_img_topvignette.png"
-    },
-    {
         "merged": "com.dating_app-merged_res-44:/drawable-mdpi_src_assets_icons_netinfo23.png.flat",
         "source": "com.dating_app-react-39:/drawable-mdpi/src_assets_icons_netinfo23.png"
     },
@@ -1320,10 +1208,6 @@
         "source": "com.dating_app-react-39:/drawable-mdpi/src_assets_icons_amax.png"
     },
     {
-        "merged": "com.dating_app-merged_res-44:/drawable-xxhdpi_node_modules_reactnativevideocontrols_assets_img_shrink.png.flat",
-        "source": "com.dating_app-react-39:/drawable-xxhdpi/node_modules_reactnativevideocontrols_assets_img_shrink.png"
-    },
-    {
         "merged": "com.dating_app-merged_res-44:/drawable-mdpi_src_assets_icons_back.png.flat",
         "source": "com.dating_app-react-39:/drawable-mdpi/src_assets_icons_back.png"
     },
@@ -1336,12 +1220,12 @@
         "source": "com.dating_app-react-39:/drawable-mdpi/src_assets_icons_edit_white.png"
     },
     {
-        "merged": "com.dating_app-merged_res-44:/drawable-mdpi_src_assets_colorimages_blue_addpic_blue.png.flat",
-        "source": "com.dating_app-react-39:/drawable-mdpi/src_assets_colorimages_blue_addpic_blue.png"
-    },
-    {
         "merged": "com.dating_app-merged_res-44:/drawable-mdpi_src_assets_colorimages_yellow_gift_yellow.png.flat",
         "source": "com.dating_app-react-39:/drawable-mdpi/src_assets_colorimages_yellow_gift_yellow.png"
+    },
+    {
+        "merged": "com.dating_app-merged_res-44:/drawable-mdpi_src_assets_colorimages_blue_addpic_blue.png.flat",
+        "source": "com.dating_app-react-39:/drawable-mdpi/src_assets_colorimages_blue_addpic_blue.png"
     },
     {
         "merged": "com.dating_app-merged_res-44:/drawable-mdpi_src_assets_colorimages_green_gift_green.png.flat",
@@ -1370,10 +1254,6 @@
     {
         "merged": "com.dating_app-merged_res-44:/drawable-mdpi_src_assets_colorimages_purplle_on_switchs_purple.png.flat",
         "source": "com.dating_app-react-39:/drawable-mdpi/src_assets_colorimages_purplle_on_switchs_purple.png"
-    },
-    {
-        "merged": "com.dating_app-merged_res-44:/drawable-xxhdpi_node_modules_reactnativevideocontrols_assets_img_loadericon.png.flat",
-        "source": "com.dating_app-react-39:/drawable-xxhdpi/node_modules_reactnativevideocontrols_assets_img_loadericon.png"
     },
     {
         "merged": "com.dating_app-merged_res-44:/drawable-mdpi_src_assets_home_icons_love.png.flat",

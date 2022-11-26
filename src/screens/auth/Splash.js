@@ -3,6 +3,7 @@ import {
   useWindowDimensions,
   View,
   ImageBackground,
+  Image,
 } from 'react-native';
 import React from 'react';
 import TextFormatted from '../../components/TextFormatted';
@@ -75,27 +76,17 @@ const Splash = ({navigation}) => {
         }}>
         Loading...
       </TextFormatted>
-      <View
+      <Image
+        resizeMode="contain"
+        source={require('../../assets/icons/logo.png')}
         style={{
           position: 'absolute',
           bottom: 30,
           height: 158,
           width: 158,
-          borderRadius: 80,
-          backgroundColor: '#fff',
-          justifyContent: 'center',
-          alignItems: 'center',
           alignSelf: 'center',
-        }}>
-        <TextFormatted
-          style={{
-            fontSize: 22,
-            fontWeight: '700',
-            color: theme.colors.red_light,
-          }}>
-          LOGO
-        </TextFormatted>
-      </View>
+        }}
+      />
     </ImageBackground>
   );
 };

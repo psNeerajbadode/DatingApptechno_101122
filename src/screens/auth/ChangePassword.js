@@ -102,7 +102,9 @@ const ChangePassword = ({navigation}) => {
               newPassword == '' ||
               (newPassword != null && !validPass(newPassword))
                 ? theme.colors.red
-                : theme.colors.primaryBlack
+                : ThemeMode.selectedTheme
+                ? theme.colors.primaryBlack
+                : theme.colors.primary
             }
             borderWidth={
               newPassword == '' ||

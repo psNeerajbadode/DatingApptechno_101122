@@ -18,12 +18,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import axios from 'axios';
 import Netinforsheet from '../../components/Netinforsheet';
 import {ShowToast} from '../../utils/Baseurl';
-import {
-  AccessToken,
-  AuthenticationToken,
-  LoginButton,
-  LoginManager,
-} from 'react-native-fbsdk-next';
+import {AccessToken, LoginManager} from 'react-native-fbsdk-next';
 import {useNavigation} from '@react-navigation/native';
 import {GoogleSignin} from '@react-native-google-signin/google-signin';
 
@@ -44,7 +39,6 @@ const Login = () => {
   const Staps = useSelector(state => state.Stap);
   const [email, setEmail] = useState('demo@gmail.com');
   const [password, setPassword] = useState('Dd123456');
-
   // const [email, setEmail] = useState();
   // const [password, setPassword] = useState();
   const [show, setShow] = useState(false);
@@ -325,11 +319,10 @@ const Login = () => {
 
         <Button
           opacity={validateEmail(email) && validPass(password) ? 1 : 0.5}
-          onPress={
-            () => {
-              Loginapi();
-            } /*  navigation.navigate('step1') */
-          }
+          onPress={() => {
+            Loginapi();
+            /* navigation.navigate('step2'); */
+          }}
           buttonName={'Login'}
           Loading={loading}
           disabled={validateEmail(email) && validPass(password) ? false : true}

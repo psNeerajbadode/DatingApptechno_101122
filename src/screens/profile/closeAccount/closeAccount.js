@@ -18,7 +18,7 @@ import FreshStart from './freshStart';
 import Other from './other';
 import LinearGradient from 'react-native-linear-gradient';
 import {useDispatch, useSelector} from 'react-redux';
-import { useNavigation } from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 
 const CloseAccount = ({refRBSheet}) => {
   const navigation = useNavigation();
@@ -41,13 +41,16 @@ const CloseAccount = ({refRBSheet}) => {
         '&' +
         'reason=I need a break',
 
-      {method: 'post',   headers: {
-        'content-type': 'multipart/form-data',
-      }},
+      {
+        method: 'post',
+        headers: {
+          'content-type': 'multipart/form-data',
+        },
+      },
     )
       .then(response => response.json())
       .then(response => {
-        console.log("response=>",response);
+        console.log('response=>', response);
         if (response.status == 1) {
           navigation.replace('authNavigation');
           dispatch({type: LOGOUT, payload: null});
@@ -161,13 +164,13 @@ const CloseAccount = ({refRBSheet}) => {
         </TextFormatted>
         <View style={{height: 20}} />
         <ButtonRow
-          title={'I need a break from ...'}
+          title={'I need a break from Cyperdate'}
           onPress={() => {
             refRBSheet1.current.open();
           }}
         />
         <ButtonRow
-          title={'I don’t like ...'}
+          title={'I don’t like Cyperdate'}
           onPress={() => {
             refRBSheet2.current.open();
           }}

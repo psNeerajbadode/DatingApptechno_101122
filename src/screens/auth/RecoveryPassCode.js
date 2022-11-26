@@ -67,9 +67,7 @@ const RecoveryPassCode = ({navigation}) => {
         flex: 1,
         backgroundColor: ThemeMode.selectedTheme
           ? theme.colors.primary
-          : ThemeMode.selectedTheme
-          ? theme.colors.primaryBlack
-          : theme.colors.primary,
+          : theme.colors.primaryBlack,
       }}>
       <View style={{paddingBottom: 18}}>
         <HeaderImage height={310}>

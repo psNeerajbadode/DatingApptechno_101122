@@ -1,20 +1,28 @@
-import {Image, StyleSheet, TouchableOpacity, View} from 'react-native';
-import React, {useRef, useState} from 'react';
-import {useRoute} from '@react-navigation/native';
+import {
+  Image,
+  StyleSheet,
+  TouchableOpacity,
+  useWindowDimensions,
+  View,
+} from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {useNavigation, useRoute} from '@react-navigation/native';
 import {theme} from '../../../utils/Constants';
-import VideoPlayer from 'react-native-video-controls';
 import {useDispatch, useSelector} from 'react-redux';
+import Video from 'react-native-video';
+import Statusbar from '../../../components/Statusbar';
 
-const PlayVideo = ({navigation}) => {
-  const dispatch = useDispatch();
+const PlayVideo = () => {
+  const navigation = useNavigation();
+  const dimension = useWindowDimensions();
   const ThemeMode = useSelector(state => state.Theme);
   const {params = {}} = useRoute();
-  const videoRef = useRef();
-  const [push, setPuse] = useState();
-  const [play, setPlay] = useState(false);
-  const [show, setShow] = useState(false);
-  const [judge, setJudge] = useState(false);
-  console.log(params.data);
+  const [nextvideo, setnextvideo] = useState(false);
+  const [naviVideo, setNaviVideo] = useState(false);
+  const [videof, setVideof] = useState(false);
+  useEffect(() => {
+    navigation.addListener('focus', () => setNaviVideo(true));
+  }, []);
   return (
     <View
       style={{
@@ -23,21 +31,56 @@ const PlayVideo = ({navigation}) => {
           ? theme.colors.primary
           : theme.colors.primaryBlack,
       }}>
+      <Statusbar hidden={true} />
       <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-        <VideoPlayer
-          ref={videoRef}
-          disableFullscreen={false}
-          disableSeekbar={false}
-          disableBack={true}
-          disableVolume={true}
-          tapAnywhereToPause={() => setPuse((v = !v))}
-          // onPause={true}
-          // onPlay={true}
-          source={{uri: params.data}}
-          onShowControls={true}
-          seekColor={'#F27380'}
-          toggleResizeModeOnFullscreen={true}
-        />
+        <TouchableOpacity
+          activeOpacity={1}
+          onPress={() => {
+            setVideof(!videof);
+          }}
+          style={{
+            alignSelf: 'center',
+            justifyContent: 'center',
+          }}>
+          {!videof && (
+            <Image
+              source={require('../../../assets/icons/Video_play_d.png')}
+              resizeMode="contain"
+              style={{
+                width: 85,
+                height: 85,
+                zIndex: 1,
+                position: 'absolute',
+                top: '50%',
+                alignSelf: 'center',
+              }}
+            />
+          )}
+          <Video
+            source={{uri: params?.data}}
+            playInBackground={false}
+            playWhenInactive={false}
+            onLoadStart={() => {
+              setnextvideo(params?.data);
+              setNaviVideo(true);
+              setVideof(true);
+            }}
+            poster={
+              'https://technorizen.com/Dating/uploads/images/video_loader344.png'
+            }
+            posterResizeMode="cover"
+            repeat={true}
+            resizeMode="cover"
+            paused={
+              nextvideo == params?.data && naviVideo && videof ? false : true
+            }
+            style={{
+              height: dimension.height,
+              width: dimension.width,
+              zIndex: 0,
+            }}
+          />
+        </TouchableOpacity>
       </View>
 
       <View
