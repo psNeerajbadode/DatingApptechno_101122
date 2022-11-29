@@ -185,9 +185,12 @@ const PassCode = () => {
                 style={{
                   height: 25,
                   width: 25,
-                  backgroundColor: ThemeMode.selectedTheme
-                    ? '#FAFAFA'
-                    : '#FAFAFA25',
+                  backgroundColor:
+                    passcode.length >= i + 1
+                      ? 'transparent'
+                      : ThemeMode.selectedTheme
+                      ? '#FAFAFA'
+                      : '#FAFAFA25',
                   borderRadius: 20,
                   margin: 12.5,
                 }}>
