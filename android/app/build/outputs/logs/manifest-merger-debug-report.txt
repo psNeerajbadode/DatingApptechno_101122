@@ -9,7 +9,6 @@ MERGED from [com.facebook.flipper:flipper:0.125.0] C:\Users\Techno\.gradle\cache
 MERGED from [com.facebook.flipper:flipper-network-plugin:0.125.0] C:\Users\Techno\.gradle\caches\transforms-3\290aec85b65dd65141d3bf81fe6355b9\transformed\jetified-flipper-network-plugin-0.125.0\AndroidManifest.xml:8:1-15:12
 MERGED from [com.facebook.flipper:flipper-fresco-plugin:0.125.0] C:\Users\Techno\.gradle\caches\transforms-3\463ca8bc1ad2adafc09daf251cf69c73\transformed\jetified-flipper-fresco-plugin-0.125.0\AndroidManifest.xml:8:1-15:12
 MERGED from [com.google.firebase:firebase-analytics:21.2.0] C:\Users\Techno\.gradle\caches\transforms-3\6b2f125cf8fd519ae8503e9c27e54ebd\transformed\jetified-firebase-analytics-21.2.0\AndroidManifest.xml:2:1-9:12
-MERGED from [:react-native-vector-icons] D:\Datingclone\Datingclone\DatingApp\node_modules\react-native-vector-icons\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
 MERGED from [:react-native-async-storage_async-storage] D:\Datingclone\Datingclone\DatingApp\node_modules\@react-native-async-storage\async-storage\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
 MERGED from [:react-native-community_blur] D:\Datingclone\Datingclone\DatingApp\node_modules\@react-native-community\blur\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
 MERGED from [:react-native-community_netinfo] D:\Datingclone\Datingclone\DatingApp\node_modules\@react-native-community\netinfo\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-12:12
@@ -380,8 +379,6 @@ MERGED from [com.facebook.flipper:flipper-fresco-plugin:0.125.0] C:\Users\Techno
 MERGED from [com.facebook.flipper:flipper-fresco-plugin:0.125.0] C:\Users\Techno\.gradle\caches\transforms-3\463ca8bc1ad2adafc09daf251cf69c73\transformed\jetified-flipper-fresco-plugin-0.125.0\AndroidManifest.xml:11:5-13:41
 MERGED from [com.google.firebase:firebase-analytics:21.2.0] C:\Users\Techno\.gradle\caches\transforms-3\6b2f125cf8fd519ae8503e9c27e54ebd\transformed\jetified-firebase-analytics-21.2.0\AndroidManifest.xml:5:5-44
 MERGED from [com.google.firebase:firebase-analytics:21.2.0] C:\Users\Techno\.gradle\caches\transforms-3\6b2f125cf8fd519ae8503e9c27e54ebd\transformed\jetified-firebase-analytics-21.2.0\AndroidManifest.xml:5:5-44
-MERGED from [:react-native-vector-icons] D:\Datingclone\Datingclone\DatingApp\node_modules\react-native-vector-icons\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
-MERGED from [:react-native-vector-icons] D:\Datingclone\Datingclone\DatingApp\node_modules\react-native-vector-icons\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:react-native-async-storage_async-storage] D:\Datingclone\Datingclone\DatingApp\node_modules\@react-native-async-storage\async-storage\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:react-native-async-storage_async-storage] D:\Datingclone\Datingclone\DatingApp\node_modules\@react-native-async-storage\async-storage\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:react-native-community_blur] D:\Datingclone\Datingclone\DatingApp\node_modules\@react-native-community\blur\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41

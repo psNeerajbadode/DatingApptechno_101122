@@ -24,6 +24,8 @@ import {
   YellowlightImage,
 } from '../../utils/CustomImages';
 import Netinforsheet from '../../components/Netinforsheet';
+import {AccessToken, LoginManager} from 'react-native-fbsdk-next';
+import {GoogleSignin} from '@react-native-google-signin/google-signin';
 
 const Signup = ({navigation}) => {
   const dispatch = useDispatch();
@@ -71,7 +73,7 @@ const Signup = ({navigation}) => {
         console.log(rslt.status);
       } else {
         setLoading(false);
-        ShowToast("Email already exist");
+        ShowToast('Email already exist');
         console.log(rslt.message);
       }
     } catch (e) {
@@ -79,6 +81,125 @@ const Signup = ({navigation}) => {
       console.log(e);
     }
   }
+
+  async function onFacebookButtonPress() {
+    const result = await LoginManager.logInWithPermissions([
+      'public_profile',
+      'email',
+      'user_friends',
+    ]);
+    console.log(JSON.stringify(result));
+    if (result.isCancelled) {
+      console.log('User cancelled the login process');
+    }
+    const data = await AccessToken.getCurrentAccessToken();
+    console.log(JSON.stringify(data));
+    if (!data) {
+      console.log('Something went wrong obtaining access token');
+    }
+    fetch(
+      'https://graph.facebook.com/v2.5/me?fields=email,name,friends&access_token=' +
+        data.accessToken,
+    )
+      .then(response => response.json())
+      .then(json => {
+        // Some user object has been set up somewhere, build that user here
+        console.log('onFacebookButtonPress user==>', json);
+        //setSocialUser(null);
+        SocialloginAPI(json.email, json.id);
+      })
+      .catch(() => {
+        reject('ERROR GETTING DATA FROM FACEBOOK');
+      });
+  }
+
+  const signOut = async () => {
+    try {
+      const userInfo = await GoogleSignin.signOut();
+      console.log('userInfo', userInfo);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const GooglesignIn = async () => {
+    try {
+      await GoogleSignin.hasPlayServices();
+      const userInfo = await GoogleSignin.signIn();
+
+      console.log('GoogleSignin userInfo  ===>', userInfo);
+      SocialloginAPI(userInfo.user.email, userInfo.user.id);
+    } catch (error) {
+      if (error.code === statusCodes.SIGN_IN_CANCELLED) {
+        console.log('error', error);
+        // user cancelled the login flow
+      } else if (error.code === statusCodes.IN_PROGRESS) {
+        console.log('error', error);
+        // operation (e.g. sign in) is in progress already
+      } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
+        console.log('error', error);
+        // play services not available or outdateds
+      } else {
+        // some other error happened
+      }
+    }
+  };
+
+  const SocialloginAPI = (email, id) => {
+    try {
+      const body = new FormData();
+      body.append('email', email);
+      body.append('social_id', id);
+      axios({
+        url: 'https://technorizen.com/Dating/webservice/social_login',
+        method: 'POST',
+        data: body,
+        headers: {
+          'content-type': 'multipart/form-data',
+        },
+      })
+        .then(function (response) {
+          if (response.data.status == 1) {
+            ShowToast('successfull');
+            dispatch({type: STAP, payload: response.data.result});
+            navigation.navigate(
+              response.data.result.step == 0
+                ? 'step1'
+                : response.data.result.step == 1
+                ? 'step1'
+                : response.data.result.step == 2
+                ? 'step2'
+                : response.data.result.step == 3
+                ? 'step3'
+                : response.data.result.step == 4
+                ? 'step4'
+                : response.data.result.step == 5
+                ? 'step5'
+                : response.data.result.step == 6
+                ? 'step5'
+                : response.data.result.step == 8
+                ? Staps.fingerPrint
+                  ? 'FingerPrint'
+                  : 'PassCode'
+                : 'step7',
+            );
+          } else {
+            ShowToast("account doesn't exist");
+            //console.log('invalid account');
+          }
+        })
+        .catch(function (error) {
+          console.log('catch', error);
+          setLoading(false);
+        });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    GoogleSignin.configure();
+  }, []);
 
   return (
     <View
@@ -320,6 +441,7 @@ const Signup = ({navigation}) => {
             marginTop: 30,
           }}>
           <TouchableOpacity
+            onPress={() => /* signOut() */ GooglesignIn()}
             style={{
               ...styles.socialbg,
               backgroundColor: ThemeMode.selectedTheme
@@ -336,6 +458,7 @@ const Signup = ({navigation}) => {
           </TouchableOpacity>
           <View style={{width: 30}} />
           <TouchableOpacity
+            onPress={() => onFacebookButtonPress()}
             style={{
               ...styles.socialbg,
               backgroundColor: ThemeMode.selectedTheme

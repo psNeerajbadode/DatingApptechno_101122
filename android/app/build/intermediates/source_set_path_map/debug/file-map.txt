@@ -67,8 +67,7 @@ com.dating_app-packaged_res-65 D:\Datingclone\Datingclone\DatingApp\node_modules
 com.dating_app-packaged_res-66 D:\Datingclone\Datingclone\DatingApp\node_modules\react-native-screens\android\build\intermediates\packaged_res\debug
 com.dating_app-packaged_res-67 D:\Datingclone\Datingclone\DatingApp\node_modules\react-native-svg\android\build\intermediates\packaged_res\debug
 com.dating_app-packaged_res-68 D:\Datingclone\Datingclone\DatingApp\node_modules\react-native-touch-id\android\build\intermediates\packaged_res\debug
-com.dating_app-packaged_res-69 D:\Datingclone\Datingclone\DatingApp\node_modules\react-native-vector-icons\android\build\intermediates\packaged_res\debug
-com.dating_app-packaged_res-70 D:\Datingclone\Datingclone\DatingApp\node_modules\react-native-video\android\build\intermediates\packaged_res\debug
-com.dating_app-packaged_res-71 D:\Datingclone\Datingclone\DatingApp\node_modules\react-native-view-shot\android\build\intermediates\packaged_res\debug
-com.dating_app-packaged_res-72 D:\Datingclone\Datingclone\DatingApp\node_modules\react-native-webview\android\build\intermediates\packaged_res\debug
-com.dating_app-packaged_res-73 D:\Datingclone\Datingclone\DatingApp\node_modules\rn-fetch-blob\android\build\intermediates\packaged_res\debug
+com.dating_app-packaged_res-69 D:\Datingclone\Datingclone\DatingApp\node_modules\react-native-video\android\build\intermediates\packaged_res\debug
+com.dating_app-packaged_res-70 D:\Datingclone\Datingclone\DatingApp\node_modules\react-native-view-shot\android\build\intermediates\packaged_res\debug
+com.dating_app-packaged_res-71 D:\Datingclone\Datingclone\DatingApp\node_modules\react-native-webview\android\build\intermediates\packaged_res\debug
+com.dating_app-packaged_res-72 D:\Datingclone\Datingclone\DatingApp\node_modules\rn-fetch-blob\android\build\intermediates\packaged_res\debug
