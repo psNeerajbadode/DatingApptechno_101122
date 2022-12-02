@@ -182,19 +182,6 @@
       externalAnnotations="annotations.zip"
       proguardRules="proguard.txt"/>
   <library
-      name="D:\Datingclone\Datingclone\DatingApp\android@@:react-native-vector-icons::release"
-      jars="D:\Datingclone\Datingclone\DatingApp\node_modules\react-native-vector-icons\android\build\.transforms\343979d4fdd5a96ada3af5b415818eb1\transformed\out\jars\classes.jar"
-      resolved="dating_app:react-native-vector-icons:unspecified"
-      folder="D:\Datingclone\Datingclone\DatingApp\node_modules\react-native-vector-icons\android\build\.transforms\343979d4fdd5a96ada3af5b415818eb1\transformed\out"
-      manifest="AndroidManifest.xml"
-      resFolder="res"
-      assetsFolder="assets"
-      lintJar="lint.jar"
-      publicResources="public.txt"
-      symbolFile="R.txt"
-      externalAnnotations="annotations.zip"
-      proguardRules="proguard.txt"/>
-  <library
       name="D:\Datingclone\Datingclone\DatingApp\android@@:react-native-async-storage_async-storage::release"
       jars="D:\Datingclone\Datingclone\DatingApp\node_modules\@react-native-async-storage\async-storage\android\build\.transforms\9f1c20925e93cc3a4c51e466f26a3158\transformed\out\jars\classes.jar"
       resolved="dating_app:react-native-async-storage_async-storage:unspecified"

@@ -29,6 +29,7 @@ const Step2 = ({navigation}) => {
   const ThemeMode = useSelector(state => state.Theme);
   const Staps = useSelector(state => state.Stap);
   const [sexual, setSexual] = useState('');
+  console.log('!ethnsfsicity ', !ethnicity == null);
   const [looking, setLooking] = useState('');
   const [education, setEducation] = useState('');
   const [ethnicity, setEthnicity] = useState('');
@@ -208,6 +209,14 @@ const Step2 = ({navigation}) => {
           marginBottom={15}
           Loading={Loading}
           marginTop={15}
+          opacity={
+            !sexual || !looking || !education || !ethnicity || !zodiac ? 0.5 : 1
+          }
+          disabled={
+            !sexual || !looking || !education || !ethnicity || !zodiac
+              ? true
+              : false
+          }
           onPress={() => Signup_step2()}
         />
       </View>

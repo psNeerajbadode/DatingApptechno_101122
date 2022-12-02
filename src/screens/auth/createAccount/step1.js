@@ -172,7 +172,7 @@ const Step1 = ({navigation}) => {
           <View
             style={{
               position: 'absolute',
-              bottom: '16%',
+              bottom: '13%',
               alignSelf: 'center',
             }}>
             {uri == '' ? (
@@ -953,7 +953,11 @@ const Bottom = ({refRBSheet, selectedDate, setSelectedDate}) => {
       ref={refRBSheet}
       height={dimension.height - 100}
       openDuration={250}
+      closeOnDragDown={true}
       customStyles={{
+        draggableIcon: {
+          display: 'none',
+        },
         container: {
           borderTopRightRadius: 40,
           borderTopLeftRadius: 40,
@@ -1029,6 +1033,11 @@ const Bottom = ({refRBSheet, selectedDate, setSelectedDate}) => {
         {refresh && (
           <Calendar
             theme={{
+              // textDayStyle: {color: '#000'},
+              dayTextColor: ThemeMode.selectedTheme
+                ? theme.colors.primaryBlack
+                : theme.colors.primary,
+              textDisabledColor: '#8490AE',
               calendarBackground: ThemeMode.selectedTheme
                 ? theme.colors.primary
                 : theme.colors.primaryBlack,
