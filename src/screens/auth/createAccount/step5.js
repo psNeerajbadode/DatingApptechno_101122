@@ -26,7 +26,7 @@ import {
 } from '../../../utils/CustomImages';
 import {STAP} from '../../../redux/actions/ActionType';
 import Netinforsheet from '../../../components/Netinforsheet';
-import { ShowToast } from '../../../utils/Baseurl';
+import {ShowToast} from '../../../utils/Baseurl';
 
 const Step5 = ({navigation}) => {
   const dispatch = useDispatch();
@@ -61,12 +61,12 @@ const Step5 = ({navigation}) => {
     }
   }
   const Loactionset = () => {
-   
     const hasLocationPermission = requestLocationPermission();
     if (hasLocationPermission) {
-      ShowToast('Please wait a while while we are checking your current location');
+      ShowToast(
+        'Please wait a while while we are checking your current location',
+      );
       Geolocation.getCurrentPosition(
-        
         position => {
           setToggle(true);
           setLetu(position.coords.latitude);
@@ -97,7 +97,6 @@ const Step5 = ({navigation}) => {
       body.append('address', Adress);
       body.append('lat', letu);
       body.append('lon', long);
-
       axios({
         url: 'https://technorizen.com/Dating/webservice/sigup_address7',
         method: 'POST',
@@ -111,7 +110,7 @@ const Step5 = ({navigation}) => {
             setLoading(false);
             console.log(response.data);
             dispatch({type: STAP, payload: response.data.result});
-            navigation.navigate('step6');
+            navigation.replace('step6');
           } else {
             setLoading(false);
           }
@@ -124,8 +123,15 @@ const Step5 = ({navigation}) => {
       console.log(error);
     }
   };
+
+  function Allowfalse() {
+    setAdress('');
+    setLetu('');
+    setLong('');
+    setToggle(false);
+  }
   useEffect(() => {
-     requestLocationPermission();
+    requestLocationPermission();
     addGeo();
   }, []);
 
@@ -193,7 +199,7 @@ const Step5 = ({navigation}) => {
             <View style={{width: 20}} />
             <TouchableOpacity
               style={{alignItems: 'center', alignSelf: 'center', padding: 2}}
-              onPress={() => Loactionset()}>
+              onPress={() => (toggle == true ? Allowfalse() : Loactionset())}>
               <Image
                 resizeMode="contain"
                 style={{width: 58, height: 33}}
@@ -228,6 +234,8 @@ const Step5 = ({navigation}) => {
         </View>
         <ButtonView>
           <Button
+            disabled={toggle ? false : true}
+            opacity={toggle ? 1 : 0.5}
             marginTop={1}
             Loading={Loading}
             color={theme.colors.background}

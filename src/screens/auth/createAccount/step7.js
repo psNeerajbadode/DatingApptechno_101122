@@ -161,6 +161,9 @@ const Step7 = ({navigation}) => {
               shadowRadius: 3.84,
               elevation: 5,
               marginTop: 10,
+              backgroundColor: ThemeMode.selectedTheme
+                ? theme.colors.primary
+                : theme.colors.primaryBlack,
             }}>
             <TextFormatted
               style={{
@@ -168,7 +171,7 @@ const Step7 = ({navigation}) => {
                 width: 290,
                 backgroundColor: ThemeMode.selectedTheme
                   ? theme.colors.primary
-                  : theme.colors.searchbar,
+                  : /* theme.colors.searchbar */ 'transparent',
                 marginHorizontal: 12.5,
                 borderRadius: 30,
                 fontSize: 22,
@@ -262,8 +265,8 @@ const Step7 = ({navigation}) => {
             backgroundColor: ThemeMode.selectedTheme
               ? theme.colors.primary
               : theme.colors.primaryBlack,
-            paddingVertical: '8%',
-            paddingHorizontal: '8%',
+            paddingVertical: '10%',
+            paddingHorizontal: '5%',
             borderRadius: 10,
             shadowColor: '#8490AE',
             shadowOffset: {
@@ -285,8 +288,8 @@ const Step7 = ({navigation}) => {
                   : require('../../../assets/icons/close.png')
               }
               style={{
-                height: 24,
-                width: 24,
+                height: 28,
+                width: 28,
                 resizeMode: 'contain',
                 alignSelf: 'center',
               }}
@@ -295,8 +298,8 @@ const Step7 = ({navigation}) => {
           <Image
             source={require('../../../assets/icons/clock.png')}
             style={{
-              height: 144,
-              width: 144,
+              height: 130,
+              width: 130,
               resizeMode: 'contain',
               alignSelf: 'center',
             }}
@@ -306,7 +309,7 @@ const Step7 = ({navigation}) => {
               flexDirection: 'row',
               alignItems: 'center',
               justifyContent: 'space-between',
-              marginTop: '10%',
+              marginTop: '15%',
             }}>
             <TextFormatted
               style={{

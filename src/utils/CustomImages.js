@@ -1,6 +1,7 @@
 export const RedlightImage = {
   Bg_Img1: require('../assets/images/Rectangle1.png'),
   Bg_Img2: require('../assets/images/Group.png'),
+
   Bg_Img3: require('../assets/images/group12.png'),
   card: require('../assets/images/card_1.png'),
   Gift: require('../assets/icons/Gift.png'),
@@ -20,6 +21,7 @@ export const ReddarkImage = {
   Bg_Img1: require('../assets/images/Bg_dark1.png'),
   Bg_Img2: require('../assets/images/Bg_dark2.png'),
   Bg_Img3: require('../assets/images/Bg_dark3.png'),
+  //Bg_Img3: require('../assets/images/Step113.png'),
 };
 export const BluelightImage = {
   Bg_Img1: require('../assets/colorimages/blue/Bg1_blue.png'),

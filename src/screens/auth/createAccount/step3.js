@@ -36,59 +36,7 @@ const Step3 = () => {
   const [loading, setLoading] = useState(false);
   const [load, setload] = useState(false);
   const [passion, setpassion] = useState([]);
-  const [rslt, setRslt] = useState();
-  const [passion_is, setPassion_is] = useState([]);
   const navigation = useNavigation();
-  const animals = [];
-  const data = [
-    {img: require('../../../assets/icons/icecream.png'), title: 'Ice cream'},
-    {img: require('../../../assets/icons/table.png'), title: 'Restaurant'},
-    {img: require('../../../assets/icons/hot_coffee.png'), title: 'Coffee'},
-    {img: require('../../../assets/icons/beach_chair.png'), title: 'Beach'},
-    {img: require('../../../assets/icons/pina_colada.png'), title: 'Bar'},
-    {img: require('../../../assets/icons/mirror_ball.png'), title: 'Club'},
-    {img: require('../../../assets/icons/pizza.png'), title: 'Pizza'},
-    {img: require('../../../assets/icons/museum.png'), title: 'Museum'},
-    {img: require('../../../assets/icons/theater.png'), title: 'Theater'},
-    {img: require('../../../assets/icons/micro.png'), title: 'karaoke'},
-    {img: require('../../../assets/icons/wine_glass.png'), title: 'Wine'},
-    {img: require('../../../assets/icons/beer.png'), title: 'Beer'},
-    {img: require('../../../assets/icons/zoo.png'), title: 'Zoo'},
-    {img: require('../../../assets/icons/art_and_design.png'), title: 'Art'},
-    {img: require('../../../assets/icons/clapperboard.png'), title: 'Movies'},
-    {img: require('../../../assets/icons/sports.png'), title: 'Sports'},
-    {img: require('../../../assets/icons/teddy_bear.png'), title: 'Bear'},
-    {img: require('../../../assets/icons/lectern.png'), title: 'Politics'},
-    {img: require('../../../assets/icons/picnic_basket.png'), title: 'Picnic'},
-    {img: require('../../../assets/icons/cooking.png'), title: 'Cooking'},
-    {img: require('../../../assets/icons/books.png'), title: 'Reading'},
-    {img: require('../../../assets/icons/diy.png'), title: 'DIY'},
-    {img: require('../../../assets/icons/dog.png'), title: 'Animals'},
-    {img: require('../../../assets/icons/dice.png'), title: 'Board Games'},
-    {img: require('../../../assets/icons/aeroplane.png'), title: 'Travel'},
-    {img: require('../../../assets/icons/polo.png'), title: 'Fashion'},
-    {img: require('../../../assets/icons/herbal_tea.png'), title: 'Tea'},
-    {
-      img: require('../../../assets/icons/photography.png'),
-      title: 'Photography',
-    },
-    {
-      img: require('../../../assets/icons/shopping_bags.png'),
-      title: 'Shopping',
-    },
-    {img: require('../../../assets/icons/console.png'), title: 'Gaming'},
-    {img: require('../../../assets/icons/manuscript.png'), title: 'Writing'},
-    {img: require('../../../assets/icons/nature.png'), title: 'Outdoors'},
-    {img: require('../../../assets/icons/rumba.png'), title: 'Dancing'},
-    {img: require('../../../assets/icons/walking.png'), title: 'Walking'},
-    {img: require('../../../assets/icons/ecology.png'), title: 'Environment'},
-    {img: require('../../../assets/icons/love.png'), title: 'Volunteering'},
-    {img: require('../../../assets/icons/instagram.png'), title: 'Instagram'},
-    {
-      img: require('../../../assets/icons/architecture.png'),
-      title: 'Architecture',
-    },
-  ];
 
   const getPassion = () => {
     setload(true);
@@ -119,7 +67,7 @@ const Step3 = () => {
         if (response.data.status == 1) {
           setLoading(false);
           dispatch({type: STAP, payload: response.data.result});
-          navigation.navigate('step4');
+          navigation.replace('step4');
         } else {
           setLoading(false);
         }

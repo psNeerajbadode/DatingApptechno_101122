@@ -1,16 +1,27 @@
-import { ImageBackground, StyleSheet, Dimensions, View } from 'react-native';
+import {ImageBackground, StyleSheet, Dimensions, View} from 'react-native';
 import React from 'react';
 import Statusbar from './Statusbar';
-import { useDispatch, useSelector } from 'react-redux';
-import { BluelightImage, GreenlightImage, PurplelightImage, ReddarkImage, RedlightImage, YellowlightImage } from '../utils/CustomImages';
+import {useDispatch, useSelector} from 'react-redux';
+import {
+  BluelightImage,
+  GreenlightImage,
+  PurplelightImage,
+  ReddarkImage,
+  RedlightImage,
+  YellowlightImage,
+} from '../utils/CustomImages';
 
-const HeaderImageShadow = ({ children, source, height }) => {
+const HeaderImageShadow = ({children, source, height}) => {
   const ThemeMode = useSelector(state => state.Theme);
   const dispatch = useDispatch();
   return (
     <View>
       <ImageBackground
-        style={{ height: height || Dimensions.get('screen').height * 0.44, width: '100%', paddingTop: 30 }}
+        style={{
+          height: height || Dimensions.get('screen').height * 0.44,
+          width: '100%',
+          paddingTop: 30,
+        }}
         source={
           source || ThemeMode.themecolr == 'Red'
             ? ThemeMode.selectedTheme
@@ -36,9 +47,12 @@ const HeaderImageShadow = ({ children, source, height }) => {
             ? RedlightImage.Bg_Img3
             : ReddarkImage.Bg_Img3
         }
-        resizeMode="stretch"
-      >
-        <Statusbar backgroundColor={'transparent'} hidden={false} barStyle={'light-content'} />
+        resizeMode="stretch">
+        <Statusbar
+          backgroundColor={'transparent'}
+          hidden={false}
+          barStyle={'light-content'}
+        />
         {children}
       </ImageBackground>
     </View>

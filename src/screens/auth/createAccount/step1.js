@@ -83,7 +83,6 @@ const Step1 = ({navigation}) => {
   };
   const picCamera = () => {
     launchCamera({quality: 0.5, cameraType: 'back'}, response => {
-      console.log('response', response);
       if (!response.didCancel) {
         setUri(response.assets[0]);
         setCropImg('');
@@ -141,7 +140,7 @@ const Step1 = ({navigation}) => {
       if (rslt.status == 1) {
         setLoading(false);
         dispatch({type: STAP, payload: rslt.result});
-        navigation.navigate('step2');
+        navigation.replace('step2');
         console.log(rslt);
       } else {
         setLoading(false);
@@ -168,11 +167,10 @@ const Step1 = ({navigation}) => {
             subTitle={'Personal detail'}
             position={1}
           />
-
           <View
             style={{
               position: 'absolute',
-              bottom: '13%',
+              bottom: '10%',
               alignSelf: 'center',
             }}>
             {uri == '' ? (
@@ -558,9 +556,6 @@ const Step1 = ({navigation}) => {
                 </TouchableOpacity>
                 <View style={{width: 10}}></View>
                 <TouchableOpacity
-                  onPress={() => {
-                    setBstate(false);
-                  }}
                   style={{
                     width: dimension.width / 2 - 20,
                     alignSelf: 'center',

@@ -12,7 +12,6 @@ import HeaderImage from '../../components/HeaderImage';
 import Header from '../../components/Header';
 import TextFormatted from '../../components/TextFormatted';
 import LinearGradient from 'react-native-linear-gradient';
-import UserMedia from './homeComponent/userMedia';
 import UserLikeBottomSheet from './homeComponent/userLikeBottomSheet';
 import {useRef} from 'react';
 import MoreOptions from './moreOptions';
@@ -28,7 +27,6 @@ const UserProfile = () => {
   const navigation = useNavigation();
   const ThemeMode = useSelector(state => state.Theme);
   const Staps = useSelector(state => state.Stap);
-  const userprofile = require('../../assets/images/profile.png');
   const [media, setMedia] = useState(0);
   const refRBSheet = useRef();
   const refRBSheet1 = useRef();
@@ -75,7 +73,7 @@ const UserProfile = () => {
         'type=Video',
     }).then(response => {
       setVideodata(response.data.result);
-      console.log('response.data.result',response.data.result);
+      console.log('response.data.result', response.data.result);
     });
   };
   const calculate_age = dob1 => {
@@ -89,13 +87,13 @@ const UserProfile = () => {
     // console.log(age_now);
     return age_now;
   };
-  useEffect(() => {    
+  useEffect(() => {
     getUser();
     getUserData();
     getUserVideo();
   }, []);
- 
-  console.log('Userdata',params);
+
+  console.log('Userdata', params);
   return (
     <View
       style={{
@@ -213,8 +211,8 @@ const UserProfile = () => {
                   textAlign: 'center',
                   marginTop: 3,
                 }}>
-                {calculate_age(Userdata?.dob)} 
-                  years old
+                {calculate_age(Userdata?.dob)}
+                years old
               </TextFormatted>
             </HeaderImage>
             <TouchableOpacity
@@ -380,14 +378,13 @@ const UserProfile = () => {
                       </View>
                     ) : (
                       <View>
-                        <View style={{flexDirection: 'row',flexWrap:'wrap'}}>
+                        <View style={{flexDirection: 'row', flexWrap: 'wrap'}}>
                           <View style={{width: dimension.width / 2}}>
                             {Userpost?.map(
                               (v, i) =>
-                                ( i == 1) && (
+                                i == 1 && (
                                   <TouchableOpacity
                                     style={{
-                                 
                                       marginTop: 20,
                                       marginHorizontal: 10,
                                       alignSelf: 'flex-end',
@@ -398,22 +395,18 @@ const UserProfile = () => {
                                         Userphoto: Userpost,
                                       })
                                     }>
-
-                             <FastImage
-                              
-                                source={{
-                                  uri: v?.image,
-                                  priority: FastImage.priority.normal,
-                                }}
-                                resizeMode={FastImage.resizeMode.cover}
-                                style={{
-                                 
-                                  width: (dimension.width - 50) / 2,
-                                  height: 230 ,                             
-                                  borderRadius: 20,
-                                }}
-                              />
-                                  
+                                    <FastImage
+                                      source={{
+                                        uri: v?.image,
+                                        priority: FastImage.priority.normal,
+                                      }}
+                                      resizeMode={FastImage.resizeMode.cover}
+                                      style={{
+                                        width: (dimension.width - 50) / 2,
+                                        height: 230,
+                                        borderRadius: 20,
+                                      }}
+                                    />
                                   </TouchableOpacity>
                                 ),
                             )}
@@ -421,42 +414,40 @@ const UserProfile = () => {
                           <View style={{width: dimension.width / 2}}>
                             {Userpost?.map(
                               (v, i) =>
-                                (i == 0 ) && (
+                                i == 0 && (
                                   <TouchableOpacity
                                     style={{
                                       marginTop: 20,
                                       marginHorizontal: 10,
-                                 
                                     }}
                                     onPress={() =>
                                       navigation.navigate('viewImage', {
                                         imgIndex: i,
                                         Userphoto: Userpost,
                                       })
-                                    }>  
-                                    <FastImage                              
-                              source={{
-                                uri: v?.image,
-                                priority: FastImage.priority.normal,
-                              }}
-                              resizeMode={FastImage.resizeMode.cover}
-                              style={{
-                                width: (dimension.width - 50) / 2,
-                                height: 166 ,                               
-                                borderRadius: 20,
-                              }}
-                            />
+                                    }>
+                                    <FastImage
+                                      source={{
+                                        uri: v?.image,
+                                        priority: FastImage.priority.normal,
+                                      }}
+                                      resizeMode={FastImage.resizeMode.cover}
+                                      style={{
+                                        width: (dimension.width - 50) / 2,
+                                        height: 166,
+                                        borderRadius: 20,
+                                      }}
+                                    />
                                   </TouchableOpacity>
                                 ),
                             )}
-                          </View>   
+                          </View>
                           <View style={{width: dimension.width / 2}}>
                             {Userpost?.map(
                               (v, i) =>
-                                ( i ==2) && (
+                                i == 2 && (
                                   <TouchableOpacity
                                     style={{
-                                 
                                       marginTop: 20,
                                       marginHorizontal: 10,
                                       alignSelf: 'flex-end',
@@ -467,129 +458,135 @@ const UserProfile = () => {
                                         Userphoto: Userpost,
                                       })
                                     }>
-
-                             <FastImage
-                              
-                                source={{
-                                  uri: v?.image,
-                                  priority: FastImage.priority.normal,
-                                }}
-                                resizeMode={FastImage.resizeMode.cover}
-                                style={{
-                                 
-                                  width: (dimension.width - 50) / 2,
-                                  height: 337,                             
-                                  borderRadius: 20,
-                                }}
-                              />
-                                  
+                                    <FastImage
+                                      source={{
+                                        uri: v?.image,
+                                        priority: FastImage.priority.normal,
+                                      }}
+                                      resizeMode={FastImage.resizeMode.cover}
+                                      style={{
+                                        width: (dimension.width - 50) / 2,
+                                        height: 337,
+                                        borderRadius: 20,
+                                      }}
+                                    />
                                   </TouchableOpacity>
                                 ),
                             )}
                           </View>
-                          <View style={{marginTop:-62}}>
-                          <View style={{width: dimension.width / 2}}>
-                            {Userpost?.map(
-                              (v, i) =>
-                                (i == 3 ) && (
-                                  <TouchableOpacity
-                                    style={{
-                                      marginTop: 20,
-                                      marginHorizontal: 10,
-                                 
-                                    }}
-                                    onPress={() =>
-                                      navigation.navigate('viewImage', {
-                                        imgIndex: i,
-                                        Userphoto: Userpost,
-                                      })
-                                    }>  
-                                    <FastImage                              
-                              source={{
-                                uri: v?.image,
-                                priority: FastImage.priority.normal,
-                              }}
-                              resizeMode={FastImage.resizeMode.cover}
+                          <View style={{marginTop: -62}}>
+                            <View style={{width: dimension.width / 2}}>
+                              {Userpost?.map(
+                                (v, i) =>
+                                  i == 3 && (
+                                    <TouchableOpacity
+                                      style={{
+                                        marginTop: 20,
+                                        marginHorizontal: 10,
+                                      }}
+                                      onPress={() =>
+                                        navigation.navigate('viewImage', {
+                                          imgIndex: i,
+                                          Userphoto: Userpost,
+                                        })
+                                      }>
+                                      <FastImage
+                                        source={{
+                                          uri: v?.image,
+                                          priority: FastImage.priority.normal,
+                                        }}
+                                        resizeMode={FastImage.resizeMode.cover}
+                                        style={{
+                                          width: (dimension.width - 50) / 2,
+                                          height: 166,
+                                          borderRadius: 20,
+                                        }}
+                                      />
+                                    </TouchableOpacity>
+                                  ),
+                              )}
+                            </View>
+                            <View style={{width: dimension.width / 2}}>
+                              {Userpost?.map(
+                                (v, i) =>
+                                  i == 4 && (
+                                    <TouchableOpacity
+                                      style={{
+                                        marginTop: 20,
+                                        marginHorizontal: 10,
+                                      }}
+                                      onPress={() =>
+                                        navigation.navigate('viewImage', {
+                                          imgIndex: i,
+                                          Userphoto: Userpost,
+                                        })
+                                      }>
+                                      <FastImage
+                                        source={{
+                                          uri: v?.image,
+                                          priority: FastImage.priority.normal,
+                                        }}
+                                        resizeMode={FastImage.resizeMode.cover}
+                                        style={{
+                                          width: (dimension.width - 50) / 2,
+                                          height: 210,
+                                          borderRadius: 20,
+                                        }}
+                                      />
+                                    </TouchableOpacity>
+                                  ),
+                              )}
+                            </View>
+                          </View>
+                        </View>
+
+                        {videodata?.map((it, i) => (
+                          <TouchableOpacity
+                            style={{
+                              width: dimension.width - 30,
+                              alignSelf: 'center',
+                              marginTop: 20,
+                            }}
+                            onPress={() => {
+                              navigation.navigate('playVideo', {
+                                data: it?.video,
+                              });
+                            }}>
+                            <Image
+                              source={require('../../assets/icons/play_video.png')}
                               style={{
-                                width: (dimension.width - 50) / 2,
-                                height:166 ,                               
-                                borderRadius: 20,
+                                height: 64,
+                                width: 64,
+                                resizeMode: 'contain',
+                                position: 'absolute',
+                                alignSelf: 'center',
+                                top: 75,
+                                zIndex: 1,
                               }}
                             />
-                                  </TouchableOpacity>
-                                ),
-                            )}
-                          </View>
-                          <View style={{width: dimension.width / 2}}>
-                            {Userpost?.map(
-                              (v, i) =>
-                                (i == 4 ) && (
-                                  <TouchableOpacity
-                                    style={{
-                                      marginTop: 20,
-                                      marginHorizontal: 10,
-                                 
-                                    }}
-                                    onPress={() =>
-                                      navigation.navigate('viewImage', {
-                                        imgIndex: i,
-                                        Userphoto: Userpost,
-                                      })
-                                    }>  
-                                    <FastImage                              
-                              source={{
-                                uri: v?.image,
-                                priority: FastImage.priority.normal,
-                              }}
-                              resizeMode={FastImage.resizeMode.cover}
+                            <VideoPlayer
                               style={{
-                                width: (dimension.width - 50) / 2,
-                                height:210 ,                               
+                                zIndex: 0,
+                                alignSelf: 'center',
                                 borderRadius: 20,
+                                overflow: 'hidden',
+                                height: 213,
                               }}
+                              thumbnail={{uri: it?.Video}}
+                              pause={true}
+                              video={{uri: it?.Video}}
+                              resizeMode={'cover'}
+                              playIcon={false}
                             />
-                                  </TouchableOpacity>
-                                ),
-                            )}
-                          </View>
-                          </View>             
-                        </View>    
-
-                           {videodata?.map(
-          (it, i) =>
-           
-              <TouchableOpacity 
-              style={{width:dimension.width-30,alignSelf:'center',marginTop:20}}
-                onPress={() =>{ 
-                  navigation.navigate('playVideo', {data: it?.video})
-                }}>  
-                <Image
-                      source={require('../../assets/icons/play_video.png')}
-                      style={{
-                        height: 64,
-                        width: 64,
-                        resizeMode: 'contain',
-                        position: 'absolute',
-                        alignSelf: 'center',
-                        top: 75,
-                        zIndex:1
-                      }}
-                    />                 
-                      <VideoPlayer  
-                      style={{zIndex:0,alignSelf:'center',borderRadius:20,overflow:'hidden',height:213}}
-                thumbnail={{ uri: it?.Video }}
-                pause={true}
-                video={{ uri: it?.Video }}
-                resizeMode={'cover'}
-                playIcon={false}
-
-/>         
-              </TouchableOpacity>
-            
-        )}                 
+                          </TouchableOpacity>
+                        ))}
                         {Userpost?.map(
                           (v, i) =>
-                            (i != 0 && i != 1 && i != 2 && i != 3 && i != 4) && (
+                            i != 0 &&
+                            i != 1 &&
+                            i != 2 &&
+                            i != 3 &&
+                            i != 4 && (
                               <TouchableOpacity
                                 style={{marginTop: 20, alignSelf: 'center'}}
                                 onPress={() =>
@@ -598,20 +595,18 @@ const UserProfile = () => {
                                     Userphoto: Userpost,
                                   })
                                 }>
-                              
-
-                            <FastImage                              
-                              source={{
-                                uri: v?.image,
-                                priority: FastImage.priority.normal,
-                              }}
-                              resizeMode={FastImage.resizeMode.cover}
-                              style={{
-                                width: dimension.width - 40,
-                                    height: 213,                               
-                                borderRadius: 20,
-                              }}
-                            />
+                                <FastImage
+                                  source={{
+                                    uri: v?.image,
+                                    priority: FastImage.priority.normal,
+                                  }}
+                                  resizeMode={FastImage.resizeMode.cover}
+                                  style={{
+                                    width: dimension.width - 40,
+                                    height: 213,
+                                    borderRadius: 20,
+                                  }}
+                                />
                               </TouchableOpacity>
                             ),
                         )}
@@ -633,35 +628,32 @@ const UserProfile = () => {
                       ? theme.colors.primaryBlack
                       : theme.colors.primary,
                     marginLeft: 40,
-                    marginBottom:10
+                    marginBottom: 10,
                   }}>
                   Passions
                 </TextFormatted>
                 <FlatList
                   data={Userdata?.category}
                   horizontal
-                  style={{paddingHorizontal: 10,marginRight:10}}
+                  style={{paddingHorizontal: 10, marginRight: 10}}
                   showsHorizontalScrollIndicator={false}
                   renderItem={({item}) => (
                     <View
-                    style={{
-                      // height: 100,
-                      // width: 100,
-                      justifyContent: 'center',
-                      alignItems: 'center',
-                marginLeft:20,
-                   
-                    }}>
-                    
+                      style={{
+                        // height: 100,
+                        // width: 100,
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        marginLeft: 20,
+                      }}>
                       <FastImage
-                              
-                              source={{
-                                uri: item?.image,
-                                priority: FastImage.priority.normal,
-                              }}
-                              resizeMode={FastImage.resizeMode.contain}
-                              style={{height: 50, width: 50, }}
-                            />
+                        source={{
+                          uri: item?.image,
+                          priority: FastImage.priority.normal,
+                        }}
+                        resizeMode={FastImage.resizeMode.contain}
+                        style={{height: 50, width: 50}}
+                      />
                       <TextFormatted
                         style={{
                           fontSize: 16,

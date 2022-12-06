@@ -65,7 +65,7 @@ const EmailOtp = ({navigation}) => {
       if (rslt.status == 1) {
         setLoading(false);
         dispatch({type: STAP, payload: rslt.result});
-        navigation.navigate('step1');
+        navigation.replace('step1');
         ShowToast('Valid OTP');
       } else {
         setLoading(false);
@@ -97,7 +97,7 @@ const EmailOtp = ({navigation}) => {
         setLoading(false);
 
         //dispatch({type: STAP, payload: rslt.result});
-        navigation.navigate('ChangePassword');
+        navigation.replace('ChangePassword');
         ShowToast('Valid OTP');
       } else {
         setLoading(false);
@@ -156,7 +156,7 @@ const EmailOtp = ({navigation}) => {
       if (rslt.status == 1) {
         setLoading(false);
         // dispatch({type: STAP, payload: rslt.result});
-        navigation.navigate('RecoveryPassCode');
+        navigation.replace('RecoveryPassCode');
         ShowToast('Valid OTP');
       } else {
         setLoading(false);

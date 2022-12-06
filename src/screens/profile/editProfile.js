@@ -32,6 +32,13 @@ import {
 import ButtonView from '../../components/buttonView';
 import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
 import BottomSheet from '../../components/bottomSheet';
+import LinearGradient from 'react-native-linear-gradient';
+import {
+  Brightness,
+  Contrast,
+  Saturate,
+} from 'react-native-color-matrix-image-filters';
+import ImagePicker from 'react-native-image-crop-picker';
 import {
   BluelightImage,
   GreenlightImage,
@@ -42,19 +49,20 @@ import {
 import {STAP} from '../../redux/actions/ActionType';
 import {useDispatch} from 'react-redux';
 import Netinforsheet from '../../components/Netinforsheet';
+import {Slider} from '@miblanchard/react-native-slider';
+import ViewShot from 'react-native-view-shot';
 const EditProfile = ({navigation}) => {
   const ThemeMode = useSelector(state => state.Theme);
   const Staps = useSelector(state => state.Stap);
   const dispatch = useDispatch();
+  const dimension = useWindowDimensions();
   const [name, setName] = useState(Staps.user_name);
   const [surname, setSurname] = useState(Staps.surname);
   const [gender, setGender] = useState(Staps.gender);
   const [aboutMe, setAboutMe] = useState(Staps.about);
   const [showMe, setShowMe] = useState(Staps.show_me);
   const [selectedDate, setSelectedDate] = useState(Staps.dob);
-  const [sexualOrientation, setSexualOrientation] = useState(
-    Staps.sexual_orientatio,
-  );
+  const [Sexual, setSexual] = useState(Staps.sexual_orientation);
   const [lookingFor, setLookingFor] = useState(Staps.looking_for);
   const [education, setEducation] = useState(Staps.education);
   const [ethnicity, setEthnicity] = useState(Staps.ethnicity);
@@ -66,17 +74,50 @@ const EditProfile = ({navigation}) => {
   const [Loading, setLoading] = useState(false);
   const refRBSheet = useRef();
   const refRBSheet1 = useRef();
-
+  const Shotref = useRef();
+  const editsheet = useRef();
+  const [cropImg, setCropImg] = useState('');
+  const [filerimg, setFilerimg] = useState('');
+  const [filterstate, setFilterstate] = useState(0);
+  const [brightness, setBrightness] = useState(1);
+  const [saturate, setSaturate] = useState(1);
+  const [contrast, setContrast] = useState(1);
+  const bight = parseFloat(brightness);
+  const Satr = parseFloat(saturate);
+  const contra = parseFloat(contrast);
   const pickImage = () => {
     launchImageLibrary({quality: 1}, response => {
-      if (!response.didCancel) setPic(response.assets[0]);
+      if (!response.didCancel) {
+        setPic(response.assets[0]);
+        setCropImg('');
+        editsheet.current.open();
+      }
     });
   };
   const picCamera = () => {
     launchCamera({}, response => {
       if (!response.didCancel) {
         setPic(response.assets[0]);
+        setCropImg('');
+        editsheet.current.open();
       }
+    });
+  };
+
+  const Crop_img = () => {
+    ImagePicker.openCropper({
+      path: pic?.uri,
+      width: 240,
+      height: 240,
+      maxFiles: 1,
+      showCropFrame: false,
+    }).then(image => {
+      setCropImg(image.path);
+    });
+  };
+  const Snapshot = () => {
+    Shotref.current?.capture().then(uri => {
+      setFilerimg(uri);
     });
   };
 
@@ -86,12 +127,20 @@ const EditProfile = ({navigation}) => {
       body.append('user_id', Staps.id);
       body.append('user_name', name);
       body.append('surname', surname);
-      pic != null &&
+      /*  pic != null &&
         body.append('image', {
           name: pic.fileName,
           type: pic.type,
-          uri: pic.uri,
-        });
+          uri: pic?.uri,
+        }); */
+      body.append('image', {
+        name: filerimg?.substring(
+          filerimg?.lastIndexOf('/') + 1,
+          filerimg?.length,
+        ),
+        type: pic.type,
+        uri: filerimg,
+      });
       body.append('dob', selectedDate);
       body.append('looking_for', lookingFor);
       body.append('education', education);
@@ -103,7 +152,7 @@ const EditProfile = ({navigation}) => {
       body.append('gender', gender);
       body.append('about', aboutMe);
       body.append('show_me', showMe);
-      body.append('sexual_orientation', sexualOrientation);
+      body.append('sexual_orientation', Sexual);
       setLoading(true);
       const res = await fetch(
         'https://technorizen.com/Dating/webservice/update_profile',
@@ -204,9 +253,11 @@ const EditProfile = ({navigation}) => {
           }}>
           <Image
             source={
-              Staps.image == null
-                ? require('../../assets/images/image.png')
-                : {uri: Staps.image}
+              /* filerimg == '' ? {uri: uri.uri} : {uri: filerimg} */
+              filerimg == ''
+                ? /* require('../../assets/images/image.png') */
+                  {uri: Staps.image}
+                : {uri: filerimg}
             }
             style={{
               height: 147,
@@ -401,8 +452,8 @@ const EditProfile = ({navigation}) => {
         </View>
         <Dropdown1
           data={SexualList}
-          value={sexualOrientation}
-          onChange={item => setSexualOrientation(item.value)}
+          value={Sexual}
+          onChange={item => setSexual(item.value)}
           title={'Sexual orientation'}
         />
         <Dropdown1
@@ -458,7 +509,7 @@ const EditProfile = ({navigation}) => {
           //   user.gender != gender ||
           //   user.showMe != showMe ||
           //   user.aboutMe != aboutMe ||
-          //   user.sexualOrientation != sexualOrientation ||
+          //   user.Sexual != Sexual ||
           //   user.lookingFor != lookingFor ||
           //   user.education != education ||
           //   user.ethnicity != ethnicity ||
@@ -483,7 +534,7 @@ const EditProfile = ({navigation}) => {
           //   user.gender != gender ||
           //   user.showMe != showMe ||
           //   user.aboutMe != aboutMe ||
-          //   user.sexualOrientation != sexualOrientation ||
+          //   user.Sexual != Sexual ||
           //   user.lookingFor != lookingFor ||
           //   user.education != education ||
           //   user.ethnicity != ethnicity ||
@@ -512,6 +563,367 @@ const EditProfile = ({navigation}) => {
           refRBSheet1.current.close();
         }}
       />
+      <BottomSheet
+        //onClose={() => Snapshot()}
+        closeOnPressBack={false}
+        closeOnPressMask={false}
+        closeOnDragDown={false}
+        refRBSheet={editsheet}
+        height={dimension.width * 1.7}>
+        {filterstate === 0 && (
+          <ViewShot
+            ref={Shotref}
+            style={{
+              /* height: 240, width: 240, */ alignSelf: 'center',
+              marginTop: 30,
+            }}
+            options={{
+              fileName: 'UserProfile',
+              format: 'jpg',
+              quality: 0.9,
+            }}>
+            <Brightness amount={bight}>
+              <Contrast amount={contra}>
+                <Saturate amount={Satr}>
+                  <Image
+                    resizeMode="cover"
+                    source={cropImg == '' ? {uri: pic?.uri} : {uri: cropImg}}
+                    style={{
+                      height: 240,
+                      width: 240,
+                      alignSelf: 'center',
+                      borderRadius: 40,
+                    }}
+                  />
+                </Saturate>
+              </Contrast>
+            </Brightness>
+          </ViewShot>
+        )}
+
+        {filterstate === 1 && (
+          <View style={{marginVertical: 10, marginHorizontal: 20}}>
+            <Brightness amount={bight}>
+              <Contrast amount={contra}>
+                <Saturate amount={Satr}>
+                  <Image
+                    resizeMode="cover"
+                    source={cropImg == '' ? {uri: pic?.uri} : {uri: cropImg}}
+                    style={{
+                      alignSelf: 'center',
+                      width: 240,
+                      height: 240,
+                      marginVertical: 20,
+                      borderRadius: 40,
+                    }}
+                  />
+                </Saturate>
+              </Contrast>
+            </Brightness>
+
+            <Imgfilter
+              Filtername={'Brightness'}
+              RangeValue={brightness}
+              onPress={() => setFilterstate(0)}
+              value={bight}
+              onValueChange={v => setBrightness(v)}
+            />
+          </View>
+        )}
+
+        {filterstate === 2 && (
+          <View style={{marginVertical: 10, marginHorizontal: 20}}>
+            <Brightness amount={bight}>
+              <Contrast amount={contra}>
+                <Saturate amount={Satr}>
+                  <Image
+                    resizeMode="cover"
+                    source={cropImg == '' ? {uri: pic?.uri} : {uri: cropImg}}
+                    style={{
+                      alignSelf: 'center',
+                      width: 240,
+                      height: 240,
+                      marginVertical: 20,
+                      borderRadius: 40,
+                    }}
+                  />
+                </Saturate>
+              </Contrast>
+            </Brightness>
+
+            <Imgfilter
+              Filtername={'Contrast'}
+              RangeValue={contrast}
+              onPress={() => setFilterstate(0)}
+              value={contra}
+              onValueChange={v => setContrast(v)}
+            />
+          </View>
+        )}
+
+        {filterstate === 3 && (
+          <View style={{marginVertical: 10, marginHorizontal: 20}}>
+            <Brightness amount={bight}>
+              <Contrast amount={contra}>
+                <Saturate amount={Satr}>
+                  <Image
+                    resizeMode="cover"
+                    source={cropImg == '' ? {uri: pic?.uri} : {uri: cropImg}}
+                    style={{
+                      alignSelf: 'center',
+                      width: 240,
+                      height: 240,
+                      marginVertical: 20,
+                      borderRadius: 40,
+                    }}
+                  />
+                </Saturate>
+              </Contrast>
+            </Brightness>
+
+            <Imgfilter
+              Filtername={'Saturation'}
+              RangeValue={saturate}
+              onPress={() => setFilterstate(0)}
+              value={Satr}
+              onValueChange={v => setSaturate(v)}
+            />
+          </View>
+        )}
+        {filterstate === 0 && (
+          <View
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'space-evenly',
+              marginTop: 40,
+            }}>
+            <TouchableOpacity
+              onPress={() => {
+                setFilterstate(1);
+              }}>
+              <Image
+                source={require('../../assets/icons/brightness.png')}
+                style={{
+                  height: 24,
+                  width: 24,
+                  resizeMode: 'contain',
+                  alignSelf: 'center',
+                  tintColor: ThemeMode.selectedTheme
+                    ? theme.colors.darkGrey
+                    : theme.colors.primary,
+                }}
+              />
+              <TextFormatted
+                style={{
+                  fontSize: 14,
+                  fontWeight: '600',
+                  color: ThemeMode.selectedTheme
+                    ? theme.colors.darkGrey
+                    : theme.colors.primary,
+                  marginTop: 11,
+                }}>
+                Brightness
+              </TextFormatted>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              onPress={() => {
+                setFilterstate(2);
+              }}>
+              <Image
+                source={require('../../assets/icons/contrast.png')}
+                style={{
+                  height: 24,
+                  width: 24,
+                  resizeMode: 'contain',
+                  alignSelf: 'center',
+                  tintColor: ThemeMode.selectedTheme
+                    ? theme.colors.darkGrey
+                    : theme.colors.primary,
+                }}
+              />
+              <TextFormatted
+                style={{
+                  fontSize: 14,
+                  fontWeight: '600',
+                  color: ThemeMode.selectedTheme
+                    ? theme.colors.darkGrey
+                    : theme.colors.primary,
+                  marginTop: 11,
+                }}>
+                Contrast
+              </TextFormatted>
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => {
+                setFilterstate(3);
+              }}>
+              <Image
+                source={require('../../assets/icons/saturationIco.png')}
+                style={{
+                  height: 24,
+                  width: 24,
+                  resizeMode: 'contain',
+                  alignSelf: 'center',
+                  tintColor: ThemeMode.selectedTheme
+                    ? theme.colors.darkGrey
+                    : theme.colors.primary,
+                }}
+              />
+              <TextFormatted
+                style={{
+                  fontSize: 14,
+                  fontWeight: '600',
+                  color: ThemeMode.selectedTheme
+                    ? theme.colors.darkGrey
+                    : theme.colors.primary,
+                  marginTop: 10,
+                }}>
+                Saturation
+              </TextFormatted>
+            </TouchableOpacity>
+          </View>
+        )}
+
+        <View
+          style={{
+            backgroundColor: '#8490AE',
+            height: 1,
+            width: dimension.width - 22,
+            alignSelf: 'center',
+            marginVertical: !filterstate ? 25 : 0,
+          }}
+        />
+        <View style={{position: 'absolute', bottom: 0, width: '100%'}}>
+          <View
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              alignSelf: 'center',
+              marginVertical: 20,
+            }}>
+            <TouchableOpacity
+              style={{width: dimension.width / 2 - 20, alignSelf: 'center'}}
+              onPress={() => {
+                Crop_img();
+              }}>
+              <LinearGradient
+                style={{
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                  width: dimension.width / 2 - 20,
+                  justifyContent: 'center',
+                  height: 50,
+                  borderRadius: 50,
+                }}
+                colors={
+                  ThemeMode.selectedTheme
+                    ? theme.colors.primaryOff
+                    : theme.colors.blackOn
+                }>
+                <Image
+                  source={require('../../assets/icons/cropico.png')}
+                  resizeMode="contain"
+                  style={{
+                    width: 22,
+                    height: 22,
+                    marginRight: 10,
+                    tintColor: ThemeMode.selectedTheme
+                      ? theme.colors.darkGrey
+                      : theme.colors.primary,
+                  }}
+                />
+                <TextFormatted
+                  style={{
+                    fontSize: 18,
+                    fontWeight: '700',
+                    color: ThemeMode.selectedTheme
+                      ? theme.colors.darkGrey
+                      : theme.colors.primary,
+                  }}>
+                  Crop
+                </TextFormatted>
+              </LinearGradient>
+            </TouchableOpacity>
+            <View style={{width: 10}}></View>
+            <TouchableOpacity
+              style={{
+                width: dimension.width / 2 - 20,
+                alignSelf: 'center',
+              }}>
+              <LinearGradient
+                style={{
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                  width: dimension.width / 2 - 20,
+                  justifyContent: 'center',
+                  height: 50,
+                  borderRadius: 50,
+                }}
+                colors={
+                  ThemeMode.themecolr == 'Red'
+                    ? theme.colors.primaryOn
+                    : ThemeMode.themecolr == 'Blue'
+                    ? theme.colors.primaryBlue
+                    : ThemeMode.themecolr == 'Green'
+                    ? theme.colors.primaryGreen
+                    : ThemeMode.themecolr == 'Purple'
+                    ? theme.colors.primaryPurple
+                    : ThemeMode.themecolr == 'Yellow'
+                    ? theme.colors.primaryYellow
+                    : theme.colors.primaryOn
+                }>
+                <Image
+                  source={require('../../assets/icons/edit_cio.png')}
+                  resizeMode="contain"
+                  style={{
+                    width: 22,
+                    height: 20,
+                    marginRight: 10,
+                    tintColor: theme.colors.primary,
+                  }}
+                />
+                <TextFormatted
+                  style={{
+                    fontSize: 18,
+                    fontWeight: '700',
+                    color: theme.colors.primary,
+                  }}>
+                  Edit
+                </TextFormatted>
+              </LinearGradient>
+            </TouchableOpacity>
+          </View>
+          <ButtonView height={100}>
+            <TextFormatted
+              style={{
+                fontSize: 18,
+                fontWeight: '700',
+                color: '#8490AE',
+                width: dimension.width / 2 - 20,
+                textAlign: 'center',
+              }}
+              onPress={() => {
+                editsheet.current.close(); //refRBSheet2.current.close();
+                setFilerimg('');
+              }}>
+              Cancel
+            </TextFormatted>
+            <Button
+              buttonName={'Save '}
+              color={theme.colors.primary}
+              marginTop={1}
+              marginBottom={1}
+              width={dimension.width / 2 - 20}
+              onPress={() => {
+                Snapshot();
+                editsheet.current.close();
+              }}
+            />
+          </ButtonView>
+        </View>
+      </BottomSheet>
       <Netinforsheet />
     </View>
   );
@@ -831,6 +1243,113 @@ const SwitchBox = ({Name, onPress, toggle}) => {
           }
         />
       </TouchableOpacity>
+    </View>
+  );
+};
+
+const Imgfilter = ({onValueChange, value, RangeValue, onPress, Filtername}) => {
+  const ThemeMode = useSelector(state => state.Theme);
+  return (
+    <View>
+      <View
+        style={{
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          marginVertical: 10,
+        }}>
+        <TouchableOpacity
+          onPress={onPress}
+          style={{
+            flexDirection: 'row',
+            justifyContent: 'flex-start',
+            alignItems: 'center',
+          }}>
+          <Image
+            resizeMode="contain"
+            source={require('../../assets/icons/sheet_arrow.png')}
+            style={{
+              height: 12,
+              width: 12,
+              tintColor: ThemeMode.selectedTheme
+                ? theme.colors.Black
+                : theme.colors.primary,
+              marginRight: 8,
+            }}
+          />
+          <TextFormatted
+            style={{
+              fontSize: 14,
+              fontWeight: '600',
+              color: ThemeMode.selectedTheme
+                ? theme.colors.Black
+                : theme.colors.primary,
+              alignItems: 'center',
+              flexDirection: 'row',
+            }}>
+            {Filtername}
+          </TextFormatted>
+        </TouchableOpacity>
+        <TextFormatted
+          style={{
+            color:
+              ThemeMode.themecolr == 'Red'
+                ? theme.colors.red
+                : ThemeMode.themecolr == 'Blue'
+                ? theme.colors.Blue
+                : ThemeMode.themecolr == 'Green'
+                ? theme.colors.Green
+                : ThemeMode.themecolr == 'Purple'
+                ? theme.colors.Purple
+                : ThemeMode.themecolr == 'Yellow'
+                ? theme.colors.Yellow
+                : theme.colors.red,
+            fontSize: 14,
+            fontWeight: '600',
+          }}>
+          +{parseFloat(RangeValue).toFixed(0)}
+        </TextFormatted>
+      </View>
+      <Slider
+        value={value}
+        onValueChange={onValueChange}
+        minimumValue={0}
+        maximumValue={10}
+        containerStyle={{height: 50}}
+        trackStyle={{height: 6, borderRadius: 10}}
+        minimumTrackTintColor={
+          ThemeMode.themecolr == 'Red'
+            ? theme.colors.red
+            : ThemeMode.themecolr == 'Blue'
+            ? theme.colors.Blue
+            : ThemeMode.themecolr == 'Green'
+            ? theme.colors.Green
+            : ThemeMode.themecolr == 'Purple'
+            ? theme.colors.Purple
+            : ThemeMode.themecolr == 'Yellow'
+            ? theme.colors.Yellow
+            : theme.colors.red
+        }
+        maximumTrackTintColor={theme.colors.softGrey}
+        renderThumbComponent={() => (
+          <Image
+            source={
+              ThemeMode.themecolr == 'Red'
+                ? RedlightImage.sliderImager
+                : ThemeMode.themecolr == 'Blue'
+                ? BluelightImage.sliderImage_bluer
+                : ThemeMode.themecolr == 'Green'
+                ? GreenlightImage.sliderImage_green
+                : ThemeMode.themecolr == 'Purple'
+                ? PurplelightImage.sliderImage_purple
+                : ThemeMode.themecolr == 'Yellow'
+                ? YellowlightImage.sliderImage_yellow
+                : RedlightImage.sliderImager
+            }
+            style={{height: 34, width: 34, resizeMode: 'contain'}}
+          />
+        )}
+      />
     </View>
   );
 };

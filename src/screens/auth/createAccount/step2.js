@@ -67,7 +67,7 @@ const Step2 = ({navigation}) => {
       if (rslt.status == 1) {
         setLoading(false);
         dispatch({type: STAP, payload: rslt.result});
-        navigation.navigate('step3');
+        navigation.replace('step3');
         console.log(rslt);
       } else {
         setLoading(false);

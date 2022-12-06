@@ -31,8 +31,7 @@ const MyProfile = () => {
   const [User, setUser] = useState();
   const [load, setLoad] = useState();
   const [Loading, setLoading] = useState(false);
-  
- 
+
   const mediadata = [
     {title: 'Images', img: require('../../assets/home_icons/gallery.png')},
     {
@@ -86,10 +85,10 @@ const MyProfile = () => {
     // console.log(age_now);
     return age_now;
   };
-useEffect(() => {
-  getUser();
-}, [])
-// console.log('User?.matches_count',!User?.matches_count);
+  useEffect(() => {
+    getUser();
+  }, []);
+  // console.log('User?.matches_count',!User?.matches_count);
   return (
     <View
       style={{
@@ -98,7 +97,6 @@ useEffect(() => {
           ? theme.colors.primary
           : theme.colors.primaryBlack,
       }}>
-        
       <View>
         <HeaderImage height={240} marginBottom={40}>
           <Header
@@ -188,74 +186,50 @@ useEffect(() => {
       </View>
       <ScrollView>
         <View style={{flexDirection: 'row', alignSelf: 'center'}}>
-        
-            <View
+          <View
+            style={{
+              width: (dimension.width - 62) / 3,
+              alignItems: 'center',
+              marginVertical: 15,
+            }}>
+            <TextFormatted
+              style={{fontSize: 14, fontWeight: '400', color: '#8490AE'}}>
+              Matches
+            </TextFormatted>
+            <TextFormatted
               style={{
-                width: (dimension.width - 62) / 3,
-                alignItems: 'center',
-                marginVertical: 15,
+                fontSize: 20,
+                fontWeight: '700',
+                color: ThemeMode.selectedTheme
+                  ? theme.colors.primaryBlack
+                  : theme.colors.primary,
+                marginTop: 5,
               }}>
-              <TextFormatted
-                style={{fontSize: 14, fontWeight: '400', color: '#8490AE'}}>
-                Matches
-              </TextFormatted>
-              <TextFormatted
-                style={{
-                  fontSize: 20,
-                  fontWeight: '700',
-                  color: ThemeMode.selectedTheme
-                    ? theme.colors.primaryBlack
-                    : theme.colors.primary,
-                  marginTop: 5,
-                }}>
-              {!User?.matches_count ? 0:User?.matches_count}
-              </TextFormatted>
-            </View>
-              <View
+              {User?.matches_count > 1 ? User?.matches_count : 0}
+            </TextFormatted>
+          </View>
+          <View
+            style={{
+              width: (dimension.width - 62) / 3,
+              alignItems: 'center',
+              marginVertical: 15,
+            }}>
+            <TextFormatted
+              style={{fontSize: 14, fontWeight: '400', color: '#8490AE'}}>
+              Likes
+            </TextFormatted>
+            <TextFormatted
               style={{
-                width: (dimension.width - 62) / 3,
-                alignItems: 'center',
-                marginVertical: 15,
+                fontSize: 20,
+                fontWeight: '700',
+                color: ThemeMode.selectedTheme
+                  ? theme.colors.primaryBlack
+                  : theme.colors.primary,
+                marginTop: 5,
               }}>
-              <TextFormatted
-                style={{fontSize: 14, fontWeight: '400', color: '#8490AE'}}>
-               Likes
-              </TextFormatted>
-              <TextFormatted
-                style={{
-                  fontSize: 20,
-                  fontWeight: '700',
-                  color: ThemeMode.selectedTheme
-                    ? theme.colors.primaryBlack
-                    : theme.colors.primary,
-                  marginTop: 5,
-                }}>
-               {User?.like_unlike_count}
-              </TextFormatted>
-            </View>
-              {/* <View
-              style={{
-                width: (dimension.width - 62) / 3,
-                alignItems: 'center',
-                marginVertical: 15,
-              }}>
-              <TextFormatted
-                style={{fontSize: 14, fontWeight: '400', color: '#8490AE'}}>
-              Dislikes
-              </TextFormatted>
-              <TextFormatted
-                style={{
-                  fontSize: 20,
-                  fontWeight: '700',
-                  color: ThemeMode.selectedTheme
-                    ? theme.colors.primaryBlack
-                    : theme.colors.primary,
-                  marginTop: 5,
-                }}>
-             0
-              </TextFormatted>
-            </View> */}
-         
+              {User?.like_unlike_count > 1 ? User?.like_unlike_count : 0}
+            </TextFormatted>
+          </View>
         </View>
         <View>
           <View
@@ -283,7 +257,10 @@ useEffect(() => {
                           : theme.colors.primaryOn
                         : ThemeMode.selectedTheme
                         ? ['transparent', 'transparent']
-                        : ['#FFFFFF0D', '#FFFFFF0D']
+                        : [
+                            'transparent',
+                            'transparent',
+                          ] /* ['#FFFFFF0D', '#FFFFFF0D'] */
                     }
                     style={{
                       height: 71,
@@ -336,7 +313,9 @@ useEffect(() => {
         }}>
         <Tab
           source={require('../../assets/home_icons/home.png')}
-          onPress={() => {navigation.navigate('homePage',{naviVideo:true});}}
+          onPress={() => {
+            navigation.navigate('homePage', {naviVideo: true});
+          }}
         />
         <Tab source={require('../../assets/home_icons/focus.png')} />
 

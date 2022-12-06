@@ -300,7 +300,7 @@ const HomePage = () => {
       likeApi(Uindex);
       UserScroll();
     } else {
-      ShowToast('Upgrade Your Plan');
+      ShowToast('Please upgrade plan, your Like expire as per plan ');
     }
   }
   const block_user_Api = () => {

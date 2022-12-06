@@ -21,16 +21,6 @@ const Information = () => {
   const [User, setUser] = useState();
   const [load, setLoad] = useState();
 
-  const passion = [
-    {img: require('../../../assets/icons/pizza.png'), name: 'Pizza'},
-    {img: require('../../../assets/icons/museum.png'), name: 'Museum'},
-    {img: require('../../../assets/icons/theater.png'), name: 'Theater'},
-    {img: require('../../../assets/icons/micro.png'), name: 'karaoke'},
-    {img: require('../../../assets/icons/wine_glass.png'), name: 'Wine'},
-    {img: require('../../../assets/icons/beer.png'), name: 'Beer'},
-    {img: require('../../../assets/icons/zoo.png'), name: 'Zoo'},
-  ];
-
   const getUserData = () => {
     setLoad(true);
     axios({
@@ -46,7 +36,6 @@ const Information = () => {
   useEffect(() => {
     getUserData();
   }, []);
-
   return (
     <View>
       <TextFormatted
@@ -68,7 +57,7 @@ const Information = () => {
           <FlatList
             data={User?.category}
             horizontal
-            style={{paddingHorizontal: 10,marginRight:10}}
+            style={{paddingHorizontal: 10, marginRight: 10}}
             showsHorizontalScrollIndicator={false}
             ListHeaderComponent={
               <TouchableOpacity
@@ -140,8 +129,7 @@ const Information = () => {
                   // width: 100,
                   justifyContent: 'center',
                   alignItems: 'center',
-            marginLeft:20,
-               
+                  marginLeft: 20,
                 }}>
                 <Image
                   source={{uri: item.image}}

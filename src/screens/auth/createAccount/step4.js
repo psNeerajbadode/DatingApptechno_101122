@@ -43,9 +43,8 @@ const Step4 = () => {
   const dimension = useWindowDimensions();
   const [loading, setLoading] = useState(false);
   const [refresh, setRefresh] = useState(false);
+  const [plandata, setPlandata] = useState([]);
   const [media, setMedia] = useState([]);
-  const [vid, setVid] = useState(false);
-  const [thumb, setThumb] = useState();
   const images = media.filter(v => v.type != 'video/mp4');
   const video = media.filter(v => v.type == 'video/mp4');
   var RNFS = require('react-native-fs');
@@ -77,28 +76,10 @@ const Step4 = () => {
               ' Upload at least 2 media to proceed and a maximum of 5 photo and 1 video',
             );
           }
-          /* generateThumbnail() */
         }
       },
     );
   };
-
-  // async function /* generateThumbnail() */ {
-  //   try {
-  //     const response = await createThumbnail({
-  //       url: video[0].uri,
-  //     });
-  //     console.log('response', response.path);
-  //     setThumb(response.path);
-  //   } catch (err) {
-  //     console.error(err);
-  //   } finally {
-  //   }
-  //   setRefresh(true);
-  //   setTimeout(() => {
-  //     setRefresh(false);
-  //   }, 1000);
-  // }
 
   function remove_photos(index) {
     media.splice(index, 1);
@@ -107,6 +88,7 @@ const Step4 = () => {
       setRefresh(false);
     }, 1000);
   }
+
   const ImageApi = () => {
     try {
       setLoading(true);
@@ -133,7 +115,7 @@ const Step4 = () => {
           if (response.data.status == 1) {
             setLoading(false);
             dispatch({type: STAP, payload: response.data.result});
-            navigation.navigate('step5');
+            navigation.replace('step5');
           } else {
             setLoading(false);
           }
@@ -175,7 +157,7 @@ const Step4 = () => {
             if (response.data.status == 1) {
               setLoading(false);
               dispatch({type: STAP, payload: response.data.result});
-              navigation.navigate('step5');
+              navigation.replace('step5');
               console.log(response.data);
             }
           })
@@ -192,11 +174,21 @@ const Step4 = () => {
     }
   }
 
+  const getPlanData = () => {
+    setLoading(true);
+    axios({
+      method: 'get',
+      url: `https://technorizen.com/Dating/webservice/get_plans`,
+    }).then(response => {
+      setLoading(false);
+      console.log('setPlandata=>', response.data.result[0]);
+      setPlandata(response.data.result);
+    });
+  };
   useEffect(() => {
+    getPlanData();
     /* navigation.addListener('focus', () => generateThumbnail()); */
   }, []);
-
-  const [paush, setPaush] = useState(false);
 
   return (
     <View
@@ -246,8 +238,9 @@ const Step4 = () => {
               marginLeft: 10,
               marginTop: 10,
             }}>
-            Upload at least 2 media to proceed and a maximum of 5 photo and 1
-            video
+            Upload at least 2 media to proceed and a maximum of{' '}
+            {plandata[0]?.name == 'Basic' && plandata[0]?.image} photo and{' '}
+            {plandata[0]?.name == 'Basic' && plandata[0]?.video} video
           </TextFormatted>
         </View>
         <View style={{flexDirection: 'row', marginTop: 20}}>
@@ -255,8 +248,6 @@ const Step4 = () => {
             <TouchableOpacity
               onPress={() => {
                 refRBSheet3.current.open();
-                /* selectImage(); */
-                /* generateThumbnail() */
               }}
               style={{
                 width: (dimension.width - 60) / 2,
