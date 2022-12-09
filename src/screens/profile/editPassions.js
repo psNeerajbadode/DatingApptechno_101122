@@ -8,7 +8,6 @@ import {
 import React, {useEffect, useState} from 'react';
 import {theme} from '../../utils/Constants';
 import HeaderImage_1 from '../../components/HeaderImage_1';
-import Header from '../../components/Header';
 import TextFormatted from '../../components/TextFormatted';
 import SearchBar from '../../components/SearchBar';
 import Button from '../../components/Button';
@@ -33,55 +32,11 @@ const EditPassions = () => {
   const [search, setSearch] = useState('');
   const [data, setData] = useState([]);
   const [load, setload] = useState(false);
-
-  const [selected, setSelected] = useState([
-    'Restaurant',
-    'Club',
-    'Museum',
-    'Art',
-    'Coffee',
-    'Beach',
-  ]);
-  // const data = [
-  //   { img: require('../../assets/icons/icecream.png'), title: 'Ice cream' },
-  //   { img: require('../../assets/icons/table.png'), title: 'Restaurant' },
-  //   { img: require('../../assets/icons/hot_coffee.png'), title: 'Coffee' },
-  //   { img: require('../../assets/icons/beach_chair.png'), title: 'Beach' },
-  //   { img: require('../../assets/icons/pina_colada.png'), title: 'Bar' },
-  //   { img: require('../../assets/icons/mirror_ball.png'), title: 'Club' },
-  //   { img: require('../../assets/icons/pizza.png'), title: 'Pizza' },
-  //   { img: require('../../assets/icons/museum.png'), title: 'Museum' },
-  //   { img: require('../../assets/icons/theater.png'), title: 'Theater' },
-  //   { img: require('../../assets/icons/micro.png'), title: 'karaoke' },
-  //   { img: require('../../assets/icons/wine_glass.png'), title: 'Wine' },
-  //   { img: require('../../assets/icons/beer.png'), title: 'Beer' },
-  //   { img: require('../../assets/icons/zoo.png'), title: 'Zoo' },
-  //   { img: require('../../assets/icons/art_and_design.png'), title: 'Art' },
-  //   { img: require('../../assets/icons/clapperboard.png'), title: 'Movies' },
-  //   { img: require('../../assets/icons/sports.png'), title: 'Sports' },
-  //   { img: require('../../assets/icons/teddy_bear.png'), title: 'Bear' },
-  //   { img: require('../../assets/icons/lectern.png'), title: 'Politics' },
-  //   { img: require('../../assets/icons/picnic_basket.png'), title: 'Picnic' },
-  //   { img: require('../../assets/icons/cooking.png'), title: 'Cooking' },
-  //   { img: require('../../assets/icons/books.png'), title: 'Reading' },
-  //   { img: require('../../assets/icons/diy.png'), title: 'DIY' },
-  //   { img: require('../../assets/icons/dog.png'), title: 'Animals' },
-  //   { img: require('../../assets/icons/dice.png'), title: 'Board Games' },
-  //   { img: require('../../assets/icons/aeroplane.png'), title: 'Travel' },
-  //   { img: require('../../assets/icons/polo.png'), title: 'Fashion' },
-  //   { img: require('../../assets/icons/herbal_tea.png'), title: 'Tea' },
-  //   { img: require('../../assets/icons/photography.png'), title: 'Photography' },
-  //   { img: require('../../assets/icons/shopping_bags.png'), title: 'Shopping' },
-  //   { img: require('../../assets/icons/console.png'), title: 'Gaming' },
-  //   { img: require('../../assets/icons/manuscript.png'), title: 'Writing' },
-  //   { img: require('../../assets/icons/nature.png'), title: 'Outdoors' },
-  //   { img: require('../../assets/icons/rumba.png'), title: 'Dancing' },
-  //   { img: require('../../assets/icons/walking.png'), title: 'Walking' },
-  //   { img: require('../../assets/icons/ecology.png'), title: 'Environment' },
-  //   { img: require('../../assets/icons/love.png'), title: 'Volunteering' },
-  //   { img: require('../../assets/icons/instagram.png'), title: 'Instagram' },
-  //   { img: require('../../assets/icons/architecture.png'), title: 'Architecture' },
-  // ];
+  const [loading, setLoading] = useState(false);
+  const [selected, setSelected] = useState([]);
+  const [User, setUser] = useState();
+  //console.log('selected', selected);
+  const oldPass = User?.category_id.split(',');
   const getPassion = () => {
     setload(true);
     axios({
@@ -92,18 +47,56 @@ const EditPassions = () => {
       setData(response.data.result);
     });
   };
-
   const searchPassion = s => {
     axios({
       method: 'get',
-      url: `https://technorizen.com/Dating/webservice/passion_search?passion_name=${s}`,
+      url: `https://technorizen.com/Dating/webservice/passion_search?id=${s}`,
     }).then(response => {
       console.log('Search Api', response.data.result);
     });
   };
-
+  const UpdateCategory = () => {
+    setLoading(true);
+    const body = new FormData();
+    body.append('user_id', Staps.id);
+    body.append('category_id', selected.join(','));
+    axios({
+      url: 'https://technorizen.com/Dating/webservice/update_passion',
+      method: 'POST',
+      data: body,
+      headers: {
+        'content-type': 'multipart/form-data',
+      },
+    })
+      .then(function (response) {
+        console.log('response', response.data);
+        if (response.data.status == 1) {
+          setLoading(false);
+          navigation.navigate('myProfile');
+        } else {
+          setLoading(false);
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+        setLoading(false);
+      });
+  };
+  const getUser = () => {
+    setload(true);
+    axios({
+      method: 'get',
+      url:
+        'https://technorizen.com/Dating/webservice/get_profile?user_id=' +
+        Staps.id,
+    }).then(response => {
+      setUser(response.data.result);
+      setload(false);
+    });
+  };
   useEffect(() => {
     getPassion();
+    getUser();
   }, []);
 
   return (
@@ -177,13 +170,13 @@ const EditPassions = () => {
             })}
             showsVerticalScrollIndicator={false}
             ListHeaderComponent={<View style={{height: 20}} />}
-            renderItem={({item}) => (
+            renderItem={({item, i}) => (
               <TouchableOpacity
                 onPress={() =>
                   setSelected(prevState =>
-                    prevState.find(v => item.passion_name == v)
-                      ? prevState.filter(v => item.passion_name != v)
-                      : [...prevState, item.passion_name],
+                    prevState.find(v => item.id == v)
+                      ? prevState.filter(v => item.id != v)
+                      : [...prevState, item.id],
                   )
                 }
                 style={{
@@ -200,16 +193,14 @@ const EditPassions = () => {
                     height: 32,
                     width: 32,
                     resizeMode: 'contain',
-                    opacity: selected.find(v => item.passion_name == v)
-                      ? 1
-                      : 0.3,
+                    opacity: selected.find(v => item.id == v) ? 1 : 0.3,
                   }}
                 />
                 <TextFormatted
                   style={{
                     fontSize: 16,
                     fontWeight: '400',
-                    color: selected.find(v => item.passion_name == v)
+                    color: selected.find(v => item.id == v)
                       ? ThemeMode.selectedTheme
                         ? theme.colors.primaryBlack
                         : theme.colors.primary
@@ -221,7 +212,7 @@ const EditPassions = () => {
                 </TextFormatted>
                 <Image
                   source={
-                    selected.find(v => item.passion_name == v)
+                    selected.find(v => item.id == v)
                       ? ThemeMode.themecolr == 'Red'
                         ? RedlightImage.check_red
                         : ThemeMode.themecolr == 'Blue'
@@ -269,7 +260,7 @@ const EditPassions = () => {
             selected.length >= 5 && selected.length <= 10 ? false : true
           }
           marginTop={10}
-          onPress={() => navigation.navigate('myProfile')}
+          onPress={() => UpdateCategory()}
         />
       </View>
       <Netinforsheet />

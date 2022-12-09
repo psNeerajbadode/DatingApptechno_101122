@@ -66,10 +66,10 @@ const Security = () => {
       </HeaderImage_1>
       <ScrollView>
         <ButtonRow
-          title={'Change password'}
+          title={'Change passcode'}
           onPress={() => refRBSheet.current.open()}
         />
-        {/*    <View
+        <View
           style={{
             flexDirection: 'row',
             alignItems: 'center',
@@ -127,7 +127,7 @@ const Security = () => {
               }
             />
           </TouchableOpacity>
-        </View> */}
+        </View>
         <ButtonRow
           title={'Manage payments account'}
           onPress={() => refRBSheet1.current.open()}

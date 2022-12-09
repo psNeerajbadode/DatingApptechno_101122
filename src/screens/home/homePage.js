@@ -12,7 +12,7 @@ import {
 import React, {useEffect, useRef, useState} from 'react';
 import Swiper from 'react-native-swiper';
 import TextFormatted from '../../components/TextFormatted';
-import {useIsFocused, useNavigation, useRoute} from '@react-navigation/native';
+import {useNavigation, useRoute} from '@react-navigation/native';
 import Notification from './notification';
 import MoreOptions from './moreOptions';
 import SelectCategory from './selectCategory';
@@ -58,6 +58,7 @@ const HomePage = () => {
   const [plandata, setPlandata] = useState();
   const [profile, setProfile] = useState();
   const [swiperIndex, setSwiperIndex] = useState();
+  const [notification, setNotification] = useState([]);
   const videoRef = useRef(null);
   const onBuffer = e => {};
 
@@ -187,7 +188,6 @@ const HomePage = () => {
         Staps.id,
     }).then(response => {
       setUserpost(response.data.result);
-      //  console.log(response.data.result[0]);
     });
   };
 
@@ -214,42 +214,6 @@ const HomePage = () => {
       console.log(error);
     }
   };
-
-  // async function status(status) {
-  //   try {
-  //     const url =
-  //       'https://technorizen.com/Dating/webservice/update_online_status';
-
-  //     const body = new FormData();
-  //     body.append('user_id', Staps.id);
-  //     body.append('status', status);
-
-  //     const res = await fetch(url, {
-  //       method: 'POST',
-  //       body: body,
-  //       headers: {
-  //         'content-type': 'multipart/form-data',
-  //       },
-  //     });
-  //     const rslt = await res.json();
-  //     if (rslt.status == 1) {
-  //       // console.log('status', status);
-  //       setappStatus(status);
-  //     }
-
-  //     // alert(status);
-  //   } catch (e) {}
-  // }
-
-  // const handlePutAppToBackground = state => {
-  //   status('ONLINE');
-  //   if (
-  //     (Platform.OS == 'android' && state == 'background') ||
-  //     (Platform.OS == 'ios' && state == 'inactive')
-  //   )
-  //     status('OFFLINE');
-  //   else if (state == 'active') status('ONLINE');
-  // };
 
   const calculate_age = dob1 => {
     var today = new Date();
@@ -336,22 +300,24 @@ const HomePage = () => {
 
   function progress(e) {
     setCurenttime(parseInt(e.currentTime));
-    //console.log(parseInt(e.currentTime));
   }
+
+  const Getnotification = () => {
+    axios({
+      method: 'post',
+      url:
+        'https://technorizen.com/Dating/webservice/get_notification?user_id=' +
+        Staps.id,
+    }).then(response => {
+      setNotification(response.data.result);
+    });
+  };
   useEffect(() => {
     navigation.addListener('focus', () => setNaviVideo(true));
     getUserPost();
     getPlanData();
     getUserProfile();
-    /*  status('ONLINE');
-    const appStateListener = AppState.addEventListener(
-      'change',
-      handlePutAppToBackground,
-    );
-    return () => {
-      appStateListener?.remove();
-      return status('OFFLINE');
-    }; */
+    Getnotification();
   }, []);
 
   return (
@@ -444,13 +410,7 @@ const HomePage = () => {
                         {item.details?.map(
                           (v, i) =>
                             v.type == 'Image' ? (
-                              <View
-                              // style={{
-                              //   height:
-                              //     dimension.height /*  + StatusBar.currentHeight */,
-                              //   width: dimension.width,
-                              // }}
-                              >
+                              <View>
                                 <FastImage
                                   onLoadStart={() => {
                                     setVideof(false);
@@ -610,7 +570,7 @@ const HomePage = () => {
                               top: 5,
                               right: 10,
                               zIndex: 1,
-                              /*  opacity:0 */
+                              opacity: notification == '' ? 0 : 1,
                             }}
                           />
                           <Image
@@ -773,7 +733,7 @@ const HomePage = () => {
         }
       />
 
-      <Notification refRBSheet={refRBSheet1} />
+      <Notification notification={notification} refRBSheet={refRBSheet1} />
       <MoreOptions
         Block_onPress={() => block_user_Api()}
         refRBSheet2={refRBSheetB}

@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import React,{useState,useEffect} from 'react';
+import React, {useState, useEffect} from 'react';
 import RBSheet from 'react-native-raw-bottom-sheet';
 import TextFormatted from '../../components/TextFormatted';
 import {theme} from '../../utils/Constants';
@@ -15,100 +15,9 @@ import {useSelector} from 'react-redux';
 import {useNavigation} from '@react-navigation/native';
 import axios from 'axios';
 
-const Notification = ({refRBSheet}) => {
+const Notification = ({refRBSheet, notification}) => {
   const ThemeMode = useSelector(state => state.Theme);
-  const Staps = useSelector(state => state.Stap);
   const navigation = useNavigation();
-  const [notification, setNotification] = useState([]);
-  const data = [
-    {
-      img: require('../../assets/images/profile.png'),
-      mess: 'Send you a message',
-      name: 'Sofia Dickens',
-      timing: '12:34',
-    },
-    {
-      img: require('../../assets/images/profile2.png'),
-      mess: 'Liked your profile',
-      name: 'Sarah Parker',
-      timing: 'Yesterday',
-    },
-    {
-      img: require('../../assets/images/profile.png'),
-      mess: 'Send you a message',
-      name: 'Carla Lopez',
-      timing: 'Yesterday',
-    },
-    {
-      img: require('../../assets/images/profile2.png'),
-      mess: 'Send you a message',
-      name: 'Sofia Dickens',
-      timing: 'Yesterday',
-    },
-    {
-      img: require('../../assets/images/profile2.png'),
-      mess: 'Send you a message',
-      name: 'Sofia Dickens',
-      timing: 'Yesterday',
-    },
-    {
-      img: require('../../assets/images/profile2.png'),
-      mess: 'Send you a message',
-      name: 'Sofia Dickens',
-      timing: 'Yesterday',
-    },
-    {
-      img: require('../../assets/images/profile2.png'),
-      mess: 'Send you a message',
-      name: 'Sofia Dickens',
-      timing: 'Yesterday',
-    },
-    {
-      img: require('../../assets/images/profile2.png'),
-      mess: 'Send you a message',
-      name: 'Sofia Dickens',
-      timing: 'Yesterday',
-    },
-    {
-      img: require('../../assets/images/profile2.png'),
-      mess: 'Send you a message',
-      name: 'Sofia Dickens',
-      timing: 'Yesterday',
-    },
-    {
-      img: require('../../assets/images/profile2.png'),
-      mess: 'Send you a message',
-      name: 'Sofia Dickens',
-      timing: 'Yesterday',
-    },
-    {
-      img: require('../../assets/images/profile2.png'),
-      mess: 'Send you a message',
-      name: 'Sofia Dickens',
-      timing: 'Yesterday',
-    },
-    {
-      img: require('../../assets/images/profile2.png'),
-      mess: 'Send you a message',
-      name: 'Sofia Dickens',
-      timing: 'Yesterday',
-    },
-  ];
-  const Getnotification = () => {
-    axios({
-      method: 'post',
-      url:
-        'https://technorizen.com/Dating/webservice/get_notification?user_id=' +
-        Staps.id,
-    }).then(response => {    
-      setNotification(response.data.result);
-    });
-  };
-useEffect(() => {
-  Getnotification();
-}, [])
-
-
   return (
     <RBSheet
       ref={refRBSheet}
@@ -148,125 +57,125 @@ useEffect(() => {
           }}
         />
       </TouchableOpacity>
-      
 
-{notification == '' ?   <TextFormatted
+      {notification == '' ? (
+        <TextFormatted
+          style={{
+            fontSize: 16,
+            fontWeight: '700',
+            color: ThemeMode.selectedTheme
+              ? theme.colors.primaryBlack
+              : theme.colors.primary,
+            marginTop: 20,
+            textAlign: 'center',
+          }}>
+          There are no notification
+        </TextFormatted>
+      ) : (
+        <FlatList
+          data={notification}
+          renderItem={({item, index}) => (
+            <TouchableOpacity
+              onPress={() => navigation.navigate('userProfile', item?.user_id)}
               style={{
-                fontSize: 16,
-                fontWeight: '700',
-                color: ThemeMode.selectedTheme
-                ? theme.colors.primaryBlack
-                : theme.colors.primary,
-                 marginTop: 20,
-                textAlign:'center'
+                flexDirection: 'row',
+                marginHorizontal: 20,
+                alignItems: 'center',
+                paddingVertical: 7,
+                marginBottom: 10,
+                paddingHorizontal: 15,
+                shadowColor: '#8490ae85',
+                shadowOffset: {
+                  width: 0,
+                  height: 1,
+                },
+                shadowOpacity: 0.22,
+                shadowRadius: 2.22,
+                elevation: 10,
+                backgroundColor: ThemeMode.selectedTheme
+                  ? theme.colors.primary
+                  : theme.colors.primaryBlack,
+                borderRadius: 10,
               }}>
-             There are no notification
-            </TextFormatted> :
-              <FlatList
-        data={notification}
-        renderItem={({item, index}) => (
-        
-          <TouchableOpacity
-            onPress={() => navigation.navigate('userProfile', item?.user_id)}
-            style={{
-              flexDirection: 'row',
-              marginHorizontal: 20,
-              alignItems: 'center',
-              paddingVertical: 7,
-              marginBottom: 10,
-              paddingHorizontal: 15,
-              shadowColor: '#8490ae85',
-              shadowOffset: {
-                width: 0,
-                height: 1,
-              },
-              shadowOpacity: 0.22,
-              shadowRadius: 2.22,
-              elevation: 10,
-              backgroundColor: ThemeMode.selectedTheme
-                ? theme.colors.primary
-                : theme.colors.primaryBlack,
-              borderRadius: 10,
-            }}>
-            <View
-              style={{
-                height: 8,
-                width: 8,
-                borderRadius: 50,
-                backgroundColor:
-                  index <= 1
-                    ? ThemeMode.themecolr == 'Red'
-                      ? theme.colors.red
-                      : ThemeMode.themecolr == 'Blue'
-                      ? theme.colors.Blue
-                      : ThemeMode.themecolr == 'Green'
-                      ? theme.colors.Green
-                      : ThemeMode.themecolr == 'Purple'
-                      ? theme.colors.Purple
-                      : ThemeMode.themecolr == 'Yellow'
-                      ? theme.colors.Yellow
-                      : theme.colors.red
-                    : '#8490AE4D',
-                alignSelf: 'center',
-                marginRight: 12,
-              }}
-            />
-            <ImageBackground
-              source={{uri: item?.sender_image}}
-              style={{height: 53, width: 53}}
-              imageStyle={{
-                borderRadius: 50,
-                borderWidth: 3,
-                borderColor:
-                  index <= 1
-                    ? ThemeMode.themecolr == 'Red'
-                      ? theme.colors.red
-                      : ThemeMode.themecolr == 'Blue'
-                      ? theme.colors.Blue
-                      : ThemeMode.themecolr == 'Green'
-                      ? theme.colors.Green
-                      : ThemeMode.themecolr == 'Purple'
-                      ? theme.colors.Purple
-                      : ThemeMode.themecolr == 'Yellow'
-                      ? theme.colors.Yellow
-                      : theme.colors.red
-                    : theme.colors.softGrey,
-              }}
-              resizeMode="contain"></ImageBackground>
-            <View style={{marginLeft: 12, flex: 1}}>
-              <TextFormatted
+              <View
                 style={{
-                  fontSize: 14,
-                  fontWeight: '600',
-                  color: ThemeMode.selectedTheme
-                    ? theme.colors.primaryBlack
-                    : theme.colors.primary,
-                }}>
-                {item?.sender_user}
-              </TextFormatted>
+                  height: 8,
+                  width: 8,
+                  borderRadius: 50,
+                  backgroundColor:
+                    index <= 1
+                      ? ThemeMode.themecolr == 'Red'
+                        ? theme.colors.red
+                        : ThemeMode.themecolr == 'Blue'
+                        ? theme.colors.Blue
+                        : ThemeMode.themecolr == 'Green'
+                        ? theme.colors.Green
+                        : ThemeMode.themecolr == 'Purple'
+                        ? theme.colors.Purple
+                        : ThemeMode.themecolr == 'Yellow'
+                        ? theme.colors.Yellow
+                        : theme.colors.red
+                      : '#8490AE4D',
+                  alignSelf: 'center',
+                  marginRight: 12,
+                }}
+              />
+              <ImageBackground
+                source={{uri: item?.sender_image}}
+                style={{height: 53, width: 53}}
+                imageStyle={{
+                  borderRadius: 50,
+                  borderWidth: 3,
+                  borderColor:
+                    index <= 1
+                      ? ThemeMode.themecolr == 'Red'
+                        ? theme.colors.red
+                        : ThemeMode.themecolr == 'Blue'
+                        ? theme.colors.Blue
+                        : ThemeMode.themecolr == 'Green'
+                        ? theme.colors.Green
+                        : ThemeMode.themecolr == 'Purple'
+                        ? theme.colors.Purple
+                        : ThemeMode.themecolr == 'Yellow'
+                        ? theme.colors.Yellow
+                        : theme.colors.red
+                      : theme.colors.softGrey,
+                }}
+                resizeMode="contain"></ImageBackground>
+              <View style={{marginLeft: 12, flex: 1}}>
+                <TextFormatted
+                  style={{
+                    fontSize: 14,
+                    fontWeight: '600',
+                    color: ThemeMode.selectedTheme
+                      ? theme.colors.primaryBlack
+                      : theme.colors.primary,
+                  }}>
+                  {item?.sender_user}
+                </TextFormatted>
+                <TextFormatted
+                  style={{
+                    fontSize: 12,
+                    fontWeight: '400',
+                    color: '#8490AE',
+                    marginTop: 5,
+                  }}>
+                  {item?.message}
+                </TextFormatted>
+              </View>
               <TextFormatted
                 style={{
                   fontSize: 12,
-                  fontWeight: '400',
+                  fontWeight: '300',
                   color: '#8490AE',
-                  marginTop: 5,
+                  marginTop: -20,
                 }}>
-                {item?.message}
+                {item?.time_ago}
               </TextFormatted>
-            </View>
-            <TextFormatted
-              style={{
-                fontSize: 12,
-                fontWeight: '300',
-                color: '#8490AE',
-                marginTop: -20,
-              }}>
-              {item?.time_ago}
-            </TextFormatted>
-          </TouchableOpacity>
-        )}
-      />}
-     
+            </TouchableOpacity>
+          )}
+        />
+      )}
     </RBSheet>
   );
 };

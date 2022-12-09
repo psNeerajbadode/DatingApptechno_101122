@@ -23,7 +23,7 @@ import {
   RedlightImage,
   YellowlightImage,
 } from '../../../utils/CustomImages';
-import { Baseurl, ShowToast } from '../../../utils/Baseurl';
+import {Baseurl, ShowToast} from '../../../utils/Baseurl';
 import FastImage from 'react-native-fast-image';
 
 const Images = () => {
@@ -43,21 +43,20 @@ const Images = () => {
     {img: require('../../../assets/images/unsplash_5.png')},
     {img: require('../../../assets/images/unsplash_6.png')},
   ];
-  
 
   const pickImage = () => {
     launchImageLibrary({quality: 0.9}, response => {
-      if (!response.didCancel) {       
-        setUri(response.assets);  
-        AddImage_api(response.assets)
+      if (!response.didCancel) {
+        setUri(response.assets);
+        AddImage_api(response.assets);
       }
     });
   };
   const picCamera = () => {
     launchCamera({}, response => {
       if (!response.didCancel) {
-        setUri(response.assets);    
-          AddImage_api(response.assets)        
+        setUri(response.assets);
+        AddImage_api(response.assets);
       }
     });
   };
@@ -76,26 +75,23 @@ const Images = () => {
     });
   };
 
- 
-console.log('User=========>',User);
-  
+  console.log('User=========>', User);
 
-  const AddImage_api = (data) => {
-   
+  const AddImage_api = data => {
     try {
       setLoading(true);
       const body = new FormData();
       body.append('user_id', Staps.id);
       body.append('image', {
-        name: data[0].fileName,          
+        name: data[0].fileName,
         type: data[0].type,
-        uri: data[0].uri
+        uri: data[0].uri,
       });
 
       axios({
         url: 'https://technorizen.com/Dating/webservice/add_image_post',
         method: 'POST',
-       
+
         headers: {
           'content-type': 'multipart/form-data',
         },
@@ -104,12 +100,12 @@ console.log('User=========>',User);
         .then(function (response) {
           console.log('image Api', response.data.result);
           if (response.status == 1) {
-            getUserData();   
-            setLoading(false);            
-            ShowToast('Images add successfully')
+            getUserData();
+            setLoading(false);
+            ShowToast('Images add successfully');
           } else {
             setLoading(false);
-            ShowToast('Images add Unsuccessfully')
+            ShowToast('Images add Unsuccessfully');
           }
         })
         .catch(function (error) {
@@ -120,7 +116,7 @@ console.log('User=========>',User);
       console.log(error);
     }
   };
-   
+
   useEffect(() => {
     getUserData();
   }, []);
@@ -191,7 +187,7 @@ console.log('User=========>',User);
                   />
                   <Image
                     source={require('../../../assets/icons/camera.png')}
-                    style={{width: '50%', height: '50%', resizeMode: 'contain'}}
+                    style={{height: 60, width: 60, resizeMode: 'contain'}}
                   />
 
                   <TextFormatted
@@ -215,7 +211,6 @@ console.log('User=========>',User);
                           marginTop: 20,
                           marginHorizontal: 10,
                           alignSelf: 'flex-end',
-                         
                         }}
                         onPress={() =>
                           navigation.navigate('viewSelfMedia', {
@@ -224,21 +219,18 @@ console.log('User=========>',User);
                             Signup_User: null,
                           })
                         }>
-
-                              <FastImage                            
-                                source={{
-                               uri: v?.image,
-                                  priority: FastImage.priority.normal,
-                                }}
-                                resizeMode={FastImage.resizeMode.contain}
-                                style={{
-                                  width: (dimension.width - 50) / 2,
-                                  height:202,                            
-                                  borderRadius: 20,
-                                  
-                                }}
-                              />
-                      
+                        <FastImage
+                          source={{
+                            uri: v?.image,
+                            priority: FastImage.priority.normal,
+                          }}
+                          resizeMode={FastImage.resizeMode.contain}
+                          style={{
+                            width: (dimension.width - 50) / 2,
+                            height: 202,
+                            borderRadius: 20,
+                          }}
+                        />
                       </TouchableOpacity>
                     )}
                   </View>
@@ -257,19 +249,18 @@ console.log('User=========>',User);
                             Signup_User: null,
                           })
                         }>
-                      
-                          <FastImage                            
-                                source={{
-                               uri: v?.image,
-                                  priority: FastImage.priority.normal,
-                                }}
-                                resizeMode={FastImage.resizeMode.cover}
-                                style={{
-                                  width: (dimension.width - 50) / 2,
-                                  height:202,                    
-                                  borderRadius: 20,
-                                }}
-                              />
+                        <FastImage
+                          source={{
+                            uri: v?.image,
+                            priority: FastImage.priority.normal,
+                          }}
+                          resizeMode={FastImage.resizeMode.cover}
+                          style={{
+                            width: (dimension.width - 50) / 2,
+                            height: 202,
+                            borderRadius: 20,
+                          }}
+                        />
                       </TouchableOpacity>
                     ),
                 )}
@@ -286,28 +277,27 @@ console.log('User=========>',User);
                             Signup_User: null,
                           })
                         }>
-                     
-                          <FastImage                            
-                                source={{
-                               uri: v?.image,
-                                  priority: FastImage.priority.normal,
-                                }}
-                                resizeMode={FastImage.resizeMode.cover}
-                                style={{
-                                  width: (dimension.width - 50) / 2,
-                                  height: 130,                          
-                                  borderRadius: 20,
-                                }}
-                              />
+                        <FastImage
+                          source={{
+                            uri: v?.image,
+                            priority: FastImage.priority.normal,
+                          }}
+                          resizeMode={FastImage.resizeMode.cover}
+                          style={{
+                            width: (dimension.width - 50) / 2,
+                            height: 130,
+                            borderRadius: 20,
+                          }}
+                        />
                       </TouchableOpacity>
                     ),
                 )}
               </View>
             </View>
           </View>
-           {User?.map(
+          {User?.map(
             (v, i) =>
-              (i >= 3 ) && (
+              i >= 3 && (
                 <TouchableOpacity
                   onPress={() =>
                     navigation.navigate('viewSelfMedia', {
@@ -315,27 +305,24 @@ console.log('User=========>',User);
                       User: User,
                     })
                   }
-                  style={{alignSelf: 'center', marginTop: 20}}>                  
-                  
-                  <FastImage                            
-                                source={{
-                               uri: v?.image,
-                                  priority: FastImage.priority.normal,
-                                }}
-                                resizeMode={FastImage.resizeMode.cover}
-                                style={{
-                                  width: dimension.width - 40,
-                                  height: 143,                      
-                                  borderRadius: 20,
-                                }}
-                              />
+                  style={{alignSelf: 'center', marginTop: 20}}>
+                  <FastImage
+                    source={{
+                      uri: v?.image,
+                      priority: FastImage.priority.normal,
+                    }}
+                    resizeMode={FastImage.resizeMode.cover}
+                    style={{
+                      width: dimension.width - 40,
+                      height: 143,
+                      borderRadius: 20,
+                    }}
+                  />
                 </TouchableOpacity>
               ),
           )}
 
-
-          
-          <View style={{marginBottom:70}} /> 
+          <View style={{marginBottom: 70}} />
         </View>
       )}
       <Option

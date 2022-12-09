@@ -1038,7 +1038,7 @@ const Bottom = ({refRBSheet, selectedDate, setSelectedDate}) => {
                 : theme.colors.primaryBlack,
             }}
             current={moment(selectedDate).format('yyyy-MM-DD')}
-            minDate={'1900-01-01'}
+            // minDate={'1900-01-01'}
             onDayPress={day => {
               setSelectedDate(
                 moment(

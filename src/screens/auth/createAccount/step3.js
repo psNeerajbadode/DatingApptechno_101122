@@ -80,8 +80,6 @@ const Step3 = () => {
   useEffect(() => {
     getPassion();
   }, []);
-
-  console.log('Staps3', Staps);
   return (
     <View
       style={{

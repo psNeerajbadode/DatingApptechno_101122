@@ -1,6 +1,5 @@
 import {
   Image,
-  ImageBackground,
   ScrollView,
   StyleSheet,
   TouchableOpacity,
@@ -16,7 +15,6 @@ import Button from '../../../components/Button';
 import {theme} from '../../../utils/Constants';
 import TextFormatted from '../../../components/TextFormatted';
 import * as ImagePicker from 'react-native-image-picker';
-import {createThumbnail} from 'react-native-create-thumbnail';
 import {useDispatch, useSelector} from 'react-redux';
 import axios from 'axios';
 import {ShowToast} from '../../../utils/Baseurl';
@@ -31,7 +29,6 @@ import {
   YellowlightImage,
 } from '../../../utils/CustomImages';
 import Netinforsheet from '../../../components/Netinforsheet';
-import Video from 'react-native-video';
 import VideoPlayer from 'react-native-video-player';
 
 const Step4 = () => {
@@ -115,7 +112,7 @@ const Step4 = () => {
           if (response.data.status == 1) {
             setLoading(false);
             dispatch({type: STAP, payload: response.data.result});
-            navigation.replace('step5');
+            // navigation.replace('step5');
           } else {
             setLoading(false);
           }
@@ -130,7 +127,7 @@ const Step4 = () => {
   };
 
   async function VideoApi() {
-    if (video[0]?.duration <= 15) {
+    if (video[0]?.duration <= 30) {
       try {
         setLoading(true);
         const body = new FormData();
@@ -170,24 +167,22 @@ const Step4 = () => {
       }
       return;
     } else {
-      ShowToast('Video length limit exceeded Please upload within 15 seconds');
+      setLoading(false);
+      ShowToast('Video length limit exceeded Please upload within 30 seconds');
     }
   }
 
   const getPlanData = () => {
-    setLoading(true);
     axios({
       method: 'get',
       url: `https://technorizen.com/Dating/webservice/get_plans`,
     }).then(response => {
-      setLoading(false);
       console.log('setPlandata=>', response.data.result[0]);
       setPlandata(response.data.result);
     });
   };
   useEffect(() => {
     getPlanData();
-    /* navigation.addListener('focus', () => generateThumbnail()); */
   }, []);
 
   return (
@@ -708,18 +703,18 @@ const Step4 = () => {
 
       <ButtonView>
         <Button
-          opacity={media?.length != 0 && media?.length <= 6 ? 1 : 0.5}
+          opacity={media?.length == 6 /* && media?.length <= 6 */ ? 1 : 0.5}
           buttonName={'Next'}
           marginTop={1}
           Loading={loading}
-          disabled={media?.length != 0 && media?.length <= 6 ? false : true}
-          color={'#fff'}
-          onPress={
-            () => {
-              ImageApi();
-              VideoApi();
-            } /* navigation.navigate('step5') */
+          disabled={
+            media?.length == 6 /* && media?.length <= 6 */ ? false : true
           }
+          color={'#fff'}
+          onPress={() => {
+            ImageApi();
+            VideoApi();
+          }}
         />
 
         <Option

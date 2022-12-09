@@ -16,16 +16,14 @@ import TextFormatted from '../../components/TextFormatted';
 import LinearGradient from 'react-native-linear-gradient';
 import {useNavigation} from '@react-navigation/native';
 import Notification from '../home/notification';
-import { useSelector} from 'react-redux';
+import {useSelector} from 'react-redux';
 import * as Animatable from 'react-native-animatable';
 import Netinforsheet from '../../components/Netinforsheet';
 import ActivityLoader from '../../components/ActivityLoader';
 import axios from 'axios';
-import { ShowToast } from '../../utils/Baseurl';
+import {ShowToast} from '../../utils/Baseurl';
 import Button from '../../components/Button';
 import Modal from 'react-native-modal';
-
-
 
 const ChatList = () => {
   const ThemeMode = useSelector(state => state.Theme);
@@ -34,68 +32,10 @@ const ChatList = () => {
   const refRBSheet = useRef();
   const [search, setSearch] = useState('');
   const [Chatuser, setChatuser] = useState([]);
-  const [Loading, setLoading] = useState(false); 
+  const [Loading, setLoading] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
   const [unblock_id, setUnblock_id] = useState();
- 
-
-  const recentData = [
-    {img: require('../../assets/images/unsplash_1.png')},
-    {img: require('../../assets/images/unsplash_2.png')},
-    {img: require('../../assets/images/unsplash_3.png')},
-    {img: require('../../assets/images/unsplash_4.png')},
-    {img: require('../../assets/images/unsplash_3.png')},
-    {img: require('../../assets/images/unsplash_2.png')},
-    {img: require('../../assets/images/unsplash_1.png')},
-  ];
-  const messageData = [
-    {
-      pic: require('../../assets/images/unsplash_1.png'),
-      name: 'Emma Hatchan, 22',
-      mess: 'Hi, how are you? 😄 are you...',
-      timing: '12:34',
-    },
-    {
-      pic: require('../../assets/images/unsplash_1.png'),
-      name: 'Emma Hatchan, 22',
-      mess: 'Hi, how are you? 😄 are you...',
-      timing: '12:34',
-    },
-    {
-      pic: require('../../assets/images/unsplash_1.png'),
-      name: 'Emma Hatchan, 22',
-      mess: 'Hi, how are you? 😄 are you...',
-      timing: '12:34',
-    },
-    {
-      pic: require('../../assets/images/unsplash_1.png'),
-      name: 'Emma Hatchan, 22',
-      mess: 'Hi, how are you? 😄 are you...',
-      timing: '12:34',
-    },
-  ];
-  const homeTab = [
-    {
-      icon: require('../../assets/home_icons/home.png'),
-      link: 'homePage',
-    },
-    {
-      icon: require('../../assets/home_icons/focus.png'),
-      // link: 'myProfile',
-    },
-    {
-      icon: require('../../assets/home_icons/love.png'),
-      // link: 'myProfile',
-    },
-    {
-      icon: require('../../assets/home_icons/messages.png'),
-      // link: 'message',
-    },
-    {
-      icon: require('../../assets/home_icons/profile.png'),
-      link: 'myProfile',
-    },
-  ];
+  const [notification, setNotification] = useState([]);
 
   const ChatUser = () => {
     setLoading(true);
@@ -105,7 +45,7 @@ const ChatList = () => {
     )
       .then(response => response.json())
       .then(response => {
-        if (response.status == 1) {         
+        if (response.status == 1) {
           setChatuser(response.result);
           setLoading(false);
         } else {
@@ -116,33 +56,32 @@ const ChatList = () => {
         console.log('ERROR GETTING DATA FROM API');
       });
   };
- 
-  const Unblock_user_Api = (U_id) => {  
+
+  const Unblock_user_Api = U_id => {
     setLoading(true);
     try {
       axios({
         url:
-            'https://technorizen.com/Dating/webservice/unblock_user?user_id=' + 
+          'https://technorizen.com/Dating/webservice/unblock_user?user_id=' +
           Staps.id +
           '&&' +
           'block_id=' +
           U_id,
-          method: 'POST',
-          headers: {
-            'content-type': 'multipart/form-data',
-          },
+        method: 'POST',
+        headers: {
+          'content-type': 'multipart/form-data',
+        },
       })
-        .then(function (response) {    
+        .then(function (response) {
           if (response.data.status == 1) {
-            console.log('Unblock API=>', (response.data));
+            console.log('Unblock API=>', response.data);
             setModalVisible(false);
             ChatUser();
-            ShowToast('Unblock user successfully'); 
-           
-          }else{
+            ShowToast('Unblock user successfully');
+          } else {
             ChatUser();
             setModalVisible(false);
-            ShowToast('User already Unblock'); 
+            ShowToast('User already Unblock');
             setLoading(false);
           }
         })
@@ -153,9 +92,19 @@ const ChatList = () => {
       console.log(error);
     }
   };
-
+  const Getnotification = () => {
+    axios({
+      method: 'post',
+      url:
+        'https://technorizen.com/Dating/webservice/get_notification?user_id=' +
+        Staps.id,
+    }).then(response => {
+      setNotification(response.data.result);
+    });
+  };
   useEffect(() => {
     ChatUser();
+    Getnotification();
   }, []);
 
   return (
@@ -220,6 +169,7 @@ const ChatList = () => {
                     top: 5,
                     right: 10,
                     zIndex: 1,
+                    opacity: notification == '' ? 0 : 1,
                   }}
                 />
                 <Image
@@ -243,7 +193,7 @@ const ChatList = () => {
         <View style={{flex: 1, justifyContent: 'center'}}>
           <ActivityLoader />
         </View>
-      ) : !Chatuser ? (
+      ) : Chatuser == '' ? (
         <View>
           <TextFormatted
             style={{
@@ -254,7 +204,7 @@ const ChatList = () => {
                 : theme.colors.primary,
               marginHorizontal: 20,
               marginTop: 30,
-              alignSelf:'center'
+              alignSelf: 'center',
             }}>
             There are no recent data
           </TextFormatted>
@@ -319,85 +269,88 @@ const ChatList = () => {
             </View>
           }
           renderItem={({item, index}) => (
-          <View style={{
-            marginHorizontal: 20,       
-            marginVertical: 10, 
-            opacity:item?.status_block == 'unblock' ? 1 : 0.5
-          }}> 
-            <TouchableOpacity
-              style={{           
-                flexDirection: 'row',
-                alignItems: 'center',              
-              }} 
-              // disabled={item?.status_block === 'block' ? true : false} 
-              onPress={() =>
-               { item?.status_block == 'unblock' ?   navigation.navigate('chats', {
-                  params: null,
-                  SenderId: item?.sender_id,
-                })
-               : setModalVisible(true),setUnblock_id(item?.sender_id)    }      }>
-              <View>
-                
-                <Image
-                  source={{uri: item?.image}}
-                  style={{
-                    height: 70,
-                    width: 70,
-                    resizeMode: 'cover',
-                    borderRadius: 50,
-                    position: 'relative',
-                    zIndex: 0,
-                  }}
-                />
-              </View>
-              <View style={{marginHorizontal: 10, flex: 1}}>
+            <View
+              style={{
+                marginHorizontal: 20,
+                marginVertical: 10,
+                opacity: item?.status_block == 'unblock' ? 1 : 0.5,
+              }}>
+              <TouchableOpacity
+                style={{
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                }}
+                // disabled={item?.status_block === 'block' ? true : false}
+                onPress={() => {
+                  item?.status_block == 'unblock'
+                    ? navigation.navigate('chats', {
+                        params: null,
+                        SenderId: item?.sender_id,
+                      })
+                    : setModalVisible(true),
+                    setUnblock_id(item?.sender_id);
+                }}>
+                <View>
+                  <Image
+                    source={{uri: item?.image}}
+                    style={{
+                      height: 70,
+                      width: 70,
+                      resizeMode: 'cover',
+                      borderRadius: 50,
+                      position: 'relative',
+                      zIndex: 0,
+                    }}
+                  />
+                </View>
+                <View style={{marginHorizontal: 10, flex: 1}}>
+                  <TextFormatted
+                    style={{
+                      fontSize: 16,
+                      fontWeight: '700',
+                      color: ThemeMode.selectedTheme
+                        ? theme.colors.primaryBlack
+                        : theme.colors.primary,
+                    }}>
+                    {item?.user_name + item?.surname}
+                  </TextFormatted>
+
+                  <TextFormatted
+                    numberOfLines={1}
+                    style={{
+                      fontSize: 14,
+                      fontWeight: '400',
+                      color: '#8490AE',
+                      marginTop: 5,
+                    }}>
+                    {item?.last_message}
+                  </TextFormatted>
+                </View>
                 <TextFormatted
                   style={{
-                    fontSize: 16,
-                    fontWeight: '700',
-                    color: ThemeMode.selectedTheme
-                      ? theme.colors.primaryBlack
-                      : theme.colors.primary,
+                    fontSize: 12,
+                    fontWeight: '300',
+                    color: '#8490AE',
+                    height: 40,
                   }}>
-                  {item?.user_name + item?.surname} 
+                  {item?.time_ago}
                 </TextFormatted>
-               
-        <TextFormatted
-                  numberOfLines={1}
+              </TouchableOpacity>
+              {item?.status_block != 'unblock' && (
+                <TextFormatted
                   style={{
-                    fontSize: 14,
+                    fontSize: 12,
                     fontWeight: '400',
                     color: '#8490AE',
-                    marginTop: 5,
+                    marginTop: -10,
+                    alignSelf: 'center',
+                    width: '70%',
+                    marginLeft: '20%',
                   }}>
-                  {item?.last_message}
+                  You blocked this user. Tap to unblock
                 </TextFormatted>
-           
-            
-              </View>
-              <TextFormatted
-                style={{
-                  fontSize: 12,
-                  fontWeight: '300',
-                  color: '#8490AE',
-                  height: 40,
-                }}>
-                {item?.time_ago }
-              </TextFormatted>
-            </TouchableOpacity>
-            {  item?.status_block != 'unblock' &&  <TextFormatted
-             style={{
-              fontSize: 12,
-              fontWeight: '400',
-              color: '#8490AE',
-              marginTop: -10,
-              alignSelf:'center',
-             width:'70%',
-             marginLeft:'20%'
-             }}>
-             You blocked this user. Tap to unblock
-           </TextFormatted> }
-           </View>
+              )}
+            </View>
           )}
         />
       )}
@@ -420,7 +373,9 @@ const ChatList = () => {
         }}>
         <Tab
           source={require('../../assets/home_icons/home.png')}
-          onPress={() => {navigation.navigate('homePage',{naviVideo:true});}}
+          onPress={() => {
+            navigation.navigate('homePage', {naviVideo: true});
+          }}
         />
         <Tab source={require('../../assets/home_icons/focus.png')} />
 
@@ -454,48 +409,65 @@ const ChatList = () => {
           position: 'absolute',
           bottom: 0,
         }}></View>
-        
-        <Modal  onBackdropPress={()=>setModalVisible(!modalVisible)}  isVisible={modalVisible} 
-      >       
-        <View style={{...styles.modelview,  backgroundColor: ThemeMode.selectedTheme
-      ? theme.colors.primary
-      : theme.colors.primaryBlack,}}   >
-        <View style={{flexDirection:'row',alignItems:'center',justifyContent:'space-between',}}>
-       
-        <TextFormatted  style={{
-                  fontSize: 15,
-                  fontWeight: '600',
-                  color: ThemeMode.selectedTheme
+
+      <Modal
+        onBackdropPress={() => setModalVisible(!modalVisible)}
+        isVisible={modalVisible}>
+        <View
+          style={{
+            ...styles.modelview,
+            backgroundColor: ThemeMode.selectedTheme
+              ? theme.colors.primary
+              : theme.colors.primaryBlack,
+          }}>
+          <View
+            style={{
+              flexDirection: 'row',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+            }}>
+            <TextFormatted
+              style={{
+                fontSize: 15,
+                fontWeight: '600',
+                color: ThemeMode.selectedTheme
                   ? theme.colors.primaryBlack
                   : theme.colors.primary,
-                  height: 40,width:'80%',
-                }}>Are you sure you want to unblock the user</TextFormatted>
-                 <TouchableOpacity
-        style={{
-         alignSelf:'flex-end',
-          width:'20%',
-          marginBottom: 15,        
-        }}
-        onPress={() => setModalVisible(false)}>
-        <Image
-          resizeMode="contain"
-          source={require('../../assets/icons/close_immg.png')}
-          style={{
-            alignSelf:'flex-end',
-            height: 15,
-            width: 15,
-            tintColor: ThemeMode.selectedTheme
-              ? theme.colors.primaryBlack
-              : theme.colors.primary,
-          }}
-        />
-      </TouchableOpacity>
-      </View>
-      <Button width={120} fontSize={16} buttonName={'Unblock'} onPress={()=> Unblock_user_Api(unblock_id)} />  
+                height: 40,
+                width: '80%',
+              }}>
+              Are you sure you want to unblock the user
+            </TextFormatted>
+            <TouchableOpacity
+              style={{
+                alignSelf: 'flex-end',
+                width: '20%',
+                marginBottom: 15,
+              }}
+              onPress={() => setModalVisible(false)}>
+              <Image
+                resizeMode="contain"
+                source={require('../../assets/icons/close_immg.png')}
+                style={{
+                  alignSelf: 'flex-end',
+                  height: 15,
+                  width: 15,
+                  tintColor: ThemeMode.selectedTheme
+                    ? theme.colors.primaryBlack
+                    : theme.colors.primary,
+                }}
+              />
+            </TouchableOpacity>
+          </View>
+          <Button
+            width={120}
+            fontSize={16}
+            buttonName={'Unblock'}
+            onPress={() => Unblock_user_Api(unblock_id)}
+          />
         </View>
-        
       </Modal>
-      <Notification refRBSheet={refRBSheet} />    
+      <Notification notification={notification} refRBSheet={refRBSheet} />
       <Netinforsheet />
     </View>
   );
@@ -569,9 +541,10 @@ const Tab = ({disabled, onPress, source, currentTab, style}) => {
 export default ChatList;
 
 const styles = StyleSheet.create({
-  modelview:{
-    paddingHorizontal:20,
-    paddingTop:20,paddingBottom:25,
+  modelview: {
+    paddingHorizontal: 20,
+    paddingTop: 20,
+    paddingBottom: 25,
     shadowColor: '#8490ae85',
     shadowOffset: {
       width: 0,
@@ -580,6 +553,11 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.22,
     shadowRadius: 2.22,
     elevation: 10,
-  alignSelf:'center',marginHorizontal:20,justifyContent:'flex-end',position:'absolute',top:'40%',borderRadius:10
-  }
+    alignSelf: 'center',
+    marginHorizontal: 20,
+    justifyContent: 'flex-end',
+    position: 'absolute',
+    top: '40%',
+    borderRadius: 10,
+  },
 });

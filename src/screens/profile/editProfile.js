@@ -51,25 +51,27 @@ import {useDispatch} from 'react-redux';
 import Netinforsheet from '../../components/Netinforsheet';
 import {Slider} from '@miblanchard/react-native-slider';
 import ViewShot from 'react-native-view-shot';
+import {useRoute} from '@react-navigation/native';
 const EditProfile = ({navigation}) => {
   const ThemeMode = useSelector(state => state.Theme);
   const Staps = useSelector(state => state.Stap);
+  const {params} = useRoute();
   const dispatch = useDispatch();
   const dimension = useWindowDimensions();
-  const [name, setName] = useState(Staps.user_name);
-  const [surname, setSurname] = useState(Staps.surname);
-  const [gender, setGender] = useState(Staps.gender);
-  const [aboutMe, setAboutMe] = useState(Staps.about);
-  const [showMe, setShowMe] = useState(Staps.show_me);
-  const [selectedDate, setSelectedDate] = useState(Staps.dob);
-  const [Sexual, setSexual] = useState(Staps.sexual_orientation);
-  const [lookingFor, setLookingFor] = useState(Staps.looking_for);
-  const [education, setEducation] = useState(Staps.education);
-  const [ethnicity, setEthnicity] = useState(Staps.ethnicity);
-  const [zodiac, setZodiac] = useState(Staps.zodiac);
-  const [toggle1, setToggle1] = useState(Staps.kids);
-  const [toggle2, setToggle2] = useState(Staps.drink);
-  const [toggle3, setToggle3] = useState(Staps.smoke);
+  const [name, setName] = useState(params?.User.user_name);
+  const [surname, setSurname] = useState(params?.User.surname);
+  const [gender, setGender] = useState(params?.User.gender);
+  const [aboutMe, setAboutMe] = useState(params?.User.about);
+  const [showMe, setShowMe] = useState(params?.User.show_me);
+  const [selectedDate, setSelectedDate] = useState(params?.User.dob);
+  const [Sexual, setSexual] = useState(params?.User.sexual_orientation);
+  const [lookingFor, setLookingFor] = useState(params?.User.looking_for);
+  const [education, setEducation] = useState(params?.User.education);
+  const [ethnicity, setEthnicity] = useState(params?.User.ethnicity);
+  const [zodiac, setZodiac] = useState(params?.User.zodiac);
+  const [toggle1, setToggle1] = useState(params?.User.kids);
+  const [toggle2, setToggle2] = useState(params?.User.drink);
+  const [toggle3, setToggle3] = useState(params?.User.smoke);
   const [pic, setPic] = useState();
   const [Loading, setLoading] = useState(false);
   const refRBSheet = useRef();
@@ -127,20 +129,20 @@ const EditProfile = ({navigation}) => {
       body.append('user_id', Staps.id);
       body.append('user_name', name);
       body.append('surname', surname);
-      /*  pic != null &&
-        body.append('image', {
-          name: pic.fileName,
-          type: pic.type,
-          uri: pic?.uri,
-        }); */
-      body.append('image', {
-        name: filerimg?.substring(
-          filerimg?.lastIndexOf('/') + 1,
-          filerimg?.length,
-        ),
-        type: pic.type,
-        uri: filerimg,
-      });
+      filerimg == null
+        ? body.append('image', {
+            name: pic?.fileName,
+            type: pic?.type,
+            uri: pic?.uri,
+          })
+        : body.append('image', {
+            name: filerimg?.substring(
+              filerimg?.lastIndexOf('/') + 1,
+              filerimg?.length,
+            ),
+            type: pic.type,
+            uri: filerimg,
+          });
       body.append('dob', selectedDate);
       body.append('looking_for', lookingFor);
       body.append('education', education);
@@ -165,10 +167,10 @@ const EditProfile = ({navigation}) => {
         },
       );
       const rslt = await res.json();
-      console.log('Update Data =>', rslt);
+      //console.log('bodybody =>', body);
       if (rslt.status == 1) {
         setLoading(false);
-        dispatch({type: STAP, payload: {user: rslt.result}});
+        // dispatch({type: STAP, payload: {user: rslt.result}});
         navigation.navigate('myProfile');
         console.log(rslt.result);
       } else {
@@ -256,7 +258,7 @@ const EditProfile = ({navigation}) => {
               /* filerimg == '' ? {uri: uri.uri} : {uri: filerimg} */
               filerimg == ''
                 ? /* require('../../assets/images/image.png') */
-                  {uri: Staps.image}
+                  {uri: params?.User.image}
                 : {uri: filerimg}
             }
             style={{

@@ -37,10 +37,10 @@ const Login = () => {
   const dispatch = useDispatch();
   const ThemeMode = useSelector(state => state.Theme);
   const Staps = useSelector(state => state.Stap);
-  const [email, setEmail] = useState('test@gmail.com');
-  const [password, setPassword] = useState('Tt123456');
-  // const [email, setEmail] = useState();
-  // const [password, setPassword] = useState();
+  // const [email, setEmail] = useState('test@gmail.com');
+  // const [password, setPassword] = useState('Tt123456');
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
   const [show, setShow] = useState(false);
   const [loading, setLoading] = useState(false);
 
@@ -217,7 +217,7 @@ const Login = () => {
   }, []);
 
   return (
-    <View
+    <ScrollView
       style={{
         flex: 1,
         backgroundColor: ThemeMode.selectedTheme
@@ -334,7 +334,7 @@ const Login = () => {
             color: ThemeMode.selectedTheme
               ? theme.colors.primaryBlack
               : theme.colors.primary,
-            marginTop: 15,
+            marginTop: 20,
             textAlign: 'center',
           }}>
           or sign in with
@@ -436,7 +436,7 @@ const Login = () => {
         </View>
       </ScrollView>
       <Netinforsheet />
-    </View>
+    </ScrollView>
   );
 };
 export default Login;

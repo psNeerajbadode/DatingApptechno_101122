@@ -20,6 +20,7 @@ const Information = () => {
   const Staps = useSelector(state => state.Stap);
   const [User, setUser] = useState();
   const [load, setLoad] = useState();
+  console.log(User?.category);
 
   const getUserData = () => {
     setLoad(true);

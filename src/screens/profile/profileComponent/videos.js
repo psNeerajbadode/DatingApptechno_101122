@@ -157,7 +157,14 @@ const Videos = () => {
         </View>
       ) : (
         <View>
-          <View style={{flexDirection: 'row'}}>
+          <View
+            style={{
+              flexDirection: 'row',
+              marginTop: 20,
+              backgroundColor: ThemeMode.selectedTheme
+                ? theme.colors.primary
+                : theme.colors.primaryBlack,
+            }}>
             <View style={{width: dimension.width / 2}}>
               <TouchableOpacity
                 onPress={() => {

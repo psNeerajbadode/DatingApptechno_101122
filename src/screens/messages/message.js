@@ -14,7 +14,7 @@ import Header from '../../components/Header';
 import SearchBar from '../../components/SearchBar';
 import TextFormatted from '../../components/TextFormatted';
 import Notification from '../home/notification';
-import { useSelector} from 'react-redux';
+import {useSelector} from 'react-redux';
 import {
   BluelightImage,
   GreenlightImage,
@@ -25,21 +25,21 @@ import {
 import LinearGradient from 'react-native-linear-gradient';
 import MoreOptions from '../home/moreOptions';
 import Netinforsheet from '../../components/Netinforsheet';
-import { useNavigation } from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 import ActivityLoader from '../../components/ActivityLoader';
-import { ShowToast } from '../../utils/Baseurl';
+import {ShowToast} from '../../utils/Baseurl';
 import axios from 'axios';
-
 
 const Message = () => {
   const ThemeMode = useSelector(state => state.Theme);
   const Staps = useSelector(state => state.Stap);
-const navigation =useNavigation();
+  const navigation = useNavigation();
   const [search, setSearch] = useState('');
   const [matchuser, setMatchuser] = useState([]);
   const dimension = useWindowDimensions();
   const [Loading, setLoading] = useState(false);
   const [other_user_id, setother_user_id] = useState();
+  const [notification, setNotification] = useState([]);
 
   const refRBSheet = useRef();
   const refRBSheet_N = useRef();
@@ -55,36 +55,6 @@ const navigation =useNavigation();
     // console.log(age_now);
     return age_now;
   };
-  const homeTab = [
-    {
-      icon: require('../../assets/home_icons/home.png'),
-      link: 'homePage',
-    },
-    {
-      icon: require('../../assets/home_icons/focus.png'),
-    },
-    {
-      icon: require('../../assets/home_icons/love.png'),
-    },
-    {
-      icon: require('../../assets/home_icons/messages.png'),
-    },
-    {
-      icon: require('../../assets/home_icons/profile.png'),
-      link: 'myProfile',
-    },
-  ];
-  const matchesData = [
-    {img: require('../../assets/images/unsplash_1.png'), name: 'Emma Hatchan'},
-    {img: require('../../assets/images/unsplash_1.png'), name: 'Sarah Parker'},
-    {img: require('../../assets/images/unsplash_1.png'), name: 'Emma Hatchan'},
-    {
-      img: require('../../assets/images/unsplash_1.png'),
-      name: 'Charlotte Brown',
-    },
-    {img: require('../../assets/images/unsplash_1.png'), name: 'Emma Hatchan'},
-    {img: require('../../assets/images/unsplash_1.png'), name: 'Emma Hatchan'},
-  ];
 
   const MatchUser = () => {
     setLoading(true);
@@ -104,7 +74,7 @@ const navigation =useNavigation();
       .catch(() => {
         console.log('ERROR GETTING DATA FROM API');
       });
-  }
+  };
   const block_user_Api = () => {
     setLoading(true);
     try {
@@ -119,10 +89,10 @@ const navigation =useNavigation();
         method: 'POST',
       })
         .then(function (response) {
-         // console.log('Block API=>', JSON.stringify(response.data.message));
-          if (response.data.status == 1) {          
-            refRBSheet.current.close();           
-            ShowToast(response.data.message);           
+          // console.log('Block API=>', JSON.stringify(response.data.message));
+          if (response.data.status == 1) {
+            refRBSheet.current.close();
+            ShowToast(response.data.message);
             setLoading(false);
           }
         })
@@ -133,10 +103,21 @@ const navigation =useNavigation();
       console.log(error);
     }
   };
+  const Getnotification = () => {
+    axios({
+      method: 'post',
+      url:
+        'https://technorizen.com/Dating/webservice/get_notification?user_id=' +
+        Staps.id,
+    }).then(response => {
+      setNotification(response.data.result);
+    });
+  };
 
-useEffect(()=>{
-  MatchUser();
-},[])
+  useEffect(() => {
+    MatchUser();
+    Getnotification();
+  }, []);
   return (
     <View
       style={{
@@ -199,6 +180,7 @@ useEffect(()=>{
                     top: 5,
                     right: 10,
                     zIndex: 1,
+                    opacity: notification == '' ? 0 : 1,
                   }}
                 />
                 <Image
@@ -234,159 +216,169 @@ useEffect(()=>{
                 : theme.colors.primary,
               marginHorizontal: 20,
               marginTop: 30,
-              alignSelf:'center'
+              alignSelf: 'center',
             }}>
             There are no matche data
           </TextFormatted>
         </View>
       ) : (
-      <FlatList
-        contentContainerStyle={{paddingBottom: 75, paddingTop: 10}}
-        data={matchuser.filter(item => {
-          return item.user_name.toLowerCase().includes(search.toLowerCase());
-        })}
-        renderItem={({item}) => (
-          <TouchableOpacity
-            style={{
-              marginVertical: 20,
-              marginHorizontal: 35,
-              flexDirection: 'row',
-              justifyContent: 'flex-end',
-            }}>
-            <Image
+        <FlatList
+          contentContainerStyle={{paddingBottom: 75, paddingTop: 10}}
+          data={matchuser.filter(item => {
+            return item.user_name.toLowerCase().includes(search.toLowerCase());
+          })}
+          renderItem={({item}) => (
+            <TouchableOpacity
               style={{
-                width: dimension.width / 4,
-                height: 118,
-                position: 'absolute',
-                zIndex: 1,
-                borderRadius: 20,
-                bottom: 25,
-                left: -15,
-              }}
-              source={{uri: item?.image}}
-              resizeMode="cover"
-            />
-            <ImageBackground
-              source={
-                ThemeMode.selectedTheme
-                  ? require('../../assets/images/card_light.png')
-                  : require('../../assets/images/card_darkk.png')
-              }
-              resizeMode="contain"
-              imageStyle={{borderRadius: 20}}
-              style={{
-                width: dimension.width / 1.4,
-                height: 116,
-                zIndex: 0,
+                marginVertical: 20,
+                marginHorizontal: 35,
                 flexDirection: 'row',
-                justifyContent: 'space-between',
+                justifyContent: 'flex-end',
               }}>
-              <View style={{width: 25}}></View>
-              <View
+              <Image
                 style={{
-                  justifyContent: 'space-evenly',
-                  alignItems: 'flex-start',
-                }}>
-                <View>
-                  <TextFormatted
-                    style={{
-                      fontSize: 16,
-                      fontWeight: '700',
-                      color: ThemeMode.selectedTheme
-                        ? theme.colors.primaryBlack
-                        : theme.colors.primary,
-                    }}>
-                    {item?.user_name + ' ' + item?.surname}
-                  </TextFormatted>
-                  <TextFormatted
-                    style={{
-                      fontSize: 12,
-                      fontWeight: '400',
-                      color: ThemeMode.selectedTheme
-                        ? theme.colors.darkGrey
-                        : theme.colors.primary,
-                    }}>
-                    {calculate_age(item?.dob)} years old
-                  </TextFormatted>
-                </View>
-
-                <View style={{flexDirection: 'row'}}>
-                  <TouchableOpacity
-                    onPress={() => navigation.navigate('userProfile',item?.id)}>
-                    <Image
-                      source={
-                        ThemeMode.selectedTheme
-                          ? require('../../assets/icons/m_user_light.png')
-                          : require('../../assets/icons/match_u_dark.png')
-                      }
-                      style={{
-                        height: 40,
-                        width: 40,
-                        resizeMode: 'contain',
-                        borderRadius: 15,
-                      }}
-                    />
-                  </TouchableOpacity>
-                  <TouchableOpacity
-                    style={{
-                      width: 40,
-                      height: 40,
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                    }}
-                    onPress={() =>
-                      navigation.navigate('chats', { params: null,
-                      SenderId: item?.id})
-                    }>
-                    <Image
-                      source={
-                        ThemeMode.themecolr == 'Red'
-                          ? RedlightImage.chat_Red
-                          : ThemeMode.themecolr == 'Blue'
-                          ? BluelightImage.chat_blue
-                          : ThemeMode.themecolr == 'Green'
-                          ? GreenlightImage.chat_green
-                          : ThemeMode.themecolr == 'Purple'
-                          ? PurplelightImage.chat_purple
-                          : ThemeMode.themecolr == 'Yellow'
-                          ? YellowlightImage.chat_yellow
-                          : RedlightImage.chat_Red
-                      }
-                      style={{
-                        height: 40,
-                        width: 40,
-                        resizeMode: 'contain',
-                        marginLeft: 9,
-                      }}
-                    />
-                  </TouchableOpacity>
-                </View>
-              </View>
-
-              <TouchableOpacity
-                style={{
-                  height: 20,
-                  width: 20,
-                  alignSelf: 'flex-start',
-                  alignItems: 'center',
-                  marginRight: 10,
-                  marginTop: 20,
+                  width: dimension.width / 4,
+                  height: 118,
+                  position: 'absolute',
+                  zIndex: 1,
+                  borderRadius: 20,
+                  bottom: 25,
+                  left: -15,
                 }}
-                onPress={() => {refRBSheet.current.open();setother_user_id(item?.id)}}>
-                <Image
-                  source={require('../../assets/icons/m_more.png')}
+                source={{uri: item?.image}}
+                resizeMode="cover"
+              />
+              <ImageBackground
+                source={
+                  ThemeMode.selectedTheme
+                    ? require('../../assets/images/card_light.png')
+                    : require('../../assets/images/card_darkk.png')
+                }
+                resizeMode="contain"
+                imageStyle={{borderRadius: 20}}
+                style={{
+                  width: dimension.width / 1.4,
+                  height: 116,
+                  zIndex: 0,
+                  flexDirection: 'row',
+                  justifyContent: 'space-between',
+                }}>
+                <View style={{width: 25}}></View>
+                <View
                   style={{
-                    height: 12,
-                    width: 3,
-                    resizeMode: 'contain',
-                    tintColor: ThemeMode.selectedTheme ? '#8490AE' : '#FFFFFF',
+                    justifyContent: 'space-evenly',
+                    alignItems: 'flex-start',
+                  }}>
+                  <View>
+                    <TextFormatted
+                      style={{
+                        fontSize: 16,
+                        fontWeight: '700',
+                        color: ThemeMode.selectedTheme
+                          ? theme.colors.primaryBlack
+                          : theme.colors.primary,
+                      }}>
+                      {item?.user_name + ' ' + item?.surname}
+                    </TextFormatted>
+                    <TextFormatted
+                      style={{
+                        fontSize: 12,
+                        fontWeight: '400',
+                        color: ThemeMode.selectedTheme
+                          ? theme.colors.darkGrey
+                          : theme.colors.primary,
+                      }}>
+                      {calculate_age(item?.dob)} years old
+                    </TextFormatted>
+                  </View>
+
+                  <View style={{flexDirection: 'row'}}>
+                    <TouchableOpacity
+                      onPress={() =>
+                        navigation.navigate('userProfile', item?.id)
+                      }>
+                      <Image
+                        source={
+                          ThemeMode.selectedTheme
+                            ? require('../../assets/icons/m_user_light.png')
+                            : require('../../assets/icons/match_u_dark.png')
+                        }
+                        style={{
+                          height: 40,
+                          width: 40,
+                          resizeMode: 'contain',
+                          borderRadius: 15,
+                        }}
+                      />
+                    </TouchableOpacity>
+                    <TouchableOpacity
+                      style={{
+                        width: 40,
+                        height: 40,
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                      }}
+                      onPress={() =>
+                        navigation.navigate('chats', {
+                          params: null,
+                          SenderId: item?.id,
+                        })
+                      }>
+                      <Image
+                        source={
+                          ThemeMode.themecolr == 'Red'
+                            ? RedlightImage.chat_Red
+                            : ThemeMode.themecolr == 'Blue'
+                            ? BluelightImage.chat_blue
+                            : ThemeMode.themecolr == 'Green'
+                            ? GreenlightImage.chat_green
+                            : ThemeMode.themecolr == 'Purple'
+                            ? PurplelightImage.chat_purple
+                            : ThemeMode.themecolr == 'Yellow'
+                            ? YellowlightImage.chat_yellow
+                            : RedlightImage.chat_Red
+                        }
+                        style={{
+                          height: 40,
+                          width: 40,
+                          resizeMode: 'contain',
+                          marginLeft: 9,
+                        }}
+                      />
+                    </TouchableOpacity>
+                  </View>
+                </View>
+
+                <TouchableOpacity
+                  style={{
+                    height: 20,
+                    width: 20,
+                    alignSelf: 'flex-start',
+                    alignItems: 'center',
+                    marginRight: 10,
+                    marginTop: 20,
                   }}
-                />
-              </TouchableOpacity>
-            </ImageBackground>
-          </TouchableOpacity>
-        )}
-      />)}
+                  onPress={() => {
+                    refRBSheet.current.open();
+                    setother_user_id(item?.id);
+                  }}>
+                  <Image
+                    source={require('../../assets/icons/m_more.png')}
+                    style={{
+                      height: 12,
+                      width: 3,
+                      resizeMode: 'contain',
+                      tintColor: ThemeMode.selectedTheme
+                        ? '#8490AE'
+                        : '#FFFFFF',
+                    }}
+                  />
+                </TouchableOpacity>
+              </ImageBackground>
+            </TouchableOpacity>
+          )}
+        />
+      )}
 
       <ImageBackground
         resizeMode="contain"
@@ -404,7 +396,9 @@ useEffect(()=>{
         }}>
         <Tab
           source={require('../../assets/home_icons/home.png')}
-          onPress={() => {navigation.navigate('homePage',{naviVideo:true});}}
+          onPress={() => {
+            navigation.navigate('homePage', {naviVideo: true});
+          }}
         />
         <Tab source={require('../../assets/home_icons/focus.png')} />
 
@@ -439,7 +433,7 @@ useEffect(()=>{
           bottom: 0,
         }}></View>
 
-      <Notification refRBSheet={refRBSheet_N} />    
+      <Notification notification={notification} refRBSheet={refRBSheet_N} />
       <MoreOptions
         Block_onPress={() => block_user_Api()}
         refRBSheet2={refRBSheetB}

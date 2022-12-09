@@ -46,7 +46,6 @@ const PassCode = () => {
   function TouchID_support() {
     TouchID.isSupported()
       .then(biometryType => {
-        // Success code
         if (biometryType === 'FaceID') {
           ShowToast("Your device doesn't have a fingerprint");
           console.log('FaceID is supported.');
@@ -78,7 +77,6 @@ const PassCode = () => {
       });
       const rslt = await res.json();
       if (rslt.status == 1) {
-        // console.log('status', status);
         setappStatus(status);
       }
 
