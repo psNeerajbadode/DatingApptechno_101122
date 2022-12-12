@@ -122,7 +122,7 @@ const Settings = () => {
         </View>
       ) : (
         <View>
-          <ScrollView>
+          <ScrollView style={{height: dimension.width * 1.5}}>
             <TextFormatted
               style={{
                 fontSize: 16,

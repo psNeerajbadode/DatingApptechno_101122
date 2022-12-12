@@ -21,12 +21,16 @@ import axios from 'axios';
 import Netinforsheet from '../../components/Netinforsheet';
 import ActivityLoader from '../../components/ActivityLoader';
 import {ShowToast} from '../../utils/Baseurl';
+import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
+import BottomSheet from '../../components/bottomSheet';
+import ButtonView from '../../components/buttonView';
+import Button from '../../components/Button';
 
 const Chats = () => {
   const navigation = useNavigation();
   const ThemeMode = useSelector(state => state.Theme);
   const Staps = useSelector(state => state.Stap);
-  const [multipleFile, setMultipleFile] = useState([]);
+  // const [multipleFile, setMultipleFile] = useState([]);
   const refRBSheet = useRef();
   const refRBSheetB = useRef();
   const refRBSheet2 = useRef();
@@ -36,36 +40,62 @@ const Chats = () => {
   const [getmsg, setGetmsg] = useState([]);
   const [Loading, setLoading] = useState(true);
   const dimension = useWindowDimensions();
-
-  const selectMultipleFile = async () => {
-    try {
-      const results = await DocumentPicker.pickMultiple({
-        type: [DocumentPicker.types.images],
-      });
-      for (const res of results) {
-        console.log('res : ' + JSON.stringify(res));
-        console.log('URI : ' + res.uri);
-        console.log('Type : ' + res.type);
-        console.log('File Name : ' + res.name);
-        console.log('File Size : ' + res.size);
+  const refRBSheet1 = useRef();
+  const [chatImg, setChatImg] = useState([]);
+  const Imgsheet = useRef();
+  const pickImage = () => {
+    launchImageLibrary({quality: 0.9}, response => {
+      if (!response.didCancel) {
+        setChatImg(response.assets);
+        Imgsheet.current.open();
       }
-      setMultipleFile(results);
-    } catch (err) {
-      if (DocumentPicker.isCancel(err)) {
-        // alert('Canceled from multiple doc picker');
-      } else {
-        // alert('Unknown Error: ' + JSON.stringify(err));
-        throw err;
-      }
-    }
+    });
   };
-
+  const picCamera = () => {
+    launchCamera({}, response => {
+      if (!response.didCancel) {
+        setChatImg(response.assets);
+        Imgsheet.current.open();
+      }
+    });
+  };
+  // const selectMultipleFile = async () => {
+  //   try {
+  //     const results = await DocumentPicker.pickMultiple({
+  //       type: [DocumentPicker.types.images],
+  //     });
+  //     for (const res of results) {
+  //       console.log('res : ' + JSON.stringify(res));
+  //       console.log('URI : ' + res.uri);
+  //       console.log('Type : ' + res.type);
+  //       console.log('File Name : ' + res.name);
+  //       console.log('File Size : ' + res.size);
+  //     }
+  //     setMultipleFile(results);
+  //   } catch (err) {
+  //     if (DocumentPicker.isCancel(err)) {
+  //       // alert('Canceled from multiple doc picker');
+  //     } else {
+  //       // alert('Unknown Error: ' + JSON.stringify(err));
+  //       throw err;
+  //     }
+  //   }
+  // };
   const InsertChat = () => {
     try {
       const body = new FormData();
       body.append('receiver_id', params.SenderId);
       body.append('sender_id', Staps.id);
       body.append('chat_message', mess);
+      {
+        chatImg.forEach(val =>
+          body.append('chat_image', {
+            name: val?.fileName,
+            type: val?.type,
+            uri: val?.uri,
+          }),
+        );
+      }
       axios({
         url: 'https://technorizen.com/Dating/webservice/insert_chat',
         method: 'POST',
@@ -376,6 +406,24 @@ const Chats = () => {
                         }}>
                         {item.chat_message}
                       </TextFormatted>
+                      <Image
+                        resizeMode="contain"
+                        source={{uri: item?.chat_image}}
+                        style={{
+                          height: dimension.width / 2,
+                          width: (dimension.width / 2) * 1,
+                          alignSelf:
+                            item.receiver_id == Staps.id
+                              ? 'flex-start'
+                              : 'flex-end',
+                          display:
+                            item?.chat_image ==
+                            'https://technorizen.com/Dating/uploads/images/'
+                              ? 'none'
+                              : 'flex',
+                          borderRadius: 10,
+                        }}
+                      />
                       <TextFormatted
                         style={{
                           fontSize: 12,
@@ -447,8 +495,7 @@ const Chats = () => {
               width: 22,
               height: 22,
             }}
-            /*  onPress={selectMultipleFile} */
-          >
+            onPress={() => refRBSheet1.current.open()}>
             <Image
               style={{
                 width: 22,
@@ -503,6 +550,17 @@ const Chats = () => {
           </LinearGradient>
         </TouchableOpacity>
       </View>
+      <Option
+        refRBSheet={refRBSheet1}
+        onPress={() => {
+          picCamera();
+          refRBSheet1.current.close();
+        }}
+        onPress1={() => {
+          pickImage();
+          refRBSheet1.current.close();
+        }}
+      />
       <MoreOptions
         Block_onPress={() => block_user_Api()}
         refRBSheet2={refRBSheetB}
@@ -512,10 +570,127 @@ const Chats = () => {
         refRBSheet={refRBSheet}
       />
       <Netinforsheet />
+      <BottomSheet
+        // closeOnPressBack={false}
+        // closeOnPressMask={false}
+        // closeOnDragDown={false}
+        refRBSheet={Imgsheet}
+        height={400}>
+        <View
+          style={{
+            marginHorizontal: 20,
+            marginVertical: 25,
+            alignItems: 'center',
+          }}>
+          <Image
+            resizeMode="cover"
+            source={{uri: chatImg[0]?.uri}}
+            style={{
+              height: 240,
+              width: 240,
+              alignSelf: 'center',
+              borderRadius: 40,
+            }}
+          />
+          <View
+            style={{
+              position: 'absolute',
+              top: '100%',
+              width: '100%',
+            }}>
+            <ButtonView height={100}>
+              <TextFormatted
+                style={{
+                  fontSize: 18,
+                  fontWeight: '700',
+                  color: '#8490AE',
+                  width: dimension.width / 2 - 20,
+                  textAlign: 'center',
+                }}
+                onPress={() => {
+                  Imgsheet.current.close();
+                }}>
+                Cancel
+              </TextFormatted>
+              <Button
+                buttonName={'Send'}
+                color={theme.colors.primary}
+                marginTop={1}
+                marginBottom={1}
+                width={dimension.width / 2 - 20}
+                onPress={() => {
+                  InsertChat();
+                  Imgsheet.current.close();
+                }}
+              />
+            </ButtonView>
+          </View>
+        </View>
+      </BottomSheet>
     </View>
   );
 };
 
+const Option = ({refRBSheet, onPress, onPress1}) => {
+  const ThemeMode = useSelector(state => state.Theme);
+  return (
+    <BottomSheet refRBSheet={refRBSheet} height={200}>
+      <TextFormatted
+        style={{
+          fontSize: 18,
+          fontWeight: '500',
+          color: ThemeMode.selectedTheme
+            ? theme.colors.primaryBlack
+            : theme.colors.primary,
+          marginHorizontal: 20,
+          marginTop: 10,
+        }}>
+        Select an Option
+      </TextFormatted>
+      <View
+        style={{
+          flexDirection: 'row',
+          justifyContent: 'space-evenly',
+          marginTop: 40,
+        }}>
+        <TouchableOpacity onPress={onPress}>
+          <Image
+            source={require('../../assets/icons/camera.png')}
+            style={{height: 50, width: 50, resizeMode: 'contain'}}
+          />
+          <TextFormatted
+            style={{
+              fontSize: 14,
+              fontWeight: '600',
+              color: ThemeMode.selectedTheme
+                ? theme.colors.primaryBlack
+                : theme.colors.primary,
+              marginTop: 5,
+            }}>
+            Camera
+          </TextFormatted>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={onPress1}>
+          <Image
+            source={require('../../assets/images/gallery.png')}
+            style={{height: 50, width: 50, resizeMode: 'contain'}}
+          />
+          <TextFormatted
+            style={{
+              fontSize: 14,
+              fontWeight: '600',
+              color: ThemeMode.selectedTheme
+                ? theme.colors.primaryBlack
+                : theme.colors.primary,
+              marginTop: 5,
+            }}>
+            Gallery
+          </TextFormatted>
+        </TouchableOpacity>
+      </View>
+    </BottomSheet>
+  );
+};
 export default Chats;
 
 const styles = StyleSheet.create({});

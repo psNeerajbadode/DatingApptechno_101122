@@ -59,18 +59,30 @@ const Notification = ({refRBSheet, notification}) => {
       </TouchableOpacity>
 
       {notification == '' ? (
-        <TextFormatted
+        <View
           style={{
-            fontSize: 16,
-            fontWeight: '700',
-            color: ThemeMode.selectedTheme
-              ? theme.colors.primaryBlack
-              : theme.colors.primary,
-            marginTop: 20,
-            textAlign: 'center',
+            alignItems: 'center',
+            flex: 1,
+            justifyContent: 'center',
           }}>
-          There are no notification
-        </TextFormatted>
+          <Image
+            style={{width: 100, height: 100}}
+            resizeMode="contain"
+            source={require('../../assets/icons/No_informations.png')}
+          />
+          <TextFormatted
+            style={{
+              fontSize: 16,
+              fontWeight: '700',
+              color: ThemeMode.selectedTheme
+                ? theme.colors.primaryBlack
+                : theme.colors.primary,
+              marginTop: 20,
+              textAlign: 'center',
+            }}>
+            There are no notification
+          </TextFormatted>
+        </View>
       ) : (
         <FlatList
           data={notification}

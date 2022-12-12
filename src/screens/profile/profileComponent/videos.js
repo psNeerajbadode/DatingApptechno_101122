@@ -40,9 +40,7 @@ const Videos = () => {
   const [refresh, setRefresh] = useState(false);
   const refRBSheet = useRef();
   var RNFS = require('react-native-fs');
-  const videoData = [
-    {vid: require('../../../assets/images/big_buck_bunny_720p_1mb.mp4')},
-  ];
+
   const pickVideo = () => {
     launchImageLibrary(
       {mediaType: 'video', videoQuality: 'medium'},
@@ -80,12 +78,12 @@ const Videos = () => {
     });
   };
 
-  function generateThumbnail() {
+  function generateThumbnail(uri) {
     try {
       const response = createThumbnail({
-        url: 'https://technorizen.com/Dating/uploads/images/Video_20221029054356.video:1579558',
+        url: uri,
       });
-      console.log('response');
+      console.log('response', response);
       setThumb(response.path);
     } catch (err) {
       console.error(err);
@@ -146,7 +144,6 @@ const Videos = () => {
 
   useEffect(() => {
     getUserData();
-    generateThumbnail();
   }, []);
 
   return (
@@ -267,6 +264,7 @@ const Videos = () => {
                         overflow: 'hidden',
                         height: 202,
                       }}
+                      onLoadStart={() => generateThumbnail(it?.video)}
                       thumbnail={{uri: it?.video}}
                       pause={true}
                       video={{uri: it?.video}}

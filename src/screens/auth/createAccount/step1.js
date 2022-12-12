@@ -1028,14 +1028,16 @@ const Bottom = ({refRBSheet, selectedDate, setSelectedDate}) => {
         {refresh && (
           <Calendar
             theme={{
-              // textDayStyle: {color: '#000'},
               dayTextColor: ThemeMode.selectedTheme
                 ? theme.colors.primaryBlack
                 : theme.colors.primary,
-              textDisabledColor: '#8490AE',
               calendarBackground: ThemeMode.selectedTheme
                 ? theme.colors.primary
                 : theme.colors.primaryBlack,
+              dayTextColor: ThemeMode.selectedTheme
+                ? theme.colors.primaryBlack
+                : theme.colors.primary,
+              textDisabledColor: theme.colors.darkGrey,
             }}
             current={moment(selectedDate).format('yyyy-MM-DD')}
             // minDate={'1900-01-01'}

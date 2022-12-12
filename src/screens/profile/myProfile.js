@@ -52,7 +52,7 @@ const MyProfile = () => {
       setLoading(false);
     });
   };
-  const calculate_age = dob1 => {
+  const calculate_age = () => {
     var today = new Date();
     var birthDate = new Date(User?.dob);
     var age_now = today.getFullYear() - birthDate.getFullYear();
@@ -60,13 +60,11 @@ const MyProfile = () => {
     if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
       age_now--;
     }
-    // console.log(age_now);
     return age_now;
   };
   useEffect(() => {
     navigation.addListener('focus', () => getUser());
   }, []);
-  // console.log('User?.matches_count',!User?.matches_count);
   return (
     <View
       style={{
@@ -150,24 +148,17 @@ const MyProfile = () => {
             </HeaderImage>
             <View
               style={{
-                height: 95,
-                width: 95,
-                backgroundColor: '#fff',
-                borderRadius: 60,
+                height: 106,
+                width: 106,
+                backgroundColor: ThemeMode.selectedTheme
+                  ? theme.colors.primary
+                  : theme.colors.primaryBlack,
+                borderRadius: 50,
                 justifyContent: 'center',
                 alignItems: 'center',
                 alignSelf: 'center',
                 position: 'absolute',
                 bottom: 15,
-                shadowColor: '#8490ae85',
-                shadowOffset: {
-                  width: 0,
-                  height: 1,
-                },
-                shadowOpacity: 0.22,
-                shadowRadius: 2.22,
-
-                elevation: 10,
               }}>
               <Image
                 source={

@@ -35,14 +35,6 @@ const Images = () => {
   const [Loading, setLoading] = useState(false);
   const [uri, setUri] = useState();
   const refRBSheet = useRef();
-  const photos = [
-    {img: require('../../../assets/images/unsplash_1.png')},
-    {img: require('../../../assets/images/unsplash_2.png')},
-    {img: require('../../../assets/images/unsplash_3.png')},
-    {img: require('../../../assets/images/unsplash_4.png')},
-    {img: require('../../../assets/images/unsplash_5.png')},
-    {img: require('../../../assets/images/unsplash_6.png')},
-  ];
 
   const pickImage = () => {
     launchImageLibrary({quality: 0.9}, response => {
@@ -74,8 +66,6 @@ const Images = () => {
       setUser(response.data.result);
     });
   };
-
-  console.log('User=========>', User);
 
   const AddImage_api = data => {
     try {
@@ -362,7 +352,7 @@ const Option = ({refRBSheet, onPress, onPress1}) => {
           justifyContent: 'space-evenly',
           marginTop: 40,
         }}>
-        <TouchableOpacity onPress={onPress}>
+        <TouchableOpacity style={{alignItems: 'center'}} onPress={onPress}>
           <Image
             source={require('../../../assets/icons/camera.png')}
             style={{height: 50, width: 50, resizeMode: 'contain'}}
@@ -379,7 +369,7 @@ const Option = ({refRBSheet, onPress, onPress1}) => {
             Camera
           </TextFormatted>
         </TouchableOpacity>
-        <TouchableOpacity onPress={onPress1}>
+        <TouchableOpacity style={{alignItems: 'center'}} onPress={onPress1}>
           <Image
             source={require('../../../assets/images/gallery.png')}
             style={{height: 50, width: 50, resizeMode: 'contain'}}

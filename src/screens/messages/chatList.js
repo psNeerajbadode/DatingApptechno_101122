@@ -194,7 +194,17 @@ const ChatList = () => {
           <ActivityLoader />
         </View>
       ) : Chatuser == '' ? (
-        <View>
+        <View
+          style={{
+            alignItems: 'center',
+            flex: 1,
+            justifyContent: 'center',
+          }}>
+          <Image
+            style={{width: 100, height: 100}}
+            resizeMode="contain"
+            source={require('../../assets/icons/No_informations.png')}
+          />
           <TextFormatted
             style={{
               fontSize: 18,
@@ -206,7 +216,7 @@ const ChatList = () => {
               marginTop: 30,
               alignSelf: 'center',
             }}>
-            There are no recent data
+            List is Empty
           </TextFormatted>
         </View>
       ) : (

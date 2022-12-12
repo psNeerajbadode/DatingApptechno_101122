@@ -23,9 +23,9 @@ import {
 import axios from 'axios';
 import ActivityLoader from '../../components/ActivityLoader';
 import Netinforsheet from '../../components/Netinforsheet';
-import {STAP} from '../../redux/actions/ActionType';
 
 const EditPassions = () => {
+  const [User, setUser] = useState();
   const ThemeMode = useSelector(state => state.Theme);
   const Staps = useSelector(state => state.Stap);
   const navigation = useNavigation();
@@ -33,10 +33,8 @@ const EditPassions = () => {
   const [data, setData] = useState([]);
   const [load, setload] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [selected, setSelected] = useState([]);
-  const [User, setUser] = useState();
+  const [selected, setSelected] = useState(Staps.category_id.split(','));
   //console.log('selected', selected);
-  const oldPass = User?.category_id.split(',');
   const getPassion = () => {
     setload(true);
     axios({
@@ -59,7 +57,7 @@ const EditPassions = () => {
     setLoading(true);
     const body = new FormData();
     body.append('user_id', Staps.id);
-    body.append('category_id', selected.join(','));
+    body.append('category_id', selected);
     axios({
       url: 'https://technorizen.com/Dating/webservice/update_passion',
       method: 'POST',
@@ -69,7 +67,6 @@ const EditPassions = () => {
       },
     })
       .then(function (response) {
-        console.log('response', response.data);
         if (response.data.status == 1) {
           setLoading(false);
           navigation.navigate('myProfile');
@@ -98,7 +95,6 @@ const EditPassions = () => {
     getPassion();
     getUser();
   }, []);
-
   return (
     <View
       style={{

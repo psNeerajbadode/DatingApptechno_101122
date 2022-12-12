@@ -1,7 +1,6 @@
 import {
   StyleSheet,
   useWindowDimensions,
-  View,
   ImageBackground,
   Image,
 } from 'react-native';
@@ -15,12 +14,23 @@ import {useSelector} from 'react-redux';
 const Splash = ({navigation}) => {
   const dimension = useWindowDimensions();
   const Staps = useSelector(state => state.Stap);
-  console.log('Staps.Leng', Staps.Leng);
-
+  const ThemeMode = useSelector(state => state.Theme);
   return (
     <ImageBackground
       resizeMode="stretch"
-      source={require('../../assets/images/Splesh_new.png')}
+      source={
+        ThemeMode.themecolr == 'Red'
+          ? require('../../assets/images/Splesh_new.png')
+          : ThemeMode.themecolr == 'Blue'
+          ? require('../../assets/images/Splesh_blue.png')
+          : ThemeMode.themecolr == 'Green'
+          ? require('../../assets/images/Splesh_green.png')
+          : ThemeMode.themecolr == 'Purple'
+          ? require('../../assets/images/Splesh_purple.png')
+          : ThemeMode.themecolr == 'Yellow'
+          ? require('../../assets/images/Splesh_yellow.png')
+          : require('../../assets/images/Splesh_new.png')
+      }
       style={{flex: 1, justifyContent: 'center'}}>
       <Statusbar
         backgroundColor={'transparent'}
@@ -42,7 +52,7 @@ const Splash = ({navigation}) => {
       <AnimatedCircularProgress
         style={{alignSelf: 'center', marginTop: dimension.width - 480}}
         size={160}
-        duration={3000}
+        duration={1200}
         width={10}
         fill={100}
         rotation={0}
@@ -54,7 +64,7 @@ const Splash = ({navigation}) => {
           navigation.replace(
             Staps.Leng == null ? 'LanguageSelection' : 'Login',
           );
-          //navigation.replace('step5');
+          // navigation.replace('step4');
           // navigation.replace('HomePage');
         }}
         renderCap={({center}) => (
@@ -67,7 +77,7 @@ const Splash = ({navigation}) => {
           </TextFormatted>
         )}
       </AnimatedCircularProgress>
-      <TextFormatted
+      {/* <TextFormatted
         style={{
           alignSelf: 'center',
           color: theme.colors.primary,
@@ -75,7 +85,7 @@ const Splash = ({navigation}) => {
           fontWeight: '400',
         }}>
         Loading...
-      </TextFormatted>
+      </TextFormatted> */}
       <Image
         resizeMode="contain"
         source={require('../../assets/icons/logo.png')}

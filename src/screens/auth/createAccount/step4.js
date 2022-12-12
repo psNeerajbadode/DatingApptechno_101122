@@ -86,6 +86,15 @@ const Step4 = () => {
     }, 1000);
   }
 
+  function VideoLimite() {
+    if (video[0]?.duration <= 30) {
+      ImageApi();
+      VideoApi();
+    } else {
+      setLoading(false);
+      ShowToast('Video length limit exceeded Please upload within 30 seconds');
+    }
+  }
   const ImageApi = () => {
     try {
       setLoading(true);
@@ -127,48 +136,42 @@ const Step4 = () => {
   };
 
   async function VideoApi() {
-    if (video[0]?.duration <= 30) {
-      try {
-        setLoading(true);
-        const body = new FormData();
-        body.append('user_id', Staps.id);
-        const urlComponents = video[0]?.uri.split('/');
-        const fileNameAndExtension = urlComponents[urlComponents?.length - 1];
-        const destPath = `${RNFS?.TemporaryDirectoryPath}/${fileNameAndExtension}`;
-        await RNFS.copyFile(video[0]?.uri, destPath);
-        body.append('image', {
-          uri: 'file://' + destPath,
-          type: video[0]?.type,
-          name: video[0]?.fileName,
-        });
-        axios({
-          url: 'https://technorizen.com/Dating/webservice/signup6',
-          method: 'POST',
-          data: body,
-          headers: {
-            'content-type': 'multipart/form-data',
-          },
-        })
-          .then(function (response) {
-            console.log('Video Api', response.data);
-            if (response.data.status == 1) {
-              setLoading(false);
-              dispatch({type: STAP, payload: response.data.result});
-              navigation.replace('step5');
-              console.log(response.data);
-            }
-          })
-          .catch(function (error) {
-            console.log('catch', error);
+    try {
+      setLoading(true);
+      const body = new FormData();
+      body.append('user_id', Staps.id);
+      const urlComponents = video[0]?.uri.split('/');
+      const fileNameAndExtension = urlComponents[urlComponents?.length - 1];
+      const destPath = `${RNFS?.TemporaryDirectoryPath}/${fileNameAndExtension}`;
+      await RNFS.copyFile(video[0]?.uri, destPath);
+      body.append('image', {
+        uri: 'file://' + destPath,
+        type: video[0]?.type,
+        name: video[0]?.fileName,
+      });
+      axios({
+        url: 'https://technorizen.com/Dating/webservice/signup6',
+        method: 'POST',
+        data: body,
+        headers: {
+          'content-type': 'multipart/form-data',
+        },
+      })
+        .then(function (response) {
+          console.log('Video Api', response.data);
+          if (response.data.status == 1) {
             setLoading(false);
-          });
-      } catch (error) {
-        console.log(error);
-      }
-      return;
-    } else {
-      setLoading(false);
-      ShowToast('Video length limit exceeded Please upload within 30 seconds');
+            dispatch({type: STAP, payload: response.data.result});
+            navigation.replace('step5');
+            console.log(response.data);
+          }
+        })
+        .catch(function (error) {
+          console.log('catch', error);
+          setLoading(false);
+        });
+    } catch (error) {
+      console.log(error);
     }
   }
 
@@ -177,14 +180,12 @@ const Step4 = () => {
       method: 'get',
       url: `https://technorizen.com/Dating/webservice/get_plans`,
     }).then(response => {
-      console.log('setPlandata=>', response.data.result[0]);
       setPlandata(response.data.result);
     });
   };
   useEffect(() => {
     getPlanData();
   }, []);
-
   return (
     <View
       style={{
@@ -563,81 +564,84 @@ const Step4 = () => {
             </View>
           </View>
         </View>
-        {video?.map((it, i) => (
-          <TouchableOpacity
-            style={{
-              width: dimension.width - 40,
-              alignSelf: 'center',
-              marginTop: 20,
-            }}
-            onPress={() => {
-              navigation.navigate('playVideo', {data: it?.uri});
-            }}>
-            <TouchableOpacity
-              onPress={() => {
-                remove_photos(i);
-                setRefresh(true);
-              }}
-              style={{
-                position: 'absolute',
-                top: 10,
-                right: 10,
-                zIndex: 1,
-                padding: 5,
-                borderRadius: 10,
-                backgroundColor:
-                  ThemeMode.themecolr == 'Red'
-                    ? theme.colors.red
-                    : ThemeMode.themecolr == 'Blue'
-                    ? theme.colors.Blue
-                    : ThemeMode.themecolr == 'Green'
-                    ? theme.colors.Green
-                    : ThemeMode.themecolr == 'Purple'
-                    ? theme.colors.Purple
-                    : ThemeMode.themecolr == 'Yellow'
-                    ? theme.colors.Yellow
-                    : theme.colors.red,
-              }}>
-              <Image
-                source={require('../../../assets/icons/delete_icon.png')}
+        {media?.map(
+          (it, i) =>
+            it.type == 'video/mp4' && (
+              <TouchableOpacity
                 style={{
-                  width: 18,
-                  height: 18,
-                  tintColor: ThemeMode.selectedTheme
-                    ? theme.colors.primary
-                    : theme.colors.primaryBlack,
+                  width: dimension.width - 40,
+                  alignSelf: 'center',
+                  marginTop: 20,
                 }}
-              />
-            </TouchableOpacity>
-            <Image
-              source={require('../../../assets/icons/play_video.png')}
-              style={{
-                height: 64,
-                width: 64,
-                resizeMode: 'contain',
-                position: 'absolute',
-                alignSelf: 'center',
-                top: 80,
-                zIndex: 1,
-              }}
-            />
+                onPress={() => {
+                  navigation.navigate('playVideo', {data: it?.uri});
+                }}>
+                <TouchableOpacity
+                  onPress={() => {
+                    remove_photos(i);
+                    setRefresh(true);
+                  }}
+                  style={{
+                    position: 'absolute',
+                    top: 10,
+                    right: 10,
+                    zIndex: 1,
+                    padding: 5,
+                    borderRadius: 10,
+                    backgroundColor:
+                      ThemeMode.themecolr == 'Red'
+                        ? theme.colors.red
+                        : ThemeMode.themecolr == 'Blue'
+                        ? theme.colors.Blue
+                        : ThemeMode.themecolr == 'Green'
+                        ? theme.colors.Green
+                        : ThemeMode.themecolr == 'Purple'
+                        ? theme.colors.Purple
+                        : ThemeMode.themecolr == 'Yellow'
+                        ? theme.colors.Yellow
+                        : theme.colors.red,
+                  }}>
+                  <Image
+                    source={require('../../../assets/icons/delete_icon.png')}
+                    style={{
+                      width: 18,
+                      height: 18,
+                      tintColor: ThemeMode.selectedTheme
+                        ? theme.colors.primary
+                        : theme.colors.primaryBlack,
+                    }}
+                  />
+                </TouchableOpacity>
+                <Image
+                  source={require('../../../assets/icons/play_video.png')}
+                  style={{
+                    height: 64,
+                    width: 64,
+                    resizeMode: 'contain',
+                    position: 'absolute',
+                    alignSelf: 'center',
+                    top: 80,
+                    zIndex: 1,
+                  }}
+                />
 
-            <VideoPlayer
-              style={{
-                zIndex: 0,
-                alignSelf: 'center',
-                borderRadius: 20,
-                overflow: 'hidden',
-                height: 223,
-              }}
-              thumbnail={{uri: it?.uri}}
-              pause={true}
-              video={{uri: it?.uri}}
-              resizeMode={'cover'}
-              playIcon={false}
-            />
-          </TouchableOpacity>
-        ))}
+                <VideoPlayer
+                  style={{
+                    zIndex: 0,
+                    alignSelf: 'center',
+                    borderRadius: 20,
+                    overflow: 'hidden',
+                    height: 223,
+                  }}
+                  thumbnail={{uri: it?.uri}}
+                  pause={true}
+                  video={{uri: it?.uri}}
+                  resizeMode={'cover'}
+                  playIcon={false}
+                />
+              </TouchableOpacity>
+            ),
+        )}
         {media?.map(
           (it, i) =>
             it.type != 'video/mp4' &&
@@ -712,8 +716,7 @@ const Step4 = () => {
           }
           color={'#fff'}
           onPress={() => {
-            ImageApi();
-            VideoApi();
+            VideoLimite();
           }}
         />
 

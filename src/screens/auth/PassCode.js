@@ -213,10 +213,11 @@ const PassCode = () => {
         <View
           style={{
             flexDirection: 'row',
-            width: 300,
+            width: dimension.width - 50,
+            height: dimension.width * 0.85,
             flexWrap: 'wrap',
             alignSelf: 'center',
-            marginTop: 10,
+            marginTop: 20,
           }}>
           {Array(11)
             .fill('')
@@ -229,7 +230,12 @@ const PassCode = () => {
                     i == 10 ? 0 : i != 9 && i + 1,
                   ])
                 }
-                style={{width: 40, marginHorizontal: 30, marginVertical: 10}}>
+                style={{
+                  width: dimension.width * 0.12,
+                  height: dimension.width * 0.12,
+                  marginHorizontal: 30,
+                  marginVertical: 10,
+                }}>
                 <TextFormatted
                   style={{
                     textAlign: 'center',
@@ -271,11 +277,10 @@ const PassCode = () => {
                 resizeMode: 'contain',
                 height: 50,
                 width: 50,
-                tintColor: '#000',
+                tintColor: theme.colors.darkGrey,
               }}
             />
           </TouchableOpacity>
-          {/* )} */}
         </View>
       </ScrollView>
       <TextFormatted
